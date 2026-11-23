@@ -1,0 +1,670 @@
+{
+ "Columba palumbus": {
+  "alternatives": [],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Columba_palumbus_by_Naumann.jpg",
+   "height": 1038,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 109817546,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "550277dabf0421a6ba4d2a45fc6d2d79f488a26d",
+   "species_shown": [
+    "Columba palumbus"
+   ],
+   "title": "File:Columba palumbus by Naumann.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Columba_palumbus_by_Naumann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 800
+  },
+  "common_name": "Common Wood-Pigeon",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Columba palumbus"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q26026"
+ },
+ "Cyanistes caeruleus": {
+  "alternatives": [
+   "File:A history of the birds of Europe (Pl. 660) (7135316049).jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Aegithalus_and_Parus_Species_by_Naumann.jpg",
+   "height": 1114,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 109825342,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "ee31c21a425de359be32eaa0b8a49f5affa0f1ca",
+   "species_shown": [
+    "Cyanistes caeruleus"
+   ],
+   "title": "File:Aegithalus and Parus Species by Naumann.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Aegithalus_and_Parus_Species_by_Naumann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 800
+  },
+  "common_name": "Eurasian Blue Tit",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Cyanistes caeruleus",
+   "Parus caeruleus",
+   "Parus caeruleus touraudericus"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25404"
+ },
+ "Dendrocopos major": {
+  "alternatives": [
+   "File:Dzieciol duzy dmajor.jpg",
+   "File:A history of the birds of Europe (Pl. 688) (7135328887).jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Buntspecht_Dendrocopos_major1.jpg",
+   "height": 1715,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 173878,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "ead64e1942215b3361cc35ced627d70dce0526c3",
+   "species_shown": [
+    "Dendrocopos major"
+   ],
+   "title": "File:Buntspecht Dendrocopos major1.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Buntspecht_Dendrocopos_major1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1102
+  },
+  "common_name": "Great Spotted Woodpecker",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Dendrocopos anglicus",
+   "Dendrocopos major",
+   "Dryobates major",
+   "Dryocopus major",
+   "Picoides major",
+   "Picus major"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q26209"
+ },
+ "Dryobates minor": {
+  "alternatives": [
+   "File:Dendrocopos minor male.jpg",
+   "File:Dendrocopos minor female.jpg",
+   "File:Woodpeckers, family Picoides.png",
+   "File:A history of the birds of Europe (Pl. 689) (7135329233).jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Three_Picoides_Species_by_Naumann.jpg",
+   "height": 1509,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 109826195,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "08b6137911e0b86026216e8f0dbb4aa27707e1f3",
+   "species_shown": [
+    "Dryobates minor"
+   ],
+   "title": "File:Three Picoides Species by Naumann.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Three_Picoides_Species_by_Naumann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1102
+  },
+  "common_name": "Lesser Spotted Woodpecker",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Dendrocopos minor",
+   "Dryobates comminutus",
+   "Dryobates minor",
+   "Picoides minor",
+   "Picus minor"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q184518"
+ },
+ "Erithacus rubecula": {
+  "alternatives": [
+   "File:Naumann (I. 4) (6008726140).jpg"
+  ],
+  "chosen": {
+   "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._644)_(6989225270).jpg",
+   "height": 1794,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 43182173,
+   "plate": "Tafel 644",
+   "public_domain": true,
+   "sha1": "6d36495e6f8696ff1c7bcb90d735b588e331baf7",
+   "species_shown": [
+    "Erithacus rubecula"
+   ],
+   "title": "File:A history of the birds of Europe (Pl. 644) (6989225270).jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/A_history_of_the_birds_of_Europe_%28Pl._644%29_%286989225270%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1278
+  },
+  "common_name": "European Robin",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Erithacus dandalus sardus",
+   "Erithacus rubecula",
+   "Erithacus rubecula armoricanus",
+   "Erithacus rubecula sardus",
+   "Motacilla rubecula",
+   "Motacilla spec"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25334"
+ },
+ "Fringilla coelebs": {
+  "alternatives": [
+   "File:Poster Fringilla coelebs.jpg",
+   "File:A history of the birds of Europe (Pl. 674) (7135322209).jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Fringillidae_naumann.jpg",
+   "height": 1301,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 519024,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "7088bef751d4708066dcc476e700c3cf6a2caf12",
+   "species_shown": [
+    "Fringilla coelebs"
+   ],
+   "title": "File:Fringillidae naumann.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Fringillidae_naumann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 938
+  },
+  "common_name": "Common Chaffinch",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Fringilla coelebs"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25383"
+ },
+ "Garrulus glandarius": {
+  "alternatives": [],
+  "chosen": {
+   "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._686)_(7135327803).jpg",
+   "height": 1794,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 43181742,
+   "plate": "Tafel 686",
+   "public_domain": true,
+   "sha1": "b6249a06c22a0dfbfdeed3850d5cfda5383da0e6",
+   "species_shown": [
+    "Garrulus glandarius"
+   ],
+   "title": "File:A history of the birds of Europe (Pl. 686) (7135327803).jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/A_history_of_the_birds_of_Europe_%28Pl._686%29_%287135327803%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1278
+  },
+  "common_name": "Eurasian Jay",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Corvus glandarius",
+   "Garrulus glandarius"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25354"
+ },
+ "Parus major": {
+  "alternatives": [],
+  "chosen": {
+   "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._656)_(7135314451).jpg",
+   "height": 1794,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 43182052,
+   "plate": "Tafel 656",
+   "public_domain": true,
+   "sha1": "67a7df9ea2358cd3de67e2e327fc2bccb7cb05b4",
+   "species_shown": [
+    "Parus major"
+   ],
+   "title": "File:A history of the birds of Europe (Pl. 656) (7135314451).jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/A_history_of_the_birds_of_Europe_%28Pl._656%29_%287135314451%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1278
+  },
+  "common_name": "Great Tit",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Parus corsus",
+   "Parus major",
+   "Parus newtoni"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25485"
+ },
+ "Passer domesticus": {
+  "alternatives": [
+   "File:Sparrow (1).JPG"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Passer_(Naumann).jpg",
+   "height": 1371,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 1807429,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "d1480a930bd492256216dfe59985ba775cae15a0",
+   "species_shown": [
+    "Passer domesticus"
+   ],
+   "title": "File:Passer (Naumann).jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Passer_%28Naumann%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 931
+  },
+  "common_name": "House Sparrow",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Fringilla domestica",
+   "Passer domesticus"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q14683"
+ },
+ "Phylloscopus collybita": {
+  "alternatives": [
+   "File:Chiffchaff245.jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Four_Phylloscopus_Species_by_Naumann.jpg",
+   "height": 1552,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 109818855,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "fec0fc87bfb3179934d5ca368bb90f4bb95b0935",
+   "species_shown": [
+    "Phylloscopus collybita"
+   ],
+   "title": "File:Four Phylloscopus Species by Naumann.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Four_Phylloscopus_Species_by_Naumann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1102
+  },
+  "common_name": "Common Chiffchaff",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Phylloscopus collybita",
+   "Sylvia collybita",
+   "Sylvia rufa"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q185784"
+ },
+ "Pica pica": {
+  "alternatives": [
+   "File:Euromagpie.JPG"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Elster_und_Dohle.jpg",
+   "height": 1340,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 11622633,
+   "plate": "Band IV, Tafel 10",
+   "public_domain": true,
+   "sha1": "298766b2eff96645a602fa69bd3637f333d1040d",
+   "species_shown": [
+    "Pica pica"
+   ],
+   "title": "File:Elster und Dohle.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Elster_und_Dohle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 876
+  },
+  "common_name": "Eurasian Magpie",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Corvus pica",
+   "Corvus spec",
+   "Pica caudata",
+   "Pica caudata melanotos",
+   "Pica galliae",
+   "Pica pica",
+   "Pica rusicola"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25307"
+ },
+ "Prunella modularis": {
+  "alternatives": [
+   "File:Naumann (I. 9) (6008727012).jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Prunella_modularis_montanella.jpg",
+   "height": 1695,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 532940,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "e1c3f9af66bd0b428ad5afeb163bf1d27016c0e5",
+   "species_shown": [
+    "Prunella modularis"
+   ],
+   "title": "File:Prunella modularis montanella.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Prunella_modularis_montanella.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1102
+  },
+  "common_name": "Dunnock",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Accentor modularis",
+   "Motacilla modularis",
+   "Prunella modularis",
+   "Sylvia modularis"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q26698"
+ },
+ "Streptopelia decaocto": {
+  "alternatives": [],
+  "chosen": null,
+  "common_name": "Eurasian Collared-Dove",
+  "iucn": "LC",
+  "match": null,
+  "names": [
+   "Columba decaocto",
+   "Columba risoria decaocto",
+   "Streptopelia decaocto"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q54696"
+ },
+ "Streptopelia turtur": {
+  "alternatives": [
+   "File:Turtle dove.jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Streptopelia_turtur_by_Naumann.jpg",
+   "height": 1081,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 109817055,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "d77d482214489e87ccd25341ea1dc20e828feb09",
+   "species_shown": [
+    "Streptopelia turtur"
+   ],
+   "title": "File:Streptopelia turtur by Naumann.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Streptopelia_turtur_by_Naumann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 800
+  },
+  "common_name": "European Turtle-Dove",
+  "iucn": "VU",
+  "match": "illustrations-category",
+  "names": [
+   "Columba spec",
+   "Columba turtur",
+   "Streptopelia turtur",
+   "Stretopelia turtur",
+   "Turtur communis"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q168514"
+ },
+ "Sturnus vulgaris": {
+  "alternatives": [
+   "File:Cstarling22.jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [
+    "Q25469"
+   ],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Sturnus_vulgaris_by_Naumann.jpg",
+   "height": 1700,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 109817655,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "4ce3571f49bf8d5fa00ea05f869b2a3c58113139",
+   "species_shown": [
+    "Sturnus vulgaris"
+   ],
+   "title": "File:Sturnus vulgaris by Naumann.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Sturnus_vulgaris_by_Naumann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1102
+  },
+  "common_name": "European Starling",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Sturnus vulgaris"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25469"
+ },
+ "Sylvia atricapilla": {
+  "alternatives": [],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Sylvia_atricapilla.jpg",
+   "height": 386,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 248876,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "57ba86494412bfff9c009063af5b73e16d16a81d",
+   "species_shown": [
+    "Sylvia atricapilla"
+   ],
+   "title": "File:Sylvia atricapilla.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Sylvia_atricapilla.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 250
+  },
+  "common_name": "Eurasian Blackcap",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Motacilla atricapilla",
+   "Sylvia atricapilla"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q188446"
+ },
+ "Troglodytes troglodytes": {
+  "alternatives": [
+   "File:Wren.JPG"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Zaunkoenig.jpg",
+   "height": 1269,
+   "license": "Public domain",
+   "match": "category",
+   "mime": "image/jpeg",
+   "pageid": 583637,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "efbd32fa14267b72089c840acc6e2bd19b6206a3",
+   "species_shown": [
+    "Troglodytes troglodytes"
+   ],
+   "title": "File:Zaunkoenig.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Zaunkoenig.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 922
+  },
+  "common_name": "Eurasian Wren",
+  "iucn": "LC",
+  "match": "category",
+  "names": [
+   "Motacilla troglodytes",
+   "Nannus troglodytes",
+   "Troglodytes parvulus",
+   "Troglodytes troglodytes",
+   "Troglodytes vulgaris"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25740"
+ },
+ "Turdus merula": {
+  "alternatives": [
+   "File:Naumann (I. 18) (6008181849).jpg",
+   "File:Naumann (I. 32) (6008184991).jpg",
+   "File:Amsel w.jpg"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Turdus_merula_20050321.jpg",
+   "height": 1578,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 84460,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "19a05eb9378dd8f992b2ce92046cde503340648d",
+   "species_shown": [
+    "Turdus merula"
+   ],
+   "title": "File:Turdus merula 20050321.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Turdus_merula_20050321.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 1102
+  },
+  "common_name": "Eurasian Blackbird",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Turdus merula"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25234"
+ },
+ "Upupa epops": {
+  "alternatives": [
+   "File:Hoopoe100.JPG"
+  ],
+  "chosen": {
+   "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+   "depicts": [],
+   "derivative": false,
+   "descriptionurl": "https://commons.wikimedia.org/wiki/File:Hoopoe_de.jpg",
+   "height": 1387,
+   "license": "Public domain",
+   "match": "illustrations-category",
+   "mime": "image/jpeg",
+   "pageid": 141032,
+   "plate": "plate not identified",
+   "public_domain": true,
+   "sha1": "fd4435f80469a18d4e4abcdbdcdcd1c63ade9223",
+   "species_shown": [
+    "Upupa epops"
+   ],
+   "title": "File:Hoopoe de.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Hoopoe_de.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+   "width": 915
+  },
+  "common_name": "Eurasian Hoopoe",
+  "iucn": "LC",
+  "match": "illustrations-category",
+  "names": [
+   "Upupa epops"
+  ],
+  "needs_crop": false,
+  "needs_review": false,
+  "wikidata": "Q25247"
+ }
+}

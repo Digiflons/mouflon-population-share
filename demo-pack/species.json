@@ -1,0 +1,78 @@
+{
+ "Columba palumbus": {
+  "common_name": "Common Wood-Pigeon",
+  "max_probability": null
+ },
+ "Cyanistes caeruleus": {
+  "common_name": "Eurasian Blue Tit",
+  "max_probability": null
+ },
+ "Dendrocopos major": {
+  "common_name": "Great Spotted Woodpecker",
+  "max_probability": null
+ },
+ "Dryobates minor": {
+  "common_name": "Lesser Spotted Woodpecker",
+  "max_probability": null
+ },
+ "Erithacus rubecula": {
+  "common_name": "European Robin",
+  "max_probability": null
+ },
+ "Fringilla coelebs": {
+  "common_name": "Common Chaffinch",
+  "max_probability": null
+ },
+ "Garrulus glandarius": {
+  "common_name": "Eurasian Jay",
+  "max_probability": null
+ },
+ "Parus major": {
+  "common_name": "Great Tit",
+  "max_probability": null
+ },
+ "Passer domesticus": {
+  "common_name": "House Sparrow",
+  "max_probability": null
+ },
+ "Phylloscopus collybita": {
+  "common_name": "Common Chiffchaff",
+  "max_probability": null
+ },
+ "Pica pica": {
+  "common_name": "Eurasian Magpie",
+  "max_probability": null
+ },
+ "Prunella modularis": {
+  "common_name": "Dunnock",
+  "max_probability": null
+ },
+ "Streptopelia decaocto": {
+  "common_name": "Eurasian Collared-Dove",
+  "max_probability": null
+ },
+ "Streptopelia turtur": {
+  "common_name": "European Turtle-Dove",
+  "max_probability": null
+ },
+ "Sturnus vulgaris": {
+  "common_name": "European Starling",
+  "max_probability": null
+ },
+ "Sylvia atricapilla": {
+  "common_name": "Eurasian Blackcap",
+  "max_probability": null
+ },
+ "Troglodytes troglodytes": {
+  "common_name": "Eurasian Wren",
+  "max_probability": null
+ },
+ "Turdus merula": {
+  "common_name": "Eurasian Blackbird",
+  "max_probability": null
+ },
+ "Upupa epops": {
+  "common_name": "Eurasian Hoopoe",
+  "max_probability": null
+ }
+}

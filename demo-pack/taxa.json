@@ -1,0 +1,569 @@
+{
+ "Columba palumbus": {
+  "items": [
+   "Q26026"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Columba palumbus"
+  ],
+  "vernacular": [
+   "Common Wood Pigeon",
+   "Common Wood-Pigeon",
+   "Common Wood-Pigeon (White-necked)",
+   "Common Woodpigeon",
+   "Common wood pigeon",
+   "Eurasian Wood-Pigeon",
+   "Ringeltaube",
+   "Waldtaube",
+   "Wood Pidgeon",
+   "Wood Pigeon",
+   "Woodpigeon",
+   "common wood pigeon",
+   "common wood-pigeon",
+   "wood pigeon",
+   "wood pigeon, common wood pigeon"
+  ],
+  "wikidata": "Q26026"
+ },
+ "Cyanistes caeruleus": {
+  "items": [
+   "Q25404",
+   "Q25689712"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Cyanistes caeruleus",
+   "Parus caeruleus",
+   "Parus caeruleus touraudericus"
+  ],
+  "vernacular": [
+   "Blaumeise",
+   "Blue Tit",
+   "Corsican Blue Tits",
+   "Cyanistes caeruleus",
+   "Eurasian Blue Tit",
+   "Eurasian Blue-Tit",
+   "Eurasian blue tit",
+   "European Blue Tit"
+  ],
+  "wikidata": "Q25404"
+ },
+ "Dendrocopos major": {
+  "items": [
+   "Q106447816",
+   "Q26209"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Dendrocopos anglicus",
+   "Dendrocopos major",
+   "Dryobates major",
+   "Dryocopus major",
+   "Picoides major",
+   "Picus major"
+  ],
+  "vernacular": [
+   "Buntspecht",
+   "GSWO",
+   "Great Spotted Woodpecker",
+   "Great Spotted Woodpecker (Great Spotted)",
+   "Great Spotted/Syrian Woodpecker",
+   "Great spotted woodpecker",
+   "Großer Buntspecht",
+   "Rotspecht",
+   "great spotted woodpecker"
+  ],
+  "wikidata": "Q26209"
+ },
+ "Dryobates minor": {
+  "items": [
+   "Q125706750",
+   "Q184518"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Dendrocopos minor",
+   "Dryobates comminutus",
+   "Dryobates minor",
+   "Picoides minor",
+   "Picus minor"
+  ],
+  "vernacular": [
+   "Kleinspecht",
+   "LSWO",
+   "Lesser Spotted Woodpecker"
+  ],
+  "wikidata": "Q184518"
+ },
+ "Erithacus rubecula": {
+  "items": [
+   "Q137805712",
+   "Q25334"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Erithacus dandalus sardus",
+   "Erithacus rubecula",
+   "Erithacus rubecula armoricanus",
+   "Erithacus rubecula sardus",
+   "Motacilla rubecula",
+   "Motacilla spec"
+  ],
+  "vernacular": [
+   "Continental Robin",
+   "EURO",
+   "Erithacus rubecula",
+   "European Robin",
+   "European robin",
+   "Redbreast",
+   "Robin",
+   "Robin redbreast",
+   "Rotkehlchen",
+   "Ruddock",
+   "robin, european robin"
+  ],
+  "wikidata": "Q25334"
+ },
+ "Fringilla coelebs": {
+  "items": [
+   "Q25383"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Fringilla coelebs"
+  ],
+  "vernacular": [
+   "Buchfink",
+   "Bunchfink",
+   "C F",
+   "COCH",
+   "Chaffinch",
+   "Common Chaffinch",
+   "Common Chaffinch (Common)",
+   "Common Chaffinch/Brambling",
+   "Common chaffinch",
+   "Eurasian Chaffinch",
+   "chaffinch",
+   "common chaffinch"
+  ],
+  "wikidata": "Q25383"
+ },
+ "Garrulus glandarius": {
+  "items": [
+   "Q107055631",
+   "Q25354"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Corvus glandarius",
+   "Garrulus glandarius"
+  ],
+  "vernacular": [
+   "Acorn Jay",
+   "EUJA",
+   "Eichelhäher",
+   "Eurasian Jay",
+   "Eurasian Jay (Black-capped)",
+   "Eurasian Jay (Black-crowned)",
+   "Eurasian Jay (Brandt's)",
+   "Eurasian Jay (Eurasian)",
+   "Eurasian Jay (Himalayan)",
+   "Eurasian Jay (Japanese)",
+   "Eurasian jay",
+   "Eurasian Įay",
+   "Gräcke",
+   "Gäbsch",
+   "Gäckser",
+   "Herold",
+   "Jay",
+   "Jägg",
+   "Markolf",
+   "Markwart",
+   "Marquard",
+   "Marquardt",
+   "Tschäcker",
+   "Watchman of the Forest",
+   "jay"
+  ],
+  "wikidata": "Q25354"
+ },
+ "Parus major": {
+  "items": [
+   "Q25485"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Parus corsus",
+   "Parus major",
+   "Parus newtoni"
+  ],
+  "vernacular": [
+   "Brandmeise",
+   "Finkmeise",
+   "GRTI",
+   "Grasmeise",
+   "Great Tit",
+   "Great Tit (Great)",
+   "Great Tit (Turkestan)",
+   "Great tit",
+   "Große Kohlmeise",
+   "Große Schwarze Meise",
+   "Große Waldmeise",
+   "Großmeise",
+   "Kohlmeise",
+   "Meisenfink",
+   "Northern Great Tit",
+   "Parus major",
+   "Pickmeise",
+   "Pinkmeise",
+   "Schinkenmeise",
+   "Schwarzmeise",
+   "Speckmeise",
+   "Spiegelmeise",
+   "Talghacker",
+   "Talgmeise",
+   "Talgmöske",
+   "Tit peckh",
+   "Turkestan Tit",
+   "great tit"
+  ],
+  "wikidata": "Q25485"
+ },
+ "Passer domesticus": {
+  "items": [
+   "Q14683",
+   "Q22109168"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Fringilla domestica",
+   "Passer domesticus"
+  ],
+  "vernacular": [
+   "Common House Sparrow",
+   "Dacklüün",
+   "Domestic Sparrow",
+   "English Sparrow",
+   "European Sparrow",
+   "Gutter Bird",
+   "Hausspatz",
+   "Haussperling",
+   "House Sparrow",
+   "House sparrow",
+   "House/Eurasian Tree Sparrow",
+   "House/Italian Sparrow",
+   "House/Spanish Sparrow",
+   "House/eurasian Tree Sparrow",
+   "House/italian Sparrow",
+   "House/spanish Sparrow",
+   "Lüning",
+   "Lünk",
+   "Lüntje",
+   "Mösche",
+   "Passer domesticus",
+   "Spatz",
+   "Sperling",
+   "house sparrow"
+  ],
+  "wikidata": "Q14683"
+ },
+ "Phylloscopus collybita": {
+  "items": [
+   "Q185784"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Phylloscopus collybita",
+   "Sylvia collybita",
+   "Sylvia rufa"
+  ],
+  "vernacular": [
+   "Chiffchaff",
+   "Common Chiffchaff",
+   "Common Chiffchaff (Common)",
+   "Common/Iberian Chiffchaff",
+   "Weidenlaubsänger",
+   "Woodland Chiffchaff",
+   "Zilpzalp",
+   "chiff-chaff",
+   "chiffchaff",
+   "common chiffchaff"
+  ],
+  "wikidata": "Q185784"
+ },
+ "Pica pica": {
+  "items": [
+   "Q107055632",
+   "Q25307"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Corvus pica",
+   "Corvus spec",
+   "Pica caudata",
+   "Pica caudata melanotos",
+   "Pica galliae",
+   "Pica pica",
+   "Pica rusicola"
+  ],
+  "vernacular": [
+   "Agelaster",
+   "Agelhetsch",
+   "Agerist",
+   "Agerluster",
+   "Aglaster",
+   "Algarte",
+   "Alster",
+   "Atzel",
+   "Black-billed Magpie",
+   "Common Magpie",
+   "Diebsch",
+   "Egester",
+   "Elster",
+   "Eurasian Magpie",
+   "Eurasian Magpie (Eurasian)",
+   "Eurasian magpie",
+   "European Magpie",
+   "Gackerhätzel",
+   "Gartenkrähe",
+   "Hatzel",
+   "Heister",
+   "Heste",
+   "Hetz",
+   "Hetze",
+   "Hutsche",
+   "Häster",
+   "Kekersch",
+   "Krückelelster",
+   "Magpie",
+   "Schagaster",
+   "Schalaster",
+   "Schalester",
+   "Scholaster",
+   "Schulaster",
+   "Tratschkatel",
+   "black-billed magpie",
+   "magpie",
+   "Ägerste"
+  ],
+  "wikidata": "Q25307"
+ },
+ "Prunella modularis": {
+  "items": [
+   "Q26698",
+   "Q40650836",
+   "Q47010357"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Accentor modularis",
+   "Motacilla modularis",
+   "Prunella modularis",
+   "Sylvia modularis"
+  ],
+  "vernacular": [
+   "Billy",
+   "Common Accentor",
+   "Common Dunnock",
+   "Dunnock",
+   "Dunnock / Hedge Accentor",
+   "European Dunnock",
+   "Heckenbraunelle",
+   "Hedge Accentor",
+   "Hedge Betty",
+   "Hedge Chanter",
+   "Hedge Dunnock",
+   "Hedge Sparrow",
+   "Hedge Warbler",
+   "Hedge-sparrow",
+   "Hedgepop",
+   "Prunella modularis",
+   "blue Isaac",
+   "dunnock",
+   "dunnock/(hedge accentor)",
+   "hedge Mike",
+   "hedge accentor"
+  ],
+  "wikidata": "Q26698"
+ },
+ "Streptopelia decaocto": {
+  "items": [
+   "Q109563216",
+   "Q54696"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Columba decaocto",
+   "Columba risoria decaocto",
+   "Streptopelia decaocto"
+  ],
+  "vernacular": [
+   "Collared Dove",
+   "Eurasian Collared Dove",
+   "Eurasian Collared dove",
+   "Eurasian Collared-Dove",
+   "Eurasian Collared-dove",
+   "Eurasian collared dove",
+   "Eurasian-collared Dove",
+   "Eurasian/African Collared-Dove",
+   "Eurasian/african Collared-dove",
+   "European Collared Dove",
+   "Türkentaube",
+   "collared dove",
+   "collared dove, eurasian collared dove"
+  ],
+  "wikidata": "Q54696"
+ },
+ "Streptopelia turtur": {
+  "items": [
+   "Q168514"
+  ],
+  "iucn": "VU",
+  "names": [
+   "Columba spec",
+   "Columba turtur",
+   "Streptopelia turtur",
+   "Stretopelia turtur",
+   "Turtur communis"
+  ],
+  "vernacular": [
+   "Eurasian Turtle Dove",
+   "European Turtle Dove",
+   "European Turtle-Dove",
+   "European Turtle-dove",
+   "European turtle dove",
+   "European turtle-dove",
+   "Turteltaube",
+   "Turtle Dove",
+   "turtle dove, european turtle dove"
+  ],
+  "wikidata": "Q168514"
+ },
+ "Sturnus vulgaris": {
+  "items": [
+   "Q25469"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Sturnus vulgaris"
+  ],
+  "vernacular": [
+   "COST",
+   "Common Starling",
+   "Common starling",
+   "Eurasian Starling",
+   "European Starling",
+   "European Starling / Common Starling",
+   "European starling",
+   "European/Spotless Starling",
+   "European/spotless Starling",
+   "Gemeiner Star",
+   "Star",
+   "Starling",
+   "common starling",
+   "starling"
+  ],
+  "wikidata": "Q25469"
+ },
+ "Sylvia atricapilla": {
+  "items": [
+   "Q137730895",
+   "Q188446"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Motacilla atricapilla",
+   "Sylvia atricapilla"
+  ],
+  "vernacular": [
+   "Blackcap",
+   "Eurasian Blackcap",
+   "Eurasian blackcap",
+   "Mönchsgrasmücke",
+   "Mönschgrasmücke",
+   "Sylvia atricapilla",
+   "blackcap"
+  ],
+  "wikidata": "Q188446"
+ },
+ "Troglodytes troglodytes": {
+  "items": [
+   "Q109563348",
+   "Q25740"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Motacilla troglodytes",
+   "Nannus troglodytes",
+   "Troglodytes parvulus",
+   "Troglodytes troglodytes",
+   "Troglodytes vulgaris"
+  ],
+  "vernacular": [
+   "EUWR",
+   "Eurasian Winter Wren",
+   "Eurasian Wren",
+   "Eurasian Wren (Eurasian)",
+   "Eurasian Wren (eurasian)",
+   "Eurasian wren",
+   "Jenny Wren",
+   "Northern Wren",
+   "Schneekönig",
+   "Troglodytes troglodytes",
+   "Winter Wren",
+   "Winter Wren, Wren",
+   "Wren",
+   "Zaunkönig",
+   "winter wren",
+   "winter wren, wren"
+  ],
+  "wikidata": "Q25740"
+ },
+ "Turdus merula": {
+  "items": [
+   "Q25234"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Turdus merula"
+  ],
+  "vernacular": [
+   "Amsel",
+   "Blackbird",
+   "Blk",
+   "Colley Bird",
+   "Colly Bird",
+   "Common Blackbird",
+   "Common blackbird",
+   "Eurasian Blackbird",
+   "Eurasian Blackbird / Common Blackbird",
+   "European Blackbird",
+   "Schwarzdrossel",
+   "blackbird",
+   "common blackbird"
+  ],
+  "wikidata": "Q25234"
+ },
+ "Upupa epops": {
+  "items": [
+   "Q25247"
+  ],
+  "iucn": "LC",
+  "names": [
+   "Upupa epops"
+  ],
+  "vernacular": [
+   "COHO",
+   "Common Hoopoe",
+   "Eurasian Hoopoe",
+   "Eurasian Hoopoe (Eurasian)",
+   "Eurasian hoopoe",
+   "Hoopoe",
+   "Wiedehopf",
+   "eurasian hoopoe",
+   "hoopoe"
+  ],
+  "wikidata": "Q25247"
+ }
+}
