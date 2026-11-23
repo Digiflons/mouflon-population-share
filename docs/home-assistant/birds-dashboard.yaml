@@ -1,0 +1,332 @@
+# "Birds" dashboard (reference copy, MOUL-41).
+#
+# The coordinator created this dashboard in the owner's Home Assistant on 2026-11-21:
+# url_path "birds-dashboard", view "birds", sections layout, standard cards only.
+# This file was rebuilt from that description, so small details (order, icons) may
+# differ from the live one. To recreate: Settings > Dashboards > Add dashboard >
+# "New dashboard from scratch", title "Birds", URL "birds-dashboard"; open it,
+# then ⋮ > Edit dashboard > ⋮ > Raw configuration editor, and paste this file.
+#
+# Marked "added for 0.1.2": demo-mode cards (shown only while demo mode is on).
+# The Gallery section (0.2.0, one stack per bird since 0.5.3) needs Mushroom (HACS)
+# for its rarity chips only. A swipe/carousel card can later replace the six static
+# tiles once the owner approves installing one.
+# Marked "add when the cameras are configured": per-camera status cards.
+title: Oiseaux
+views:
+  - title: Oiseaux
+    path: birds
+    icon: mdi:bird
+    type: sections
+    max_columns: 3
+    sections:
+      # Gallery (MOUL-45/47/48; layout from the owner's live dashboard, 0.5.3).
+      # One vertical stack per bird: the drawing (a picture-entity with no
+      # aspect_ratio, so the card never crops the plate; the App already prints it on
+      # aged paper with a soft edge), then a short centred legend. Tapping a drawing
+      # opens its details. Drawings come from the App's image entities, served by
+      # Home Assistant itself. Rarity pills use Mushroom chips (HACS).
+      - type: grid
+        column_span: 3
+        cards:
+          - type: heading
+            heading: Galerie
+          - type: vertical-stack
+            grid_options:
+              columns: 18
+            cards:
+              - type: picture-entity
+                entity: image.mouflon_population_last_bird_drawing
+                show_name: false
+                show_state: false
+                tap_action:
+                  action: more-info
+              - type: markdown
+                text_only: true
+                content: >-
+                  {% set b = 'sensor.mouflon_population_last_bird' %}
+                  <center><b>{{ state_attr(b, 'common_name') or "Pas encore d'oiseau" }}</b><br><small>{% if state_attr(b, 'demo') %}DÉMO — inventé · {% endif %}{{ state_attr(b, 'scientific_name') or '' }} · vu à {{ (state_attr(b, 'detected_at') or '')[11:16] }}</small></center>
+          # Confirmation in progress (MOUL-53): a loading bar on the provisional bird,
+          # shown only while it is being confirmed. No button: it confirms itself.
+          - type: markdown
+            visibility:
+              - condition: state
+                entity: sensor.mouflon_population_last_bird_status
+                state: provisional
+            content: >-
+              {% set b = 'sensor.mouflon_population_last_bird' %}
+              {% set steps = state_attr(b, 'confirmation_steps') or [] %}
+              {% set done = steps | selectattr('done') | list | length %}
+              {% set p = (state_attr(b, 'confirmation_progress') or 0) | int %}
+              **Confirmation…** {{ done }}/{{ steps | length }} vérifications ·
+              encore {{ state_attr(b, 'minutes_left') }} min
+
+              {{ '▰' * (p // 10) }}{{ '▱' * (10 - p // 10) }} {{ p }} %
+            grid_options:
+              columns: full
+          # Rarity pills show only when the bird has that rarity (0.5.2): no empty dots.
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: binary_sensor.mouflon_population_rarity_garden
+                    state: "on"
+                chip:
+                  type: template
+                  content: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'garden') | list %}{{ t[0].label if t else '' }}"
+                  icon: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'garden') | list %}{{ t[0].icon if t else '' }}"
+                  icon_color: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'garden') | list %}{{ t[0].color if t else '' }}"
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: binary_sensor.mouflon_population_rarity_regional
+                    state: "on"
+                chip:
+                  type: template
+                  content: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'regional') | list %}{{ t[0].label if t else '' }}"
+                  icon: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'regional') | list %}{{ t[0].icon if t else '' }}"
+                  icon_color: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'regional') | list %}{{ t[0].color if t else '' }}"
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: binary_sensor.mouflon_population_rarity_global
+                    state: "on"
+                chip:
+                  type: template
+                  content: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'global') | list %}{{ t[0].label if t else '' }}"
+                  icon: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'global') | list %}{{ t[0].icon if t else '' }}"
+                  icon_color: "{% set t = (state_attr('sensor.mouflon_population_last_bird', 'rarity') or {}).get('tags', []) | selectattr('level', 'eq', 'global') | list %}{{ t[0].color if t else '' }}"
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: sensor.mouflon_population_last_bird_status
+                    state: provisional
+                chip:
+                  type: template
+                  content: Confirmation en cours
+                  icon: mdi:progress-clock
+                  icon_color: blue
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: sensor.mouflon_population_last_bird_status
+                    state: withdrawn
+                chip:
+                  type: template
+                  content: Non confirmé
+                  icon: mdi:close-circle-outline
+                  icon_color: grey
+              - type: conditional
+                conditions:
+                  - condition: state
+                    entity: binary_sensor.mouflon_population_demo_mode
+                    state: "on"
+                chip:
+                  type: template
+                  content: Démo
+                  icon: mdi:test-tube
+                  icon_color: grey
+          - type: heading
+            heading: Oiseaux du jour
+            heading_style: subtitle
+          - type: vertical-stack
+            grid_options:
+              columns: 12
+            cards:
+              - type: picture-entity
+                entity: image.mouflon_population_today_1_drawing
+                show_name: false
+                show_state: false
+                tap_action:
+                  action: more-info
+              - type: markdown
+                text_only: true
+                content: >-
+                  {% set s = state_attr('sensor.mouflon_population_species_today', 'species') or [] %}
+                  {% if s | length > 0 %}{% set i = s[0] %}<center><b>{{ i.common_name }}</b><br><small>{% if i.status == 'provisional' %}Confirmation… {{ i.confirmation_progress }} % · encore {{ i.minutes_left }} min{% else %}{{ i.count }}× · vu à {{ (i.last_heard or '')[11:16] }}{% set r = (i.rarity or {}).get('labels', []) %}{% if r %} · {{ r | join(' · ') }}{% endif %}{% endif %}</small></center>{% else %}<center><b>Gravure à venir</b></center>{% endif %}
+          - type: vertical-stack
+            grid_options:
+              columns: 12
+            cards:
+              - type: picture-entity
+                entity: image.mouflon_population_today_2_drawing
+                show_name: false
+                show_state: false
+                tap_action:
+                  action: more-info
+              - type: markdown
+                text_only: true
+                content: >-
+                  {% set s = state_attr('sensor.mouflon_population_species_today', 'species') or [] %}
+                  {% if s | length > 1 %}{% set i = s[1] %}<center><b>{{ i.common_name }}</b><br><small>{% if i.status == 'provisional' %}Confirmation… {{ i.confirmation_progress }} % · encore {{ i.minutes_left }} min{% else %}{{ i.count }}× · vu à {{ (i.last_heard or '')[11:16] }}{% set r = (i.rarity or {}).get('labels', []) %}{% if r %} · {{ r | join(' · ') }}{% endif %}{% endif %}</small></center>{% else %}<center><b>Gravure à venir</b></center>{% endif %}
+          - type: vertical-stack
+            grid_options:
+              columns: 12
+            cards:
+              - type: picture-entity
+                entity: image.mouflon_population_today_3_drawing
+                show_name: false
+                show_state: false
+                tap_action:
+                  action: more-info
+              - type: markdown
+                text_only: true
+                content: >-
+                  {% set s = state_attr('sensor.mouflon_population_species_today', 'species') or [] %}
+                  {% if s | length > 2 %}{% set i = s[2] %}<center><b>{{ i.common_name }}</b><br><small>{% if i.status == 'provisional' %}Confirmation… {{ i.confirmation_progress }} % · encore {{ i.minutes_left }} min{% else %}{{ i.count }}× · vu à {{ (i.last_heard or '')[11:16] }}{% set r = (i.rarity or {}).get('labels', []) %}{% if r %} · {{ r | join(' · ') }}{% endif %}{% endif %}</small></center>{% else %}<center><b>Gravure à venir</b></center>{% endif %}
+          - type: vertical-stack
+            grid_options:
+              columns: 12
+            cards:
+              - type: picture-entity
+                entity: image.mouflon_population_today_4_drawing
+                show_name: false
+                show_state: false
+                tap_action:
+                  action: more-info
+              - type: markdown
+                text_only: true
+                content: >-
+                  {% set s = state_attr('sensor.mouflon_population_species_today', 'species') or [] %}
+                  {% if s | length > 3 %}{% set i = s[3] %}<center><b>{{ i.common_name }}</b><br><small>{% if i.status == 'provisional' %}Confirmation… {{ i.confirmation_progress }} % · encore {{ i.minutes_left }} min{% else %}{{ i.count }}× · vu à {{ (i.last_heard or '')[11:16] }}{% set r = (i.rarity or {}).get('labels', []) %}{% if r %} · {{ r | join(' · ') }}{% endif %}{% endif %}</small></center>{% else %}<center><b>Gravure à venir</b></center>{% endif %}
+          - type: vertical-stack
+            grid_options:
+              columns: 12
+            cards:
+              - type: picture-entity
+                entity: image.mouflon_population_today_5_drawing
+                show_name: false
+                show_state: false
+                tap_action:
+                  action: more-info
+              - type: markdown
+                text_only: true
+                content: >-
+                  {% set s = state_attr('sensor.mouflon_population_species_today', 'species') or [] %}
+                  {% if s | length > 4 %}{% set i = s[4] %}<center><b>{{ i.common_name }}</b><br><small>{% if i.status == 'provisional' %}Confirmation… {{ i.confirmation_progress }} % · encore {{ i.minutes_left }} min{% else %}{{ i.count }}× · vu à {{ (i.last_heard or '')[11:16] }}{% set r = (i.rarity or {}).get('labels', []) %}{% if r %} · {{ r | join(' · ') }}{% endif %}{% endif %}</small></center>{% else %}<center><b>Gravure à venir</b></center>{% endif %}
+          - type: vertical-stack
+            grid_options:
+              columns: 12
+            cards:
+              - type: picture-entity
+                entity: image.mouflon_population_today_6_drawing
+                show_name: false
+                show_state: false
+                tap_action:
+                  action: more-info
+              - type: markdown
+                text_only: true
+                content: >-
+                  {% set s = state_attr('sensor.mouflon_population_species_today', 'species') or [] %}
+                  {% if s | length > 5 %}{% set i = s[5] %}<center><b>{{ i.common_name }}</b><br><small>{% if i.status == 'provisional' %}Confirmation… {{ i.confirmation_progress }} % · encore {{ i.minutes_left }} min{% else %}{{ i.count }}× · vu à {{ (i.last_heard or '')[11:16] }}{% set r = (i.rarity or {}).get('labels', []) %}{% if r %} · {{ r | join(' · ') }}{% endif %}{% endif %}</small></center>{% else %}<center><b>Gravure à venir</b></center>{% endif %}
+      # Optional "Screen" section (MOUL-56): the e-ink demo screen as rendered by the
+      # App, refreshed slowly. Show it full-width on a tablet to simulate the frame.
+      - type: grid
+        cards:
+          - type: heading
+            heading: Écran
+          # The frame's current page (0.5.0): collage, or alternating pages,
+          # following the App's "Vue de l'écran" setting.
+          - type: picture-entity
+            entity: image.mouflon_population_screen
+            show_name: false
+            show_state: false
+            grid_options:
+              columns: full
+      - type: grid
+        cards:
+          - type: heading
+            heading: Dernier oiseau entendu
+          - type: tile
+            entity: sensor.mouflon_population_last_bird
+            grid_options:
+              columns: full
+          - type: markdown
+            content: >-
+              {% set b = 'sensor.mouflon_population_last_bird' %}
+              {% if state_attr(b, 'demo') %}**DÉMO — données inventées, pas un vrai oiseau**{% endif %}
+
+              **{{ state_attr(b, 'common_name') }}**
+              *{{ state_attr(b, 'scientific_name') }}*
+
+              Entendu le {{ state_attr(b, 'detected_at') }} par {{ state_attr(b, 'source') }},
+              confiance {{ ((state_attr(b, 'confidence') or 0) * 100) | round(0) }} %
+      - type: grid
+        cards:
+          - type: heading
+            heading: Aujourd'hui
+          - type: tile
+            entity: sensor.mouflon_population_species_today
+          - type: tile
+            entity: sensor.mouflon_population_detections_today
+          - type: history-graph
+            hours_to_show: 24
+            entities:
+              - entity: sensor.mouflon_population_detections_today
+            grid_options:
+              columns: full
+      - type: grid
+        cards:
+          - type: heading
+            heading: Dernières détections
+          - type: logbook
+            target:
+              entity_id: sensor.mouflon_population_last_bird
+            hours_to_show: 24
+            grid_options:
+              columns: full
+      - type: grid
+        cards:
+          - type: heading
+            heading: Écoute
+          - type: tile
+            entity: sensor.mouflon_population_test_recording_status
+          - type: tile
+            entity: binary_sensor.mouflon_population_test_recording_listening
+          - type: tile
+            entity: sun.sun
+          # Added for 0.1.2: demo mode. These cards only show while demo mode is on.
+          - type: tile
+            entity: binary_sensor.mouflon_population_demo_mode
+            visibility:
+              - condition: state
+                entity: binary_sensor.mouflon_population_demo_mode
+                state: "on"
+          - type: tile
+            entity: sensor.mouflon_population_demo_camera_1_status
+            visibility:
+              - condition: state
+                entity: binary_sensor.mouflon_population_demo_mode
+                state: "on"
+          - type: tile
+            entity: sensor.mouflon_population_demo_camera_2_status
+            visibility:
+              - condition: state
+                entity: binary_sensor.mouflon_population_demo_mode
+                state: "on"
+          # Add when the cameras are configured (test mode off, sources enabled):
+          # - type: tile
+          #   entity: sensor.mouflon_population_camera_1_status
+          # - type: tile
+          #   entity: binary_sensor.mouflon_population_camera_1_listening
+          # - type: tile
+          #   entity: sensor.mouflon_population_camera_2_status
+          # - type: tile
+          #   entity: binary_sensor.mouflon_population_camera_2_listening
+  # "Écran" view (coordinator, 2026-11-22): the e-ink demo screen alone, for a
+  # tablet standing in for the frame. URL: /birds-dashboard/ecran.
+  - title: Écran
+    path: ecran
+    icon: mdi:image-frame
+    type: sections
+    max_columns: 1
+    sections:
+      - type: grid
+        cards:
+          - type: picture-entity
+            entity: image.mouflon_population_screen
+            show_name: false
+            show_state: false
+            grid_options:
+              columns: full

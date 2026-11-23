@@ -1,0 +1,35 @@
+# Scripts that play a species' reference song (MOUL-48). Reference recordings of the
+# species from xeno-canto, bundled in the App: NEVER sound from the garden cameras.
+# Create them in Settings > Automations & scenes > Scripts (Edit in YAML), and
+# replace media_player.REPLACE_ME with the speaker you want to use.
+mouflon_play_last_bird:
+  alias: Écouter le chant du dernier oiseau
+  sequence:
+    - variables:
+        song: "{{ state_attr('sensor.mouflon_population_last_bird', 'song') }}"
+    - condition: template
+      value_template: "{{ song not in [none, ''] }}"
+    - action: media_player.play_media
+      target:
+        entity_id: media_player.REPLACE_ME
+      data:
+        media_content_id: "{{ song }}"
+        media_content_type: music
+mouflon_play_today:
+  alias: Écouter le chant d'un oiseau du jour
+  fields:
+    slot:
+      description: Place dans la liste du jour (1 = le plus récent)
+      example: 1
+  sequence:
+    - variables:
+        species: "{{ state_attr('sensor.mouflon_population_species_today', 'species') or [] }}"
+        song: "{{ species[slot | int - 1].song if species | length >= slot | int else none }}"
+    - condition: template
+      value_template: "{{ song not in [none, ''] }}"
+    - action: media_player.play_media
+      target:
+        entity_id: media_player.REPLACE_ME
+      data:
+        media_content_id: "{{ song }}"
+        media_content_type: music

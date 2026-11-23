@@ -1,0 +1,97 @@
+name: App image
+
+# Builds the Home Assistant App image for x86 and for arm64 (the Raspberry Pi), and
+# runs the end-to-end test: Home Assistant + Mosquitto + the App in test mode.
+# It never publishes the image anywhere.
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  app:
+    name: Build, check and end-to-end test
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
+
+      - name: Build image (x86)
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
+        with:
+          context: app
+          load: true
+          tags: mouflon-population-app:test
+          cache-from: type=gha
+          cache-to: ${{ github.event_name != 'pull_request' && 'type=gha,mode=max' || '' }}
+
+      - name: Check image contents
+        run: |
+          set -eu
+          img=mouflon-population-app:test
+          for module in tensorflow gradio webview birdnet_analyzer; do
+            if docker run --rm --entrypoint python "$img" -c "import $module" 2>/dev/null; then
+              echo "::error::$module must not be in the App image"; exit 1
+            fi
+          done
+          docker run --rm --entrypoint python "$img" -c "import ai_edge_litert, birdnet, paho.mqtt"
+          test "$(docker run --rm --entrypoint stat "$img" -c %U /opt/birdnet)" = root
+          echo "Image contents OK"
+          # Size of the App image and of its bird library, shown as a notice on the run.
+          size=$(docker image inspect -f '{{.Size}}' "$img")
+          library=$(docker run --rm --entrypoint du "$img" -sk /opt/mouflon/library | cut -f1)
+          echo "::notice title=App image size::image $((size / 1048576)) MiB (x86), bird library $((library / 1024)) MiB"
+
+      - name: End-to-end test (Home Assistant + Mosquitto + App)
+        env:
+          E2E_HA_CONFIG: ${{ github.workspace }}/.e2e/ha
+          E2E_APP_DATA: ${{ github.workspace }}/.e2e/data
+        run: |
+          set -eu
+          mkdir -p "$E2E_HA_CONFIG" "$E2E_APP_DATA"
+          cp tests/e2e/ha-config/configuration.yaml "$E2E_HA_CONFIG/"
+          cp tests/e2e/options.json "$E2E_APP_DATA/options.json"
+          docker compose -f tests/e2e/compose.yaml up -d
+          if ! python3 tests/e2e/run_e2e.py; then
+            docker compose -f tests/e2e/compose.yaml logs app homeassistant | tail -200
+            exit 1
+          fi
+          echo "--- App process owner (must not be root)"
+          docker compose -f tests/e2e/compose.yaml top app
+          docker compose -f tests/e2e/compose.yaml top app | awk 'NR>1 && /mouflon_population/ {print $3}' | grep -vqx root
+          echo "--- Files the App wrote (bird log only, no audio)"
+          sudo find "$E2E_APP_DATA" -type f | sort
+          if sudo find "$E2E_APP_DATA" -type f ! -name options.json ! -name 'birdlog.sqlite*' | grep -q .; then
+            echo "::error::The App wrote an unexpected file"; exit 1
+          fi
+          echo "--- Test mode must switch the species filter off (MOUL-40)"
+          docker compose -f tests/e2e/compose.yaml logs app | grep -q "Test mode: species filter off"
+          docker compose -f tests/e2e/compose.yaml logs app | tail -40
+          docker compose -f tests/e2e/compose.yaml down -v
+
+      # Build only: proves the image builds for the Pi's processor (arm64).
+      - name: Build image (arm64, Raspberry Pi)
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
+        with:
+          context: app
+          platforms: linux/arm64
+          cache-from: type=gha
+          cache-to: ${{ github.event_name != 'pull_request' && 'type=gha,mode=max' || '' }}

@@ -1,0 +1,2179 @@
+# ruff: noqa: PLW0603
+import base64
+import functools
+import io
+import logging
+import multiprocessing
+import os
+import sys
+import threading
+from collections.abc import Callable
+from concurrent.futures import Future
+from contextlib import contextmanager, suppress
+from html import escape
+from typing import TYPE_CHECKING, Literal, cast, get_args
+
+import gradio as gr
+from birdnet.globals import ACOUSTIC_MODEL_VERSIONS, MODEL_LANGUAGE_EN_US
+from gradio.context import Context
+
+import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.localization as loc
+import birdnet_analyzer.gui.state as gs
+from birdnet_analyzer import settings, utils
+from birdnet_analyzer.gui.state import TabState
+
+if TYPE_CHECKING:
+    import webview
+
+logger = logging.getLogger(__name__)
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+# The ids of the species-list and model choices. state.json and presets store them.
+ALL_SPECIES = "all"
+CUSTOM_SPECIES = "custom-list"
+PREDICT_SPECIES = "predict-list"
+CUSTOM_CLASSIFIER = "custom-classifier"
+USE_PERCH = "perch"
+USE_BIRDNET_3_0 = "3.0"
+USE_BIRDNET_2_4 = "2.4"
+_LABEL_KEYS = {
+    ALL_SPECIES: "species-list-radio-option-all",
+    CUSTOM_SPECIES: "species-list-radio-option-custom-list",
+    PREDICT_SPECIES: "species-list-radio-option-predict-list",
+    CUSTOM_CLASSIFIER: "species-list-radio-option-custom-classifier",
+    USE_PERCH: "species-list-radio-option-use-perch",
+}
+# Newest first. Not localized: the version number is the label.
+_BIRDNET_MODEL_LABELS = {
+    USE_BIRDNET_3_0: "BirdNET 3.0",
+    USE_BIRDNET_2_4: "BirdNET 2.4",
+}
+
+SPECIES_FILE_KEY = "species_list_file"
+CLASSIFIER_FILE_KEY = "custom_classifier_file"
+
+_WINDOW: "webview.Window | None" = None
+_URL = ""
+_STARTUP_WARNINGS: list[str] = []
+_HEART_LOGO = "data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgd2lkdGg9IjE2IiBkYXRhLXZpZXctY29tcG9uZW50PSJ0cnVlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICAgIDxwYXRoIGQ9Im04IDE0LjI1LjM0NS42NjZhLjc1Ljc1IDAgMCAxLS42OSAwbC0uMDA4LS4wMDQtLjAxOC0uMDFhNy4xNTIgNy4xNTIgMCAwIDEtLjMxLS4xNyAyMi4wNTUgMjIuMDU1IDAgMCAxLTMuNDM0LTIuNDE0QzIuMDQ1IDEwLjczMSAwIDguMzUgMCA1LjUgMCAyLjgzNiAyLjA4NiAxIDQuMjUgMSA1Ljc5NyAxIDcuMTUzIDEuODAyIDggMy4wMiA4Ljg0NyAxLjgwMiAxMC4yMDMgMSAxMS43NSAxIDEzLjkxNCAxIDE2IDIuODM2IDE2IDUuNWMwIDIuODUtMi4wNDUgNS4yMzEtMy44ODUgNi44MThhMjIuMDY2IDIyLjA2NiAwIDAgMS0zLjc0NCAyLjU4NGwtLjAxOC4wMS0uMDA2LjAwM2gtLjAwMlpNNC4yNSAyLjVjLTEuMzM2IDAtMi43NSAxLjE2NC0yLjc1IDMgMCAyLjE1IDEuNTggNC4xNDQgMy4zNjUgNS42ODJBMjAuNTggMjAuNTggMCAwIDAgOCAxMy4zOTNhMjAuNTggMjAuNTggMCAwIDAgMy4xMzUtMi4yMTFDMTIuOTIgOS42NDQgMTQuNSA3LjY1IDE0LjUgNS41YzAtMS44MzYtMS40MTQtMy0yLjc1LTMtMS4zNzMgMC0yLjYwOS45ODYtMy4wMjkgMi40NTZhLjc0OS43NDkgMCAwIDEtMS40NDIgMEM2Ljg1OSAzLjQ4NiA1LjYyMyAyLjUgNC4yNSAyLjVaIj48L3BhdGg+DQo8L3N2Zz4="  # noqa: E501
+_SAMPLE_KEYS = Literal[
+    "use_top_n_checkbox",
+    "top_n_input",
+    "confidence_slider",
+    "sensitivity_slider",
+    "overlap_slider",
+    "merge_consecutive_slider",
+    "audio_speed_slider",
+    "fmin_number",
+    "fmax_number",
+]
+_SPECIES_KEYS = Literal[
+    "species_list_radio",
+    "species_file_input",
+    "species_file_state",
+    "lat_number",
+    "lon_number",
+    "week_number",
+    "sf_thresh_number",
+    "yearlong_checkbox",
+    "selected_classifier_state",
+]
+
+_SETTINGS_TAB_ID = "settings"
+_SPECTROGRAM_COLORMAPS = ["viridis", "magma", "plasma", "inferno", "Greys", "jet"]
+_SPECTROGRAM_FFT_SIZES = [256, 512, 1024, 2048, 4096]
+_SPECTROGRAM_FREQ_SCALES = ["linear", "log"]
+_SPECTROGRAM_DEFAULTS = {
+    "spectrogram_colormap_dropdown": "viridis",
+    "spectrogram_fft_size_dropdown": 1024,
+    "spectrogram_overlap_slider": 50,
+    "spectrogram_dynamic_range_slider": 80,
+    "spectrogram_freq_scale_radio": "linear",
+}
+
+
+def _label(choice: str) -> str:
+    if choice in _BIRDNET_MODEL_LABELS:
+        return _BIRDNET_MODEL_LABELS[choice]
+
+    return loc.localize(_LABEL_KEYS[choice])
+
+
+def _choices(*ids: str) -> list[tuple[str, str]]:
+    return [(_label(choice), choice) for choice in ids]
+
+
+def is_birdnet_model(model_choice: str) -> bool:
+    """Whether the selected model is an official BirdNET acoustic model."""
+    return model_choice in _BIRDNET_MODEL_LABELS
+
+
+def birdnet_version(model_choice: str) -> str:
+    """The acoustic model version for a BirdNET model choice (falls back to 2.4)."""
+    return model_choice if is_birdnet_model(model_choice) else "2.4"
+
+
+def model_supports_sensitivity(model_choice: str) -> bool:
+    """Whether the sensitivity slider applies to the selected model choice."""
+    from birdnet_analyzer.model_utils import supports_sensitivity
+
+    return supports_sensitivity("perch" if model_choice == USE_PERCH else "birdnet")
+
+
+def _species_choices(is_perch: bool) -> list[tuple[str, str]]:
+    if is_perch:
+        return _choices(ALL_SPECIES, CUSTOM_SPECIES)
+
+    return _choices(ALL_SPECIES, CUSTOM_SPECIES, PREDICT_SPECIES)
+
+
+def _max_overlap(is_perch: bool) -> float:
+    return 4.9 if is_perch else 2.9
+
+
+def model_languages(model_choice: str) -> list[str]:
+    """The label languages the given model's version supports, sorted.
+
+    The 2.4 and 3.0 models ship overlapping but non-identical language sets, and the
+    birdnet library rejects a locale a version does not have. Offering only the
+    supported ones keeps the locale dropdown from presenting a choice that would fail.
+    """
+    from birdnet.globals import (
+        VALID_MODEL_LANGUAGES_V2_4,
+        VALID_MODEL_LANGUAGES_V3_0,
+    )
+
+    languages = (
+        VALID_MODEL_LANGUAGES_V3_0
+        if birdnet_version(model_choice) == "3.0"
+        else VALID_MODEL_LANGUAGES_V2_4
+    )
+
+    return sorted(languages)
+
+
+def spectrogram_settings() -> dict:
+    """Reads the spectrogram settings the user chose in the settings tab.
+
+    The values are read from disk at call time, so a change in the settings tab shows
+    in the next spectrogram that is drawn, without a restart.
+
+    Returns:
+        The keyword arguments for `utils.spectrogram_from_file` and
+        `utils.spectrogram_from_audio`.
+    """
+    state = TabState(_SETTINGS_TAB_ID)
+    defaults = _SPECTROGRAM_DEFAULTS
+    n_fft = cast(
+        "int",
+        state.get(
+            "spectrogram_fft_size_dropdown",
+            defaults["spectrogram_fft_size_dropdown"],
+            choices=_SPECTROGRAM_FFT_SIZES,
+        ),
+    )
+    overlap = cast(
+        "float",
+        state.get(
+            "spectrogram_overlap_slider",
+            defaults["spectrogram_overlap_slider"],
+            minimum=0,
+            maximum=90,
+        ),
+    )
+
+    return {
+        "n_fft": n_fft,
+        "hop_length": max(1, round(n_fft * (1 - overlap / 100))),
+        "colormap": state.get(
+            "spectrogram_colormap_dropdown",
+            defaults["spectrogram_colormap_dropdown"],
+            choices=_SPECTROGRAM_COLORMAPS,
+        ),
+        "top_db": state.get(
+            "spectrogram_dynamic_range_slider",
+            defaults["spectrogram_dynamic_range_slider"],
+            minimum=30,
+            maximum=120,
+        ),
+        "freq_scale": state.get(
+            "spectrogram_freq_scale_radio",
+            defaults["spectrogram_freq_scale_radio"],
+            choices=_SPECTROGRAM_FREQ_SCALES,
+        ),
+    }
+
+
+def gui_runtime_error_handler(f):
+    """Wrap ``f`` so any exception is logged and re-raised as a ``gr.Error``.
+
+    A ``gr.Error`` raised by ``f`` itself keeps its message and reaches the error log
+    only when it wraps another exception (``raise gr.Error(...) from e``); a message
+    raised on its own is a validation result and is logged at INFO. Every error stays
+    on screen until the user closes it.
+
+    Args:
+        f: The callable to wrap.
+
+    Returns:
+        The result of ``f`` when it does not raise.
+
+    Raises:
+        gr.Error: If ``f`` raises.
+    """
+
+    @functools.wraps(f)
+    def wrapper(*args, **kwargs):
+        try:
+            return f(*args, **kwargs)
+        except gr.Error as e:
+            if e.__cause__ is not None:
+                utils.write_error_log(e)
+            else:
+                logger.info(e.message)
+
+            e.duration = None
+            raise
+        except Exception as e:
+            utils.write_error_log(e)
+            raise gr.Error(message=str(e) or repr(e), duration=None) from e
+
+    return wrapper
+
+
+def _format_bytes(n: int) -> str:
+    return f"{n / 1e6:.0f} MB" if n < 1e9 else f"{n / 1e9:.1f} GB"
+
+
+def _effective_model_directory() -> str:
+    """The model directory the library loads models from right now."""
+    from birdnet.utils.local_data import get_birdnet_app_data_folder
+
+    return str(get_birdnet_app_data_folder())
+
+
+# Download sinks by the thread that runs birdnet.load; the library's callback fires
+# synchronously on that thread. One dispatcher is registered with the library while
+# any sink is active, so overlapping GUI events neither misroute nor clobber each
+# other's registration (the library's own scoped registration is a plain set/restore).
+_DOWNLOAD_SINKS: dict[int, "gr.Progress | None"] = {}
+_DOWNLOAD_SINKS_LOCK = threading.Lock()
+
+
+def _show_download_update(update, progress: "gr.Progress | None") -> None:
+    name = update.description.removeprefix("Downloading ")
+    if update.attempt > 1:
+        name = f"{name} ({update.attempt}/{update.max_attempts})"
+
+    label = f"{loc.localize('progress-downloading-model')}: {name}"
+
+    if update.status == "started" and progress is None:
+        gr.Info(label)
+    elif update.status in ("progress", "finished") and progress is not None:
+        if update.status == "finished":
+            progress(
+                1.0,
+                desc=f"{loc.localize('progress-preparing-model')}: {name} ...",
+            )
+        elif update.bytes_total:
+            done = _format_bytes(update.bytes_done)
+            total = _format_bytes(update.bytes_total)
+            progress(
+                min(update.bytes_done / update.bytes_total, 1.0),
+                desc=f"{label} ({done} / {total})",
+            )
+        else:
+            progress(0.0, desc=f"{label} ({_format_bytes(update.bytes_done)})")
+    elif update.status == "retrying":
+        gr.Warning(
+            f"{loc.localize('progress-download-retrying')}: {name} - {update.error}"
+        )
+    # "failed": the library raises right after; the operation reports it.
+
+
+def _dispatch_download_update(update) -> None:
+    with _DOWNLOAD_SINKS_LOCK:
+        if threading.get_ident() not in _DOWNLOAD_SINKS:
+            return
+        progress = _DOWNLOAD_SINKS[threading.get_ident()]
+
+    # An exception escaping the callback aborts the download in the library.
+    try:
+        _show_download_update(update, progress)
+    except Exception:
+        logging.getLogger(__name__).exception("Download progress UI update failed")
+
+
+@contextmanager
+def download_progress(progress: "gr.Progress | None" = None):
+    """Shows the birdnet library's model downloads while the ``with`` block runs.
+
+    Models are fetched on first use inside ``birdnet.load``; the library's own tqdm
+    bar goes to stderr, which the frozen GUI diverts to the log file. This routes the
+    updates to ``progress`` when a bar is available and to toasts otherwise, so a
+    first-run download of several hundred MB never looks like a hang.
+    """
+    import birdnet
+
+    thread = threading.get_ident()
+    with _DOWNLOAD_SINKS_LOCK:
+        if not _DOWNLOAD_SINKS:
+            birdnet.set_download_progress_callback(_dispatch_download_update)
+        _DOWNLOAD_SINKS[thread] = progress
+    try:
+        yield
+    finally:
+        with _DOWNLOAD_SINKS_LOCK:
+            _DOWNLOAD_SINKS.pop(thread, None)
+            if not _DOWNLOAD_SINKS:
+                birdnet.set_download_progress_callback(None)
+
+
+def _refuse_while_models_in_use() -> None:
+    if _DOWNLOAD_SINKS:
+        raise gr.Error(loc.localize("model-dir-busy-error"))
+
+
+def _switch_model_directory(directory: str) -> None:
+    # Under the lock, no model operation can start between the check and the switch.
+    with _DOWNLOAD_SINKS_LOCK:
+        _refuse_while_models_in_use()
+        settings.set_model_directory(directory)
+
+
+def select_folder(state_key=None):
+    """Opens a folder selection dialog and returns the selected folder path.
+
+    Uses tkinter on Windows and webview's folder dialog elsewhere. If a state_key is
+    given, the dialog starts in the saved directory and the choice is saved back.
+
+    Args:
+        state_key (str, optional): The key to retrieve and save the folder path in the
+        state. Defaults to None.
+    Returns:
+        str: The path of the selected folder, or None if no folder was selected.
+    """
+    import webview
+
+    if sys.platform == "win32":
+        from tkinter import Tk, filedialog
+
+        tk = Tk()
+        tk.withdraw()
+
+        initial_dir = settings.get_state(state_key, None) if state_key else None
+        folder_selected = filedialog.askdirectory(initialdir=initial_dir)
+
+        tk.destroy()
+    else:
+        initial_dir = settings.get_state(state_key, "") if state_key else ""
+        dirname = _WINDOW.create_file_dialog(
+            webview.FileDialog.FOLDER, directory=initial_dir
+        )
+        folder_selected = dirname[0] if dirname else None
+
+    if folder_selected and state_key:
+        settings.set_state(state_key, folder_selected)
+
+    return folder_selected.replace("/", os.sep) if folder_selected else folder_selected
+
+
+def get_audio_files_and_durations(folder, max_files=None):
+    """
+    Collects audio files from a specified folder and retrieves their durations.
+    Args:
+        folder (str): The path to the folder containing audio files.
+        max_files (int, optional): The maximum number of files to collect. If None, all
+            files are collected.
+    Returns:
+        list: A list of lists, where each inner list contains the relative file path and
+            its duration as a string.
+    """
+    import librosa
+
+    files_and_durations = []
+    files = utils.collect_audio_files(folder, max_files=max_files)
+
+    for file_path in files:
+        try:
+            duration = format_seconds(librosa.get_duration(path=file_path))
+
+        except Exception as _:
+            duration = "0:00"  # Default value in case of an error
+
+        files_and_durations.append([os.path.relpath(file_path, folder), duration])
+    return files_and_durations
+
+
+def count_audio_files(folder):
+    """Counts the audio files in a folder without collecting their paths or durations.
+
+    Args:
+        folder (str): The path to the folder containing audio files.
+
+    Returns:
+        int: The number of audio files in the folder (recursively).
+    """
+    return utils.count_audio_files(folder)
+
+
+def set_window(window):
+    """
+    Sets the global _WINDOW variable to the provided window object.
+
+    Args:
+        window: The window object to be set as the global _WINDOW.
+    """
+    global _WINDOW
+    _WINDOW = window
+
+
+def validate(value, msg):
+    """Checks if the value ist not falsy.
+
+    If the value is falsy, an error will be raised.
+
+    Args:
+        value: Value to be tested.
+        msg: Message in case of an error.
+    """
+    if not value:
+        raise gr.Error(msg)
+
+
+def format_seconds(secs: float):
+    """Formats a number of seconds into a string.
+
+    Formats the seconds into the format "h:mm:ss.ms"
+
+    Args:
+        secs: Number of seconds.
+
+    Returns:
+        A string with the formatted seconds.
+    """
+    hours, secs = divmod(secs, 3600)
+    minutes, secs = divmod(secs, 60)
+
+    return f"{hours:2.0f}:{minutes:02.0f}:{secs:06.3f}"
+
+
+def select_directory(collect_files=True, max_files=None, state_key=None):
+    """Shows a directory selection system dialog.
+
+    Uses the pywebview to create a system dialog.
+
+    Args:
+        collect_files: If True, also lists a files inside the directory.
+
+    Returns:
+        If collect_files==True, returns
+        (directory path, list of (relative file path, audio length))
+        else just the directory path.
+        All values will be None of the dialog is cancelled.
+    """
+    import librosa
+
+    dir_name = select_folder(state_key=state_key)
+
+    if collect_files:
+        if not dir_name:
+            return None, None
+
+        files = utils.collect_audio_files(dir_name, max_files=max_files)
+
+        return dir_name, [
+            [
+                os.path.relpath(file, dir_name),
+                format_seconds(librosa.get_duration(filename=file)),
+            ]
+            for file in files
+        ]
+
+    return dir_name or None
+
+
+def build_header(logo="assets/img/birdnet_logo.png"):
+    with gr.Row():
+        gr.Markdown(
+            f"""
+<div style='display: flex; align-items: center;'>
+    <img src='data:image/png;base64,{utils.img2base64(os.path.join(SCRIPT_DIR, logo))}'
+        style='width: 50px; height: 50px; margin-right: 10px;'>
+    <h2>BirdNET Analyzer</h2>
+</div>
+            """
+        )
+
+
+def build_footer():
+    with gr.Row():
+        gr.Markdown(
+            f"""
+<div style='display: flex; justify-content: space-around; align-items: center; padding: 10px; text-align: center'>
+    <div>
+        <div style="display: flex;flex-direction: row;">GUI version:&nbsp<span
+                id="current-version">{os.environ["GUI_VERSION"] if settings.FROZEN else "main"}</span><span
+                style="display: none" id="update-available"><a>+</a></span></div>
+    </div>
+    <div>K. Lisa Yang Center for Conservation Bioacoustics<br>Chemnitz University of Technology</div>
+    <div>{loc.localize("footer-help")}:&nbsp;<a href='https://birdnet.cornell.edu/analyzer'
+            target='_blank'>birdnet.cornell.edu/analyzer</a>
+            <br><img id='heart' src='{_HEART_LOGO}'>{loc.localize("footer-support")}: <a href='https://birdnet.cornell.edu/donate' target='_blank'>birdnet.cornell.edu/donate</a>
+    </div>
+
+</div>"""  # noqa: E501
+        )
+
+
+def build_settings():
+    with gr.Tab(loc.localize("settings-tab-title")) as settings_tab:
+        with gr.Group():
+            with gr.Row():
+                languages_dropdown = gr.Dropdown(
+                    loc.available_languages(),
+                    value=loc.TARGET_LANGUAGE,
+                    label=loc.localize("settings-tab-language-dropdown-label"),
+                    info=loc.localize("settings-tab-language-dropdown-info"),
+                    interactive=True,
+                )
+
+            with gr.Row():
+                theme_radio = gr.Radio(
+                    [
+                        (
+                            loc.localize("settings-tab-theme-dropdown-dark-option"),
+                            "dark",
+                        ),
+                        (
+                            loc.localize("settings-tab-theme-dropdown-light-option"),
+                            "light",
+                        ),
+                    ],
+                    value=settings.theme,
+                    label=loc.localize("settings-tab-theme-dropdown-label"),
+                    info="⚠️" + loc.localize("settings-tab-theme-dropdown-info"),
+                    interactive=True,
+                    scale=10,
+                )
+
+            @gui_runtime_error_handler
+            def on_model_dir_select():
+                _refuse_while_models_in_use()
+                dir_name = select_folder(state_key="model-directory")
+
+                if not dir_name:
+                    return gr.update()
+
+                verdict = settings.probe_model_directory(dir_name)
+
+                if verdict == "invalid":
+                    raise gr.Error(loc.localize("model-dir-invalid-error"))
+
+                _switch_model_directory(dir_name)
+
+                if verdict == "readonly":
+                    gr.Warning(loc.localize("model-dir-readonly-warning"))
+                elif verdict == "ok-low-space":
+                    gr.Warning(loc.localize("model-dir-low-space-warning"))
+
+                gr.Info(loc.localize("settings-tab-model-dir-saved-info"))
+
+                return _effective_model_directory()
+
+            @gui_runtime_error_handler
+            def on_model_dir_reset():
+                _switch_model_directory("")
+                gr.Info(loc.localize("settings-tab-model-dir-saved-info"))
+
+                return _effective_model_directory()
+
+            state = TabState(_SETTINGS_TAB_ID)
+
+            with gr.Accordion(
+                loc.localize("settings-tab-spectrogram-accordion-label"), open=False
+            ):
+                gr.Markdown(loc.localize("settings-tab-spectrogram-info"))
+
+                with gr.Row():
+                    state.persist(
+                        "spectrogram_colormap_dropdown",
+                        gr.Dropdown,
+                        choices=[
+                            ("Viridis", "viridis"),
+                            ("Magma", "magma"),
+                            ("Plasma", "plasma"),
+                            ("Inferno", "inferno"),
+                            (
+                                loc.localize(
+                                    "settings-tab-spectrogram-colormap-grayscale-option"
+                                ),
+                                "Greys",
+                            ),
+                            ("Jet", "jet"),
+                        ],
+                        value=_SPECTROGRAM_DEFAULTS["spectrogram_colormap_dropdown"],
+                        label=loc.localize("settings-tab-spectrogram-colormap-label"),
+                        info=loc.localize("settings-tab-spectrogram-colormap-info"),
+                        interactive=True,
+                    )
+                    state.persist(
+                        "spectrogram_freq_scale_radio",
+                        gr.Radio,
+                        choices=[
+                            (
+                                loc.localize(
+                                    "settings-tab-spectrogram-freq-scale-linear-option"
+                                ),
+                                "linear",
+                            ),
+                            (
+                                loc.localize(
+                                    "settings-tab-spectrogram-freq-scale-log-option"
+                                ),
+                                "log",
+                            ),
+                        ],
+                        value=_SPECTROGRAM_DEFAULTS["spectrogram_freq_scale_radio"],
+                        label=loc.localize("settings-tab-spectrogram-freq-scale-label"),
+                        info=loc.localize("settings-tab-spectrogram-freq-scale-info"),
+                        interactive=True,
+                    )
+
+                with gr.Row():
+                    state.persist(
+                        "spectrogram_fft_size_dropdown",
+                        gr.Dropdown,
+                        choices=_SPECTROGRAM_FFT_SIZES,
+                        value=_SPECTROGRAM_DEFAULTS["spectrogram_fft_size_dropdown"],
+                        label=loc.localize("settings-tab-spectrogram-fft-size-label"),
+                        info=loc.localize("settings-tab-spectrogram-fft-size-info"),
+                        interactive=True,
+                    )
+                    state.persist(
+                        "spectrogram_overlap_slider",
+                        gr.Slider,
+                        minimum=0,
+                        maximum=90,
+                        step=5,
+                        value=_SPECTROGRAM_DEFAULTS["spectrogram_overlap_slider"],
+                        label=loc.localize("settings-tab-spectrogram-overlap-label"),
+                        info=loc.localize("settings-tab-spectrogram-overlap-info"),
+                        interactive=True,
+                    )
+                    state.persist(
+                        "spectrogram_dynamic_range_slider",
+                        gr.Slider,
+                        minimum=30,
+                        maximum=120,
+                        step=5,
+                        value=_SPECTROGRAM_DEFAULTS["spectrogram_dynamic_range_slider"],
+                        label=loc.localize(
+                            "settings-tab-spectrogram-dynamic-range-label"
+                        ),
+                        info=loc.localize(
+                            "settings-tab-spectrogram-dynamic-range-info"
+                        ),
+                        interactive=True,
+                    )
+
+            env_controlled = settings.MODEL_DIR_FROM_ENV
+
+            with gr.Row(equal_height=True):
+                model_dir_tb = gr.Textbox(
+                    value=_effective_model_directory,
+                    interactive=False,
+                    max_lines=1,
+                    elem_classes="path-textbox",
+                    scale=3,
+                    label=loc.localize("settings-tab-model-dir-label"),
+                    info=loc.localize(
+                        "settings-tab-model-dir-env-info"
+                        if env_controlled
+                        else "settings-tab-model-dir-info"
+                    ),
+                )
+                model_dir_select_btn = gr.Button(
+                    loc.localize("settings-tab-model-dir-select-button"),
+                    interactive=not env_controlled,
+                )
+                model_dir_reset_btn = gr.Button(
+                    loc.localize("settings-tab-model-dir-reset-button"),
+                    interactive=not env_controlled,
+                )
+
+            model_dir_select_btn.click(
+                on_model_dir_select, outputs=model_dir_tb, show_progress="hidden"
+            )
+            model_dir_reset_btn.click(
+                on_model_dir_reset, outputs=model_dir_tb, show_progress="hidden"
+            )
+
+            # Built last, so every tab has registered its settings by now.
+            persisted_components = gs.persisted_components()
+
+            if persisted_components:
+                with gr.Row():
+                    reset_settings_btn = gr.Button(
+                        loc.localize("settings-tab-reset-button-label"),
+                    )
+
+                @gui_runtime_error_handler
+                def on_reset_click():
+                    updates = gs.reset_to_defaults()
+                    gr.Info(loc.localize("settings-tab-reset-info"))
+
+                    return updates
+
+                reset_settings_btn.click(
+                    on_reset_click,
+                    outputs=persisted_components,
+                    show_progress="hidden",
+                )
+
+        gr.Markdown(
+            """
+            If you encounter a bug or error, please provide the error log.\n
+            You can submit an issue on our [GitHub](https://github.com/birdnet-team/BirdNET-Analyzer/issues).
+            """,
+            label=loc.localize("settings-tab-error-log-textbox-label"),
+            elem_classes="mh-200",
+        )
+
+        error_log_tb = gr.TextArea(
+            label=loc.localize("settings-tab-error-log-textbox-label"),
+            info=(
+                f"{loc.localize('settings-tab-error-log-textbox-info-path')}: "
+                f"{settings.ERROR_LOG_FILE}"
+            ),
+            interactive=False,
+            placeholder=loc.localize("settings-tab-error-log-textbox-placeholder"),
+            buttons=["copy"],
+        )
+
+        @gui_runtime_error_handler
+        def on_language_change(value):
+            # A Dropdown fires .input again when it loses focus.
+            if value == settings.get_setting("language-id", loc.TARGET_LANGUAGE):
+                return
+
+            loc.set_language(value)
+            gr.Warning(loc.localize("settings-tab-language-dropdown-info"))
+
+        @gui_runtime_error_handler
+        def on_theme_change(value):
+            prev_theme = settings.theme()
+            if prev_theme != value:
+                settings.set_setting("theme", value)
+                _WINDOW.load_url(_URL.rstrip("/") + f"?__theme={value}")  # type: ignore
+
+        @gui_runtime_error_handler
+        def on_tab_select(value: gr.SelectData):
+            if value.selected and os.path.exists(settings.ERROR_LOG_FILE):
+                with open(settings.ERROR_LOG_FILE, mode="rb") as f:
+                    lines = [line.decode("utf-8", errors="ignore") for line in f]
+                    last_100_lines = lines[-100:]
+
+                    return "".join(last_100_lines)
+
+            return ""
+
+        languages_dropdown.input(
+            on_language_change, inputs=languages_dropdown, show_progress="hidden"
+        )
+        theme_radio.input(on_theme_change, inputs=theme_radio, show_progress="hidden")
+        settings_tab.select(on_tab_select, outputs=error_log_tb, show_progress="hidden")
+
+
+def birdnet_model_choices() -> list[tuple[str, str]]:
+    """The BirdNET acoustic models as ``(label, version)``, newest first.
+
+    The known versions are filtered down to those the installed birdnet library ships,
+    so a dropped version stops being offered without a code change. A brand-new major
+    version still needs a label in ``_BIRDNET_MODEL_LABELS``.
+    """
+    available = get_args(ACOUSTIC_MODEL_VERSIONS)
+
+    return _choices(
+        *(version for version in _BIRDNET_MODEL_LABELS if version in available)
+    )
+
+
+def model_choices():
+    """The models that can be selected, as ``(label, id)``."""
+    birdnet_models = [version for _, version in birdnet_model_choices()]
+
+    return _choices(*birdnet_models, CUSTOM_CLASSIFIER, USE_PERCH)
+
+
+def default_model():
+    """The model selected by default: the newest available BirdNET acoustic model."""
+    models = [model for _, model in model_choices()]
+
+    return USE_BIRDNET_3_0 if USE_BIRDNET_3_0 in models else models[0]
+
+
+def _drop_choices_with_missing_files(state: TabState):
+    """Falls back to the default model or species list if the file it needs is gone."""
+    model_choice = state.get(
+        "model_selection_radio", default_model(), choices=model_choices()
+    )
+
+    if (
+        model_choice == CUSTOM_CLASSIFIER
+        and state.get_file(CLASSIFIER_FILE_KEY) is None
+    ):
+        state.remember({"model_selection_radio": default_model()})
+        _STARTUP_WARNINGS.append(
+            loc.localize("startup-classifier-missing-warning").format(
+                model=_label(default_model())
+            )
+        )
+
+    species_choice = state.get(
+        "species_list_radio", ALL_SPECIES, choices=_species_choices(False)
+    )
+
+    if species_choice == CUSTOM_SPECIES and state.get_file(SPECIES_FILE_KEY) is None:
+        state.remember({"species_list_radio": ALL_SPECIES})
+        _STARTUP_WARNINGS.append(loc.localize("startup-species-list-missing-warning"))
+
+
+def sample_species_model_settings(state: TabState, opened=True):
+    _drop_choices_with_missing_files(state)
+
+    # The model decides which sample and species settings are available, so it has to
+    # be known before those are built, even though it is shown below them.
+    model_choice = state.get(
+        "model_selection_radio", default_model(), choices=model_choices()
+    )
+    is_perch = model_choice == USE_PERCH
+
+    sample_settings = sample_sliders(
+        state,
+        opened=opened,
+        is_perch=is_perch,
+        sensitivity_enabled=model_supports_sensitivity(model_choice),
+    )
+    species_settings = species_lists(state, opened=opened, is_perch=is_perch)
+    model_settings = model_selection(state, opened=opened)
+
+    def on_model_change(value, species_choice, overlap, current_locale):
+        is_perch = value == USE_PERCH
+        choices = _species_choices(is_perch)
+        max_overlap = _max_overlap(is_perch)
+        shown = {
+            "overlap_slider": overlap,
+            "species_list_radio": species_choice,
+            "locale_dropdown": current_locale,
+        }
+        fitted = dict(shown, overlap_slider=min(overlap, max_overlap))
+
+        # Keep the current species selection (e.g. the one a preset was just
+        # applied with) as long as the new model offers it.
+        if species_choice not in [choice for _, choice in choices]:
+            fitted["species_list_radio"] = ALL_SPECIES
+
+        if model_supports_sensitivity(value):
+            sensitivity_update = gr.update(
+                interactive=True, value=state.persisted_value("sensitivity_slider")
+            )
+        else:
+            sensitivity_update = gr.update(interactive=False, value=1.0)
+
+        if is_birdnet_model(value):
+            # Re-scope the locale dropdown to this model's languages, keeping the
+            # current locale only if the new version still offers it (else English).
+            languages = model_languages(value)
+
+            if current_locale not in languages:
+                fitted["locale_dropdown"] = MODEL_LANGUAGE_EN_US
+
+            locale_update = gr.update(
+                visible=True, choices=languages, value=fitted["locale_dropdown"]
+            )
+        else:
+            # Perch / custom classifier don't use the locale; just hide it and leave
+            # its value alone so switching back keeps the user's language.
+            locale_update = gr.update(visible=False, choices=cfg.ALL_MODEL_LANGUAGES)
+
+        state.remember({key: v for key, v in fitted.items() if v != shown[key]})
+
+        return (
+            sensitivity_update,
+            gr.update(maximum=max_overlap, value=fitted["overlap_slider"]),
+            gr.update(choices=choices, value=fitted["species_list_radio"]),
+            locale_update,
+        )
+
+    inputs = [
+        model_settings["model_selection_radio"],
+        species_settings["species_list_radio"],
+        sample_settings["overlap_slider"],
+        model_settings["locale_dropdown"],
+    ]
+    outputs = [
+        sample_settings["sensitivity_slider"],
+        sample_settings["overlap_slider"],
+        species_settings["species_list_radio"],
+        model_settings["locale_dropdown"],
+    ]
+    state.add_fitter(on_model_change, inputs, outputs)
+
+    # One listener: the frontend runs them one after another, repainting piece by piece.
+    @gui_runtime_error_handler
+    def on_model_selection_change(
+        value, species_choice, overlap, current_locale, classifier
+    ):
+        return [
+            *on_model_change(value, species_choice, overlap, current_locale),
+            *model_settings["updates_for_model"](value, classifier),
+        ]
+
+    model_settings["model_selection_radio"].change(
+        on_model_selection_change,
+        inputs=[*inputs, model_settings["selected_classifier_state"]],
+        outputs=[*outputs, *model_settings["model_outputs"]],
+        show_progress="hidden",
+    )
+
+    def warn_unmatched_species(file, model_choice, locale):
+        """Heads-up when a chosen custom list has species the selected model lacks.
+
+        The analysis reconciles a list to the model by scientific/common name and skips
+        the rest (see model_utils.run_inference); this surfaces that at selection time.
+        Best-effort: shown only for a BirdNET model whose files are already downloaded
+        (reading its labels otherwise pulls the model, hundreds of MB), and any failure
+        leaves file selection untouched.
+        """
+        if not file or not is_birdnet_model(model_choice):
+            return
+
+        from birdnet_analyzer import model_utils
+
+        version = birdnet_version(model_choice)
+        # Skip until the model is cached: reading its labels otherwise downloads it, and
+        # an analysis will pull it (and reconcile the list) anyway.
+        if not model_utils.acoustic_model_downloaded(version):
+            return
+
+        try:
+            model_species = model_utils.acoustic_species_list(version, locale)
+            english_species = model_utils.acoustic_species_list(version, "en_us")
+            requested = [s for s in utils.read_lines(file, trim=True) if s]
+            _, unmatched = model_utils.match_species_to_model(
+                requested, model_species, english_species
+            )
+        except Exception:
+            logger.debug("Species list could not be matched", exc_info=True)
+            return
+
+        if unmatched:
+            gr.Warning(
+                loc.localize("species-list-unmatched-warning").format(
+                    count=len(unmatched)
+                )
+            )
+
+    species_settings["species_file_input"].change(
+        warn_unmatched_species,
+        inputs=[
+            species_settings["species_file_input"],
+            model_settings["model_selection_radio"],
+            model_settings["locale_dropdown"],
+        ],
+        show_progress="hidden",
+    )
+
+    return sample_settings, species_settings, model_settings
+
+
+def sample_sliders(
+    state: TabState, opened=True, is_perch=False, sensitivity_enabled=True
+) -> dict[_SAMPLE_KEYS, gr.components.Component]:
+    """Creates the gradio accordion for sample settings.
+
+    Args:
+        state: The persisted settings of the tab the accordion belongs to.
+        opened: If True the accordion is open on init.
+        is_perch: If True the settings are limited to what the Perch model supports.
+        sensitivity_enabled: Whether the selected model supports a sensitivity.
+    Returns:
+        A dict with the created elements.
+    """
+    with (
+        gr.Group(),
+        gr.Accordion(loc.localize("inference-settings-accordion-label"), open=opened),
+    ):
+        with gr.Group():
+            with gr.Row():
+                use_top_n_checkbox = state.persist(
+                    "use_top_n_checkbox",
+                    gr.Checkbox,
+                    label=loc.localize("inference-settings-use-top-n-checkbox-label"),
+                    value=False,
+                    info=loc.localize("inference-settings-use-top-n-checkbox-info"),
+                )
+                use_top_n = bool(use_top_n_checkbox.value)
+                top_n_input = state.persist(
+                    "top_n_input",
+                    gr.Number,
+                    value=5,
+                    minimum=1,
+                    precision=1,
+                    visible=use_top_n,
+                    label=loc.localize("inference-settings-top-n-number-label"),
+                    info=loc.localize("inference-settings-top-n-number-info"),
+                )
+                confidence_slider = state.persist(
+                    "confidence_slider",
+                    gr.Slider,
+                    minimum=0.05,
+                    maximum=0.95,
+                    value=0.25,
+                    step=0.05,
+                    visible=not use_top_n,
+                    label=loc.localize("inference-settings-confidence-slider-label"),
+                    info=loc.localize("inference-settings-confidence-slider-info"),
+                )
+
+            use_top_n_checkbox.change(
+                lambda use_top_n: (
+                    gr.Number(visible=use_top_n),
+                    gr.Slider(visible=not use_top_n),
+                ),
+                inputs=use_top_n_checkbox,
+                outputs=[top_n_input, confidence_slider],
+                show_progress="hidden",
+            )
+
+            with gr.Row():
+                sensitivity_slider = state.persist(
+                    "sensitivity_slider",
+                    gr.Slider,
+                    minimum=0.5,
+                    maximum=1.5,
+                    value=1.0,
+                    step=0.01,
+                    interactive=sensitivity_enabled,
+                    label=loc.localize("inference-settings-sensitivity-slider-label"),
+                    info=loc.localize("inference-settings-sensitivity-slider-info"),
+                )
+                if not sensitivity_enabled:
+                    sensitivity_slider.value = 1.0
+                overlap_slider = state.persist(
+                    "overlap_slider",
+                    gr.Slider,
+                    accepts={"maximum": _max_overlap(is_perch=True)},
+                    minimum=0,
+                    maximum=_max_overlap(is_perch),
+                    value=0.0,
+                    step=0.1,
+                    label=loc.localize("inference-settings-overlap-slider-label"),
+                    info=loc.localize("inference-settings-overlap-slider-info"),
+                )
+
+            with gr.Row():
+                merge_consecutive_slider = state.persist(
+                    "merge_consecutive_slider",
+                    gr.Slider,
+                    minimum=1,
+                    maximum=10,
+                    value=1,
+                    step=1,
+                    label=loc.localize(
+                        "inference-settings-merge-consecutive-slider-label"
+                    ),
+                    info=loc.localize(
+                        "inference-settings-merge-consecutive-slider-info"
+                    ),
+                )
+                audio_speed_slider = state.persist(
+                    "audio_speed_slider",
+                    gr.Slider,
+                    minimum=-10,
+                    maximum=10,
+                    value=0,
+                    step=1,
+                    label=loc.localize("inference-settings-audio-speed-slider-label"),
+                    info=loc.localize("inference-settings-audio-speed-slider-info"),
+                )
+
+            fmin_number, fmax_number = bandpass_settings(state)
+
+        return {
+            "use_top_n_checkbox": use_top_n_checkbox,
+            "top_n_input": top_n_input,
+            "confidence_slider": confidence_slider,
+            "sensitivity_slider": sensitivity_slider,
+            "overlap_slider": overlap_slider,
+            "merge_consecutive_slider": merge_consecutive_slider,
+            "audio_speed_slider": audio_speed_slider,
+            "fmin_number": fmin_number,
+            "fmax_number": fmax_number,
+        }
+
+
+def bandpass_settings(state: TabState):
+    with gr.Row():
+        fmin_number = state.persist(
+            "fmin_number",
+            gr.Number,
+            value=0,
+            minimum=0,
+            label=loc.localize("inference-settings-fmin-number-label"),
+            info=loc.localize("inference-settings-fmin-number-info"),
+        )
+
+        fmax_number = state.persist(
+            "fmax_number",
+            gr.Number,
+            value=15000,
+            minimum=0,
+            label=loc.localize("inference-settings-fmax-number-label"),
+            info=loc.localize("inference-settings-fmax-number-info"),
+        )
+
+    return fmin_number, fmax_number
+
+
+def locale(
+    state: TabState,
+    languages: list[str],
+    visible=True,
+    accepts: list[str] | None = None,
+):
+    """Creates the gradio elements for locale selection
+
+    Args:
+        state: The persisted settings of the tab the dropdown belongs to.
+        languages: The locales offered as choices - the set the model that will run
+            supports, so a locale it would reject can't be picked. `state.persist`
+            drops a persisted value that is not among them back to the English default,
+            so pass the union when the dropdown is hidden (see ``model_selection``) to
+            avoid discarding a still-valid saved locale.
+        visible: If True the dropdown is shown on init.
+        accepts: The wider set of locales a preset may set, if the choices depend on
+            another setting of the tab.
+
+    Returns:
+        The dropdown element.
+    """
+    return state.persist(
+        "locale_dropdown",
+        gr.Dropdown,
+        accepts={"choices": accepts} if accepts else None,
+        choices=languages,
+        value=cast("str", MODEL_LANGUAGE_EN_US),
+        visible=visible,
+        label=loc.localize("analyze-locale-dropdown-label"),
+        info=loc.localize("analyze-locale-dropdown-info"),
+    )
+
+
+def plot_map_scatter_mapbox(lat, lon, zoom=4):
+    import plotly.express as px
+
+    fig = px.scatter_map(
+        lat=[lat], lon=[lon], zoom=zoom, map_style="open-street-map", size=[10]
+    )
+    fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+    return fig
+
+
+def species_list_coordinates(state: TabState, show_map=False):
+    with gr.Row(equal_height=True):
+        with gr.Column(scale=1), gr.Group():
+            lat_number = state.persist(
+                "lat_number",
+                gr.Slider,
+                minimum=-90,
+                maximum=90,
+                value=0,
+                step=1,
+                label=loc.localize("species-list-coordinates-lat-number-label"),
+                info=loc.localize("species-list-coordinates-lat-number-info"),
+            )
+            lon_number = state.persist(
+                "lon_number",
+                gr.Slider,
+                minimum=-180,
+                maximum=180,
+                value=0,
+                step=1,
+                label=loc.localize("species-list-coordinates-lon-number-label"),
+                info=loc.localize("species-list-coordinates-lon-number-info"),
+            )
+
+        map_plot = None
+
+        if show_map:
+            map_plot = gr.Plot(show_label=False, scale=2)
+
+            for coordinate in (lat_number, lon_number):
+                coordinate.change(
+                    plot_map_scatter_mapbox,
+                    inputs=[lat_number, lon_number],
+                    outputs=map_plot,
+                    show_progress="hidden",
+                )
+
+    with gr.Group():
+        with gr.Row():
+            yearlong_checkbox = state.persist(
+                "yearlong_checkbox",
+                gr.Checkbox,
+                value=True,
+                label=loc.localize("species-list-coordinates-yearlong-checkbox-label"),
+            )
+            week_number = state.persist(
+                "week_number",
+                gr.Slider,
+                minimum=1,
+                maximum=48,
+                value=1,
+                step=1,
+                interactive=not yearlong_checkbox.value,
+                label=loc.localize("species-list-coordinates-week-slider-label"),
+                info=loc.localize("species-list-coordinates-week-slider-info"),
+            )
+
+        sf_thresh_number = state.persist(
+            "sf_thresh_number",
+            gr.Slider,
+            minimum=0.01,
+            maximum=0.99,
+            value=0.03,
+            step=0.01,
+            label=loc.localize("species-list-coordinates-threshold-slider-label"),
+            info=loc.localize("species-list-coordinates-threshold-slider-info"),
+        )
+
+    def on_change(use_yearlong):
+        return gr.Slider(interactive=(not use_yearlong))
+
+    yearlong_checkbox.change(
+        on_change, inputs=yearlong_checkbox, outputs=week_number, show_progress="hidden"
+    )
+
+    return (
+        lat_number,
+        lon_number,
+        week_number,
+        sf_thresh_number,
+        yearlong_checkbox,
+        map_plot,
+    )
+
+
+def _create_file_dialog(*args, **kwargs):
+    """Shows a pywebview file dialog and returns its result.
+
+    On Windows the dialog gets a thread that ends with it. WinForms makes the thread
+    showing it a COM apartment, and one that lives on without pumping messages, as a
+    Gradio worker does, blocks the .NET finalizers pythonnet waits for at exit.
+    """
+    assert _WINDOW is not None
+
+    if sys.platform != "win32":
+        return _WINDOW.create_file_dialog(*args, **kwargs)
+
+    create_file_dialog = _WINDOW.create_file_dialog
+    shown: Future = Future()
+
+    def show():
+        try:
+            shown.set_result(create_file_dialog(*args, **kwargs))
+        except BaseException as e:
+            shown.set_exception(e)
+
+    # A daemon, so a dialog still open at exit does not keep the process waiting.
+    thread = threading.Thread(target=show, daemon=True)
+    thread.start()
+    thread.join()
+
+    return shown.result()
+
+
+def save_file_dialog(filetypes=(), state_key=None, default_filename=""):
+    """Creates a file save dialog.
+
+    Args:
+        filetypes: List of filetypes to be filtered in the dialog.
+
+    Returns:
+        The selected file or None of the dialog was canceled.
+    """
+    import webview
+
+    initial_selection = settings.get_state(state_key, "") if state_key else ""
+    file = _create_file_dialog(
+        webview.FileDialog.SAVE,
+        file_types=filetypes,
+        directory=initial_selection,
+        save_filename=default_filename,
+    )
+
+    if file:
+        file: str = file[0] if isinstance(file, list | tuple) else file  # ty:ignore[invalid-assignment]
+
+        if state_key:
+            settings.set_state(state_key, os.path.dirname(file))
+
+        return str(file)
+
+    return None
+
+
+def select_file(filetypes=(), state_key=None):
+    """Creates a file selection dialog.
+
+    Args:
+        filetypes: List of filetypes to be filtered in the dialog.
+
+    Returns:
+        The selected file or None of the dialog was canceled.
+    """
+    import webview
+
+    initial_selection = settings.get_state(state_key, "") if state_key else ""
+    files = _create_file_dialog(
+        webview.FileDialog.OPEN, file_types=filetypes, directory=initial_selection
+    )
+
+    if files:
+        if state_key:
+            settings.set_state(state_key, os.path.dirname(files[0]))
+
+        return files[0]
+
+    return None
+
+
+def show_species_choice(choice: str, species_file):
+    """Sets the visibility of the species list choices.
+
+    Args:
+        choice: The currently active choice.
+        species_file: The selected species list file, if any.
+
+    Returns:
+        A list of [
+            Position row update,
+            Species file selector update,
+            Species list update,
+        ]
+    """
+    if choice == CUSTOM_SPECIES:
+        return [
+            gr.update(visible=False),
+            gr.update(visible=True),
+            gr.update(visible=bool(species_file)),
+        ]
+    if choice == PREDICT_SPECIES:
+        return [
+            gr.update(visible=True),
+            gr.update(visible=False),
+            gr.update(visible=False),
+        ]
+
+    return [
+        gr.update(visible=False),
+        gr.update(visible=False),
+        gr.update(visible=False),
+    ]
+
+
+def _read_or_none(read: Callable, path: str | None):
+    """Reads a file restored from the last session; one it cannot read shows nothing."""
+    if path is None:
+        return None
+
+    try:
+        return read(path)
+    except (OSError, ValueError):
+        logger.debug("Restored file could not be read", exc_info=True)
+        return None
+
+
+_FACT_COUNT = 4
+
+
+def _thousands(number: int) -> str:
+    return f"{number:,}".replace(",", "\u202f")
+
+
+def _reason_without_path(error: Exception, file: str) -> str:
+    """The error's cause, naming the file as the notice does, without its directory."""
+    cause = error.__cause__ or error
+    if isinstance(cause, OSError) and cause.strerror:
+        return cause.strerror
+
+    path, name = os.path.abspath(file), os.path.basename(file)
+    reason = str(cause) or str(error)
+    for form in (repr(path), path):
+        reason = reason.replace(form, name)
+
+    return reason
+
+
+def _model_facts(
+    model_choice: str, classifier_file: str | None, *, retry_failed: bool = False
+) -> tuple[list[tuple[str, str]], str | None]:
+    """The captions and values that summarize the selected model, plus a warning.
+
+    Empty when there is nothing to show: no classifier chosen yet, or one the library
+    cannot read, which the warning then explains.
+    """
+    from birdnet_analyzer import model_utils
+
+    def seconds(model: str) -> str:
+        return loc.localize("model-selection-facts-segment-value").format(
+            f"{model_utils.segment_length_s(model):g}"
+        )
+
+    segment_label = loc.localize("model-selection-facts-segment-label")
+
+    if model_choice == CUSTOM_CLASSIFIER:
+        if classifier_file is None:
+            return [], None
+
+        try:
+            info = model_utils.classifier_info(
+                classifier_file, retry_failed=retry_failed
+            )
+        except (OSError, ValueError) as e:
+            logger.debug("Classifier could not be inspected", exc_info=True)
+            return [], loc.localize(
+                "model-selection-classifier-unreadable-warning"
+            ).format(
+                file=os.path.basename(classifier_file),
+                error=_reason_without_path(e, classifier_file),
+            )
+
+        if info.mode == "append":
+            output = loc.localize("model-selection-facts-output-append")
+            classes = info.n_species - model_utils.class_count(info.version)
+        else:
+            output = loc.localize("model-selection-facts-output-replace")
+            classes = info.n_species
+
+        labels = _read_or_none(utils.read_classifier_labels, classifier_file)
+        warning = None
+
+        if labels is not None and len(labels) != info.n_species:
+            labels_file = utils.classifier_labels_path(classifier_file) or ""
+            warning = loc.localize("model-selection-labels-mismatch-warning").format(
+                labels=len(labels),
+                classes=info.n_species,
+                file=os.path.basename(labels_file),
+            )
+
+        return [
+            (
+                loc.localize("model-selection-facts-base-model-label"),
+                _label(info.version),
+            ),
+            (loc.localize("model-selection-facts-classes-label"), _thousands(classes)),
+            (loc.localize("model-selection-facts-output-label"), output),
+            (segment_label, seconds(info.version)),
+        ], warning
+
+    if model_choice == USE_PERCH:
+        languages = loc.localize("model-selection-facts-languages-scientific")
+        location = loc.localize("model-selection-facts-location-unavailable")
+    else:
+        languages = str(len(model_languages(model_choice)))
+        location = loc.localize("model-selection-facts-location-available")
+
+    return [
+        (segment_label, seconds(model_choice)),
+        (
+            loc.localize("model-selection-facts-classes-label"),
+            _thousands(model_utils.class_count(model_choice)),
+        ),
+        (loc.localize("model-selection-facts-languages-label"), languages),
+        (loc.localize("model-selection-facts-location-label"), location),
+    ], None
+
+
+def _facts_updates(facts: list[tuple[str, str]], warning: str | None) -> list:
+    return [
+        gr.update(visible=bool(facts)),
+        *(gr.update(label=caption, value=value) for caption, value in facts),
+        *([gr.skip()] * (_FACT_COUNT - len(facts))),
+        gr.update(value=warning or "", visible=warning is not None),
+    ]
+
+
+def model_selection(state: TabState, opened=True):
+    with (
+        gr.Group(),
+        gr.Accordion(loc.localize("model-selection-accordion-label"), open=opened),
+    ):
+        with gr.Row():
+            model_selection_radio = state.persist(
+                "model_selection_radio",
+                gr.Radio,
+                choices=model_choices(),
+                value=default_model(),
+                label=loc.localize("model-selection-radio-label"),
+            )
+            selected_model = model_selection_radio.value
+            classifier_file = state.get_file(CLASSIFIER_FILE_KEY)
+
+            with gr.Column(
+                visible=selected_model == CUSTOM_CLASSIFIER
+            ) as custom_classifier_selector:
+                classifier_selection_button = gr.Button(
+                    loc.localize(
+                        "species-list-custom-classifier-selection-button-label"
+                    )
+                )
+                classifier_file_input = gr.Files(
+                    value=classifier_file,
+                    file_types=[".tflite"],
+                    visible=classifier_file is not None,
+                    interactive=False,
+                    show_label=False,
+                )
+                selected_classifier_state = gr.State(classifier_file)
+
+                @gui_runtime_error_handler
+                def on_custom_classifier_selection_click():
+                    from birdnet_analyzer.model_utils import classifier_info
+
+                    file = select_file(
+                        ("TFLite classifier (*.tflite)",),
+                        state_key="custom_classifier_file",
+                    )
+
+                    if not file:
+                        return gr.skip()
+
+                    try:
+                        classifier_info(file, retry_failed=True)
+                    except (OSError, ValueError) as e:
+                        gr.Warning(
+                            loc.localize(
+                                "species-list-custom-classifier-invalid-warning"
+                            ).format(e)
+                        )
+
+                        return gr.skip()
+
+                    state.remember({CLASSIFIER_FILE_KEY: file})
+                    labels = utils.read_classifier_labels(file)
+                    facts = _facts_updates(*_model_facts(CUSTOM_CLASSIFIER, file))
+
+                    if labels is None:
+                        gr.Warning(
+                            loc.localize(
+                                "species-list-custom-classifier-no-labelfile-warning"
+                            )
+                        )
+
+                        return (
+                            file,
+                            gr.update(value=file, visible=True),
+                            gr.update(visible=False),
+                            *facts,
+                        )
+
+                    return (
+                        file,
+                        gr.update(value=file, visible=True),
+                        gr.update(value=labels, visible=True),
+                        *facts,
+                    )
+
+        facts, warning = (
+            ([], None)
+            if selected_model == CUSTOM_CLASSIFIER
+            else _model_facts(selected_model, None)
+        )
+
+        with gr.Row(
+            variant="panel", elem_classes="model-facts", visible=bool(facts)
+        ) as facts_row:
+            fact_boxes = [
+                gr.Textbox(value=value, label=caption, interactive=False)
+                for caption, value in facts or [("", "")] * _FACT_COUNT
+            ]
+
+        facts_warning = gr.Markdown(
+            warning or "",
+            visible=warning is not None,
+            elem_classes="model-facts-warning",
+        )
+        facts_outputs = [facts_row, *fact_boxes, facts_warning]
+
+        # Shown: restrict locale to the model's languages. Hidden (Perch/custom): offer
+        # the union so a saved locale from another version isn't dropped by persist.
+        show_locale = is_birdnet_model(selected_model)
+        locale_settings = locale(
+            state,
+            model_languages(selected_model) if show_locale else cfg.ALL_MODEL_LANGUAGES,
+            visible=show_locale,
+            accepts=cfg.ALL_MODEL_LANGUAGES,
+        )
+
+        classifier_labels = _read_or_none(utils.read_classifier_labels, classifier_file)
+        species_list_df = gr.List(
+            value=classifier_labels or [],
+            headers=[loc.localize("model-selection-facts-classes-label")],
+            max_height=200,
+            show_label=False,
+            visible=selected_model == CUSTOM_CLASSIFIER
+            and classifier_labels is not None,
+        )
+
+    classifier_selection_button.click(
+        on_custom_classifier_selection_click,
+        outputs=[
+            selected_classifier_state,
+            classifier_file_input,
+            species_list_df,
+            *facts_outputs,
+        ],
+        show_progress="hidden",
+    )
+
+    model_outputs = [custom_classifier_selector, species_list_df, *facts_outputs]
+
+    def updates_for_model(choice: str, classifier: str | None) -> list:
+        """One update per ``model_outputs`` for the choice."""
+        custom = choice == CUSTOM_CLASSIFIER
+        labels = (
+            _read_or_none(utils.read_classifier_labels, classifier) if custom else None
+        )
+
+        return [
+            gr.update(visible=custom),
+            gr.update(visible=labels is not None),
+            *_facts_updates(*_model_facts(choice, classifier)),
+        ]
+
+    @gui_runtime_error_handler
+    def on_classifier_change(choice: str, classifier: str | None):
+        return updates_for_model(choice, classifier)
+
+    selected_classifier_state.change(
+        on_classifier_change,
+        inputs=[model_selection_radio, selected_classifier_state],
+        outputs=model_outputs,
+        show_progress="hidden",
+    )
+
+    if classifier_file is not None:
+
+        @gui_runtime_error_handler
+        def on_page_load(choice: str, classifier: str | None):
+            """Inspects the persisted classifier once the window is up, not at build.
+
+            Shown as the summary when it is the selected model; otherwise only cached,
+            so the first switch to it is instant.
+            """
+            from birdnet_analyzer import model_utils
+
+            if choice == CUSTOM_CLASSIFIER:
+                return updates_for_model(choice, classifier)
+
+            with suppress(OSError, ValueError):
+                model_utils.classifier_info(classifier)
+
+            return gr.skip()
+
+        Context.root_block.load(
+            on_page_load,
+            inputs=[model_selection_radio, selected_classifier_state],
+            outputs=model_outputs,
+            show_progress="hidden",
+        )
+
+    return {
+        "model_selection_radio": model_selection_radio,
+        "selected_classifier_state": selected_classifier_state,
+        "classifier_file_input": classifier_file_input,
+        "classifier_labels_df": species_list_df,
+        "locale_dropdown": locale_settings,
+        "model_facts_row": facts_row,
+        "model_facts": fact_boxes,
+        "model_facts_warning": facts_warning,
+        "model_outputs": model_outputs,
+        "updates_for_model": updates_for_model,
+    }
+
+
+def _read_species_rows(file: str) -> list[list[str]]:
+    return [[species] for species in utils.read_lines(file, fail_on_blank_lines=True)]
+
+
+def species_lists(
+    state: TabState, opened=True, is_perch=False
+) -> dict[_SPECIES_KEYS, gr.components.Component]:
+    """Creates the gradio accordion for species list selection.
+    Args:
+        state: The persisted settings of the tab the accordion belongs to.
+        opened: If True the accordion is open on init.
+        is_perch: If True the choices are limited to what the Perch model supports.
+    Returns:
+        A dict with the created elements.
+    """
+    with (
+        gr.Group(),
+        gr.Accordion(loc.localize("species-list-accordion-label"), open=opened),
+    ):
+        with gr.Row():
+            species_list_radio = state.persist(
+                "species_list_radio",
+                gr.Radio,
+                accepts={"choices": _species_choices(is_perch=False)},
+                choices=_species_choices(is_perch),
+                value=ALL_SPECIES,
+                label=loc.localize("species-list-radio-label"),
+                info=loc.localize("species-list-radio-info"),
+                elem_classes="d-block",
+            )
+            selected_species_list = species_list_radio.value
+
+            with gr.Column(
+                visible=selected_species_list == PREDICT_SPECIES
+            ) as position_row:
+                (
+                    lat_number,
+                    lon_number,
+                    week_number,
+                    sf_thresh_number,
+                    yearlong_checkbox,
+                    _,
+                ) = species_list_coordinates(state)
+
+            species_file = state.get_file(SPECIES_FILE_KEY)
+
+            with gr.Column(
+                visible=selected_species_list == CUSTOM_SPECIES
+            ) as species_file_selector:
+                species_file_button = gr.Button(
+                    loc.localize("species-list-custom-list-selection-button-label")
+                )
+                species_file_input = gr.File(
+                    value=species_file,
+                    file_types=[".txt"],
+                    # Not False: created together with its first value, the box fires
+                    # .change several times.
+                    visible=species_file is not None or "hidden",
+                    interactive=False,
+                    show_label=False,
+                )
+                species_file_state = gr.State(species_file)
+
+        species_rows = _read_or_none(_read_species_rows, species_file)
+        list_df = gr.List(
+            value=species_rows or [],
+            headers=[loc.localize("species-list-header")],
+            max_height=200,
+            show_label=False,
+            visible=selected_species_list == CUSTOM_SPECIES and bool(species_rows),
+        )
+
+    species_list_radio.change(
+        show_species_choice,
+        inputs=[species_list_radio, species_file_state],
+        outputs=[position_row, species_file_selector, list_df],
+        show_progress="hidden",
+    )
+
+    @gui_runtime_error_handler
+    def on_species_file_selection_click():
+        file = select_file(("Text files (*.txt)",), state_key="species_list_file")
+
+        if not file:
+            return gr.skip(), gr.skip()
+
+        # Raises for a list the analysis could not use, before it is taken.
+        _read_species_rows(file)
+        state.remember({SPECIES_FILE_KEY: file})
+
+        return file, gr.update(value=file, visible=True)
+
+    species_file_button.click(
+        on_species_file_selection_click,
+        outputs=[species_file_state, species_file_input],
+        show_progress="hidden",
+    )
+
+    @gui_runtime_error_handler
+    def on_species_file_change(file):
+        if not file:
+            return gr.update(value=[], visible=False)
+
+        return gr.update(value=_read_species_rows(file), visible=True)
+
+    species_file_input.change(
+        on_species_file_change,
+        inputs=species_file_input,
+        outputs=list_df,
+        show_progress="hidden",
+    )
+
+    return {
+        "species_list_radio": species_list_radio,
+        "species_file_input": species_file_input,
+        "species_file_state": species_file_state,
+        "lat_number": lat_number,
+        "lon_number": lon_number,
+        "week_number": week_number,
+        "sf_thresh_number": sf_thresh_number,
+        "yearlong_checkbox": yearlong_checkbox,
+    }
+
+
+_PLOT_FORMATS = {
+    ".png": "PNG",
+    ".jpg": "JPEG",
+    ".jpeg": "JPEG",
+    ".webp": "WEBP",
+    ".bmp": "BMP",
+    ".gif": "GIF",
+    ".tif": "TIFF",
+    ".tiff": "TIFF",
+}
+
+
+def download_plot(plot, filename=""):
+    import webview
+    from PIL import Image
+
+    res: str = _create_file_dialog(  # type: ignore
+        webview.FileDialog.SAVE,
+        file_types=("PNG (*.png)", "Webp (*.webp)", "JPG (*.jpg)"),
+        save_filename=filename,
+    )
+
+    if res:
+        imgdata = base64.b64decode(plot.plot.split(",", 1)[1])
+
+        if isinstance(res, list | tuple):
+            res: str = res[0]
+
+        file_ext = _PLOT_FORMATS.get(os.path.splitext(res)[1].lower())
+
+        if file_ext == "WEBP":
+            with open(res, "wb") as f:
+                f.write(imgdata)
+        else:
+            if file_ext is None:
+                file_ext = "PNG"
+                res += ".png"
+
+            img = Image.open(io.BytesIO(imgdata))
+
+            if file_ext != "PNG":
+                img = img.convert("RGB")
+
+            img.save(res, file_ext)
+
+
+def _get_network_shortcuts():
+    """Resolves the user's Windows network shortcuts to their target paths.
+
+    Returns:
+        list: A list of resolved network shortcut paths.
+
+    Notes:
+        - Uses the `pythoncom` and `win32com.shell` modules from `pywin32`.
+    """
+    import pythoncom
+    from win32com.shell import shell, shellcon  # type: ignore
+
+    # CSIDL_FLAG_DONT_VERIFY (0x4000): a profile without the folder gets its path
+    # back instead of a COM error, and the listing below decides.
+    folder = shellcon.CSIDL_NETHOOD | 0x4000
+
+    try:
+        network_shortcuts = shell.SHGetFolderPath(0, folder, None, 0)  # pyright: ignore[reportArgumentType]
+        items = os.listdir(network_shortcuts)
+    except FileNotFoundError:
+        return []
+    except Exception as e:
+        utils.write_error_log(e)
+        return []
+
+    shortcuts = []
+
+    for item in items:
+        item_path = os.path.join(network_shortcuts, item)
+
+        if os.path.isdir(item_path):
+            # network shortcuts are folders containing a target.lnk file
+            target_lnk = os.path.join(item_path, "target.lnk")
+
+            if os.path.exists(target_lnk):
+                try:
+                    shell_link = pythoncom.CoCreateInstance(  # ty:ignore[unresolved-attribute]
+                        shell.CLSID_ShellLink,
+                        None,
+                        pythoncom.CLSCTX_INPROC_SERVER,  # ty:ignore[unresolved-attribute]
+                        shell.IID_IShellLink,
+                    )
+
+                    persist_file = shell_link.QueryInterface(
+                        pythoncom.IID_IPersistFile  # ty:ignore[unresolved-attribute]
+                    )
+
+                    persist_file.Load(target_lnk)
+
+                    path_buffer, _ = shell_link.GetPath(shell.SLGP_RAWPATH)
+
+                    shortcuts.append(path_buffer)
+                except Exception as e:
+                    logger.exception(f"Error reading {target_lnk}: {e}")
+
+    return shortcuts
+
+
+def _get_win_drives():
+    from string import ascii_uppercase as UPPER_CASE
+
+    return [f"{drive}:\\" for drive in UPPER_CASE] + _get_network_shortcuts()
+
+
+def computing_settings(state: TabState):
+    import psutil
+
+    with gr.Row():
+        bs_number = state.persist(
+            "batch_size_number",
+            gr.Number,
+            precision=1,
+            label=loc.localize("computing-settings-batchsize-number-label"),
+            value=1,
+            info=loc.localize("computing-settings-batchsize-number-info"),
+            minimum=1,
+        )
+        producers_number = state.persist(
+            "producers_number",
+            gr.Number,
+            precision=1,
+            label=loc.localize("computing-settings-producers-number-label"),
+            value=1,
+            info=loc.localize("computing-settings-producers-number-info"),
+            minimum=1,
+        )
+        workers_auto_checkbox = state.persist(
+            "workers_auto_checkbox",
+            gr.Checkbox,
+            value=True,
+            label=loc.localize("computing-settings-workers-auto-checkbox-label"),
+            info=loc.localize("computing-settings-workers-auto-checkbox-info"),
+        )
+        workers_number = state.persist(
+            "workers_number",
+            gr.Number,
+            precision=1,
+            label=loc.localize("computing-settings-workers-number-label"),
+            value=psutil.cpu_count(logical=False) or 1,
+            info=loc.localize("computing-settings-workers-number-info"),
+            minimum=1,
+            visible=not workers_auto_checkbox.value,
+        )
+
+    workers_auto_checkbox.change(
+        lambda auto: gr.update(visible=not auto),
+        inputs=workers_auto_checkbox,
+        outputs=workers_number,
+        show_progress="hidden",
+    )
+
+    return bs_number, producers_number, workers_auto_checkbox, workers_number
+
+
+def info_box(description: str, title="Info") -> gr.Accordion:
+    title = escape(title)
+    description = escape(description)
+
+    with gr.Accordion(
+        title,
+        elem_classes="info-accordion-dark"
+        if settings.theme() == "dark"
+        else "info-accordion",
+        open=False,
+    ) as c:
+        gr.Markdown(description)
+
+        return c
+
+
+def slider_to_value(value: float):
+    return max(0.1, 1.0 / (value * -1)) if value < 0 else max(1.0, float(value))
+
+
+def shutdown_running_analyses(timeout: float = 15.0) -> None:
+    """Stop any analysis still running when the GUI window is closed.
+
+    Closing the window returns from ``webview.start()``, but the Gradio worker
+    thread executing the analysis (and the birdnet worker/producer subprocesses
+    it spawned) keep running otherwise, so the analysis would continue headless
+    until it finishes on its own.
+
+    This cancels every in-flight session via the birdnet cancel event, which
+    lets each session stop the pipeline and tear down its subprocesses and shared
+    memory cleanly, then terminates anything still alive as a backstop.
+
+    Args:
+        timeout: Seconds to wait for cancelled sessions to shut down cleanly
+            before force-terminating leftover subprocesses.
+    """
+    import time
+
+    from birdnet_analyzer import model_utils
+
+    # No early-out on an empty registry: a Gradio worker thread can still
+    # register a session while we tear down. cancel_active_analyses() latches
+    # shutdown so any such late session cancels itself on registration.
+    model_utils.cancel_active_analyses()
+
+    deadline = time.monotonic() + timeout
+    while model_utils.active_session_count() and time.monotonic() < deadline:
+        time.sleep(0.1)
+
+    # Force terminate any subprocesses still alive, then join them so none are
+    # left unreaped. join() also gives terminate() time to take effect.
+    children = multiprocessing.active_children()
+    for child in children:
+        with suppress(Exception):
+            child.terminate()
+    for child in children:
+        with suppress(Exception):
+            child.join(timeout=5)
+
+
+# A clean exit took 8 to 20 s when measured, most of it pythonnet shutting down.
+EXIT_TIMEOUT_S = 60.0
+
+
+def _exit_within(seconds: float) -> None:
+    """Ends the process if it is still running after ``seconds``.
+
+    The timer is faulthandler's because it needs no GIL: an exit handler that blocks
+    while holding it stops every Python thread. The thread stacks written to stderr
+    first show what was stuck.
+    """
+    import faulthandler
+
+    try:
+        # Its own descriptor: the diverted log closes and reopens its file.
+        stream = os.dup(sys.stderr.fileno())
+    except (AttributeError, OSError, ValueError):
+        stream = os.open(os.devnull, os.O_WRONLY)
+
+    faulthandler.dump_traceback_later(seconds, exit=True, file=stream)
+
+
+def _show_startup_warnings():
+    # Tabs sharing a setting fall back alike, so their warnings repeat.
+    for message in dict.fromkeys(_STARTUP_WARNINGS):
+        gr.Warning(message)
+
+    if settings.MODEL_DIR_STARTUP_WARNING:
+        gr.Warning(
+            loc.localize("model-dir-fallback-warning").format(
+                path=settings.MODEL_DIR_STARTUP_WARNING
+            )
+        )
+
+
+def _close_splash():
+    if "_PYI_SPLASH_IPC" not in os.environ:
+        return
+
+    with suppress(ModuleNotFoundError):
+        import pyi_splash  # type: ignore
+
+        pyi_splash.close()
+
+
+def open_window(builder: list[Callable[[], None]] | Callable[[], None]):
+    """
+    Opens a GUI window using the Gradio library and the webview module.
+    Args:
+        builder (list[Callable] | Callable): A callable or a list of callables that
+        build the GUI components.
+    """
+    import webview
+
+    global _URL
+
+    with (
+        gr.Blocks(analytics_enabled=False) as demo,
+    ):
+        build_header()
+
+        if callable(builder):
+            builder()  # ty:ignore[call-top-callable]
+        elif isinstance(builder, tuple | set | list):
+            for build in builder:
+                build()
+
+        build_settings()
+        build_footer()
+
+        if _STARTUP_WARNINGS or settings.MODEL_DIR_STARTUP_WARNING:
+            demo.load(_show_startup_warnings)
+    theme = gr.themes.Default()
+
+    with (
+        open(os.path.join(SCRIPT_DIR, "assets/gui.css")) as css_file,
+        open(os.path.join(SCRIPT_DIR, "assets/gui.js")) as js_file,
+    ):
+        _URL = demo.queue(api_open=False).launch(
+            css=css_file.read(),
+            js=js_file.read(),
+            theme=theme,
+            prevent_thread_lock=True,
+            quiet=True,
+            enable_monitoring=False,
+            allowed_paths=_get_win_drives() if sys.platform == "win32" else ["/"],
+            footer_links=[],
+        )[1]
+    theme_mode = settings.theme()
+    dark = theme_mode == "dark"
+    webview.settings["ALLOW_DOWNLOADS"] = True
+    _WINDOW = webview.create_window(
+        "BirdNET-Analyzer",
+        _URL.rstrip("/") + f"?__theme={theme_mode}",
+        width=1300,
+        height=900,
+        min_size=(1300, 900),
+        # The page's body fill, so the window does not flash white before it renders.
+        # pywebview takes "#rrggbb" only; the light fill is the keyword "white".
+        background_color=theme.neutral_950 if dark else "#ffffff",
+    )
+    set_window(_WINDOW)
+    _WINDOW.events.shown += _close_splash
+
+    if sys.platform == "win32":
+        import ctypes
+        from ctypes import wintypes
+
+        from webview.platforms.winforms import BrowserView
+
+        dwmapi = ctypes.windll.LoadLibrary("dwmapi")
+
+        def color_title_bar():
+            dwmapi.DwmSetWindowAttribute(
+                BrowserView.instances[_WINDOW.uid].Handle.ToInt32(),  # type: ignore
+                20,  # DWMWA_USE_IMMERSIVE_DARK_MODE
+                ctypes.byref(ctypes.c_bool(settings.theme() == "dark")),
+                ctypes.sizeof(wintypes.BOOL),
+            )
+
+        _WINDOW.events.shown += color_title_bar
+        _WINDOW.events.loaded += color_title_bar
+
+    webview.start(private_mode=False)
+
+    _exit_within(EXIT_TIMEOUT_S)
+    # Window closed: stop any analysis still running with no UI to control it.
+    shutdown_running_analyses()

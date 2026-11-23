@@ -1,0 +1,179 @@
+import pathlib
+from unittest.mock import MagicMock, patch
+
+import numpy as np
+import pytest
+
+from birdnet_analyzer.cli import embeddings_parser
+from birdnet_analyzer.embeddings.core import create_csv_output, embeddings
+
+
+def _make_empty_encoding_result():
+    mock_result = MagicMock()
+    mock_result.segment_duration_s = 3.0
+    mock_result.overlap_duration_s = 0.0
+    mock_result.n_inputs = 0
+    mock_result.max_n_segments = 0
+    mock_result.embeddings = np.zeros((0, 0, 1024), dtype=np.float32)
+    mock_result.embeddings_masked = np.zeros((0, 0, 1024), dtype=bool)
+    mock_result.inputs = np.array([], dtype="<U1")
+    mock_result.input_durations = np.array([])
+    return mock_result
+
+
+@patch("birdnet_analyzer.embeddings.core.create_csv_output")
+@patch("birdnet_analyzer.embeddings.core._check_database_settings")
+@patch("birdnet_analyzer.embeddings.core.get_or_create_database")
+@patch("birdnet_analyzer.model_utils.get_embeddings")
+def test_embeddings_cli_accepts_full_parser_surface(
+    mock_get_embeddings: MagicMock,
+    mock_get_db: MagicMock,
+    mock_check_settings: MagicMock,
+    mock_csv_output: MagicMock,
+    tmp_path,
+):
+    mock_get_embeddings.return_value = _make_empty_encoding_result()
+    mock_get_db.return_value = MagicMock()
+    input_dir = str(tmp_path / "input")
+    file_output = str(tmp_path / "embeddings.csv")
+    args = embeddings_parser().parse_args(
+        [
+            "--input",
+            input_dir,
+            "-db",
+            str(tmp_path / "database"),
+            "--overlap",
+            "0.5",
+            "--audio_speed",
+            "1.1",
+            "--fmin",
+            "100",
+            "--fmax",
+            "10000",
+            "-b",
+            "4",
+            "--n_workers",
+            "2",
+            "--n_producers",
+            "3",
+            "--file_output",
+            file_output,
+        ]
+    )
+
+    embeddings(**vars(args))
+
+    mock_get_embeddings.assert_called_once()
+    call_args, call_kwargs = mock_get_embeddings.call_args
+    assert call_args[0] == input_dir
+    assert call_kwargs["version"] == "2.4"
+    assert call_kwargs["batch_size"] == 4
+    assert call_kwargs["overlap_duration_s"] == 0.5
+    assert call_kwargs["bandpass_fmin"] == 100
+    assert call_kwargs["bandpass_fmax"] == 10000
+    assert call_kwargs["speed"] == 1.1
+    assert call_kwargs["n_workers"] == 2
+    assert call_kwargs["n_producers"] == 3
+    assert mock_csv_output.called
+
+
+@patch("birdnet_analyzer.embeddings.core._ensure_recording")
+@patch("birdnet_analyzer.embeddings.core._ensure_deployment")
+@patch("birdnet_analyzer.embeddings.core._check_database_settings")
+@patch("birdnet_analyzer.embeddings.core.get_or_create_database")
+@patch("birdnet_analyzer.model_utils.get_embeddings")
+def test_embeddings_inserts_windows_per_file_in_batch(
+    mock_get_embeddings: MagicMock,
+    mock_get_db: MagicMock,
+    mock_check_settings: MagicMock,
+    mock_ensure_deployment: MagicMock,
+    mock_ensure_recording: MagicMock,
+    tmp_path,
+):
+    audio_input = str(tmp_path)
+    example_wav = str(tmp_path / "example.wav")
+
+    mock_result = MagicMock()
+    mock_result.segment_duration_s = 3.0
+    mock_result.overlap_duration_s = 0.0
+    mock_result.n_inputs = 1
+    mock_result.max_n_segments = 3
+    mock_result.embeddings = np.array(
+        [[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]], dtype=np.float32
+    )
+    mock_result.embeddings_masked = np.zeros((1, 3, 1), dtype=bool)
+    mock_result.inputs = np.array([example_wav])
+    mock_result.input_durations = np.array([5.0])
+    mock_get_embeddings.return_value = mock_result
+
+    mock_db = MagicMock()
+    mock_get_db.return_value = mock_db
+    mock_ensure_deployment.return_value = 10
+    mock_ensure_recording.return_value = 20
+
+    embeddings(audio_input=audio_input, database=str(tmp_path / "test.sqlite"))
+
+    expected_fpath = str(
+        pathlib.Path(example_wav).relative_to(pathlib.Path(audio_input).parent)
+    )
+    mock_ensure_recording.assert_called_once_with(mock_db, expected_fpath, 10)
+    mock_db.insert_windows_batch.assert_called_once()
+
+    call_kwargs = mock_db.insert_windows_batch.call_args.kwargs
+    windows_batch = call_kwargs["windows_batch"]
+    embeddings_batch = call_kwargs["embeddings_batch"]
+
+    assert windows_batch == [
+        {"recording_id": 20, "offsets": [0.0, 3.0]},
+        {"recording_id": 20, "offsets": [3.0, 5.0]},
+    ]
+    assert embeddings_batch.shape == (2, 4)
+    np.testing.assert_array_equal(
+        embeddings_batch[0], np.array([1, 2, 3, 4], dtype=np.float32)
+    )
+    np.testing.assert_array_equal(
+        embeddings_batch[1], np.array([5, 6, 7, 8], dtype=np.float32)
+    )
+    assert call_kwargs["handle_duplicates"] == "skip"
+
+
+def test_embeddings_cli_requires_input(capsys):
+    with pytest.raises(SystemExit) as exc:
+        embeddings_parser().parse_args(["-db", "x"])
+
+    assert exc.value.code == 2
+    assert "the following arguments are required: -i/--input" in capsys.readouterr().err
+
+
+def test_a_settings_mismatch_closes_the_database(
+    hoplite_database, hoplite_connections, monkeypatch, tmp_path
+):
+    from birdnet_analyzer import model_utils
+
+    path = hoplite_database(
+        {"AUDIO_SPEED": 2.0, "BANDPASS_FMIN": 0, "BANDPASS_FMAX": 15000}
+    )
+    monkeypatch.setattr(
+        model_utils, "get_embeddings", lambda *a, **k: _make_empty_encoding_result()
+    )
+
+    with pytest.raises(ValueError, match="do not match"):
+        embeddings(str(tmp_path / "recordings"), path)
+
+    assert hoplite_connections.still_open() == []
+
+
+def test_a_failing_csv_export_closes_the_database(
+    hoplite_database, hoplite_connections, tmp_path
+):
+    with pytest.raises((IsADirectoryError, PermissionError)):
+        create_csv_output(str(tmp_path), hoplite_database())
+
+    assert hoplite_connections.still_open() == []
+
+
+def test_exporting_a_missing_database_creates_nothing(tmp_path):
+    with pytest.raises(FileNotFoundError):
+        create_csv_output(str(tmp_path / "out.csv"), str(tmp_path / "typo"))
+
+    assert list(tmp_path.iterdir()) == []

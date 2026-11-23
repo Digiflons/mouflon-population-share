@@ -1,0 +1,29 @@
+# End-to-end test environment (MOUL-32): Home Assistant + Mosquitto + the App in
+# test mode (replays the bundled recording). CI only; anonymous MQTT is acceptable
+# here because nothing leaves the CI runner. Images pinned by digest.
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0@sha256:6a332cc7a8dbe011cbc076180cbb76b37c6f0f55809682ea08e7980ef0112ad9
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:2026.8.1@sha256:6340a3de3917a9b19368e767310a96dd090f6a19aca8aeadf87fd1145cec9682
+    volumes:
+      - ${E2E_HA_CONFIG}:/config
+    ports:
+      - "127.0.0.1:8123:8123"
+    depends_on:
+      - mosquitto
+  app:
+    image: mouflon-population-app:test
+    environment:
+      MOUFLON_MQTT_HOST: mosquitto
+      MOUFLON_MQTT_PORT: "1883"
+      # A city-centre location in the region the App targets: the filter must not hide
+      # the (North American) test recording in test mode (MOUL-40).
+      MOUFLON_HOME_LATITUDE: "50.85"
+      MOUFLON_HOME_LONGITUDE: "4.35"
+    volumes:
+      - ${E2E_APP_DATA}:/data
+    depends_on:
+      - mosquitto

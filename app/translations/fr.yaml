@@ -1,0 +1,95 @@
+configuration:
+  test_mode:
+    name: Mode test
+    description: >-
+      Rejoue un enregistrement fourni au lieu d'écouter les caméras. Sert à
+      vérifier toute la chaîne sans réveiller les caméras sur batterie.
+  demo_mode:
+    name: Mode démo (faux oiseaux)
+    description: >-
+      Remplit Home Assistant d'observations INVENTÉES, pour voir les entités et
+      l'historique tant qu'aucun micro n'est branché. Ni son ni modèle ; tout est
+      marqué « Démo » et n'entre jamais dans le vrai journal des oiseaux.
+      Demande le mode test désactivé et toutes les sources audio désactivées.
+      L'arrêter remet les compteurs à zéro.
+  sources:
+    name: Sources audio
+    description: >-
+      Une entrée par caméra ou micro. Pour une caméra ou un hub, url est son
+      adresse RTSP sans identifiant (par exemple rtsp://192.0.2.10:554/stream1) ;
+      saisissez l'utilisateur et son mot de passe dans les champs username et
+      password. battery_entity est le capteur de batterie de la caméra dans
+      Home Assistant (vide pour une source sur secteur). Mettez enabled à true
+      pour utiliser la source.
+  listening_mode:
+    name: Quand écouter
+    description: >-
+      daylight (par défaut) écoute du lever au coucher du soleil, d'après
+      l'entité soleil de Home Assistant ; windows suit les plages d'écoute
+      ci-dessous ; always écoute à toute heure. La surveillance de la batterie
+      s'applique dans tous les cas.
+  listening_windows:
+    name: Plages d'écoute
+    description: >-
+      Utilisées seulement si « Quand écouter » vaut windows. Heures comme
+      05:30-08:30.
+  battery_stop_below:
+    name: Seuil d'arrêt batterie (%)
+    description: Sous ce niveau, l'App ne réveille plus la caméra.
+  battery_resume_above:
+    name: Niveau de reprise batterie (%)
+    description: Après un arrêt, l'App ne reprend qu'au-dessus de ce niveau.
+  battery_max_drop_per_day:
+    name: Baisse maximale de batterie par jour (%)
+    description: Si la batterie baisse plus vite que cela sur 24 heures, l'App se met en pause.
+  min_confidence:
+    name: Confiance minimale
+    description: Les détections sous cette confiance BirdNET (0,1 à 0,99) sont ignorées.
+  language:
+    name: Langue
+    description: >-
+      Français (fr, par défaut) pour tous les textes de l'App ; les autres choix
+      changent les noms d'oiseaux et affichent le reste en anglais.
+  species_filter:
+    name: Filtre des espèces locales
+    description: >-
+      Ne garde que les espèces attendues au domicile à cette période de l'année
+      (d'après la position du domicile dans Home Assistant, qui reste sur le Pi).
+  wind_entity:
+    name: Capteur de vent (facultatif)
+    description: Capteur de vitesse du vent en km/h, par exemple l'anémomètre d'une station météo.
+  rain_entity:
+    name: Capteur de pluie (facultatif)
+    description: Capteur de pluie ; l'écoute s'arrête tant qu'il est au-dessus de zéro.
+  max_wind_kmh:
+    name: Vent maximal (km/h)
+  log_retention_days:
+    name: Durée de conservation du journal (jours)
+    description: Les détections plus anciennes sont effacées.
+  rare_garden_days:
+    name: Rare au jardin (jours)
+    description: Une espèce entendue moins de jours distincts que cela sur un an est « rare au jardin ».
+  regional_threshold:
+    name: Inhabituel dans la région (seuil)
+    description: Sous cette probabilité régionale pour la semaine, une espèce est « inhabituelle ».
+  rare_min_confidence:
+    name: Confiance pour confirmer
+    description: Un oiseau nouveau ou rare est confirmé après deux détections à cette confiance ou plus.
+  rare_confirm_minutes:
+    name: Délai de confirmation (minutes)
+    description: La deuxième détection doit arriver dans ce délai.
+  screen_enabled:
+    name: Images de l'écran e-ink
+    description: Dessine les pages de l'écran comme images Home Assistant (entités Écran).
+  screen_size:
+    name: Taille de l'écran (pixels)
+    description: Largeur x hauteur, par exemple 480x800 (7,3 pouces) ou 1200x1600 (13,3 pouces).
+  screen_refresh_minutes:
+    name: Rafraîchissement de l'écran (minutes)
+    description: L'écran change au plus à ce rythme, comme un vrai cadre e-ink.
+  screen_view:
+    name: Vue de l'écran
+    description: >-
+      collage montre une seule page avec le dernier oiseau en grand au centre ;
+      alternate montre le dernier oiseau puis les oiseaux du jour, à tour de rôle
+      à chaque rafraîchissement.

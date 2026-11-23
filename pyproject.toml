@@ -1,0 +1,180 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "birdnet_analyzer"
+dynamic = ["version"]
+license = "MIT"
+license-files = ["LICENSE"]
+description = "BirdNET analyzer for scientific audio data processing and bird classification."
+authors = [{ name = "Stefan Kahl" }]
+maintainers = [{ name = "Josef Haupt" }, { name = "Max Mauermann" }]
+keywords = ["birdnet", "birdnet-analyzer"]
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: POSIX :: BSD",
+    "Operating System :: Unix",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "librosa>=0.11",
+    "tensorflow>=2.20",
+    "keras",
+    # ONNX runtime backs 3.0 acoustic + geo inference: no TensorFlow load, faster.
+    # TensorFlow above is still required for training and the 2.4/perch/custom paths.
+    "onnxruntime>=1.16.0",
+    "numpy",
+    "scipy",
+    "soundfile",
+    "scikit-learn",
+    # parquet result tables; macOS needs >=22 for https://github.com/apache/arrow/issues/40088
+    "pyarrow;platform_system!='Darwin'",
+    "pyarrow>=22.0.0;platform_system=='Darwin'",
+    "tqdm",
+    "pandas",
+    "matplotlib",
+    "birdnet>=1.5.0",
+]
+
+[project.optional-dependencies]
+train = ["optuna", "optuna-integration"]
+gui = [
+    "birdnet-analyzer[train,embeddings]",
+    "gradio==6.32.0",
+    "pywebview>=6.1,<7.0",
+    "plotly[express]",
+    # Pillow < 13 has many known memory-safety CVEs (pip-audit, 2026-11-21).
+    "pillow>=13.0.0",
+    "psutil",
+    "pywin32;platform_system=='Windows'",
+    "qtpy;platform_system=='Linux'",
+    "PySide6;platform_system=='Linux'",
+]
+embeddings = ["perch-hoplite>=1.0.1,<2.0.0", "ml-collections"]
+all = ["birdnet-analyzer[gui]"]
+docs = ["sphinx", "sphinx-rtd-theme", "sphinx-argparse"]
+tests = ["pytest", "pytest-timeout", "paho-mqtt>=2.1"]
+gui-tests = ["birdnet-analyzer[tests]", "gradio==6.32.0", "pillow>=13.0.0"]
+dev = ["birdnet_analyzer[tests]", "birdnet_analyzer[docs]", "ruff==0.15.10"]
+
+[project.scripts]
+birdnet-analyze = "birdnet_analyzer.analyze.cli:main"
+birdnet-embeddings = "birdnet_analyzer.embeddings.cli:main"
+birdnet-evaluate = "birdnet_analyzer.evaluation:main"
+birdnet-search = "birdnet_analyzer.search.cli:main"
+birdnet-train = "birdnet_analyzer.train.cli:main"
+birdnet-segments = "birdnet_analyzer.segments.cli:main"
+birdnet-species = "birdnet_analyzer.species.cli:main"
+
+[project.gui-scripts]
+birdnet-gui = "birdnet_analyzer.gui:main"
+
+[project.urls]
+Homepage = "https://birdnet.cornell.edu/birdnet"
+Documentation = "https://birdnet-team.github.io/BirdNET-Analyzer/"
+Repository = "https://github.com/birdnet-team/BirdNET-Analyzer"
+Issues = "https://github.com/birdnet-team/BirdNET-Analyzer/issues"
+Download = "https://github.com/birdnet-team/BirdNET-Analyzer/releases/latest"
+
+[tool.setuptools]
+packages = [
+    "birdnet_analyzer",
+    "birdnet_analyzer.analyze",
+    "birdnet_analyzer.gui",
+    "birdnet_analyzer.embeddings",
+    "birdnet_analyzer.search",
+    "birdnet_analyzer.species",
+    "birdnet_analyzer.segments",
+    "birdnet_analyzer.train",
+    "birdnet_analyzer.evaluation",
+    "birdnet_analyzer.evaluation.preprocessing",
+    "birdnet_analyzer.evaluation.assessment",
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "birdnet_analyzer.__version__" }
+
+[tool.setuptools.package-data]
+birdnet_analyzer = [
+    "py.typed",
+    "eBird_taxonomy_codes_2024E.json",
+    "lang/*",
+    "gui/assets/**/*",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["birdnet_analyzer", "app/src"]
+timeout = 120
+filterwarnings = [
+    "ignore::DeprecationWarning:audioread.*",
+    "ignore::UserWarning:sklearn.*",
+]
+
+[tool.ruff]
+exclude = ["conf.py"]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "F",
+    "B",
+    "A",
+    "C4",
+    "T10",
+    "EXE",
+    "PIE",
+    "PYI",
+    "PT",
+    "Q",
+    "RSE",
+    "RET",
+    "SIM",
+    "TID",
+    "TD",
+    "TC",
+    #"PTH",
+    "FLY",
+    "I",
+    "NPY",
+    "PD",
+    #"N",
+    "PERF",
+    "E",
+    "W",
+    #"D",
+    "PL",
+    "UP",
+    "FURB",
+    "RUF",
+]
+ignore = [
+    "B008",
+    "TD003",
+    "TD002",
+    "SIM108",
+    "E722",
+    "PLR2004",
+    "PLR0913",
+    "PLR0915",
+    "PLR0912",
+    "PLC0206",
+    "PLC0415",
+    "RUF015",
+    "PD002",
+]

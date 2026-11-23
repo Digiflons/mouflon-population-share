@@ -1,0 +1,99 @@
+# Home Assistant App definition (MOUL-18). Built on the Pi from app/Dockerfile:
+# no image is published anywhere. Passwords are typed by the owner in the App's
+# Configuration tab and stored by Home Assistant, never in this repository.
+name: Mouflon Population
+version: "0.6.1"
+slug: mouflon_population
+description: Recognises bird songs with BirdNET. Local only, no audio kept.
+arch:
+  - aarch64
+  - amd64
+startup: application
+boot: auto
+stage: experimental
+# Reads entity states (camera battery, wind, rain) and the home location.
+homeassistant_api: true
+# default_entity_id in MQTT discovery keeps entity ids fixed in every language.
+homeassistant: "2025.10.0"
+# Gets the Mosquitto App's connection details from the Supervisor.
+services:
+  - mqtt:need
+# No port is opened on the Pi.
+ports: {}
+# Writes the bundled reference songs (third-party recordings of each species, never
+# garden sound) to /media/mouflon_population so Home Assistant can play them.
+map:
+  - media:rw
+timeout: 30
+options:
+  test_mode: true
+  demo_mode: false
+  sources:
+    - name: Camera 1
+      type: rtsp
+      url: rtsp://CAMERA_OR_HUB_ADDRESS:554/STREAM_PATH_1
+      username: ""
+      password: ""
+      battery_entity: sensor.camera_1_battery
+      enabled: false
+    - name: Camera 2
+      type: rtsp
+      url: rtsp://CAMERA_OR_HUB_ADDRESS:554/STREAM_PATH_2
+      username: ""
+      password: ""
+      battery_entity: sensor.camera_2_battery
+      enabled: false
+  listening_mode: daylight
+  listening_windows:
+    - "05:30-08:30"
+    - "18:00-20:00"
+  battery_stop_below: 40
+  battery_resume_above: 60
+  battery_max_drop_per_day: 15
+  min_confidence: 0.5
+  language: fr
+  species_filter: true
+  wind_entity: ""
+  rain_entity: ""
+  max_wind_kmh: 25
+  log_retention_days: 365
+  rare_garden_days: 3
+  regional_threshold: 0.1
+  rare_min_confidence: 0.75
+  rare_confirm_minutes: 15
+  screen_enabled: true
+  screen_size: 480x800
+  screen_refresh_minutes: 10
+  screen_view: collage
+schema:
+  test_mode: bool
+  demo_mode: bool
+  sources:
+    - name: str
+      type: list(rtsp|file)
+      url: str
+      username: str?
+      password: password?
+      battery_entity: str?
+      enabled: bool
+  listening_mode: list(daylight|windows|always)
+  listening_windows:
+    - match(^\d{1,2}:\d{2}-\d{1,2}:\d{2}$)
+  battery_stop_below: int(5,95)
+  battery_resume_above: int(10,100)
+  battery_max_drop_per_day: int(1,100)
+  min_confidence: float(0.1,0.99)
+  language: list(en_us|en_uk|fr|nl|de|es|it)
+  species_filter: bool
+  wind_entity: str?
+  rain_entity: str?
+  max_wind_kmh: int(5,150)
+  log_retention_days: int(1,3650)
+  rare_garden_days: int(1,365)
+  regional_threshold: float(0.01,0.9)
+  rare_min_confidence: float(0.1,0.99)
+  rare_confirm_minutes: int(1,240)
+  screen_enabled: bool
+  screen_size: match(^\d{3,4}x\d{3,4}$)
+  screen_refresh_minutes: int(1,1440)
+  screen_view: list(collage|alternate)

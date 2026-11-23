@@ -1,0 +1,382 @@
+import birdnet
+import pytest
+
+from birdnet_analyzer import model_utils
+
+
+class FakeSession:
+    def __init__(self):
+        self.cancelled = False
+
+    def cancel(self):
+        self.cancelled = True
+
+
+def test_pause_cancels_sessions_without_latching_shutdown():
+    session = FakeSession()
+    model_utils._register_session(session)
+
+    try:
+        assert model_utils.pause_active_analyses() == 1
+        assert session.cancelled
+        assert not model_utils._SHUTDOWN.is_set(), "pause must not latch shutdown"
+
+        # After a pause, newly registered sessions must not be auto-cancelled
+        # (unlike after cancel_active_analyses), so the run can be continued.
+        new_session = FakeSession()
+        model_utils._register_session(new_session)
+        assert not new_session.cancelled
+        model_utils._unregister_session(new_session)
+    finally:
+        model_utils._unregister_session(session)
+        model_utils._SHUTDOWN.clear()
+
+
+def test_pause_with_no_active_sessions_is_a_noop():
+    assert model_utils.pause_active_analyses() == 0
+    assert not model_utils._SHUTDOWN.is_set()
+
+
+def test_language_for_version_keeps_supported_and_falls_back_otherwise():
+    # The library raises on an unsupported (version, locale) pair.
+    from birdnet.globals import (
+        MODEL_LANGUAGE_EN_US,
+        VALID_MODEL_LANGUAGES_V2_4,
+        VALID_MODEL_LANGUAGES_V3_0,
+    )
+
+    assert MODEL_LANGUAGE_EN_US in VALID_MODEL_LANGUAGES_V2_4
+    assert MODEL_LANGUAGE_EN_US in VALID_MODEL_LANGUAGES_V3_0
+
+    only_v24 = sorted(set(VALID_MODEL_LANGUAGES_V2_4) - set(VALID_MODEL_LANGUAGES_V3_0))
+    only_v30 = sorted(set(VALID_MODEL_LANGUAGES_V3_0) - set(VALID_MODEL_LANGUAGES_V2_4))
+    assert only_v24
+    assert only_v30
+
+    assert model_utils._language_for_version(only_v24[0], "2.4") == only_v24[0]
+    assert model_utils._language_for_version(only_v24[0], "3.0") == MODEL_LANGUAGE_EN_US
+    assert model_utils._language_for_version(only_v30[0], "3.0") == only_v30[0]
+    assert model_utils._language_for_version(only_v30[0], "2.4") == MODEL_LANGUAGE_EN_US
+
+
+def test_supports_sensitivity_for_every_model_but_perch():
+    assert model_utils.supports_sensitivity("birdnet")
+    assert not model_utils.supports_sensitivity("perch")
+
+    assert model_utils.effective_sensitivity(1.25, "birdnet") == 1.25
+    assert model_utils.effective_sensitivity(1.25, "perch") == 1.0
+
+
+def test_classifier_version_reads_each_file_once(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    calls = []
+
+    def fake_inspect(path, *, library):
+        calls.append((path, library))
+        return SimpleNamespace(version="3.0")
+
+    monkeypatch.setattr(model_utils.birdnet, "inspect_custom_tflite", fake_inspect)
+    model_utils._INSPECTIONS.clear()
+    classifier = tmp_path / "cc.tflite"
+    classifier.write_bytes(b"v1")
+
+    assert model_utils.classifier_version(str(classifier)) == "3.0"
+    assert model_utils.classifier_version(str(classifier)) == "3.0"
+    assert calls == [(str(classifier), "litert")]
+
+    classifier.write_bytes(b"v2, longer")
+    assert model_utils.classifier_version(str(classifier)) == "3.0"
+    assert len(calls) == 2, "a changed file is inspected again"
+
+
+def test_without_litert_the_tensorflow_interpreter_inspects_the_classifier(
+    monkeypatch, tmp_path
+):
+    import sys
+    from types import SimpleNamespace
+
+    calls = []
+
+    def fake_inspect(path, *, library):
+        calls.append(library)
+        return SimpleNamespace(version="2.4")
+
+    monkeypatch.setattr(model_utils.birdnet, "inspect_custom_tflite", fake_inspect)
+    monkeypatch.setitem(sys.modules, "ai_edge_litert", None)
+    model_utils._INSPECTIONS.clear()
+    classifier = tmp_path / "cc.tflite"
+    classifier.write_bytes(b"x")
+
+    assert model_utils.classifier_version(str(classifier)) == "2.4"
+    assert calls == ["tflite"]
+
+
+def test_an_unusable_classifier_is_inspected_once(monkeypatch, tmp_path):
+    calls = []
+
+    def fake_inspect(path, *, library):
+        calls.append(path)
+        raise ValueError("detached head")
+
+    monkeypatch.setattr(model_utils.birdnet, "inspect_custom_tflite", fake_inspect)
+    model_utils._INSPECTIONS.clear()
+    classifier = tmp_path / "head.tflite"
+    classifier.write_bytes(b"x")
+
+    for _ in range(2):
+        with pytest.raises(ValueError, match="detached head"):
+            model_utils.classifier_info(str(classifier))
+
+    assert len(calls) == 1
+
+
+def test_an_analysis_retries_a_failed_inspection(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    calls = []
+
+    def fake_inspect(path, *, library):
+        calls.append(path)
+        if len(calls) == 1:
+            raise ValueError("Failed to inspect model due to timeout.")
+        return SimpleNamespace(version="3.0")
+
+    monkeypatch.setattr(model_utils.birdnet, "inspect_custom_tflite", fake_inspect)
+    model_utils._INSPECTIONS.clear()
+    classifier = tmp_path / "cc.tflite"
+    classifier.write_bytes(b"x")
+
+    for _ in range(2):
+        with pytest.raises(ValueError, match="timeout"):
+            model_utils.classifier_info(str(classifier))
+    assert len(calls) == 1
+
+    assert model_utils.classifier_version(str(classifier)) == "3.0"
+    assert len(calls) == 2
+
+
+def test_classifier_version_rejects_a_missing_file():
+    with pytest.raises(FileNotFoundError):
+        model_utils.classifier_version("nowhere/cc.tflite")
+
+
+def test_each_model_has_a_segment_length():
+    assert model_utils.segment_length_s("2.4") == 3.0
+    assert model_utils.segment_length_s("3.0") == 3.0
+    assert model_utils.segment_length_s("perch") == 5.0
+
+
+def test_each_model_has_a_class_count():
+    assert model_utils.class_count("2.4") == 6522
+    assert model_utils.class_count("3.0") == birdnet.AcousticModelV3_0.get_n_classes()
+    assert model_utils.class_count("perch") == 14795
+
+
+def test_classifier_batch_size_is_one_on_3_0():
+    assert model_utils.classifier_batch_size("2.4", 8) == 8
+    assert model_utils.classifier_batch_size("3.0", 8) == 1
+    assert model_utils.classifier_batch_size("3.0", 1) == 1
+
+
+def test_validate_min_conf_rejects_non_probabilities():
+    model_utils.validate_min_conf(0.25)
+    model_utils.validate_min_conf(0.0)  # the GUI's top-n path passes 0
+
+    with pytest.raises(ValueError, match="probabilities"):
+        model_utils.validate_min_conf(1.0)
+
+    with pytest.raises(ValueError, match="probabilities"):
+        model_utils.validate_min_conf(-0.1)
+
+
+def test_run_inference_normalizes_perch_with_softmax(monkeypatch, tmp_path):
+    from contextlib import contextmanager
+    from unittest.mock import MagicMock
+
+    seen = {}
+
+    @contextmanager
+    def fake_predict_session(**kwargs):
+        seen.update(kwargs)
+        session = MagicMock()
+        session.run.return_value = "result"
+        yield session
+
+    fake_model = MagicMock()
+    fake_model.predict_session = fake_predict_session
+    monkeypatch.setattr(
+        model_utils.birdnet, "load_perch_v2", lambda *a, **k: fake_model
+    )
+
+    audio = tmp_path / "a.wav"
+    audio.write_bytes(b"")
+
+    result = model_utils.run_inference(str(audio), model="perch")
+
+    assert result == "result"
+    assert seen["apply_softmax"] is True
+    assert seen["apply_sigmoid"] is False
+
+
+def test_run_inference_keeps_the_sensitivity_for_3_0(monkeypatch, tmp_path):
+    from contextlib import contextmanager
+    from unittest.mock import MagicMock
+
+    seen = {}
+
+    @contextmanager
+    def fake_predict_session(**kwargs):
+        seen.update(kwargs)
+        session = MagicMock()
+        session.run.return_value = "result"
+        yield session
+
+    fake_model = MagicMock()
+    fake_model.predict_session = fake_predict_session
+    monkeypatch.setattr(model_utils.birdnet, "load", lambda *a, **k: fake_model)
+
+    audio = tmp_path / "a.wav"
+    audio.write_bytes(b"")
+
+    result = model_utils.run_inference(
+        str(audio), model="birdnet", version="3.0", sigmoid_sensitivity=1.25
+    )
+
+    assert result == "result"
+    assert seen["sigmoid_sensitivity"] == 1.25
+
+
+@pytest.mark.parametrize(
+    ("version", "requested", "expected"),
+    [
+        (
+            "3.0",
+            "Troglodytes troglodytes_Eurasian Wren",
+            "Nannus troglodytes_Zaunkönig",
+        ),
+        ("2.4", "Coloeus monedula_Eurasian Jackdaw", "Corvus monedula_Dohle"),
+    ],
+)
+@pytest.mark.parametrize("as_file", [False, True], ids=["collection", "file"])
+def test_run_inference_matches_english_names_in_another_label_language(
+    monkeypatch, tmp_path, version, requested, expected, as_file
+):
+    from contextlib import contextmanager
+    from unittest.mock import MagicMock
+
+    seen = {}
+
+    @contextmanager
+    def fake_predict_session(**kwargs):
+        seen.update(kwargs)
+        session = MagicMock()
+        session.run.return_value = "result"
+        yield session
+
+    labels = {
+        ("3.0", "de"): ["Nannus troglodytes_Zaunkönig"],
+        ("3.0", "en_us"): ["Nannus troglodytes_Eurasian Wren"],
+        ("2.4", "de"): ["Bubulcus ibis_Kuhreiher", "Corvus monedula_Dohle"],
+        ("2.4", "en_us"): [
+            "Bubulcus ibis_Cattle Egret",
+            "Corvus monedula_Eurasian Jackdaw",
+        ],
+    }
+
+    def fake_load(model_type, loaded_version, backend, lang):
+        fake_model = MagicMock()
+        fake_model.predict_session = fake_predict_session
+        fake_model.species_list = labels[loaded_version, lang]
+        return fake_model
+
+    monkeypatch.setattr(model_utils.birdnet, "load", fake_load)
+
+    audio = tmp_path / "a.wav"
+    audio.write_bytes(b"")
+    species_list = {requested}
+    if as_file:
+        species_list = tmp_path / "species_list.txt"
+        species_list.write_text(requested + "\n", encoding="utf-8")
+
+    model_utils.run_inference(
+        str(audio),
+        version=version,
+        label_language="de",
+        custom_species_list=species_list,
+    )
+
+    assert seen["custom_species_list"] == {expected}
+
+
+@pytest.mark.parametrize(
+    ("version", "language", "loaded"),
+    [
+        (None, "de", ("geo", "3.0", "onnx", "de")),
+        (None, "it", ("geo", "3.0", "onnx", "en_us")),
+        ("2.4", "it", ("geo", "2.4", "tf", "it")),
+        ("2.4", "pt_pt", ("geo", "2.4", "tf", "en_us")),
+    ],
+)
+def test_run_geomodel_loads_the_asked_version_in_a_language_it_has(
+    monkeypatch, version, language, loaded
+):
+    from unittest.mock import MagicMock
+
+    calls = []
+
+    def fake_load(model_type, loaded_version, backend, lang):
+        calls.append((model_type, loaded_version, backend, lang))
+        return MagicMock()
+
+    monkeypatch.setattr(model_utils.birdnet, "load", fake_load)
+
+    model_utils.run_geomodel(50.83, 12.92, week=20, language=language, version=version)
+
+    assert calls == [loaded]
+
+
+@pytest.mark.parametrize(
+    ("version", "batch_size", "sensitivity"), [("2.4", 4, 1.25), ("3.0", 1, 1.25)]
+)
+def test_run_inference_loads_a_classifier_on_its_own_version(
+    monkeypatch, tmp_path, version, batch_size, sensitivity
+):
+    from contextlib import contextmanager
+    from unittest.mock import MagicMock
+
+    seen = {}
+    loaded = {}
+
+    @contextmanager
+    def fake_predict_session(**kwargs):
+        seen.update(kwargs)
+        session = MagicMock()
+        session.run.return_value = "result"
+        yield session
+
+    fake_model = MagicMock()
+    fake_model.predict_session = fake_predict_session
+
+    def fake_load_custom(model_type, loaded_version, backend, classifier, labels):
+        loaded.update(version=loaded_version, classifier=classifier, labels=labels)
+        return fake_model
+
+    monkeypatch.setattr(model_utils, "classifier_version", lambda path: version)
+    monkeypatch.setattr(model_utils.birdnet, "load_custom", fake_load_custom)
+
+    audio = tmp_path / "a.wav"
+    audio.write_bytes(b"")
+
+    result = model_utils.run_inference(
+        str(audio), classifier="cc.tflite", batch_size=4, sigmoid_sensitivity=1.25
+    )
+
+    assert result == "result"
+    assert loaded == {
+        "version": version,
+        "classifier": "cc.tflite",
+        "labels": "cc_Labels.txt",
+    }
+    assert seen["batch_size"] == batch_size
+    assert seen["sigmoid_sensitivity"] == sensitivity

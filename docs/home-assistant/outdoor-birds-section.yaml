@@ -1,0 +1,29 @@
+# "Birds" section at the top of the Overview > Outdoor view (reference copy, MOUL-41).
+# Rebuilt from the coordinator's description (created in the owner's Home Assistant on
+# 2026-11-21). To recreate: open the Outdoor view > Edit > add a section, then
+# "Edit in YAML" and paste this.
+type: grid
+cards:
+  - type: heading
+    heading: Oiseaux
+    tap_action:
+      action: navigate
+      navigation_path: /birds-dashboard/birds
+  - type: tile
+    entity: sensor.mouflon_population_last_bird
+    grid_options:
+      columns: full
+      rows: 2
+    tap_action:
+      action: navigate
+      navigation_path: /birds-dashboard/birds
+  - type: tile
+    entity: sensor.mouflon_population_species_today
+    tap_action:
+      action: navigate
+      navigation_path: /birds-dashboard/birds
+  - type: tile
+    entity: sensor.mouflon_population_detections_today
+    tap_action:
+      action: navigate
+      navigation_path: /birds-dashboard/birds

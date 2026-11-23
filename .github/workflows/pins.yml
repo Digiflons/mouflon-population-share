@@ -1,0 +1,37 @@
+name: Refresh pins
+
+# Manual helper: prints the current digests of the container images we pin and the
+# fingerprints of the BirdNET model files, as annotations on the run. A person (or
+# agent) copies them into app/Dockerfile, tests/e2e/compose.yaml and
+# app/models.lock.json after review. It changes nothing by itself.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pins:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BIRDNET_APP_DATA: ${{ github.workspace }}/.birdnet-app-data
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Image digests
+        run: |
+          for image in python:3.13-slim-bookworm eclipse-mosquitto:2.0 ghcr.io/home-assistant/home-assistant:2026.8.1; do
+            digest=$(docker buildx imagetools inspect "$image" --format '{{json .Manifest}}' | python3 -c 'import json,sys; print(json.load(sys.stdin)["digest"])')
+            echo "::notice title=image digest::$image $digest"
+          done
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.13"
+      - name: Model fingerprints
+        run: |
+          pip install --require-hashes --no-deps -r app/requirements.lock
+          export PYTHONPATH=app/src
+          python -m mouflon_population.models download
+          python -m mouflon_population.models verify --lock app/models.lock.json --print || true

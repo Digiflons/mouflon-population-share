@@ -1,0 +1,7 @@
+// MOUL-57: Live Preview opens the e-ink screen preview, served on this computer only.
+{
+    "livePreview.defaultPreviewPath": "/docs/screen-preview/preview.html",
+    "livePreview.openPreviewTarget": "Embedded Preview",
+    "livePreview.autoRefreshPreview": "On All Changes in Editor",
+    "livePreview.hostIP": "127.0.0.1"
+}

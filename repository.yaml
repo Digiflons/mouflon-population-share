@@ -1,0 +1,5 @@
+# Home Assistant App repository (Settings > Apps > App store > Repositories).
+# Add this repository's URL followed by "#staging" while the proof of concept runs.
+# A fork can add its own "url: https://github.com/<owner>/<repository>" line here.
+name: Mouflon Population
+maintainer: Mouflon Population maintainers

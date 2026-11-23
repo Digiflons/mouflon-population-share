@@ -1,0 +1,407 @@
+{
+ "Acrocephalus arundinaceus": {
+  "box": [
+   0.0,
+   0.28,
+   0.6,
+   0.72
+  ],
+  "commons_title": "File:Acrocephalus3 naumann.jpg",
+  "note": "multi-species plate: the large plain great reed warbler (left, middle) with its whole tail, feet and reed"
+ },
+ "Acrocephalus palustris": {
+  "box": "whole",
+  "commons_title": "File:Karekiet.jpg",
+  "note": "two near-identical warblers on one plate: whole plate"
+ },
+ "Acrocephalus schoenobaenus": {
+  "box": "whole",
+  "commons_title": "File:Acrocephalus3 naumann.jpg",
+  "note": "multi-species plate of streaked warblers: the sedge warbler cannot be told apart with certainty, whole plate"
+ },
+ "Acrocephalus scirpaceus": {
+  "box": "whole",
+  "commons_title": "File:Karekiet.jpg",
+  "note": "two near-identical warblers on one plate: whole plate"
+ },
+ "Actitis hypoleucos": {
+  "box": [
+   0.0,
+   0.055,
+   0.93,
+   0.915
+  ],
+  "commons_title": "File:Naumann (IX. 1) (5632199255).jpg",
+  "note": "three sandpipers overlap: the whole drawing, printed plate numbers and caption left out"
+ },
+ "Anas acuta": {
+  "box": [
+   0.25,
+   0.0,
+   1.0,
+   0.6
+  ],
+  "commons_title": "File:オナガガモ、トモエガモ、ハシビロガモ、ウスユキガモ、ミカヅキシマアジ.jpg",
+  "note": "multi-species duck plate: the pintail drake (top) with its whole tail and feet"
+ },
+ "Anthus petrosus": {
+  "box": "whole",
+  "commons_title": "File:Anthus sp.jpg",
+  "note": "two similar pipits on one plate: whole plate"
+ },
+ "Anthus spinoletta": {
+  "box": "whole",
+  "commons_title": "File:Anthus sp.jpg",
+  "note": "two similar pipits on one plate: whole plate"
+ },
+ "Calidris alpina": {
+  "box": [
+   0.06,
+   0.34,
+   0.56,
+   0.86
+  ],
+  "commons_title": "File:Three Calidris Species by Naumann.jpg",
+  "note": "multi-species plate: the black-bellied dunlin (left, middle) with bill, legs and feet"
+ },
+ "Calidris ferruginea": {
+  "box": [
+   0.4,
+   0.44,
+   1.0,
+   1.0
+  ],
+  "commons_title": "File:Three Calidris Species by Naumann.jpg",
+  "note": "multi-species plate: the brick-red curlew sandpiper (right, lower) with bill, tail and feet"
+ },
+ "Calidris minuta": {
+  "box": [
+   0.0,
+   0.2,
+   0.5,
+   1.0
+  ],
+  "commons_title": "File:Calidris alpina schinzi and Calidris minuta by Naumann.jpg",
+  "note": "plate with dunlins: the left column, both little stints and the chick"
+ },
+ "Carduelis carduelis": {
+  "box": [
+   0.0,
+   0.45,
+   0.55,
+   0.84
+  ],
+  "commons_title": "File:Fringillidae naumann.jpg",
+  "note": "multi-species finch plate: the goldfinch (left, lower) with its whole tail and perch"
+ },
+ "Chroicocephalus ridibundus": {
+  "box": "whole",
+  "commons_title": "File:Four Larus Species by Naumann.jpg",
+  "note": "several gulls in winter plumage: whole plate"
+ },
+ "Columba palumbus": {
+  "box": "whole",
+  "commons_title": "File:Columba palumbus by Naumann.jpg",
+  "note": "single-species scene plate: whole plate (the tail of the upper bird touches the plate's own edge)"
+ },
+ "Corvus monedula": {
+  "box": [
+   0.15,
+   0.5,
+   1.0,
+   1.0
+  ],
+  "commons_title": "File:Elster und Dohle.jpg",
+  "note": "plate with a magpie: the jackdaw (lower) with its whole tail and feet"
+ },
+ "Curruca curruca": {
+  "box": "whole",
+  "commons_title": "File:Sylvia curruca communis borin.jpg",
+  "note": "five similar warblers: whole plate"
+ },
+ "Cyanistes caeruleus": {
+  "box": [
+   0.36,
+   0.07,
+   0.96,
+   0.41
+  ],
+  "commons_title": "File:Aegithalus and Parus Species by Naumann.jpg",
+  "note": "multi-species plate: figures 1 and 2 (blue tit, yellow breast, blue cap) with wide margins; 0.5.2 showed the azure tit by mistake"
+ },
+ "Dendrocopos major": {
+  "box": "whole",
+  "commons_title": "File:Buntspecht Dendrocopos major1.jpg",
+  "note": "single-species scene plate: whole plate"
+ },
+ "Dendrocoptes medius": {
+  "box": [
+   0.38,
+   0.0,
+   0.86,
+   0.82
+  ],
+  "commons_title": "File:Three Picoides Species by Naumann.jpg",
+  "note": "plate with lesser spotted woodpeckers: both middle spotted woodpeckers (centre), tails included"
+ },
+ "Dryobates minor": {
+  "box": [
+   0.0,
+   0.04,
+   0.46,
+   0.985
+  ],
+  "commons_title": "File:Three Picoides Species by Naumann.jpg",
+  "note": "multi-species plate: the left column, both lesser spotted woodpeckers (male below, female above), tails and feet included"
+ },
+ "Erithacus rubecula": {
+  "box": [
+   0.06,
+   0.12,
+   0.96,
+   0.86
+  ],
+  "commons_title": "File:A history of the birds of Europe (Pl. 644) (6989225270).jpg",
+  "note": "drawing with wide margins; caption and engraver lines blanked",
+  "erase": [
+   [
+    0.0,
+    0.795,
+    1.0,
+    0.92
+   ]
+  ]
+ },
+ "Fringilla coelebs": {
+  "box": [
+   0.0,
+   0.08,
+   0.64,
+   0.56
+  ],
+  "commons_title": "File:Fringillidae naumann.jpg",
+  "note": "multi-species plate: the male chaffinch with its whole tail, perch and feet"
+ },
+ "Garrulus glandarius": {
+  "box": [
+   0.06,
+   0.2,
+   0.94,
+   0.9
+  ],
+  "commons_title": "File:A history of the birds of Europe (Pl. 686) (7135327803).jpg",
+  "note": "drawing with wide margins down to the tail tip; caption, scale and engraver lines blanked",
+  "erase": [
+   [
+    0.3,
+    0.79,
+    1.0,
+    0.92
+   ],
+   [
+    0.0,
+    0.843,
+    0.3,
+    0.92
+   ]
+  ]
+ },
+ "Himantopus himantopus": {
+  "box": [
+   0.0,
+   0.25,
+   0.64,
+   1.0
+  ],
+  "commons_title": "File:Himantopus himantopus and Recurvirostra avosetta by Naumann.jpg",
+  "note": "plate with avocets: the stilt with its whole legs, bill and chick"
+ },
+ "Hippolais polyglotta": {
+  "box": [
+   0.12,
+   0.44,
+   0.5,
+   0.88
+  ],
+  "commons_title": "File:Naumann2Naum 0109.jpg",
+  "note": "multi-species plate: figure 3, the melodious warbler (lower left), tail and perch included"
+ },
+ "Hydrocoloeus minutus": {
+  "box": "whole",
+  "commons_title": "File:Four Larus Species by Naumann.jpg",
+  "note": "several gulls in winter plumage: whole plate"
+ },
+ "Ichthyaetus melanocephalus": {
+  "box": "whole",
+  "commons_title": "File:Four Larus Species by Naumann.jpg",
+  "note": "several gulls in winter plumage: whole plate"
+ },
+ "Larus fuscus": {
+  "box": [
+   0.3,
+   0.0,
+   0.96,
+   0.6
+  ],
+  "commons_title": "File:Three Larus Species by Naumann 2.jpg",
+  "note": "multi-species gull plate: the yellow-legged dark-backed gull (top right), feet included"
+ },
+ "Larus marinus": {
+  "box": [
+   0.28,
+   0.38,
+   1.0,
+   1.0
+  ],
+  "commons_title": "File:Three Larus Species by Naumann 2.jpg",
+  "note": "multi-species gull plate: the pink-legged dark-backed gull (front), feet and tail included"
+ },
+ "Limosa lapponica": {
+  "box": "whole",
+  "commons_title": "File:Limosa limosa.jpg",
+  "note": "godwits overlap: whole plate"
+ },
+ "Limosa limosa": {
+  "box": "whole",
+  "commons_title": "File:Limosa limosa.jpg",
+  "note": "godwits overlap: whole plate"
+ },
+ "Parus major": {
+  "box": [
+   0.08,
+   0.08,
+   0.95,
+   0.86
+  ],
+  "commons_title": "File:A history of the birds of Europe (Pl. 656) (7135314451).jpg",
+  "note": "drawing with wide margins; caption and engraver lines blanked",
+  "erase": [
+   [
+    0.0,
+    0.79,
+    1.0,
+    0.92
+   ]
+  ]
+ },
+ "Passer domesticus": {
+  "box": "whole",
+  "commons_title": "File:Passer (Naumann).jpg",
+  "note": "single-species scene plate: whole plate"
+ },
+ "Passer montanus": {
+  "box": [
+   0.0,
+   0.53,
+   1.0,
+   0.95
+  ],
+  "commons_title": "File:Passer (Naumann).jpg",
+  "note": "plate with house sparrows: both tree sparrows (lower), tails and feet included"
+ },
+ "Phylloscopus collybita": {
+  "box": "whole",
+  "commons_title": "File:Four Phylloscopus Species by Naumann.jpg",
+  "note": "plate of four Phylloscopus warblers; which figure is the chiffchaff is not certain, so the whole plate"
+ },
+ "Pica pica": {
+  "box": "whole",
+  "commons_title": "File:Elster und Dohle.jpg",
+  "note": "magpie and jackdaw: the jackdaw overlaps the magpie's tail, so the whole plate rather than cut the tail"
+ },
+ "Pluvialis squatarola": {
+  "box": [
+   0.08,
+   0.42,
+   1.0,
+   0.95
+  ],
+  "commons_title": "File:Pluvialis apricaria and Pluvialis squatarola by Naumann.jpg",
+  "note": "plate with golden plovers: both grey plovers (lower), tail, bill and feet included"
+ },
+ "Poecile palustris": {
+  "box": "whole",
+  "commons_title": "File:Five Parus Species by Naumann.jpg",
+  "note": "five similar black-capped tits: whole plate"
+ },
+ "Prunella modularis": {
+  "box": "whole",
+  "commons_title": "File:Prunella modularis montanella.jpg",
+  "note": "two accentors on one plate; whole plate when in doubt"
+ },
+ "Streptopelia turtur": {
+  "box": "whole",
+  "commons_title": "File:Streptopelia turtur by Naumann.jpg",
+  "note": "single-species scene plate: whole plate"
+ },
+ "Sturnus vulgaris": {
+  "box": "whole",
+  "commons_title": "File:Sturnus vulgaris by Naumann.jpg",
+  "note": "single-species plate: whole plate"
+ },
+ "Sylvia atricapilla": {
+  "box": "whole",
+  "commons_title": "File:Sylvia atricapilla.jpg",
+  "note": "small scan: whole plate"
+ },
+ "Sylvia borin": {
+  "box": "whole",
+  "commons_title": "File:Sylvia curruca communis borin.jpg",
+  "note": "five similar warblers: whole plate"
+ },
+ "Tringa erythropus": {
+  "box": "whole",
+  "commons_title": "File:Tringa erythropus svartsnaeppa.jpg",
+  "note": "two overlapping shanks: whole plate"
+ },
+ "Tringa glareola": {
+  "box": [
+   0.0,
+   0.055,
+   0.93,
+   0.915
+  ],
+  "commons_title": "File:Naumann (IX. 1) (5632199255).jpg",
+  "note": "three sandpipers overlap: the whole drawing, printed plate numbers and caption left out"
+ },
+ "Tringa nebularia": {
+  "box": "whole",
+  "commons_title": "File:Tringa erythropus svartsnaeppa.jpg",
+  "note": "two overlapping shanks: whole plate"
+ },
+ "Tringa ochropus": {
+  "box": [
+   0.0,
+   0.055,
+   0.93,
+   0.915
+  ],
+  "commons_title": "File:Naumann (IX. 1) (5632199255).jpg",
+  "note": "three sandpipers overlap: the whole drawing, printed plate numbers and caption left out"
+ },
+ "Troglodytes troglodytes": {
+  "box": "whole",
+  "commons_title": "File:Zaunkoenig.jpg",
+  "note": "single-species plate: whole plate"
+ },
+ "Turdus merula": {
+  "box": "whole",
+  "commons_title": "File:Turdus merula 20050321.jpg",
+  "note": "male, female and young blackbird: whole plate (0.5.2 cut the male's tail)"
+ },
+ "Turdus pilaris": {
+  "box": [
+   0.08,
+   0.5,
+   0.93,
+   0.92
+  ],
+  "commons_title": "File:Naumann (I. 26) (6008183691).jpg",
+  "note": "plate with a song thrush: the fieldfare (lower) with its perch; caption left out"
+ },
+ "Upupa epops": {
+  "box": "whole",
+  "commons_title": "File:Hoopoe de.jpg",
+  "note": "single-species scene plate: whole plate"
+ }
+}

@@ -1,0 +1,19 @@
+# Phone notification for a rare bird (MOUL-47). Fires only for confirmed rare birds.
+# Replace notify.mobile_app_REPLACE_ME with your phone's notify action.
+alias: Oiseau rare entendu
+triggers:
+  - trigger: state
+    entity_id: event.mouflon_population_rare_bird
+    not_to: unavailable
+conditions:
+  # Remove this condition to also be notified of demo rarities.
+  - condition: template
+    value_template: "{{ not trigger.to_state.attributes.demo }}"
+actions:
+  - action: notify.mobile_app_REPLACE_ME
+    data:
+      title: "Oiseau rare : {{ trigger.to_state.attributes.common_name }}"
+      message: >-
+        {{ trigger.to_state.attributes.rarity.labels | join(', ') }}
+        — entendu par {{ trigger.to_state.attributes.source }}
+mode: queued

@@ -1,0 +1,81 @@
+name: Tests
+
+# Runs the unit tests and a dependency audit on every push to staging or main and on
+# every pull request into them.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, staging]
+  push:
+    branches: [main, staging]
+  workflow_dispatch:
+
+# Least privilege: the job only reads the code.
+permissions:
+  contents: read
+
+concurrency:
+  group: "${{ github.event.pull_request.number }}-${{ github.ref_name }}-${{ github.workflow }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  running-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # birdnet skips models already present, so a restored cache avoids re-fetching
+      # them. Under the workspace because job-level env cannot use `runner`.
+      BIRDNET_APP_DATA: ${{ github.workspace }}/.birdnet-app-data
+      # Models the test suite loads. Hashed into the cache key below.
+      PREDOWNLOAD: "import birdnet; birdnet.load('acoustic', '3.0', 'onnx', lang='en_us'); birdnet.load('acoustic', '2.4', 'tf', lang='en_us'); birdnet.load('geo', '3.0', 'onnx', lang='en_us'); birdnet.load('geo', '2.4', 'tf', lang='en_us'); birdnet.load('acoustic', '3.0', 'pb', lang='en_us'); birdnet.load('acoustic', '2.4', 'tf', precision='fp16', lang='en_us', library='litert'); birdnet.load('geo', '2.4', 'tf', lang='en_us', library='litert')"
+    steps:
+      # Actions are pinned to a full commit SHA (supply-chain hardening); the comment
+      # gives the human-readable version. Dependabot keeps them up to date.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          submodules: true
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.13"
+      - name: Set up uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          enable-cache: false
+      - name: Resolve model cache key
+        id: models
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib, os, re, tomllib
+
+          deps = tomllib.load(open("pyproject.toml", "rb"))["project"]["dependencies"]
+          pin = next(d for d in deps if re.match(r"birdnet\s*[=<>!~;\[]", d))
+          models = hashlib.sha256(os.environ["PREDOWNLOAD"].encode()).hexdigest()[:12]
+          print("key=" + re.sub(r"[^A-Za-z0-9._-]", "_", pin) + "-" + models)
+          PY
+      # Must stay after checkout: checkout's clean step would delete the restored models.
+      - name: Cache birdnet models
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.BIRDNET_APP_DATA }}
+          key: birdnet-models-${{ runner.os }}-${{ steps.models.outputs.key }}
+          restore-keys: |
+            birdnet-models-${{ runner.os }}-
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Install dependencies
+        run: uv pip install --system .[embeddings,train,tests,gui-tests] pip-audit
+      - name: Audit dependencies for known vulnerabilities
+        run: |
+          pip-audit --progress-spinner off --skip-editable
+          pip-audit --progress-spinner off --disable-pip --require-hashes -r app/requirements.lock
+          pip-audit --progress-spinner off --disable-pip --require-hashes -r tools/screen_preview/requirements.lock
+          pip-audit --progress-spinner off --disable-pip --require-hashes -r tools/illustrations/requirements-pack.lock
+      # Outside pytest: a cold download can exceed the per-test 120 s timeout.
+      - name: Pre-download birdnet models
+        shell: bash
+        run: python -c "$PREDOWNLOAD"
+      - name: Run tests
+        run: python -m pytest

@@ -1,0 +1,92 @@
+configuration:
+  test_mode:
+    name: Test mode
+    description: >-
+      Replays a bundled recording instead of listening to the cameras. Use it to
+      check the whole chain without waking the battery cameras.
+  demo_mode:
+    name: Demo mode (fake birds)
+    description: >-
+      Fills Home Assistant with INVENTED bird detections, to preview the entities
+      and history while no microphone is connected. No audio, no model; marked
+      "Démo" and demo true everywhere, and never written to the real bird log.
+      Needs test mode off and every audio source disabled. Turning it off resets
+      the counters.
+  sources:
+    name: Audio sources
+    description: >-
+      One entry per camera or microphone. For a camera or hub, url is its
+      RTSP address without the login (for example
+      rtsp://192.0.2.10:554/stream1); type the user and its
+      password in the username and password fields. battery_entity is the
+      camera's battery sensor in Home Assistant (leave empty for mains-powered
+      sources). Set enabled to true to use the source.
+  listening_mode:
+    name: When to listen
+    description: >-
+      daylight (default) listens continuously from sunrise to sunset, using Home
+      Assistant's sun entity; windows uses the listening windows below; always
+      never stops for the time of day. The battery watch applies in every mode.
+  listening_windows:
+    name: Listening windows
+    description: >-
+      Used only when "When to listen" is windows. Times of day like 05:30-08:30.
+  battery_stop_below:
+    name: Battery stop threshold (%)
+    description: Below this level the App stops waking the camera.
+  battery_resume_above:
+    name: Battery restart level (%)
+    description: After a stop, the App resumes only above this level.
+  battery_max_drop_per_day:
+    name: Maximum battery drop per day (%)
+    description: If the battery falls faster than this over 24 hours, the App pauses.
+  min_confidence:
+    name: Minimum confidence
+    description: Detections below this BirdNET confidence (0.1 to 0.99) are ignored.
+  language:
+    name: Language
+    description: >-
+      French (fr, default) for every text the App shows; other choices change
+      the bird names and show the rest in English.
+  species_filter:
+    name: Local species filter
+    description: >-
+      Keep only species expected at the home location this time of year (uses
+      Home Assistant's home location, which stays on the Pi).
+  wind_entity:
+    name: Wind sensor (optional)
+    description: Wind speed sensor in km/h, for example a weather station's anemometer.
+  rain_entity:
+    name: Rain sensor (optional)
+    description: Rain sensor; listening pauses while it is above zero.
+  max_wind_kmh:
+    name: Maximum wind (km/h)
+  log_retention_days:
+    name: Bird log retention (days)
+    description: Detections older than this are deleted.
+  rare_garden_days:
+    name: Rare in the garden (days)
+    description: A species heard on fewer distinct days than this in the last year is "rare in the garden".
+  regional_threshold:
+    name: Unusual in the region (threshold)
+    description: Below this regional probability for the week, a species is "unusual".
+  rare_min_confidence:
+    name: Confidence needed to confirm
+    description: A new or rare bird is confirmed after two detections at or above this confidence.
+  rare_confirm_minutes:
+    name: Confirmation window (minutes)
+    description: The second detection must come within this many minutes.
+  screen_enabled:
+    name: E-ink screen images
+    description: Renders the screen pages as Home Assistant images (Screen entities).
+  screen_size:
+    name: Screen size (pixels)
+    description: Width x height, for example 480x800 (7.3 inch) or 1200x1600 (13.3 inch).
+  screen_refresh_minutes:
+    name: Screen refresh (minutes)
+    description: The screen changes at most this often, like a real e-ink frame.
+  screen_view:
+    name: Screen view
+    description: >-
+      collage shows one page with the last bird large in the middle; alternate
+      shows the last bird, then today's birds, in turn at each refresh.

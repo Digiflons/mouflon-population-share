@@ -1,0 +1,36 @@
+// MOUL-57: live e-ink screen preview next to the code. Local only: the watcher
+// writes files, Live Preview (127.0.0.1) shows docs/screen-preview/preview.html.
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Aperçu écran e-ink",
+            "dependsOn": ["Écran : surveiller", "Écran : ouvrir l'aperçu"],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "Écran : surveiller",
+            "type": "process",
+            "command": "${workspaceFolder}/tools/screen_preview/run.sh",
+            "isBackground": true,
+            "presentation": {"reveal": "always", "panel": "dedicated"},
+            "problemMatcher": {
+                "owner": "mouflon-screen",
+                "pattern": {"regexp": "^Erreur de rendu\\.(.*)$", "message": 1},
+                "background": {
+                    "activesBegin": true,
+                    "beginsPattern": "^Rendu en cours",
+                    "endsPattern": "^(Aperçu prêt|Erreur de rendu)"
+                }
+            }
+        },
+        {
+            "label": "Écran : ouvrir l'aperçu",
+            "type": "shell",
+            "command": "echo Aperçu ouvert ${command:livePreview.start}",
+            "presentation": {"reveal": "silent"},
+            "problemMatcher": []
+        }
+    ]
+}

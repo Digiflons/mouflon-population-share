@@ -1,0 +1,494 @@
+import os
+from pathlib import Path
+
+import gradio as gr
+
+import birdnet_analyzer.config as cfg
+import birdnet_analyzer.gui.localization as loc
+import birdnet_analyzer.gui.utils as gu
+from birdnet_analyzer import utils
+from birdnet_analyzer.analyze.core import (
+    result_dataframe,
+    save_as_csv,
+    save_as_kaleidoscope,
+    save_as_rtable,
+)
+from birdnet_analyzer.gui.state import TabState
+
+MATPLOTLIB_FIGURE_NUM = "single-file-tab-spectrogram-plot"
+MAX_TABLE_ROWS = 50
+_HEADER_LABELS = {
+    "HEADER_START_LBL": "single-tab-output-header-start",
+    "HEADER_END_LBL": "single-tab-output-header-end",
+    "HEADER_SCI_NAME_LBL": "single-tab-output-header-sci-name",
+    "HEADER_COMMON_NAME_LBL": "single-tab-output-header-common-name",
+    "HEADER_CONFIDENCE_LBL": "single-tab-output-header-confidence",
+}
+
+
+def _header_labels() -> list[str]:
+    return [loc.localize(key) for key in _HEADER_LABELS.values()]
+
+
+def __getattr__(name: str) -> str:
+    if name in _HEADER_LABELS:
+        return loc.localize(_HEADER_LABELS[name])
+
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
+# What every embedded browser plays; WebKit before macOS 15.4 has no Ogg.
+BROWSER_PLAYABLE = (".wav", ".flac", ".mp3")
+
+
+def audio_preview(path: str):
+    """The player's value for a file: the file itself when the browser can play it."""
+    import soundfile as sf
+
+    # An unreadable file fails here with its reason, not silently in the player.
+    info = sf.info(path)
+    # A wav may hold anything; 16 and 24 bit PCM is what every browser plays.
+    uncommon_wav = info.format.startswith("WAV") and info.subtype not in (
+        "PCM_16",
+        "PCM_24",
+    )
+
+    if path.lower().endswith(BROWSER_PLAYABLE) and not uncommon_wav:
+        # Served from where it is; gradio would otherwise hash and copy it into its
+        # cache, seconds and a second copy on disk for a long recording.
+        gr.set_static_paths([path])
+
+        return path
+
+    data, rate = sf.read(path, dtype="float32")
+
+    return rate, data
+
+
+@gu.gui_runtime_error_handler
+def run_single_file_analysis(
+    input_path,
+    use_top_n,
+    top_n,
+    confidence,
+    sensitivity,
+    overlap,
+    merge_consecutive,
+    audio_speed,
+    fmin,
+    fmax,
+    species_list_choice,
+    species_list_file,
+    lat,
+    lon,
+    week,
+    use_yearlong,
+    sf_thresh,
+    selected_model,
+    custom_classifier_file,
+    locale,
+    progress=gr.Progress(),
+):
+    from datetime import timedelta
+
+    from birdnet_analyzer.gui.analysis import run_analysis
+
+    gu.validate(input_path, loc.localize("validation-no-file-selected"))
+
+    predictions = run_analysis(
+        input_path=input_path,
+        output_path=None,
+        use_top_n=use_top_n,
+        top_n=top_n,
+        confidence=confidence,
+        sensitivity=sensitivity,
+        overlap=overlap,
+        merge_consecutive=merge_consecutive,
+        audio_speed=audio_speed,
+        fmin=fmin,
+        fmax=fmax,
+        species_list_choice=species_list_choice,
+        species_list_file=species_list_file,
+        lat=lat,
+        lon=lon,
+        week=week,
+        use_yearlong=use_yearlong,
+        sf_thresh=sf_thresh,
+        selected_model=selected_model,
+        custom_classifier_file=custom_classifier_file,
+        output_types="csv",
+        additional_columns=None,
+        locale=locale or "en_us",
+        batch_size=1,
+        input_dir=None,
+        save_params=False,
+        n_producers=1,
+        n_workers=1,
+        progress=progress,
+    )
+
+    def convert_to_time_str(seconds: float) -> str:
+        time_str = str(timedelta(seconds=seconds))
+        if "." in time_str:
+            time_str = time_str[: time_str.index(".") + 2]
+        return time_str
+
+    detections = result_dataframe(predictions, merge_consecutive)
+    table = detections.copy()
+    n_total = table.shape[0]
+
+    if n_total > MAX_TABLE_ROWS:
+        # nlargest has no float16 kernel
+        table["confidence"] = table["confidence"].astype("float32")
+        table = table.nlargest(MAX_TABLE_ROWS, "confidence").sort_values(
+            ["start_time", "end_time"]
+        )
+        gr.Warning(
+            loc.localize("single-tab-results-truncated-warning").format(
+                shown=MAX_TABLE_ROWS, total=n_total
+            )
+        )
+
+    n_rows = table.shape[0]
+    start_lbl, end_lbl, sci_name_lbl, common_name_lbl, confidence_lbl = _header_labels()
+
+    if n_rows > 0:
+        split_species = table["species_name"].str.split("_", n=1, expand=True)
+        table[sci_name_lbl] = split_species[0]
+        table[common_name_lbl] = (
+            split_species[1] if len(split_species.columns) > 1 else ""
+        )
+    else:
+        table[sci_name_lbl] = []
+        table[common_name_lbl] = []
+
+    table[" "] = ["▶"] * n_rows
+    table.rename(
+        columns={
+            "start_time": start_lbl,
+            "end_time": end_lbl,
+            "confidence": confidence_lbl,
+        },
+        inplace=True,
+    )
+    table[start_lbl] = table[start_lbl].apply(convert_to_time_str)
+    table[end_lbl] = table[end_lbl].apply(convert_to_time_str)
+    table = table[
+        [
+            " ",
+            start_lbl,
+            end_lbl,
+            sci_name_lbl,
+            common_name_lbl,
+            confidence_lbl,
+        ]
+    ]
+    table[confidence_lbl] = table[confidence_lbl].apply(lambda x: f"{x:0.3f}")
+
+    return (
+        table,
+        gr.update(visible=True),
+        {
+            "predictions": predictions,
+            "table": detections,
+            "fmin": fmin,
+            "fmax": fmax,
+            "overlap": overlap,
+            "sensitivity": sensitivity,
+            "lat": lat,
+            "lon": lon,
+            "week": week,
+        },
+    )
+
+
+def build_single_analysis_tab() -> None:
+    state = TabState("single")
+
+    with gr.Tab(loc.localize("single-tab-title")):
+        gu.info_box(
+            description=loc.localize("single-tab-info-text"),
+            title=loc.localize("single-tab-info-title"),
+        )
+
+        with gr.Group(), gr.Row(equal_height=True):
+            select_file_button = gr.Button(
+                loc.localize("single-tab-select-file-button-label"),
+                variant="primary",
+            )
+            selected_file_label = gr.Textbox(
+                show_label=False,
+                interactive=False,
+                placeholder=loc.localize("single-tab-no-file-selected-placeholder"),
+                scale=3,
+                rtl=True,
+                max_lines=1,
+                elem_classes="path-textbox",
+            )
+
+        audio_input = gr.Audio(
+            type="filepath",
+            label=loc.localize("single-audio-label"),
+            interactive=False,
+            visible=False,
+            buttons=[],
+            editable=False,
+            # The browser's own player streams the file; the waveform player downloads
+            # and decodes all of it before it shows anything.
+            waveform_options=gr.WaveformOptions(show_recording_waveform=False),
+        )
+
+        with gr.Group(visible=False) as spectrogram_group:
+            spectrogram_output = gr.Plot(
+                label=loc.localize("review-tab-spectrogram-plot-label"),
+                show_label=False,
+            )
+        generate_spectrogram_cb = state.persist(
+            "generate_spectrogram_checkbox",
+            gr.Checkbox,
+            value=False,
+            label=loc.localize("single-tab-spectrogram-checkbox-label"),
+            info=loc.localize("single-tab-spectrogram-checkbox-info"),
+        )
+        audio_path_state = gr.State()
+        spectrogram_request = gr.State()
+        last_prediction_state = gr.State()
+        sample_settings, species_settings, model_settings = (
+            gu.sample_species_model_settings(state, opened=False)
+        )
+
+        single_file_analyze = gr.Button(
+            loc.localize("analyze-start-button-label"),
+            variant="primary",
+            interactive=False,
+        )
+
+        with gr.Row(visible=False) as action_row:
+            with gr.Group(), gr.Column():
+                rtable_download_button = gr.Button(
+                    loc.localize("single-tab-download-rtable-button-label")
+                )
+                csv_download_button = gr.Button(
+                    loc.localize("single-tab-download-csv-button-label")
+                )
+                kaleidoscope_download_button = gr.Button(
+                    loc.localize("single-tab-download-kaleidoscope-button-label")
+                )
+            segment_audio = gr.Audio(
+                autoplay=True,
+                type="numpy",
+                buttons=["download"],
+                show_label=False,
+                editable=False,
+                visible=False,
+            )
+
+        output_dataframe = gr.Dataframe(
+            type="pandas",
+            headers=[" ", *_header_labels()],
+            elem_id="single-file-output",
+            interactive=False,
+            buttons=[],
+            visible=False,
+        )
+
+        @gu.gui_runtime_error_handler
+        def select_and_load_audio_file():
+            """Use webview dialog to select audio file and load it."""
+            file_path = gu.select_file(
+                filetypes=("Audio files (*.wav;*.flac;*.mp3;*.ogg;*.aiff;*.aif)",),
+                state_key="single_file_audio",
+            )
+
+            if not file_path:
+                return gr.skip(), gr.skip(), gr.skip(), gr.skip(), None
+
+            preview = audio_preview(file_path)
+
+            return (
+                file_path,
+                file_path,
+                gr.update(
+                    visible=True,
+                    value=preview,
+                    label=os.path.basename(file_path),
+                ),
+                gr.update(interactive=True),
+                file_path,
+            )
+
+        def spectrogram_updates(audio_path, generate_spectrogram):
+            if not (audio_path and generate_spectrogram):
+                return gr.update(visible=False), None
+
+            try:
+                figure = utils.spectrogram_from_file(
+                    audio_path,
+                    fig_size=(20, 4),
+                    fig_num=MATPLOTLIB_FIGURE_NUM,
+                    **gu.spectrogram_settings(),
+                )
+            except Exception as e:
+                raise gr.Error(
+                    loc.localize("single-tab-generate-spectrogram-error")
+                ) from e
+
+            return gr.update(visible=True), gr.update(visible=True, value=figure)
+
+        @gu.gui_runtime_error_handler
+        def try_generate_spectrogram(audio_path, generate_spectrogram):
+            return spectrogram_updates(audio_path, generate_spectrogram)
+
+        @gu.gui_runtime_error_handler
+        def draw_spectrogram_for_selection(file_path, generate_spectrogram):
+            # None: the dialog was cancelled and the shown spectrogram stays.
+            if file_path is None:
+                return gr.skip(), gr.skip()
+
+            return spectrogram_updates(file_path, generate_spectrogram)
+
+        generate_spectrogram_cb.change(
+            try_generate_spectrogram,
+            inputs=[audio_path_state, generate_spectrogram_cb],
+            outputs=[spectrogram_group, spectrogram_output],
+            show_progress_on=generate_spectrogram_cb,
+        )
+
+        # The player first; the spectrogram follows and may fail on its own.
+        select_file_button.click(
+            select_and_load_audio_file,
+            outputs=[
+                audio_path_state,
+                selected_file_label,
+                audio_input,
+                single_file_analyze,
+                spectrogram_request,
+            ],
+        ).then(
+            draw_spectrogram_for_selection,
+            inputs=[spectrogram_request, generate_spectrogram_cb],
+            outputs=[spectrogram_group, spectrogram_output],
+            show_progress_on=generate_spectrogram_cb,
+        )
+
+        inputs = [
+            audio_path_state,
+            sample_settings["use_top_n_checkbox"],
+            sample_settings["top_n_input"],
+            sample_settings["confidence_slider"],
+            sample_settings["sensitivity_slider"],
+            sample_settings["overlap_slider"],
+            sample_settings["merge_consecutive_slider"],
+            sample_settings["audio_speed_slider"],
+            sample_settings["fmin_number"],
+            sample_settings["fmax_number"],
+            species_settings["species_list_radio"],
+            species_settings["species_file_state"],
+            species_settings["lat_number"],
+            species_settings["lon_number"],
+            species_settings["week_number"],
+            species_settings["yearlong_checkbox"],
+            species_settings["sf_thresh_number"],
+            model_settings["model_selection_radio"],
+            model_settings["selected_classifier_state"],
+            model_settings["locale_dropdown"],
+        ]
+
+        def time_to_seconds(time_str: str):
+            try:
+                hours, minutes, seconds = time_str.split(":")
+                return int(hours) * 3600 + int(minutes) * 60 + float(seconds)
+
+            except ValueError as e:
+                raise ValueError(
+                    "Input must be in the format hh:mm:ss or hh:mm:ss.ssssss "
+                    "with numeric values."
+                ) from e
+
+        @gu.gui_runtime_error_handler
+        def get_selected_audio(evt: gr.SelectData, audio_path):
+            from birdnet_analyzer import audio
+
+            if evt.index[1] == 0 and evt.row_value[1] and evt.row_value[2]:
+                start = time_to_seconds(evt.row_value[1])
+                end = time_to_seconds(evt.row_value[2])
+
+                data, sr = audio.open_audio_file(
+                    audio_path, offset=start, duration=end - start
+                )
+
+                return gr.update(visible=True, value=(sr, data))
+
+            return gr.update()
+
+        @gu.gui_runtime_error_handler
+        def download_rtable(prediction_state):
+            if prediction_state:
+                file_location = gu.save_file_dialog(
+                    state_key="single-file-table",
+                    default_filename=cfg.OUTPUT_RAVEN_FILENAME,
+                    filetypes=("txt (*.txt)",),
+                )
+
+                if file_location:
+                    save_as_rtable(
+                        prediction_state["table"],
+                        prediction_state["fmin"],
+                        prediction_state["fmax"],
+                        prediction_state["predictions"].model_fmin,
+                        prediction_state["predictions"].model_fmax,
+                        prediction_state["predictions"].speed,
+                        Path(file_location),
+                    )
+
+        @gu.gui_runtime_error_handler
+        def download_csv(prediction_state):
+            if prediction_state:
+                file_location = gu.save_file_dialog(
+                    state_key="single-file-table",
+                    default_filename=cfg.OUTPUT_CSV_FILENAME,
+                    filetypes=("CSV (*.csv)",),
+                )
+
+                if file_location:
+                    save_as_csv(
+                        prediction_state["table"],
+                        Path(file_location),
+                    )
+
+        @gu.gui_runtime_error_handler
+        def download_kaleidoscope(prediction_state):
+            if prediction_state:
+                file_location = gu.save_file_dialog(
+                    state_key="single-file-table",
+                    default_filename=cfg.OUTPUT_KALEIDOSCOPE_FILENAME,
+                    filetypes=("Kaleidoscope (*.csv)",),
+                )
+
+                if file_location:
+                    save_as_kaleidoscope(
+                        prediction_state["table"],
+                        Path(file_location),
+                    )
+
+        output_dataframe.select(
+            get_selected_audio, inputs=audio_path_state, outputs=segment_audio
+        )
+        single_file_analyze.click(
+            lambda: gr.update(visible=True),
+            outputs=output_dataframe,
+            show_progress="hidden",
+        ).then(
+            run_single_file_analysis,
+            inputs=inputs,
+            outputs=[output_dataframe, action_row, last_prediction_state],
+        )
+        rtable_download_button.click(download_rtable, inputs=last_prediction_state)
+        csv_download_button.click(download_csv, inputs=last_prediction_state)
+        kaleidoscope_download_button.click(
+            download_kaleidoscope, inputs=last_prediction_state
+        )
+
+
+if __name__ == "__main__":
+    gu.open_window(build_single_analysis_tab)

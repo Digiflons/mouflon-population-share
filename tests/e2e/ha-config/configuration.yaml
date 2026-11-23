@@ -1,0 +1,9 @@
+homeassistant:
+  name: Mouflon E2E
+  time_zone: Europe/Brussels
+  latitude: 50.85
+  longitude: 4.35
+  unit_system: metric
+http:
+api:
+config:

@@ -1,0 +1,16 @@
+{
+  "test_mode": true,
+  "sources": [],
+  "listening_mode": "daylight",
+  "listening_windows": [],
+  "battery_stop_below": 40,
+  "battery_resume_above": 60,
+  "battery_max_drop_per_day": 15,
+  "min_confidence": 0.5,
+  "language": "fr",
+  "species_filter": true,
+  "wind_entity": "",
+  "rain_entity": "",
+  "max_wind_kmh": 25,
+  "log_retention_days": 365
+}

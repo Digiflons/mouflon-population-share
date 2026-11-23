@@ -1,0 +1,1196 @@
+{
+ "species": {
+  "Acanthis cabaret": {
+   "common_name": "Lesser Redpoll",
+   "iucn": null
+  },
+  "Accipiter gentilis": {
+   "common_name": "Northern Goshawk",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Accipiter gentilis. Public domain, via Wikimedia Commons.",
+   "image": "accipiter_gentilis.jpg",
+   "iucn": "LC"
+  },
+  "Accipiter nisus": {
+   "common_name": "Eurasian Sparrowhawk",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Sparrowhawk04. Public domain, via Wikimedia Commons.",
+   "image": "accipiter_nisus.jpg",
+   "iucn": "LC"
+  },
+  "Acrocephalus arundinaceus": {
+   "common_name": "Great Reed Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Acrocephalus3 naumann. Public domain, via Wikimedia Commons.",
+   "image": "acrocephalus_arundinaceus.jpg",
+   "iucn": "LC"
+  },
+  "Acrocephalus palustris": {
+   "common_name": "Marsh Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Karekiet. Public domain, via Wikimedia Commons.",
+   "image": "acrocephalus_palustris.jpg",
+   "iucn": "LC"
+  },
+  "Acrocephalus schoenobaenus": {
+   "common_name": "Sedge Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Acrocephalus3 naumann. Public domain, via Wikimedia Commons.",
+   "image": "acrocephalus_schoenobaenus.jpg",
+   "iucn": "LC"
+  },
+  "Acrocephalus scirpaceus": {
+   "common_name": "Eurasian Reed Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Karekiet. Public domain, via Wikimedia Commons.",
+   "image": "acrocephalus_scirpaceus.jpg",
+   "iucn": "LC"
+  },
+  "Actitis hypoleucos": {
+   "common_name": "Common Sandpiper",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band IX, Tafel 1. Public domain, via Wikimedia Commons.",
+   "image": "actitis_hypoleucos.jpg",
+   "iucn": "LC"
+  },
+  "Aegithalos caudatus": {
+   "common_name": "Long-tailed Tit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Aegithalos caudatus 5. Public domain, via Wikimedia Commons.",
+   "image": "aegithalos_caudatus.jpg",
+   "iucn": "LC"
+  },
+  "Aix galericulata": {
+   "common_name": "Mandarin Duck",
+   "iucn": "LC"
+  },
+  "Alauda arvensis": {
+   "common_name": "Eurasian Skylark",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Skylark59. Public domain, via Wikimedia Commons.",
+   "image": "alauda_arvensis.jpg",
+   "iucn": "LC"
+  },
+  "Alca torda": {
+   "common_name": "Razorbill",
+   "iucn": "LC"
+  },
+  "Alcedo atthis": {
+   "common_name": "Common Kingfisher",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Kingfisher. Public domain, via Wikimedia Commons.",
+   "image": "alcedo_atthis.jpg",
+   "iucn": "LC"
+  },
+  "Alectoris rufa": {
+   "common_name": "Red-legged Partridge",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Redleggedpartridge35. Public domain, via Wikimedia Commons.",
+   "image": "alectoris_rufa.jpg",
+   "iucn": "NT"
+  },
+  "Alopochen aegyptiaca": {
+   "common_name": "Egyptian Goose",
+   "iucn": "LC"
+  },
+  "Anas acuta": {
+   "common_name": "Northern Pintail",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, オナガガモ、トモエガモ、ハシビロガモ、ウスユキガモ、ミカヅキシマアジ. Public domain, via Wikimedia Commons.",
+   "image": "anas_acuta.jpg",
+   "iucn": "LC"
+  },
+  "Anas crecca": {
+   "common_name": "Green-winged Teal",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Naturgeschichte der Vögel Mitteleuropas - Common Teal. Public domain, via Wikimedia Commons.",
+   "image": "anas_crecca.jpg",
+   "iucn": "LC"
+  },
+  "Anas platyrhynchos": {
+   "common_name": "Mallard",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Stockente-Naumann. Public domain, via Wikimedia Commons.",
+   "image": "anas_platyrhynchos.jpg",
+   "iucn": "LC"
+  },
+  "Anser albifrons": {
+   "common_name": "Greater White-fronted Goose",
+   "iucn": "LC"
+  },
+  "Anser anser": {
+   "common_name": "Graylag Goose",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Greylag. Public domain, via Wikimedia Commons.",
+   "image": "anser_anser.jpg",
+   "iucn": "LC"
+  },
+  "Anser brachyrhynchus": {
+   "common_name": "Pink-footed Goose",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Saatgans und Kurzschnabelgans. Public domain, via Wikimedia Commons.",
+   "image": "anser_brachyrhynchus.jpg",
+   "iucn": "LC"
+  },
+  "Anser serrirostris": {
+   "common_name": "Tundra Bean-Goose",
+   "iucn": null
+  },
+  "Anthus petrosus": {
+   "common_name": "Rock Pipit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Anthus sp. Public domain, via Wikimedia Commons.",
+   "image": "anthus_petrosus.jpg",
+   "iucn": "LC"
+  },
+  "Anthus pratensis": {
+   "common_name": "Meadow Pipit",
+   "iucn": "LC"
+  },
+  "Anthus spinoletta": {
+   "common_name": "Water Pipit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Anthus sp. Public domain, via Wikimedia Commons.",
+   "image": "anthus_spinoletta.jpg",
+   "iucn": "LC"
+  },
+  "Anthus trivialis": {
+   "common_name": "Tree Pipit",
+   "iucn": "LC"
+  },
+  "Apus apus": {
+   "common_name": "Common Swift",
+   "iucn": "LC"
+  },
+  "Ardea alba": {
+   "common_name": "Great Egret",
+   "iucn": "LC"
+  },
+  "Ardea cinerea": {
+   "common_name": "Gray Heron",
+   "iucn": "LC"
+  },
+  "Ardea purpurea": {
+   "common_name": "Purple Heron",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Ardea purpurea. Public domain, via Wikimedia Commons.",
+   "image": "ardea_purpurea.jpg",
+   "iucn": "LC"
+  },
+  "Arenaria interpres": {
+   "common_name": "Ruddy Turnstone",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Arenaria interpres and Charadrius asiaticus by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "arenaria_interpres.jpg",
+   "iucn": "NT"
+  },
+  "Aythya ferina": {
+   "common_name": "Common Pochard",
+   "iucn": "VU"
+  },
+  "Aythya fuligula": {
+   "common_name": "Tufted Duck",
+   "iucn": "LC"
+  },
+  "Aythya marila": {
+   "common_name": "Greater Scaup",
+   "iucn": "LC"
+  },
+  "Botaurus stellaris": {
+   "common_name": "Great Bittern",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Botaurus stellaris drawing. Public domain, via Wikimedia Commons.",
+   "image": "botaurus_stellaris.jpg",
+   "iucn": "LC"
+  },
+  "Branta bernicla": {
+   "common_name": "Brant",
+   "iucn": "LC"
+  },
+  "Branta canadensis": {
+   "common_name": "Canada Goose",
+   "iucn": "LC"
+  },
+  "Branta leucopsis": {
+   "common_name": "Barnacle Goose",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Branta leucopsis and Branta ruficollis by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "branta_leucopsis.jpg",
+   "iucn": "LC"
+  },
+  "Bubulcus ibis": {
+   "common_name": "Cattle Egret",
+   "iucn": "LC"
+  },
+  "Bucephala clangula": {
+   "common_name": "Common Goldeneye",
+   "iucn": "LC"
+  },
+  "Buteo buteo": {
+   "common_name": "Common Buzzard",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Poster Buteo buteo. Public domain, via Wikimedia Commons.",
+   "image": "buteo_buteo.jpg",
+   "iucn": "LC"
+  },
+  "Calidris alba": {
+   "common_name": "Sanderling",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Calidris alba and Calidris falcinellus by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "calidris_alba.jpg",
+   "iucn": "LC"
+  },
+  "Calidris alpina": {
+   "common_name": "Dunlin",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Three Calidris Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "calidris_alpina.jpg",
+   "iucn": "NT"
+  },
+  "Calidris canutus": {
+   "common_name": "Red Knot",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Calidris canutus and Calidris maritima by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "calidris_canutus.jpg",
+   "iucn": "NT"
+  },
+  "Calidris ferruginea": {
+   "common_name": "Curlew Sandpiper",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Three Calidris Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "calidris_ferruginea.jpg",
+   "iucn": "VU"
+  },
+  "Calidris minuta": {
+   "common_name": "Little Stint",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Calidris alpina schinzi and Calidris minuta by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "calidris_minuta.jpg",
+   "iucn": "LC"
+  },
+  "Calidris pugnax": {
+   "common_name": "Ruff",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Ruff90. Public domain, via Wikimedia Commons.",
+   "image": "calidris_pugnax.jpg",
+   "iucn": "LC"
+  },
+  "Carduelis carduelis": {
+   "common_name": "European Goldfinch",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Fringillidae naumann. Public domain, via Wikimedia Commons.",
+   "image": "carduelis_carduelis.jpg",
+   "iucn": "LC"
+  },
+  "Certhia brachydactyla": {
+   "common_name": "Short-toed Treecreeper",
+   "iucn": "LC"
+  },
+  "Certhia familiaris": {
+   "common_name": "Eurasian Treecreeper",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Treecreepers14. Public domain, via Wikimedia Commons.",
+   "image": "certhia_familiaris.jpg",
+   "iucn": "LC"
+  },
+  "Cettia cetti": {
+   "common_name": "Cetti's Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Cetti's zanger. Public domain, via Wikimedia Commons.",
+   "image": "cettia_cetti.jpg",
+   "iucn": "LC"
+  },
+  "Charadrius dubius": {
+   "common_name": "Little Ringed Plover",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Charadrius dubius. Public domain, via Wikimedia Commons.",
+   "image": "charadrius_dubius.jpg",
+   "iucn": "LC"
+  },
+  "Charadrius hiaticula": {
+   "common_name": "Common Ringed Plover",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Charadrius hiaticula (Naumann). Public domain, via Wikimedia Commons.",
+   "image": "charadrius_hiaticula.jpg",
+   "iucn": "LC"
+  },
+  "Chlidonias niger": {
+   "common_name": "Black Tern",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Three Chlidonias Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "chlidonias_niger.jpg",
+   "iucn": "LC"
+  },
+  "Chloris chloris": {
+   "common_name": "European Greenfinch",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, C chloris m nivalis naumann. Public domain, via Wikimedia Commons.",
+   "image": "chloris_chloris.jpg",
+   "iucn": "LC"
+  },
+  "Chroicocephalus ridibundus": {
+   "common_name": "Black-headed Gull",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Four Larus Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "chroicocephalus_ridibundus.jpg",
+   "iucn": "LC"
+  },
+  "Ciconia ciconia": {
+   "common_name": "White Stork",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Ciconia ciconia by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "ciconia_ciconia.jpg",
+   "iucn": "LC"
+  },
+  "Cinclus cinclus": {
+   "common_name": "White-throated Dipper",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Wasseramsel. Public domain, via Wikimedia Commons.",
+   "image": "cinclus_cinclus.jpg",
+   "iucn": "LC"
+  },
+  "Circus aeruginosus": {
+   "common_name": "Eurasian Marsh-Harrier",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Rohrweihe. Public domain, via Wikimedia Commons.",
+   "image": "circus_aeruginosus.jpg",
+   "iucn": "LC"
+  },
+  "Circus cyaneus": {
+   "common_name": "Hen Harrier",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Henharrier. Public domain, via Wikimedia Commons.",
+   "image": "circus_cyaneus.jpg",
+   "iucn": "LC"
+  },
+  "Cisticola juncidis": {
+   "common_name": "Zitting Cisticola",
+   "iucn": "LC"
+  },
+  "Clangula hyemalis": {
+   "common_name": "Long-tailed Duck",
+   "iucn": "VU"
+  },
+  "Coccothraustes coccothraustes": {
+   "common_name": "Hawfinch",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, C coccothraustes naumann. Public domain, via Wikimedia Commons.",
+   "image": "coccothraustes_coccothraustes.jpg",
+   "iucn": "LC"
+  },
+  "Columba livia": {
+   "common_name": "Rock Pigeon",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Columba livia by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "columba_livia.jpg",
+   "iucn": "LC"
+  },
+  "Columba oenas": {
+   "common_name": "Stock Dove",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Columba oenas by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "columba_oenas.jpg",
+   "iucn": "LC"
+  },
+  "Columba palumbus": {
+   "common_name": "Common Wood-Pigeon",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Columba palumbus by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "columba_palumbus.jpg",
+   "iucn": "LC"
+  },
+  "Corvus corax": {
+   "common_name": "Common Raven",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Corvus corax corax (Kpjas). Public domain, via Wikimedia Commons.",
+   "image": "corvus_corax.jpg",
+   "iucn": "LC"
+  },
+  "Corvus corone": {
+   "common_name": "Carrion Crow",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Corvus cornix (PD). Public domain, via Wikimedia Commons.",
+   "image": "corvus_corone.jpg",
+   "iucn": "LC"
+  },
+  "Corvus frugilegus": {
+   "common_name": "Rook",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Rook paint. Public domain, via Wikimedia Commons.",
+   "image": "corvus_frugilegus.jpg",
+   "iucn": "LC"
+  },
+  "Corvus monedula": {
+   "common_name": "Eurasian Jackdaw",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band IV, Tafel 10. Public domain, via Wikimedia Commons.",
+   "image": "corvus_monedula.jpg",
+   "iucn": "LC"
+  },
+  "Cuculus canorus": {
+   "common_name": "Common Cuckoo",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Cuculus canorus. Public domain, via Wikimedia Commons.",
+   "image": "cuculus_canorus.jpg",
+   "iucn": "LC"
+  },
+  "Curruca communis": {
+   "common_name": "Greater Whitethroat",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Sylvia communis. Public domain, via Wikimedia Commons.",
+   "image": "curruca_communis.jpg",
+   "iucn": "LC"
+  },
+  "Curruca curruca": {
+   "common_name": "Lesser Whitethroat",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Sylvia curruca communis borin. Public domain, via Wikimedia Commons.",
+   "image": "curruca_curruca.jpg",
+   "iucn": "LC"
+  },
+  "Cyanistes caeruleus": {
+   "common_name": "Eurasian Blue Tit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Aegithalus and Parus Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "cyanistes_caeruleus.jpg",
+   "iucn": "LC"
+  },
+  "Cygnus columbianus": {
+   "common_name": "Tundra Swan",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Bewicksswan33. Public domain, via Wikimedia Commons.",
+   "image": "cygnus_columbianus.jpg",
+   "iucn": "LC"
+  },
+  "Cygnus cygnus": {
+   "common_name": "Whooper Swan",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Cygnus cygnus by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "cygnus_cygnus.jpg",
+   "iucn": "LC"
+  },
+  "Cygnus olor": {
+   "common_name": "Mute Swan",
+   "iucn": "LC"
+  },
+  "Delichon urbicum": {
+   "common_name": "Common House-Martin",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Martin. Public domain, via Wikimedia Commons.",
+   "image": "delichon_urbicum.jpg",
+   "iucn": "LC"
+  },
+  "Dendrocopos major": {
+   "common_name": "Great Spotted Woodpecker",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Buntspecht Dendrocopos major1. Public domain, via Wikimedia Commons.",
+   "image": "dendrocopos_major.jpg",
+   "iucn": "LC"
+  },
+  "Dendrocoptes medius": {
+   "common_name": "Middle Spotted Woodpecker",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Three Picoides Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "dendrocoptes_medius.jpg",
+   "iucn": null
+  },
+  "Dryobates minor": {
+   "common_name": "Lesser Spotted Woodpecker",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Dendrocopos minor male. Public domain, via Wikimedia Commons.",
+   "image": "dryobates_minor.jpg",
+   "iucn": "LC"
+  },
+  "Dryocopus martius": {
+   "common_name": "Black Woodpecker",
+   "iucn": "LC"
+  },
+  "Egretta garzetta": {
+   "common_name": "Little Egret",
+   "iucn": "LC"
+  },
+  "Emberiza calandra": {
+   "common_name": "Corn Bunting",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Emberiza calandra and Emberiza melanocephala by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "emberiza_calandra.jpg",
+   "iucn": "LC"
+  },
+  "Emberiza cirlus": {
+   "common_name": "Cirl Bunting",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Emberiza cirlus. Public domain, via Wikimedia Commons.",
+   "image": "emberiza_cirlus.jpg",
+   "iucn": "LC"
+  },
+  "Emberiza citrinella": {
+   "common_name": "Yellowhammer",
+   "iucn": "LC"
+  },
+  "Emberiza schoeniclus": {
+   "common_name": "Reed Bunting",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Rohrammer. Public domain, via Wikimedia Commons.",
+   "image": "emberiza_schoeniclus.jpg",
+   "iucn": "LC"
+  },
+  "Erithacus rubecula": {
+   "common_name": "European Robin",
+   "credit": "Dresser, A History of the Birds of Europe, Tafel 644. Public domain, via Wikimedia Commons.",
+   "image": "erithacus_rubecula.jpg",
+   "iucn": "LC"
+  },
+  "Falco columbarius": {
+   "common_name": "Merlin",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Smyrlar. Public domain, via Wikimedia Commons.",
+   "image": "falco_columbarius.jpg",
+   "iucn": "LC"
+  },
+  "Falco peregrinus": {
+   "common_name": "Peregrine Falcon",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Falco peregrinus naumann. Public domain, via Wikimedia Commons.",
+   "image": "falco_peregrinus.jpg",
+   "iucn": "LC"
+  },
+  "Falco subbuteo": {
+   "common_name": "Eurasian Hobby",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Ostříž lesní. Public domain, via Wikimedia Commons.",
+   "image": "falco_subbuteo.jpg",
+   "iucn": "LC"
+  },
+  "Falco tinnunculus": {
+   "common_name": "Eurasian Kestrel",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Turmfalke grosse version. Public domain, via Wikimedia Commons.",
+   "image": "falco_tinnunculus.jpg",
+   "iucn": "LC"
+  },
+  "Ficedula hypoleuca": {
+   "common_name": "European Pied Flycatcher",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Ficedula. Public domain, via Wikimedia Commons.",
+   "image": "ficedula_hypoleuca.jpg",
+   "iucn": "LC"
+  },
+  "Fringilla coelebs": {
+   "common_name": "Common Chaffinch",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Poster Fringilla coelebs. Public domain, via Wikimedia Commons.",
+   "image": "fringilla_coelebs.jpg",
+   "iucn": "LC"
+  },
+  "Fringilla montifringilla": {
+   "common_name": "Brambling",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Brambling95. Public domain, via Wikimedia Commons.",
+   "image": "fringilla_montifringilla.jpg",
+   "iucn": "LC"
+  },
+  "Fulica atra": {
+   "common_name": "Eurasian Coot",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Fulica atra by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "fulica_atra.jpg",
+   "iucn": "LC"
+  },
+  "Fulmarus glacialis": {
+   "common_name": "Northern Fulmar",
+   "iucn": "LC"
+  },
+  "Gallinago gallinago": {
+   "common_name": "Common Snipe",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Gallinago gallinago hamburg. Public domain, via Wikimedia Commons.",
+   "image": "gallinago_gallinago.jpg",
+   "iucn": "LC"
+  },
+  "Gallinula chloropus": {
+   "common_name": "Eurasian Moorhen",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Gallinula chloropus by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "gallinula_chloropus.jpg",
+   "iucn": "LC"
+  },
+  "Garrulus glandarius": {
+   "common_name": "Eurasian Jay",
+   "credit": "Dresser, A History of the Birds of Europe, Tafel 686. Public domain, via Wikimedia Commons.",
+   "image": "garrulus_glandarius.jpg",
+   "iucn": "LC"
+  },
+  "Gavia stellata": {
+   "common_name": "Red-throated Loon",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Four Gavia Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "gavia_stellata.jpg",
+   "iucn": "LC"
+  },
+  "Grus grus": {
+   "common_name": "Common Crane",
+   "credit": "Dresser, A History of the Birds of Europe, Tafel 707. Public domain, via Wikimedia Commons.",
+   "image": "grus_grus.jpg",
+   "iucn": "LC"
+  },
+  "Haematopus ostralegus": {
+   "common_name": "Eurasian Oystercatcher",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Oystercatcher, drawing by naumann 1905. Public domain, via Wikimedia Commons.",
+   "image": "haematopus_ostralegus.jpg",
+   "iucn": "NT"
+  },
+  "Himantopus himantopus": {
+   "common_name": "Black-winged Stilt",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Himantopus himantopus and Recurvirostra avosetta by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "himantopus_himantopus.jpg",
+   "iucn": "LC"
+  },
+  "Hippolais icterina": {
+   "common_name": "Icterine Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Hippolais icterina, Phylloscopus borealis and Phylloscopus trochiloides by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "hippolais_icterina.jpg",
+   "iucn": "LC"
+  },
+  "Hippolais polyglotta": {
+   "common_name": "Melodious Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Naumann2Naum 0109. Public domain, via Wikimedia Commons.",
+   "image": "hippolais_polyglotta.jpg",
+   "iucn": "LC"
+  },
+  "Hirundo rustica": {
+   "common_name": "Barn Swallow",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Hirundo rustica naumann. Public domain, via Wikimedia Commons.",
+   "image": "hirundo_rustica.jpg",
+   "iucn": "LC"
+  },
+  "Hydrocoloeus minutus": {
+   "common_name": "Little Gull",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Four Larus Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "hydrocoloeus_minutus.jpg",
+   "iucn": "LC"
+  },
+  "Ichthyaetus melanocephalus": {
+   "common_name": "Mediterranean Gull",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Four Larus Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "ichthyaetus_melanocephalus.jpg",
+   "iucn": null
+  },
+  "Jynx torquilla": {
+   "common_name": "Eurasian Wryneck",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band IV, Tafel 36. Public domain, via Wikimedia Commons.",
+   "image": "jynx_torquilla.jpg",
+   "iucn": "LC"
+  },
+  "Lanius collurio": {
+   "common_name": "Red-backed Shrike",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Neuntöter gr. Public domain, via Wikimedia Commons.",
+   "image": "lanius_collurio.jpg",
+   "iucn": "LC"
+  },
+  "Larus argentatus": {
+   "common_name": "Herring Gull",
+   "iucn": "LC"
+  },
+  "Larus cachinnans": {
+   "common_name": "Caspian Gull",
+   "iucn": "LC"
+  },
+  "Larus canus": {
+   "common_name": "Common Gull",
+   "iucn": "LC"
+  },
+  "Larus fuscus": {
+   "common_name": "Lesser Black-backed Gull",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Three Larus Species by Naumann 2. Public domain, via Wikimedia Commons.",
+   "image": "larus_fuscus.jpg",
+   "iucn": "LC"
+  },
+  "Larus marinus": {
+   "common_name": "Great Black-backed Gull",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Three Larus Species by Naumann 2. Public domain, via Wikimedia Commons.",
+   "image": "larus_marinus.jpg",
+   "iucn": "LC"
+  },
+  "Larus michahellis": {
+   "common_name": "Yellow-legged Gull",
+   "iucn": "LC"
+  },
+  "Limosa lapponica": {
+   "common_name": "Bar-tailed Godwit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Limosa limosa. Public domain, via Wikimedia Commons.",
+   "image": "limosa_lapponica.jpg",
+   "iucn": "NT"
+  },
+  "Limosa limosa": {
+   "common_name": "Black-tailed Godwit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Limosa limosa. Public domain, via Wikimedia Commons.",
+   "image": "limosa_limosa.jpg",
+   "iucn": "NT"
+  },
+  "Linaria cannabina": {
+   "common_name": "Eurasian Linnet",
+   "iucn": "LC"
+  },
+  "Locustella luscinioides": {
+   "common_name": "Savi's Warbler",
+   "iucn": "LC"
+  },
+  "Locustella naevia": {
+   "common_name": "Common Grasshopper-Warbler",
+   "credit": "Dresser, A History of the Birds of Europe, Tafel 652. Public domain, via Wikimedia Commons.",
+   "image": "locustella_naevia.jpg",
+   "iucn": "LC"
+  },
+  "Lophophanes cristatus": {
+   "common_name": "Crested Tit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Parus cristatus tofsmes2. Public domain, via Wikimedia Commons.",
+   "image": "lophophanes_cristatus.jpg",
+   "iucn": "LC"
+  },
+  "Loxia curvirostra": {
+   "common_name": "Red Crossbill",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Loxia curvirostra NAUMANN. Public domain, via Wikimedia Commons.",
+   "image": "loxia_curvirostra.jpg",
+   "iucn": "LC"
+  },
+  "Lullula arborea": {
+   "common_name": "Wood Lark",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Woodlark57. Public domain, via Wikimedia Commons.",
+   "image": "lullula_arborea.jpg",
+   "iucn": "LC"
+  },
+  "Luscinia megarhynchos": {
+   "common_name": "Common Nightingale",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Nachtigall1. Public domain, via Wikimedia Commons.",
+   "image": "luscinia_megarhynchos.jpg",
+   "iucn": "LC"
+  },
+  "Luscinia svecica": {
+   "common_name": "Bluethroat",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band I, Tafel 5. Public domain, via Wikimedia Commons.",
+   "image": "luscinia_svecica.jpg",
+   "iucn": "LC"
+  },
+  "Mareca penelope": {
+   "common_name": "Eurasian Wigeon",
+   "iucn": "LC"
+  },
+  "Mareca strepera": {
+   "common_name": "Gadwall",
+   "iucn": "LC"
+  },
+  "Melanitta fusca": {
+   "common_name": "Velvet Scoter",
+   "iucn": "VU"
+  },
+  "Melanitta nigra": {
+   "common_name": "Common Scoter",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Melanitta nigra. Public domain, via Wikimedia Commons.",
+   "image": "melanitta_nigra.jpg",
+   "iucn": "LC"
+  },
+  "Mergellus albellus": {
+   "common_name": "Smew",
+   "iucn": "LC"
+  },
+  "Mergus merganser": {
+   "common_name": "Common Merganser",
+   "iucn": "LC"
+  },
+  "Mergus serrator": {
+   "common_name": "Red-breasted Merganser",
+   "iucn": "LC"
+  },
+  "Milvus migrans": {
+   "common_name": "Black Kite",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Kania czarna Milvus migrans. Public domain, via Wikimedia Commons.",
+   "image": "milvus_migrans.jpg",
+   "iucn": "LC"
+  },
+  "Milvus milvus": {
+   "common_name": "Red Kite",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Kania ruda Milvus milvus. Public domain, via Wikimedia Commons.",
+   "image": "milvus_milvus.jpg",
+   "iucn": null
+  },
+  "Morus bassanus": {
+   "common_name": "Northern Gannet",
+   "iucn": "LC"
+  },
+  "Motacilla alba": {
+   "common_name": "White Wagtail",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, White wagtail. Public domain, via Wikimedia Commons.",
+   "image": "motacilla_alba.jpg",
+   "iucn": "LC"
+  },
+  "Motacilla cinerea": {
+   "common_name": "Gray Wagtail",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Greywagtail08. Public domain, via Wikimedia Commons.",
+   "image": "motacilla_cinerea.jpg",
+   "iucn": "LC"
+  },
+  "Motacilla flava": {
+   "common_name": "Western Yellow Wagtail",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Motacilla flava naumann. Public domain, via Wikimedia Commons.",
+   "image": "motacilla_flava.jpg",
+   "iucn": "LC"
+  },
+  "Muscicapa striata": {
+   "common_name": "Spotted Flycatcher",
+   "iucn": "LC"
+  },
+  "Netta rufina": {
+   "common_name": "Red-crested Pochard",
+   "iucn": "LC"
+  },
+  "Numenius arquata": {
+   "common_name": "Eurasian Curlew",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Curlew06. Public domain, via Wikimedia Commons.",
+   "image": "numenius_arquata.jpg",
+   "iucn": "NT"
+  },
+  "Numenius phaeopus": {
+   "common_name": "Whimbrel",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Whimbrel07. Public domain, via Wikimedia Commons.",
+   "image": "numenius_phaeopus.jpg",
+   "iucn": "LC"
+  },
+  "Oenanthe oenanthe": {
+   "common_name": "Northern Wheatear",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band I, Tafel 11. Public domain, via Wikimedia Commons.",
+   "image": "oenanthe_oenanthe.jpg",
+   "iucn": "LC"
+  },
+  "Oriolus oriolus": {
+   "common_name": "Eurasian Golden Oriole",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Goldenoriole26. Public domain, via Wikimedia Commons.",
+   "image": "oriolus_oriolus.jpg",
+   "iucn": "LC"
+  },
+  "Pandion haliaetus": {
+   "common_name": "Osprey",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Osprey. Public domain, via Wikimedia Commons.",
+   "image": "pandion_haliaetus.jpg",
+   "iucn": "LC"
+  },
+  "Panurus biarmicus": {
+   "common_name": "Bearded Reedling",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Beardedtit46. Public domain, via Wikimedia Commons.",
+   "image": "panurus_biarmicus.jpg",
+   "iucn": "LC"
+  },
+  "Parus major": {
+   "common_name": "Great Tit",
+   "credit": "Dresser, A History of the Birds of Europe, Tafel 656. Public domain, via Wikimedia Commons.",
+   "image": "parus_major.jpg",
+   "iucn": "LC"
+  },
+  "Passer domesticus": {
+   "common_name": "House Sparrow",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Sparrow (1). Public domain, via Wikimedia Commons.",
+   "image": "passer_domesticus.jpg",
+   "iucn": "LC"
+  },
+  "Passer montanus": {
+   "common_name": "Eurasian Tree Sparrow",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Passer (Naumann). Public domain, via Wikimedia Commons.",
+   "image": "passer_montanus.jpg",
+   "iucn": "LC"
+  },
+  "Perdix perdix": {
+   "common_name": "Gray Partridge",
+   "iucn": "LC"
+  },
+  "Periparus ater": {
+   "common_name": "Coal Tit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Four Parus Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "periparus_ater.jpg",
+   "iucn": "LC"
+  },
+  "Pernis apivorus": {
+   "common_name": "European Honey-buzzard",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Pernis apivorus by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "pernis_apivorus.jpg",
+   "iucn": "LC"
+  },
+  "Phalacrocorax carbo": {
+   "common_name": "Great Cormorant",
+   "iucn": "LC"
+  },
+  "Phasianus colchicus": {
+   "common_name": "Ring-necked Pheasant",
+   "credit": "Dresser, A History of the Birds of Europe, Tafel 702. Public domain, via Wikimedia Commons.",
+   "image": "phasianus_colchicus.jpg",
+   "iucn": "LC"
+  },
+  "Phoenicurus ochruros": {
+   "common_name": "Black Redstart",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Phoenicurus ochruros NAUMANN. Public domain, via Wikimedia Commons.",
+   "image": "phoenicurus_ochruros.jpg",
+   "iucn": "LC"
+  },
+  "Phoenicurus phoenicurus": {
+   "common_name": "Common Redstart",
+   "credit": "Dresser, A History of the Birds of Europe, Ehrenberg's Redstart by John Gerrard Keulemans for Henry Dresser - A History of the Birds of Europe. Public domain, via Wikimedia Commons.",
+   "image": "phoenicurus_phoenicurus.jpg",
+   "iucn": "LC"
+  },
+  "Phylloscopus collybita": {
+   "common_name": "Common Chiffchaff",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Four Phylloscopus Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "phylloscopus_collybita.jpg",
+   "iucn": "LC"
+  },
+  "Phylloscopus sibilatrix": {
+   "common_name": "Wood Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Phylloscopus sibilatrix. Public domain, via Wikimedia Commons.",
+   "image": "phylloscopus_sibilatrix.jpg",
+   "iucn": "LC"
+  },
+  "Phylloscopus trochilus": {
+   "common_name": "Willow Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Phylloscopus trochilus. Public domain, via Wikimedia Commons.",
+   "image": "phylloscopus_trochilus.jpg",
+   "iucn": "LC"
+  },
+  "Pica pica": {
+   "common_name": "Eurasian Magpie",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Euromagpie. Public domain, via Wikimedia Commons.",
+   "image": "pica_pica.jpg",
+   "iucn": "LC"
+  },
+  "Picus viridis": {
+   "common_name": "Eurasian Green Woodpecker",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Naumann gruenspecht. Public domain, via Wikimedia Commons.",
+   "image": "picus_viridis.jpg",
+   "iucn": "LC"
+  },
+  "Platalea leucorodia": {
+   "common_name": "Eurasian Spoonbill",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Spoonbill50. Public domain, via Wikimedia Commons.",
+   "image": "platalea_leucorodia.jpg",
+   "iucn": "LC"
+  },
+  "Plectrophenax nivalis": {
+   "common_name": "Snow Bunting",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Plectrophenax nivalis. Public domain, via Wikimedia Commons.",
+   "image": "plectrophenax_nivalis.jpg",
+   "iucn": "LC"
+  },
+  "Pluvialis apricaria": {
+   "common_name": "European Golden-Plover",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Eurasiangoldie77. Public domain, via Wikimedia Commons.",
+   "image": "pluvialis_apricaria.jpg",
+   "iucn": "LC"
+  },
+  "Pluvialis squatarola": {
+   "common_name": "Black-bellied Plover",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Pluvialis apricaria and Pluvialis squatarola by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "pluvialis_squatarola.jpg",
+   "iucn": "VU"
+  },
+  "Podiceps cristatus": {
+   "common_name": "Great Crested Grebe",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Podiceps cristatus Naumann. Public domain, via Wikimedia Commons.",
+   "image": "podiceps_cristatus.jpg",
+   "iucn": "LC"
+  },
+  "Podiceps grisegena": {
+   "common_name": "Red-necked Grebe",
+   "iucn": "LC"
+  },
+  "Podiceps nigricollis": {
+   "common_name": "Eared Grebe",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Podiceps nigricollis naumann. Public domain, via Wikimedia Commons.",
+   "image": "podiceps_nigricollis.jpg",
+   "iucn": "LC"
+  },
+  "Poecile montanus": {
+   "common_name": "Willow Tit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Marshtit55. Public domain, via Wikimedia Commons.",
+   "image": "poecile_montanus.jpg",
+   "iucn": "LC"
+  },
+  "Poecile palustris": {
+   "common_name": "Marsh Tit",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Five Parus Species by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "poecile_palustris.jpg",
+   "iucn": "LC"
+  },
+  "Prunella modularis": {
+   "common_name": "Dunnock",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Prunella modularis montanella. Public domain, via Wikimedia Commons.",
+   "image": "prunella_modularis.jpg",
+   "iucn": "LC"
+  },
+  "Psittacula krameri": {
+   "common_name": "Rose-ringed Parakeet",
+   "iucn": "LC"
+  },
+  "Pyrrhula pyrrhula": {
+   "common_name": "Eurasian Bullfinch",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band III, Tafel 32. Public domain, via Wikimedia Commons.",
+   "image": "pyrrhula_pyrrhula.jpg",
+   "iucn": "LC"
+  },
+  "Rallus aquaticus": {
+   "common_name": "Water Rail",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Rallus aquaticus. Public domain, via Wikimedia Commons.",
+   "image": "rallus_aquaticus.jpg",
+   "iucn": "LC"
+  },
+  "Recurvirostra avosetta": {
+   "common_name": "Pied Avocet",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Recurvirostra avosetta ryc. Public domain, via Wikimedia Commons.",
+   "image": "recurvirostra_avosetta.jpg",
+   "iucn": "LC"
+  },
+  "Regulus ignicapilla": {
+   "common_name": "Common Firecrest",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Firecrest93. Public domain, via Wikimedia Commons.",
+   "image": "regulus_ignicapilla.jpg",
+   "iucn": "LC"
+  },
+  "Regulus regulus": {
+   "common_name": "Goldcrest",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Wintergoldhaehnchen gr. Public domain, via Wikimedia Commons.",
+   "image": "regulus_regulus.jpg",
+   "iucn": "LC"
+  },
+  "Riparia riparia": {
+   "common_name": "Bank Swallow",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Uferschwalbe-Naumann. Public domain, via Wikimedia Commons.",
+   "image": "riparia_riparia.jpg",
+   "iucn": "LC"
+  },
+  "Rissa tridactyla": {
+   "common_name": "Black-legged Kittiwake",
+   "iucn": "VU"
+  },
+  "Saxicola rubetra": {
+   "common_name": "Whinchat",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Whinchats. Public domain, via Wikimedia Commons.",
+   "image": "saxicola_rubetra.jpg",
+   "iucn": "LC"
+  },
+  "Saxicola rubicola": {
+   "common_name": "European Stonechat",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Stonechats. Public domain, via Wikimedia Commons.",
+   "image": "saxicola_rubicola.jpg",
+   "iucn": null
+  },
+  "Scolopax rusticola": {
+   "common_name": "Eurasian Woodcock",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Scolopax rusticola. Public domain, via Wikimedia Commons.",
+   "image": "scolopax_rusticola.jpg",
+   "iucn": "LC"
+  },
+  "Serinus serinus": {
+   "common_name": "European Serin",
+   "iucn": "LC"
+  },
+  "Sitta europaea": {
+   "common_name": "Eurasian Nuthatch",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Nuthatchsm. Public domain, via Wikimedia Commons.",
+   "image": "sitta_europaea.jpg",
+   "iucn": "LC"
+  },
+  "Somateria mollissima": {
+   "common_name": "Common Eider",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Turkan i edredon. Public domain, via Wikimedia Commons.",
+   "image": "somateria_mollissima.jpg",
+   "iucn": "NT"
+  },
+  "Spatula clypeata": {
+   "common_name": "Northern Shoveler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Anas clypeata by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "spatula_clypeata.jpg",
+   "iucn": "LC"
+  },
+  "Spatula querquedula": {
+   "common_name": "Garganey",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Naturgeschichte der Vögel Mitteleuropas - Garganey Teal. Public domain, via Wikimedia Commons.",
+   "image": "spatula_querquedula.jpg",
+   "iucn": "LC"
+  },
+  "Spinus spinus": {
+   "common_name": "Eurasian Siskin",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Carduelis spinus naumann. Public domain, via Wikimedia Commons.",
+   "image": "spinus_spinus.jpg",
+   "iucn": "LC"
+  },
+  "Sterna hirundo": {
+   "common_name": "Common Tern",
+   "iucn": "LC"
+  },
+  "Streptopelia decaocto": {
+   "common_name": "Eurasian Collared-Dove",
+   "iucn": "LC"
+  },
+  "Streptopelia turtur": {
+   "common_name": "European Turtle-Dove",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Streptopelia turtur by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "streptopelia_turtur.jpg",
+   "iucn": "VU"
+  },
+  "Strix aluco": {
+   "common_name": "Tawny Owl",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Waldkauz strix aluco 750pix. Public domain, via Wikimedia Commons.",
+   "image": "strix_aluco.jpg",
+   "iucn": "LC"
+  },
+  "Sturnus vulgaris": {
+   "common_name": "European Starling",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Sturnus vulgaris by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "sturnus_vulgaris.jpg",
+   "iucn": "LC"
+  },
+  "Sylvia atricapilla": {
+   "common_name": "Eurasian Blackcap",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Sylvia atricapilla. Public domain, via Wikimedia Commons.",
+   "image": "sylvia_atricapilla.jpg",
+   "iucn": "LC"
+  },
+  "Sylvia borin": {
+   "common_name": "Garden Warbler",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Sylvia curruca communis borin. Public domain, via Wikimedia Commons.",
+   "image": "sylvia_borin.jpg",
+   "iucn": "LC"
+  },
+  "Tachybaptus ruficollis": {
+   "common_name": "Little Grebe",
+   "iucn": "LC"
+  },
+  "Tadorna tadorna": {
+   "common_name": "Common Shelduck",
+   "iucn": "LC"
+  },
+  "Thalasseus sandvicensis": {
+   "common_name": "Sandwich Tern",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Sternidae naumann. Public domain, via Wikimedia Commons.",
+   "image": "thalasseus_sandvicensis.jpg",
+   "iucn": "LC"
+  },
+  "Tringa erythropus": {
+   "common_name": "Spotted Redshank",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Tringa erythropus svartsnaeppa. Public domain, via Wikimedia Commons.",
+   "image": "tringa_erythropus.jpg",
+   "iucn": "LC"
+  },
+  "Tringa glareola": {
+   "common_name": "Wood Sandpiper",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band IX, Tafel 1. Public domain, via Wikimedia Commons.",
+   "image": "tringa_glareola.jpg",
+   "iucn": "LC"
+  },
+  "Tringa nebularia": {
+   "common_name": "Common Greenshank",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Tringa erythropus svartsnaeppa. Public domain, via Wikimedia Commons.",
+   "image": "tringa_nebularia.jpg",
+   "iucn": "LC"
+  },
+  "Tringa ochropus": {
+   "common_name": "Green Sandpiper",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band IX, Tafel 1. Public domain, via Wikimedia Commons.",
+   "image": "tringa_ochropus.jpg",
+   "iucn": "LC"
+  },
+  "Tringa totanus": {
+   "common_name": "Common Redshank",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Tringa stagnatilis and Tringa totanus by Naumann. Public domain, via Wikimedia Commons.",
+   "image": "tringa_totanus.jpg",
+   "iucn": "LC"
+  },
+  "Troglodytes troglodytes": {
+   "common_name": "Eurasian Wren",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Zaunkoenig. Public domain, via Wikimedia Commons.",
+   "image": "troglodytes_troglodytes.jpg",
+   "iucn": "LC"
+  },
+  "Turdus iliacus": {
+   "common_name": "Redwing",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Turdus iliacus NAUMANN. Public domain, via Wikimedia Commons.",
+   "image": "turdus_iliacus.jpg",
+   "iucn": "LC"
+  },
+  "Turdus merula": {
+   "common_name": "Eurasian Blackbird",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Turdus merula 20050321. Public domain, via Wikimedia Commons.",
+   "image": "turdus_merula.jpg",
+   "iucn": "LC"
+  },
+  "Turdus philomelos": {
+   "common_name": "Song Thrush",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Turdus philomelos. Public domain, via Wikimedia Commons.",
+   "image": "turdus_philomelos.jpg",
+   "iucn": "LC"
+  },
+  "Turdus pilaris": {
+   "common_name": "Fieldfare",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band I, Tafel 26. Public domain, via Wikimedia Commons.",
+   "image": "turdus_pilaris.jpg",
+   "iucn": "LC"
+  },
+  "Turdus torquatus": {
+   "common_name": "Ring Ouzel",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band I, Tafel 19. Public domain, via Wikimedia Commons.",
+   "image": "turdus_torquatus.jpg",
+   "iucn": "LC"
+  },
+  "Turdus viscivorus": {
+   "common_name": "Mistle Thrush",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Band I, Tafel 28. Public domain, via Wikimedia Commons.",
+   "image": "turdus_viscivorus.jpg",
+   "iucn": "LC"
+  },
+  "Tyto alba": {
+   "common_name": "Barn Owl",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Schleiereule. Public domain, via Wikimedia Commons.",
+   "image": "tyto_alba.jpg",
+   "iucn": "LC"
+  },
+  "Upupa epops": {
+   "common_name": "Eurasian Hoopoe",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Hoopoe de. Public domain, via Wikimedia Commons.",
+   "image": "upupa_epops.jpg",
+   "iucn": "LC"
+  },
+  "Uria aalge": {
+   "common_name": "Common Murre",
+   "iucn": "LC"
+  },
+  "Vanellus vanellus": {
+   "common_name": "Northern Lapwing",
+   "credit": "Naumann, Naturgeschichte der Vögel Mitteleuropas, Vanellus vanellus naumann. Public domain, via Wikimedia Commons.",
+   "image": "vanellus_vanellus.jpg",
+   "iucn": "NT"
+  }
+ }
+}

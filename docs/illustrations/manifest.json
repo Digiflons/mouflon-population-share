@@ -1,0 +1,4609 @@
+[
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Northern Goshawk",
+  "commons_title": "File:Accipiter gentilis.jpg",
+  "crop_box": [
+   0,
+   0,
+   1098,
+   1686
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Accipiter_gentilis.jpg",
+  "image": "accipiter_gentilis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "accipiter_gentilis_jpg.jpg",
+  "original_sha1": "75b7a775b3be94eecad9369bd489e290e8531634",
+  "plate": "plate not identified",
+  "sha256": "d1ed4b013dd330eba8bd5e225fb2661bc36753710b1e4ff7e465d2743ed41d9a",
+  "sha256_ha": "d13b37be51ca14b5a41a08207ef4a626e5f6b32551047039773ae20f711f5430",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Accipiter_gentilis.jpg",
+  "species": "Accipiter gentilis",
+  "species_on_plate": [
+   "Accipiter gentilis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Sparrowhawk",
+  "commons_title": "File:Sparrowhawk04.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1541
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Sparrowhawk04.jpg",
+  "image": "accipiter_nisus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "sparrowhawk04_jpg.jpg",
+  "original_sha1": "4637b085a94e4f6ef7c3ccb0dfe601e0e35a0e1f",
+  "plate": "plate not identified",
+  "sha256": "0181e8eb9da36b5e85ac90e0a96f20971fc414fcdbff1f18302b0708aef2beb4",
+  "sha256_ha": "51995021780581b6792f8cbd90cde03b840c9a7c65b8893afc72b329de6e7542",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sparrowhawk04.jpg",
+  "species": "Accipiter nisus",
+  "species_on_plate": [
+   "Accipiter nisus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Great Reed Warbler",
+  "commons_title": "File:Acrocephalus3 naumann.jpg",
+  "crop_box": [
+   0,
+   460,
+   661,
+   1185
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Acrocephalus3_naumann.jpg",
+  "image": "acrocephalus_arundinaceus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "acrocephalus3_naumann_jpg.jpg",
+  "original_sha1": "88adc9d2577fcab8e7378e46254cf3696a6163ad",
+  "plate": "plate not identified",
+  "sha256": "485ac57f9e05de4dc23feb180643c001b2b603aac5ab5144231e4c75be6a30e3",
+  "sha256_ha": "285badb47736f1a68447105657ce162461c04a6407d11e281b645a79dc340d90",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Acrocephalus3_naumann.jpg",
+  "species": "Acrocephalus arundinaceus",
+  "species_on_plate": [
+   "Acrocephalus arundinaceus",
+   "Acrocephalus schoenobaenus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Marsh Warbler",
+  "commons_title": "File:Karekiet.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1747
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Karekiet.jpg",
+  "image": "acrocephalus_palustris.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "karekiet_jpg.jpg",
+  "original_sha1": "5ecd520c6bc8ffa8752ae5564c542f5fbdf2fba5",
+  "plate": "plate not identified",
+  "sha256": "0ec68d179ccd6c3fdc7eab7c1e963a49f3c29b568162b95600a5bd3d524d6a89",
+  "sha256_ha": "e540e2c36b147e50ab267dba8dfeefb9a656bd7c191d8bb8c8d6ec37edab2ede",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Karekiet.jpg",
+  "species": "Acrocephalus palustris",
+  "species_on_plate": [
+   "Acrocephalus palustris",
+   "Acrocephalus scirpaceus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Sedge Warbler",
+  "commons_title": "File:Acrocephalus3 naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1646
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Acrocephalus3_naumann.jpg",
+  "image": "acrocephalus_schoenobaenus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "acrocephalus3_naumann_jpg.jpg",
+  "original_sha1": "88adc9d2577fcab8e7378e46254cf3696a6163ad",
+  "plate": "plate not identified",
+  "sha256": "485ac57f9e05de4dc23feb180643c001b2b603aac5ab5144231e4c75be6a30e3",
+  "sha256_ha": "3b2f46eabc37604e1db157fe2c6c651d9612979f93df432977b631dd0a45daed",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Acrocephalus3_naumann.jpg",
+  "species": "Acrocephalus schoenobaenus",
+  "species_on_plate": [
+   "Acrocephalus arundinaceus",
+   "Acrocephalus schoenobaenus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Reed Warbler",
+  "commons_title": "File:Karekiet.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1747
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Karekiet.jpg",
+  "image": "acrocephalus_scirpaceus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "karekiet_jpg.jpg",
+  "original_sha1": "5ecd520c6bc8ffa8752ae5564c542f5fbdf2fba5",
+  "plate": "plate not identified",
+  "sha256": "0ec68d179ccd6c3fdc7eab7c1e963a49f3c29b568162b95600a5bd3d524d6a89",
+  "sha256_ha": "e540e2c36b147e50ab267dba8dfeefb9a656bd7c191d8bb8c8d6ec37edab2ede",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Karekiet.jpg",
+  "species": "Acrocephalus scirpaceus",
+  "species_on_plate": [
+   "Acrocephalus palustris",
+   "Acrocephalus scirpaceus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Sandpiper",
+  "commons_title": "File:Naumann (IX. 1) (5632199255).jpg",
+  "crop_box": [
+   0,
+   101,
+   1190,
+   1696
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Naumann_%28IX._1%29_%285632199255%29.jpg",
+  "image": "actitis_hypoleucos.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_ix_1_5632199255_jpg.jpg",
+  "original_sha1": "cff56860ecc37a43ab34ce380cbeba603f0603ec",
+  "plate": "Band IX, Tafel 1",
+  "sha256": "331577a7c68d43c5808631d9d0eb4295f9e04b2953a19ee70b9265fbf1a860e4",
+  "sha256_ha": "55ddad9f170c5dfad6fb242e09534faa847c73a5e3659e9746506830cb68eccd",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_(IX._1)_(5632199255).jpg",
+  "species": "Actitis hypoleucos",
+  "species_on_plate": [
+   "Actitis hypoleucos",
+   "Tringa glareola",
+   "Tringa ochropus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Long-tailed Tit",
+  "commons_title": "File:Aegithalos caudatus 5.jpg",
+  "crop_box": [
+   0,
+   0,
+   500,
+   196
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Aegithalos_caudatus_5.jpg",
+  "image": "aegithalos_caudatus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "aegithalos_caudatus_5_jpg.jpg",
+  "original_sha1": "72d6dcb0294f8a5774fe81c667a2d88349b229ef",
+  "plate": "plate not identified",
+  "sha256": "40abbb8d7e6496efda0775f29998f94002760a899b060e43c24a18da33de912d",
+  "sha256_ha": "6beb2bca5cef82bbbcd7f20412be72ceff6d1ecc9304cb8831ed0f0a3f800773",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Aegithalos_caudatus_5.jpg",
+  "species": "Aegithalos caudatus",
+  "species_on_plate": [
+   "Aegithalos caudatus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Skylark",
+  "commons_title": "File:Skylark59.jpg",
+  "crop_box": [
+   0,
+   0,
+   260,
+   196
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Skylark59.jpg",
+  "image": "alauda_arvensis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "skylark59_jpg.jpg",
+  "original_sha1": "c05350278057e176abf407fd6f755a8c3dff0689",
+  "plate": "plate not identified",
+  "sha256": "86a706d825762637cdb6e8d2ca285417b47e96ac23f09fb3330d1f50ffc79ee5",
+  "sha256_ha": "31411e758114f9527c0841c1da35a93f55f15107b3eae165ab2851ae7103bee0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Skylark59.jpg",
+  "species": "Alauda arvensis",
+  "species_on_plate": [
+   "Alauda arvensis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Kingfisher",
+  "commons_title": "File:Kingfisher.JPG",
+  "crop_box": [
+   0,
+   0,
+   251,
+   230
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Kingfisher.JPG",
+  "image": "alcedo_atthis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "kingfisher_jpg.jpg",
+  "original_sha1": "91cf2a317677de02db8a9a4b8bc0c190ddfdd29e",
+  "plate": "plate not identified",
+  "sha256": "07fd62f00523fba45b4a87dceea126aa3a02054d2fdc13fe443ec3b21e3aad05",
+  "sha256_ha": "daeef460af51342bb89d0576f0722076db1e41a086dce9b54da4365c3fbab94b",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Kingfisher.JPG",
+  "species": "Alcedo atthis",
+  "species_on_plate": [
+   "Alcedo atthis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Red-legged Partridge",
+  "commons_title": "File:Redleggedpartridge35.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   228
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Redleggedpartridge35.jpg",
+  "image": "alectoris_rufa.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "redleggedpartridge35_jpg.jpg",
+  "original_sha1": "7ac2124af596163eb9f96977e0771339d55b7bde",
+  "plate": "plate not identified",
+  "sha256": "dd33ddf6a789a82944fd92821e6333803302b8d80ba995e6d4107fd4dc9ac529",
+  "sha256_ha": "c843156ccdda772a450c38d9d9211d904bbef8b415563a1b7611295ce2620b51",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Redleggedpartridge35.jpg",
+  "species": "Alectoris rufa",
+  "species_on_plate": [
+   "Alectoris rufa"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Northern Pintail",
+  "commons_title": "File:オナガガモ、トモエガモ、ハシビロガモ、ウスユキガモ、ミカヅキシマアジ.jpg",
+  "crop_box": [
+   315,
+   0,
+   1260,
+   507
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/%E3%82%AA%E3%83%8A%E3%82%AC%E3%82%AC%E3%83%A2%E3%80%81%E3%83%88%E3%83%A2%E3%82%A8%E3%82%AC%E3%83%A2%E3%80%81%E3%83%8F%E3%82%B7%E3%83%93%E3%83%AD%E3%82%AC%E3%83%A2%E3%80%81%E3%82%A6%E3%82%B9%E3%83%A6%E3%82%AD%E3%82%AC%E3%83%A2%E3%80%81%E3%83%9F%E3%82%AB%E3%83%85%E3%82%AD%E3%82%B7%E3%83%9E%E3%82%A2%E3%82%B8.jpg",
+  "image": "anas_acuta.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "jpg.jpg",
+  "original_sha1": "b320e9c975cb508530c54229ac49f004965d20ba",
+  "plate": "plate not identified",
+  "sha256": "49115c9b3974785fccb1e0cca2ec997c1b32bed2f57f47b21802af01cf483367",
+  "sha256_ha": "f650562f0b580380d66c6091bd096ff64581c9e0b748c6139f24295f2e1fa77e",
+  "source_url": "https://commons.wikimedia.org/wiki/File:%E3%82%AA%E3%83%8A%E3%82%AC%E3%82%AC%E3%83%A2%E3%80%81%E3%83%88%E3%83%A2%E3%82%A8%E3%82%AC%E3%83%A2%E3%80%81%E3%83%8F%E3%82%B7%E3%83%93%E3%83%AD%E3%82%AC%E3%83%A2%E3%80%81%E3%82%A6%E3%82%B9%E3%83%A6%E3%82%AD%E3%82%AC%E3%83%A2%E3%80%81%E3%83%9F%E3%82%AB%E3%83%85%E3%82%AD%E3%82%B7%E3%83%9E%E3%82%A2%E3%82%B8.jpg",
+  "species": "Anas acuta",
+  "species_on_plate": [
+   "Anas acuta",
+   "Spatula clypeata"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Green-winged Teal",
+  "commons_title": "File:Naturgeschichte der Vögel Mitteleuropas - Common Teal.jpg",
+  "crop_box": [
+   0,
+   0,
+   341,
+   326
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Naturgeschichte_der_V%C3%B6gel_Mitteleuropas_-_Common_Teal.jpg",
+  "image": "anas_crecca.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naturgeschichte_der_v_gel_mitteleuropas_common_teal_jpg.jpg",
+  "original_sha1": "8dd983ed507184ecc7acf6ef28ca1f30150908ca",
+  "plate": "plate not identified",
+  "sha256": "a7bf57ffb898faa77f5770e5d85f19f0fa642ec0ceb0a9e6e25ab05d569f21f6",
+  "sha256_ha": "01f2e0a66dd8b7cec5c0826213d12345b10f3f123fc2846c4fa5dc08bb6f9700",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naturgeschichte_der_V%C3%B6gel_Mitteleuropas_-_Common_Teal.jpg",
+  "species": "Anas crecca",
+  "species_on_plate": [
+   "Anas crecca"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Mallard",
+  "commons_title": "File:Stockente-Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   883
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Stockente-Naumann.jpg",
+  "image": "anas_platyrhynchos.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "stockente_naumann_jpg.jpg",
+  "original_sha1": "f69cbab6de600af640e736771fa26ba59fc7eb6a",
+  "plate": "plate not identified",
+  "sha256": "be31bf5c00d6b58959dae1831abac64f03dbd789f7d5dfa019c064c976741750",
+  "sha256_ha": "2d68e7d82fe916f2a1aead58c8744d1ff9f08be212a4b6ca51b3535ed885d5fb",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Stockente-Naumann.jpg",
+  "species": "Anas platyrhynchos",
+  "species_on_plate": [
+   "Anas platyrhynchos"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Graylag Goose",
+  "commons_title": "File:Greylag.JPG",
+  "crop_box": [
+   0,
+   0,
+   268,
+   250
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Greylag.JPG",
+  "image": "anser_anser.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "greylag_jpg.jpg",
+  "original_sha1": "072f36870c605086b8613c155ca4d7b5d09af590",
+  "plate": "plate not identified",
+  "sha256": "6cf8c94f201f19c60f3165161cd30cdad9271fc66182bf2be7eb420e28069a1e",
+  "sha256_ha": "82f6da7ecef06789ae39f4f00f1646b6a47a94b4c1b8c4f7ed1329fe9cefcc8a",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Greylag.JPG",
+  "species": "Anser anser",
+  "species_on_plate": [
+   "Anser anser"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Pink-footed Goose",
+  "commons_title": "File:Saatgans und Kurzschnabelgans.jpg",
+  "crop_box": [
+   0,
+   0,
+   1260,
+   873
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Saatgans_und_Kurzschnabelgans.jpg",
+  "image": "anser_brachyrhynchus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "saatgans_und_kurzschnabelgans_jpg.jpg",
+  "original_sha1": "a1a820ed3d2f9d0b0c2a69bc805c532368c6792f",
+  "plate": "plate not identified",
+  "sha256": "b9f94ce1f55d3965135b56ae2a1e5f843317cb0858ca2a99f29a8a03184f44d1",
+  "sha256_ha": "a39355553a86cffbacfb95aa3feb92458458f92cd7808357ac0cfcc13607f4b4",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Saatgans_und_Kurzschnabelgans.jpg",
+  "species": "Anser brachyrhynchus",
+  "species_on_plate": [
+   "Anser brachyrhynchus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Rock Pipit",
+  "commons_title": "File:Anthus sp.jpg",
+  "crop_box": [
+   0,
+   0,
+   1260,
+   869
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Anthus_sp.jpg",
+  "image": "anthus_petrosus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "anthus_sp_jpg.jpg",
+  "original_sha1": "5c306b24c48adb6ad6c87e593a8bc0e7c0b5d259",
+  "plate": "plate not identified",
+  "sha256": "fa8c953ff46ef67fa9a16942b6d65fca39fbf1ea0ba0748fcc88b32693dc4b98",
+  "sha256_ha": "14f3d3c662bf4a1624726344908f686a44bce856dafc55f27a550b5172fe0617",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Anthus_sp.jpg",
+  "species": "Anthus petrosus",
+  "species_on_plate": [
+   "Anthus petrosus",
+   "Anthus spinoletta"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Water Pipit",
+  "commons_title": "File:Anthus sp.jpg",
+  "crop_box": [
+   0,
+   0,
+   1260,
+   869
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Anthus_sp.jpg",
+  "image": "anthus_spinoletta.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "anthus_sp_jpg.jpg",
+  "original_sha1": "5c306b24c48adb6ad6c87e593a8bc0e7c0b5d259",
+  "plate": "plate not identified",
+  "sha256": "fa8c953ff46ef67fa9a16942b6d65fca39fbf1ea0ba0748fcc88b32693dc4b98",
+  "sha256_ha": "14f3d3c662bf4a1624726344908f686a44bce856dafc55f27a550b5172fe0617",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Anthus_sp.jpg",
+  "species": "Anthus spinoletta",
+  "species_on_plate": [
+   "Anthus petrosus",
+   "Anthus spinoletta"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Purple Heron",
+  "commons_title": "File:Ardea purpurea.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1557
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Ardea_purpurea.jpg",
+  "image": "ardea_purpurea.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "ardea_purpurea_jpg.jpg",
+  "original_sha1": "ea2745efcc13ec1621b469be53b814b6b66731fc",
+  "plate": "plate not identified",
+  "sha256": "c972dcd521f328906be0a17a00caf835f8e10d20406551ebf613966b48c3abfd",
+  "sha256_ha": "41df2ec7d3f18175e90cab5a14786f0073911edc9434f64777fa1dd18ead4079",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Ardea_purpurea.jpg",
+  "species": "Ardea purpurea",
+  "species_on_plate": [
+   "Ardea purpurea"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Ruddy Turnstone",
+  "commons_title": "File:Arenaria interpres and Charadrius asiaticus by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   553
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Arenaria_interpres_and_Charadrius_asiaticus_by_Naumann.jpg",
+  "image": "arenaria_interpres.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "arenaria_interpres_and_charadrius_asiaticus_by_naumann_jpg.jpg",
+  "original_sha1": "f28bd892813a2277a0ce81535f65e0397a13b8cc",
+  "plate": "plate not identified",
+  "sha256": "f28f0b1bb6b4ff8875cb18de912327c3220e37653ae7de8a9da7477ebd646069",
+  "sha256_ha": "b9ee1871b0f3cae1f321527caf70f6225e5726e6ddc4544c4b52f17f0b8da255",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Arenaria_interpres_and_Charadrius_asiaticus_by_Naumann.jpg",
+  "species": "Arenaria interpres",
+  "species_on_plate": [
+   "Arenaria interpres"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Great Bittern",
+  "commons_title": "File:Botaurus stellaris drawing.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1577
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Botaurus_stellaris_drawing.jpg",
+  "image": "botaurus_stellaris.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "botaurus_stellaris_drawing_jpg.jpg",
+  "original_sha1": "f73623fad3a81ce7d9d2aef3ea8af73f6772cb8c",
+  "plate": "plate not identified",
+  "sha256": "de95dd082d0c500b0fe2617d8500985c9ffdc82e7fe4b71cb3ccc0342c6e1433",
+  "sha256_ha": "65704f97b4e7efc56de9fdd5042eadefee960d2959459fc010800c2b61b73caf",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Botaurus_stellaris_drawing.jpg",
+  "species": "Botaurus stellaris",
+  "species_on_plate": [
+   "Botaurus stellaris"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Barnacle Goose",
+  "commons_title": "File:Branta leucopsis and Branta ruficollis by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1260,
+   814
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Branta_leucopsis_and_Branta_ruficollis_by_Naumann.jpg",
+  "image": "branta_leucopsis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "branta_leucopsis_and_branta_ruficollis_by_naumann_jpg.jpg",
+  "original_sha1": "80bc47a782d36d500669921f42d4b57e3376b3f6",
+  "plate": "plate not identified",
+  "sha256": "fb89e8731122ecb2263ec304503d56e78526c1446d09ff172e34a80c32e10988",
+  "sha256_ha": "83e01156635b8168325fbb28bda88fe0fbe51ef98afda65ff0ba57bab4195ac1",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Branta_leucopsis_and_Branta_ruficollis_by_Naumann.jpg",
+  "species": "Branta leucopsis",
+  "species_on_plate": [
+   "Branta leucopsis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Buzzard",
+  "commons_title": "File:Poster Buteo buteo.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1630
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Poster_Buteo_buteo.jpg",
+  "image": "buteo_buteo.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "poster_buteo_buteo_jpg.jpg",
+  "original_sha1": "3c61050762306d20483aca775feb7d206eb85c00",
+  "plate": "plate not identified",
+  "sha256": "3798a9722fe3db85994d52ef3fd2ae85aee886bd144f5f4be12d0bf5dac774ce",
+  "sha256_ha": "f6b411c44543ea441eac8e6247aa2a9dda75f75f4cac8889a4814cb62a7d839d",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Poster_Buteo_buteo.jpg",
+  "species": "Buteo buteo",
+  "species_on_plate": [
+   "Buteo buteo"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Sanderling",
+  "commons_title": "File:Calidris alba and Calidris falcinellus by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   544
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Calidris_alba_and_Calidris_falcinellus_by_Naumann.jpg",
+  "image": "calidris_alba.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "calidris_alba_and_calidris_falcinellus_by_naumann_jpg.jpg",
+  "original_sha1": "47ed5ae39be1a61e2e948f14193c14337cfeae69",
+  "plate": "plate not identified",
+  "sha256": "b857ccea79eeb79175833ad20245dafdda49cc68130a8045a3a2c8c056b2d0a1",
+  "sha256_ha": "a13a1d4064397a34532097519f7a3c9a200443720c3ad08483ad883d8610c1bb",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Calidris_alba_and_Calidris_falcinellus_by_Naumann.jpg",
+  "species": "Calidris alba",
+  "species_on_plate": [
+   "Calidris alba"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Dunlin",
+  "commons_title": "File:Three Calidris Species by Naumann.jpg",
+  "crop_box": [
+   48,
+   181,
+   448,
+   459
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Three_Calidris_Species_by_Naumann.jpg",
+  "image": "calidris_alpina.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "three_calidris_species_by_naumann_jpg.jpg",
+  "original_sha1": "525f3ffd0f2b46faa923627456bdd31bac30b246",
+  "plate": "plate not identified",
+  "sha256": "195162fe006e52fea028e2e55cd8e9808386d00886124b9d0544301c265ea4a7",
+  "sha256_ha": "c900e4861ddcf80fdfa0b670da19e45a7e79e3029d9ab1df94dc846d1577af3d",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Three_Calidris_Species_by_Naumann.jpg",
+  "species": "Calidris alpina",
+  "species_on_plate": [
+   "Calidris alpina",
+   "Calidris ferruginea"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Red Knot",
+  "commons_title": "File:Calidris canutus and Calidris maritima by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   530
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Calidris_canutus_and_Calidris_maritima_by_Naumann.jpg",
+  "image": "calidris_canutus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "calidris_canutus_and_calidris_maritima_by_naumann_jpg.jpg",
+  "original_sha1": "a4fb084392525c79733e0cae15245cdf0545e6d4",
+  "plate": "plate not identified",
+  "sha256": "f15e69ba283b97005f7bf902668d8ad1ff523a2776c48de9a431267a77b08b58",
+  "sha256_ha": "bc3deb4e109a7143a1bbdb228d6f761b8d968825fd88cb5ad72e4e57b838906a",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Calidris_canutus_and_Calidris_maritima_by_Naumann.jpg",
+  "species": "Calidris canutus",
+  "species_on_plate": [
+   "Calidris canutus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Curlew Sandpiper",
+  "commons_title": "File:Three Calidris Species by Naumann.jpg",
+  "crop_box": [
+   320,
+   234,
+   800,
+   534
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Three_Calidris_Species_by_Naumann.jpg",
+  "image": "calidris_ferruginea.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "three_calidris_species_by_naumann_jpg.jpg",
+  "original_sha1": "525f3ffd0f2b46faa923627456bdd31bac30b246",
+  "plate": "plate not identified",
+  "sha256": "195162fe006e52fea028e2e55cd8e9808386d00886124b9d0544301c265ea4a7",
+  "sha256_ha": "b4b56ba238e79f13d8096922868cc6aac9ceeb6d51b1e81b3867f12d41e5971c",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Three_Calidris_Species_by_Naumann.jpg",
+  "species": "Calidris ferruginea",
+  "species_on_plate": [
+   "Calidris alpina",
+   "Calidris ferruginea"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Little Stint",
+  "commons_title": "File:Calidris alpina schinzi and Calidris minuta by Naumann.jpg",
+  "crop_box": [
+   0,
+   107,
+   400,
+   535
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Calidris_alpina_schinzi_and_Calidris_minuta_by_Naumann.jpg",
+  "image": "calidris_minuta.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "calidris_alpina_schinzi_and_calidris_minuta_by_naumann_jpg.jpg",
+  "original_sha1": "605f5eda0ed0f7bbf0829c5ac8ba00e80a367932",
+  "plate": "plate not identified",
+  "sha256": "52aea4edd8061315d86a1669c83a7aae33260bdc9a9b0e305df503a63413669c",
+  "sha256_ha": "fd1e63202602a4e65fa27f557bc43767fbc2ca3422caa4a7560cc5eba3afbac4",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Calidris_alpina_schinzi_and_Calidris_minuta_by_Naumann.jpg",
+  "species": "Calidris minuta",
+  "species_on_plate": [
+   "Calidris alpina",
+   "Calidris minuta"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Ruff",
+  "commons_title": "File:Ruff90.jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   1960
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Ruff90.jpg",
+  "image": "calidris_pugnax.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "ruff90_jpg.jpg",
+  "original_sha1": "34abba8f7aa800c67721e9e855454a95d0e7878c",
+  "plate": "plate not identified",
+  "sha256": "7fbf5b7ef477a133a03f0d8f336a505f317418b7cae7456cb25e985b0eb3ae03",
+  "sha256_ha": "fdd9ab877a98a5c03207d980af095be6480bba10fb18a74dcae944c6f5dfe6d1",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Ruff90.jpg",
+  "species": "Calidris pugnax",
+  "species_on_plate": [
+   "Calidris pugnax"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "European Goldfinch",
+  "commons_title": "File:Fringillidae naumann.jpg",
+  "crop_box": [
+   0,
+   585,
+   515,
+   1092
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Fringillidae_naumann.jpg",
+  "image": "carduelis_carduelis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "fringillidae_naumann_jpg.jpg",
+  "original_sha1": "7088bef751d4708066dcc476e700c3cf6a2caf12",
+  "plate": "plate not identified",
+  "sha256": "4b255a0ff3dd25fa6a5bb5be7851d4cf4608bdca5db103e76f5ee2d7b7059da4",
+  "sha256_ha": "b926bf685d001229a0115d1a451f0a3edc8767d9d9853fef8707a9f2f630be04",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Fringillidae_naumann.jpg",
+  "species": "Carduelis carduelis",
+  "species_on_plate": [
+   "Carduelis carduelis",
+   "Fringilla coelebs",
+   "Fringilla montifringilla"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Treecreeper",
+  "commons_title": "File:Treecreepers14.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   259
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Treecreepers14.jpg",
+  "image": "certhia_familiaris.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "treecreepers14_jpg.jpg",
+  "original_sha1": "29b06065246226176e5a03190597d088ef908ca7",
+  "plate": "plate not identified",
+  "sha256": "4918026ab1ec18c5cbc9a264b59c589bdc18f4373e4085f361dbc82f218e79b6",
+  "sha256_ha": "f58d61b1bb420799e98b6cdeb368bb6caa3ada4522c551aa0b5df61df7b1807d",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Treecreepers14.jpg",
+  "species": "Certhia familiaris",
+  "species_on_plate": [
+   "Certhia familiaris"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Cetti's Warbler",
+  "commons_title": "File:Cetti's zanger.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1596
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Cetti%27s_zanger.jpg",
+  "image": "cettia_cetti.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "cetti_s_zanger_jpg.jpg",
+  "original_sha1": "2a099d1e05ab60d0d52487667f3857f3afa60e1d",
+  "plate": "plate not identified",
+  "sha256": "f158fa40a5d214296dba9cee0893f75530335b7577fb72fdd0ef87f4aa1037ce",
+  "sha256_ha": "0e19127c8f43313a9f4aec08852b3d7ea02c213b3b616e81b1506345edff2d68",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Cetti%27s_zanger.jpg",
+  "species": "Cettia cetti",
+  "species_on_plate": [
+   "Cettia cetti"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Little Ringed Plover",
+  "commons_title": "File:Charadrius dubius.jpg",
+  "crop_box": [
+   0,
+   0,
+   917,
+   549
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Charadrius_dubius.jpg",
+  "image": "charadrius_dubius.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "charadrius_dubius_jpg.jpg",
+  "original_sha1": "3f8638370a1ae8b8bd09c0c7261c428bcbade4cd",
+  "plate": "plate not identified",
+  "sha256": "37fdea937d9952a4f194095fe5633f5f55e872e66ee5609e805a1ea8bc4d29f1",
+  "sha256_ha": "d785b510fcda999bf3f77e1f47a1a9e284a9b7d3a27564f08ae566e30c9bd23c",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Charadrius_dubius.jpg",
+  "species": "Charadrius dubius",
+  "species_on_plate": [
+   "Charadrius dubius"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Ringed Plover",
+  "commons_title": "File:Charadrius hiaticula (Naumann).jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   529
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Charadrius_hiaticula_%28Naumann%29.jpg",
+  "image": "charadrius_hiaticula.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "charadrius_hiaticula_naumann_jpg.jpg",
+  "original_sha1": "ce10935efac7a288e17e9a16d8369eb2b01b9473",
+  "plate": "plate not identified",
+  "sha256": "1e4cd02ec0840a41d02f6d742542328eb8e07e17e039e648ca422a0688a84f28",
+  "sha256_ha": "627869f5355726228a9b1cd4b360b011c1a2398a34f3e2e3296b3a060a375ddb",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Charadrius_hiaticula_(Naumann).jpg",
+  "species": "Charadrius hiaticula",
+  "species_on_plate": [
+   "Charadrius hiaticula"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Black Tern",
+  "commons_title": "File:Three Chlidonias Species by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   539
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Three_Chlidonias_Species_by_Naumann.jpg",
+  "image": "chlidonias_niger.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "three_chlidonias_species_by_naumann_jpg.jpg",
+  "original_sha1": "ddffe264ebb59afe44b61ea65d85914ae5529166",
+  "plate": "plate not identified",
+  "sha256": "6a4f00027efd2573fd645f206936ddec2613e2f014c755651e7360c2fb627708",
+  "sha256_ha": "c8534e8a2d6bb9c0015d0c30c41adbcc42145df71f5d4aa716a9f8a73ac192ba",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Three_Chlidonias_Species_by_Naumann.jpg",
+  "species": "Chlidonias niger",
+  "species_on_plate": [
+   "Chlidonias niger"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "European Greenfinch",
+  "commons_title": "File:C chloris m nivalis naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   939,
+   1332
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/C_chloris_m_nivalis_naumann.jpg",
+  "image": "chloris_chloris.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "c_chloris_m_nivalis_naumann_jpg.jpg",
+  "original_sha1": "2f4b9e86775f02549bdea79053bfb80569a82a57",
+  "plate": "plate not identified",
+  "sha256": "0c81d6ac7fe7cdd48ea647e825e5d6ab982fa9b74324e2d3f53389362f9530d1",
+  "sha256_ha": "9608d77687fb2db595583b062f16d4dbc19684c0927d439425c346386f6ec088",
+  "source_url": "https://commons.wikimedia.org/wiki/File:C_chloris_m_nivalis_naumann.jpg",
+  "species": "Chloris chloris",
+  "species_on_plate": [
+   "Chloris chloris"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Black-headed Gull",
+  "commons_title": "File:Four Larus Species by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   544
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Four_Larus_Species_by_Naumann.jpg",
+  "image": "chroicocephalus_ridibundus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "four_larus_species_by_naumann_jpg.jpg",
+  "original_sha1": "cc389e91bf7eba0f8f7ffa810c1ab7019daafce9",
+  "plate": "plate not identified",
+  "sha256": "2cb37c3a174b4a612f01cab14d96ddd7581af2a9ec14da3dea82f23cb4a9d21b",
+  "sha256_ha": "34bacc8188a4326e654305901eb753e68a0ee1355ac77c9f638346b5579ac164",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Four_Larus_Species_by_Naumann.jpg",
+  "species": "Chroicocephalus ridibundus",
+  "species_on_plate": [
+   "Chroicocephalus ridibundus",
+   "Hydrocoloeus minutus",
+   "Ichthyaetus melanocephalus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "White Stork",
+  "commons_title": "File:Ciconia ciconia by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1518
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Ciconia_ciconia_by_Naumann.jpg",
+  "image": "ciconia_ciconia.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "ciconia_ciconia_by_naumann_jpg.jpg",
+  "original_sha1": "0e22b0f517dfaae87fb8283dcaf2f7e26f2f35c5",
+  "plate": "plate not identified",
+  "sha256": "c5e7116f8ebf029da044a4f9dac0ec28c9b7737666d0f65433f2934d8ad84678",
+  "sha256_ha": "7cb79b6eb85e8fd10e978716a9c63185808777142108d5c0740494bc730b5d44",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Ciconia_ciconia_by_Naumann.jpg",
+  "species": "Ciconia ciconia",
+  "species_on_plate": [
+   "Ciconia ciconia"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "White-throated Dipper",
+  "commons_title": "File:Wasseramsel.jpg",
+  "crop_box": [
+   0,
+   0,
+   230,
+   188
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Wasseramsel.jpg",
+  "image": "cinclus_cinclus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "wasseramsel_jpg.jpg",
+  "original_sha1": "2dc13922f6c07dfb1a954de3d346b527a80f4e29",
+  "plate": "plate not identified",
+  "sha256": "dfa3c107d1d926fcf5ac258a3169398a29886017c6036df89c62d46032f9544e",
+  "sha256_ha": "ce6b8f910eb5ebe3e4017bc65635c4277e9a80cfd360a480ae912c1b2a407c3a",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Wasseramsel.jpg",
+  "species": "Cinclus cinclus",
+  "species_on_plate": [
+   "Cinclus cinclus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Marsh-Harrier",
+  "commons_title": "File:Rohrweihe.jpg",
+  "crop_box": [
+   0,
+   0,
+   1098,
+   1676
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Rohrweihe.jpg",
+  "image": "circus_aeruginosus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "rohrweihe_jpg.jpg",
+  "original_sha1": "2996b5e0de589afbade51e108f95d64f09f5fe52",
+  "plate": "plate not identified",
+  "sha256": "11fe02f2ef5914ae1bb9e103af2f75fa215643c53fffbae5e9bb5d9cfe687ac7",
+  "sha256_ha": "96a27522be86d9e19db56eff8f9ebada4e15e91d2988d56f9009ea581b60a335",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Rohrweihe.jpg",
+  "species": "Circus aeruginosus",
+  "species_on_plate": [
+   "Circus aeruginosus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Hen Harrier",
+  "commons_title": "File:Henharrier.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1471
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Henharrier.jpg",
+  "image": "circus_cyaneus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "henharrier_jpg.jpg",
+  "original_sha1": "466af9f0ef890a048183ded5bee1944a5656040e",
+  "plate": "plate not identified",
+  "sha256": "074a44c048e118218ef8fe371e6eff9d2e1c9bd4881f9915aae43f2d2d681c12",
+  "sha256_ha": "142915ceb32f6e937c1b51828365d56213544bbdb6444e3c300ae3f392f960b8",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Henharrier.jpg",
+  "species": "Circus cyaneus",
+  "species_on_plate": [
+   "Circus cyaneus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Hawfinch",
+  "commons_title": "File:C coccothraustes naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1565
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/C_coccothraustes_naumann.jpg",
+  "image": "coccothraustes_coccothraustes.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "c_coccothraustes_naumann_jpg.jpg",
+  "original_sha1": "4187443d46ca8ce5464917837b506b4000078064",
+  "plate": "plate not identified",
+  "sha256": "b0b6340994dfac395bb0fccaaece63544b8f20cd9e5e166582509f949a8924d7",
+  "sha256_ha": "abaee944e9d089912b8b58c913d2a9dbfc0f90ec1cf5c182ff5b5e08f75ccd58",
+  "source_url": "https://commons.wikimedia.org/wiki/File:C_coccothraustes_naumann.jpg",
+  "species": "Coccothraustes coccothraustes",
+  "species_on_plate": [
+   "Coccothraustes coccothraustes"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Rock Pigeon",
+  "commons_title": "File:Columba livia by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   943
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Columba_livia_by_Naumann.jpg",
+  "image": "columba_livia.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "columba_livia_by_naumann_jpg.jpg",
+  "original_sha1": "e135cc4290bc99fb0e2ece8321c4127e8b486fe0",
+  "plate": "plate not identified",
+  "sha256": "ae0e17345c1f6b438345c3bc43d6da125389b381263c9b65f915a25ab036ae98",
+  "sha256_ha": "0bc3f3f09307366756e96f9c55e0cb322cec1e02c184f19c2063a093d1d8a110",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Columba_livia_by_Naumann.jpg",
+  "species": "Columba livia",
+  "species_on_plate": [
+   "Columba livia"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Stock Dove",
+  "commons_title": "File:Columba oenas by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1108
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Columba_oenas_by_Naumann.jpg",
+  "image": "columba_oenas.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "columba_oenas_by_naumann_jpg.jpg",
+  "original_sha1": "327301879083d8593d1af8ce322af142966c4c1b",
+  "plate": "plate not identified",
+  "sha256": "2477b82e0f200b891598794f2f3bdc60aaad1ce0c713d3799684e66f9b37d903",
+  "sha256_ha": "9e05ed9ad6ecd158d795d4d9e5ca22a0f5797e25e73f95e3a79132435a665331",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Columba_oenas_by_Naumann.jpg",
+  "species": "Columba oenas",
+  "species_on_plate": [
+   "Columba oenas"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Wood-Pigeon",
+  "commons_title": "File:Columba palumbus by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1038
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Columba_palumbus_by_Naumann.jpg",
+  "image": "columba_palumbus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "columba_palumbus_by_naumann_jpg.jpg",
+  "original_sha1": "550277dabf0421a6ba4d2a45fc6d2d79f488a26d",
+  "plate": "plate not identified",
+  "sha256": "79aa5f5db8f7061db52af2cb3d8e43644d3d26f6d1c1f436cb38ee7c85fcd83d",
+  "sha256_ha": "4e9358a4e319a8b31204a0504d5b6d7d918b82a60811b16e432091078abf7aeb",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Columba_palumbus_by_Naumann.jpg",
+  "species": "Columba palumbus",
+  "species_on_plate": [
+   "Columba palumbus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Raven",
+  "commons_title": "File:Corvus corax corax (Kpjas).jpg",
+  "crop_box": [
+   0,
+   0,
+   678,
+   892
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Corvus_corax_corax_%28Kpjas%29.jpg",
+  "image": "corvus_corax.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "corvus_corax_corax_kpjas_jpg.jpg",
+  "original_sha1": "8ab5d39ca454afa0b9b991d1c5c8e5f86a09bbbc",
+  "plate": "plate not identified",
+  "sha256": "e1b88eafb601d425dbeb5baaf4fb7312d1cccea06f4f118e286da61fcfd6d07b",
+  "sha256_ha": "1ce0bf751dc2f826cf53df920e42605de965ec9c464242869ef4fff439265559",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Corvus_corax_corax_(Kpjas).jpg",
+  "species": "Corvus corax",
+  "species_on_plate": [
+   "Corvus corax"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Carrion Crow",
+  "commons_title": "File:Corvus cornix (PD).jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   1832
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Corvus_cornix_%28PD%29.jpg",
+  "image": "corvus_corone.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "corvus_cornix_pd_jpg.jpg",
+  "original_sha1": "26df7a6807fade23e8545aef67063ceb0c5a6363",
+  "plate": "plate not identified",
+  "sha256": "cd64dc0278134ff093fc8d46df552601b7d163b02397a15d6394e410bb799985",
+  "sha256_ha": "d2ca95f439be9eb7c760d13339778082f714cad373b2a2b5a3b70e1a4f64cfdd",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Corvus_cornix_(PD).jpg",
+  "species": "Corvus corone",
+  "species_on_plate": [
+   "Corvus corone"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Rook",
+  "commons_title": "File:Rook paint.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1556
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Rook_paint.jpg",
+  "image": "corvus_frugilegus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "rook_paint_jpg.jpg",
+  "original_sha1": "6186ded5528c7ba8d85c84c256188cd3258a65c6",
+  "plate": "plate not identified",
+  "sha256": "96547a7830c78ea874176ddf945bc1cf3851eb610c9160d59b3cd825a9b8da24",
+  "sha256_ha": "a12008d7dc801c712776851941ef806b06c55869a2851ae1ef2c6487ec4e931a",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Rook_paint.jpg",
+  "species": "Corvus frugilegus",
+  "species_on_plate": [
+   "Corvus frugilegus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Jackdaw",
+  "commons_title": "File:Elster und Dohle.jpg",
+  "crop_box": [
+   131,
+   670,
+   876,
+   1340
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Elster_und_Dohle.jpg",
+  "image": "corvus_monedula.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "elster_und_dohle_jpg.jpg",
+  "original_sha1": "298766b2eff96645a602fa69bd3637f333d1040d",
+  "plate": "Band IV, Tafel 10",
+  "sha256": "a4677e9d370847c93ed987fa07bacd79bd610799106185efc49683039bba3a10",
+  "sha256_ha": "a91301872b61ea1d3ae4f5b46f4b6e4814ce29842ccda940372b1e6bc01f3ff1",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Elster_und_Dohle.jpg",
+  "species": "Corvus monedula",
+  "species_on_plate": [
+   "Corvus monedula",
+   "Pica pica"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Cuckoo",
+  "commons_title": "File:Cuculus canorus.jpg",
+  "crop_box": [
+   0,
+   0,
+   1260,
+   834
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Cuculus_canorus.jpg",
+  "image": "cuculus_canorus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "cuculus_canorus_jpg.jpg",
+  "original_sha1": "c91788d3ecb909c72db888156a568373552f5b2c",
+  "plate": "plate not identified",
+  "sha256": "e2c8e2e7addcba4453119c3483e14fdd97c5cc489aa0fab5d16252e3996a51be",
+  "sha256_ha": "229635f91cf6ac3881615fcda2c6e3bbfb8df8839bf88ab0d812ab2e11cf3332",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Cuculus_canorus.jpg",
+  "species": "Cuculus canorus",
+  "species_on_plate": [
+   "Cuculus canorus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Greater Whitethroat",
+  "commons_title": "File:Sylvia communis.jpg",
+  "crop_box": [
+   0,
+   0,
+   934,
+   592
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Sylvia_communis.jpg",
+  "image": "curruca_communis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "sylvia_communis_jpg.jpg",
+  "original_sha1": "586c2078c2176f3e274914407deb2a7f62516a69",
+  "plate": "plate not identified",
+  "sha256": "4ce8d00384ac42448d173ea776c36006bdbe20629bee7dba238b1c789d3eb367",
+  "sha256_ha": "bce537d1ddd30d2f45d50911d786f592fa9909afaa740547d1afdefd4d195019",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sylvia_communis.jpg",
+  "species": "Curruca communis",
+  "species_on_plate": [
+   "Curruca communis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Lesser Whitethroat",
+  "commons_title": "File:Sylvia curruca communis borin.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1510
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Sylvia_curruca_communis_borin.jpg",
+  "image": "curruca_curruca.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "sylvia_curruca_communis_borin_jpg.jpg",
+  "original_sha1": "2dd6a6405301bfe88de3e6c453dbe0ceb9f609bf",
+  "plate": "plate not identified",
+  "sha256": "977457ab085326eafe82ca0ae1eb9bd9bdb6eed4229db631f56aa275b87826d7",
+  "sha256_ha": "e4402150fc57ec0f5197ae0b11c75c92ddc646d99228421ba05bf002a578c394",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sylvia_curruca_communis_borin.jpg",
+  "species": "Curruca curruca",
+  "species_on_plate": [
+   "Curruca communis",
+   "Curruca curruca",
+   "Sylvia borin"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Blue Tit",
+  "commons_title": "File:Aegithalus and Parus Species by Naumann.jpg",
+  "crop_box": [
+   288,
+   77,
+   768,
+   456
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Aegithalus_and_Parus_Species_by_Naumann.jpg",
+  "image": "cyanistes_caeruleus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "aegithalus_and_parus_species_by_naumann_jpg.jpg",
+  "original_sha1": "ee31c21a425de359be32eaa0b8a49f5affa0f1ca",
+  "plate": "plate not identified",
+  "sha256": "e68426613ab8c9c619abf2e2af5db31776f6441a6308aa3b53efb838b0fd21a1",
+  "sha256_ha": "6730b4f41e78f52c9fdf2acae4b9cfab276d9c73164645fda8f91de0e00ff9f8",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Aegithalus_and_Parus_Species_by_Naumann.jpg",
+  "species": "Cyanistes caeruleus",
+  "species_on_plate": [
+   "Aegithalos caudatus",
+   "Cyanistes caeruleus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Tundra Swan",
+  "commons_title": "File:Bewicksswan33.jpg",
+  "crop_box": [
+   0,
+   0,
+   385,
+   350
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Bewicksswan33.jpg",
+  "image": "cygnus_columbianus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "bewicksswan33_jpg.jpg",
+  "original_sha1": "fb46d3b8ce638528d22dd1d9765175534b2c4b78",
+  "plate": "plate not identified",
+  "sha256": "3d1399abff61c4c6c0436d7561d96f8ebb3e48d5f3c6007f6702c58deb807127",
+  "sha256_ha": "107e60421209293c980b67b74d2a744827a49e380b4ba2d36812918eb741b03c",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Bewicksswan33.jpg",
+  "species": "Cygnus columbianus",
+  "species_on_plate": [
+   "Cygnus columbianus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Whooper Swan",
+  "commons_title": "File:Cygnus cygnus by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1260,
+   875
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Cygnus_cygnus_by_Naumann.jpg",
+  "image": "cygnus_cygnus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "cygnus_cygnus_by_naumann_jpg.jpg",
+  "original_sha1": "b34d5544fe713372fc760d075d91e218d41b1206",
+  "plate": "plate not identified",
+  "sha256": "fb93fd425b8746080b938a190727412ca6506003e3f9fa6ea88b7635648769ae",
+  "sha256_ha": "5857371fb51a6dfaecd8792d03a846cb45971abbee3bb96cfd08b61c6048c0f8",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Cygnus_cygnus_by_Naumann.jpg",
+  "species": "Cygnus cygnus",
+  "species_on_plate": [
+   "Cygnus cygnus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common House-Martin",
+  "commons_title": "File:Martin.JPG",
+  "crop_box": [
+   0,
+   0,
+   317,
+   250
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Martin.JPG",
+  "image": "delichon_urbicum.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "martin_jpg.jpg",
+  "original_sha1": "0cad516d07ea536989e1f30245281054b45335fb",
+  "plate": "plate not identified",
+  "sha256": "626ec88ae7893ad35dfbd403b3f2de50a383937a5bfa512bd276b8748833f457",
+  "sha256_ha": "3d10fff4285eb808a8f98dd2c8c55e5ba42f5cb73e88ba40d53e3b429e9500b6",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Martin.JPG",
+  "species": "Delichon urbicum",
+  "species_on_plate": [
+   "Delichon urbicum"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Great Spotted Woodpecker",
+  "commons_title": "File:Buntspecht Dendrocopos major1.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1715
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Buntspecht_Dendrocopos_major1.jpg",
+  "image": "dendrocopos_major.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "buntspecht_dendrocopos_major1_jpg.jpg",
+  "original_sha1": "ead64e1942215b3361cc35ced627d70dce0526c3",
+  "plate": "plate not identified",
+  "sha256": "ecc663d12d0e669cf86d7a1d6eb4ab4e7b3a0fc16316a7a4a621cd94744a0f08",
+  "sha256_ha": "1ecc5045e1a1252d0111c5b70b5e039cc0c3c1e0c21248154ee17c393ff4aaac",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Buntspecht_Dendrocopos_major1.jpg",
+  "species": "Dendrocopos major",
+  "species_on_plate": [
+   "Dendrocopos major"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Middle Spotted Woodpecker",
+  "commons_title": "File:Three Picoides Species by Naumann.jpg",
+  "crop_box": [
+   418,
+   0,
+   947,
+   1237
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Three_Picoides_Species_by_Naumann.jpg",
+  "image": "dendrocoptes_medius.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "three_picoides_species_by_naumann_jpg.jpg",
+  "original_sha1": "08b6137911e0b86026216e8f0dbb4aa27707e1f3",
+  "plate": "plate not identified",
+  "sha256": "d344c23d5200c620a43fdde3c8548119642febe5a383e4d78c509257fd23bfb6",
+  "sha256_ha": "f86530d41927330fbddec7bd8ec8fd748e099ac48bc3c84e7ec81d10f51e8222",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Three_Picoides_Species_by_Naumann.jpg",
+  "species": "Dendrocoptes medius",
+  "species_on_plate": [
+   "Dendrocoptes medius",
+   "Dryobates minor"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Lesser Spotted Woodpecker",
+  "commons_title": "File:Dendrocopos minor male.jpg",
+  "crop_box": [
+   0,
+   0,
+   1054,
+   1408
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Dendrocopos_minor_male.jpg",
+  "image": "dryobates_minor.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "dendrocopos_minor_male_jpg.jpg",
+  "original_sha1": "5e22d5e26f036104823ce684e6d7b59182acdf2f",
+  "plate": "plate not identified",
+  "sha256": "451214d7a898875a90c0b9c242aaf216d9dfdc4fc6ed5f322ac42862d8a56271",
+  "sha256_ha": "9f7618d9714c4d14d11f08ba0bd138a84f3b7fd4fc74cf3320c9346d4c551534",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Dendrocopos_minor_male.jpg",
+  "species": "Dryobates minor",
+  "species_on_plate": [
+   "Dryobates minor"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Corn Bunting",
+  "commons_title": "File:Emberiza calandra and Emberiza melanocephala by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   915,
+   1183
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Emberiza_calandra_and_Emberiza_melanocephala_by_Naumann.jpg",
+  "image": "emberiza_calandra.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "emberiza_calandra_and_emberiza_melanocephala_by_naumann_jpg.jpg",
+  "original_sha1": "e0a797912e9573e8ef0ef2b94a9f2ce457e3dd2d",
+  "plate": "plate not identified",
+  "sha256": "4c4087fb3b9db53a7d2dade35eb795bf66582fb59f336fe2a7ec77a710900139",
+  "sha256_ha": "45671c0a6e0b706f1c2e1f3b394d70affd1824b698c1135f47663cbea57b2ce7",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Emberiza_calandra_and_Emberiza_melanocephala_by_Naumann.jpg",
+  "species": "Emberiza calandra",
+  "species_on_plate": [
+   "Emberiza calandra"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Cirl Bunting",
+  "commons_title": "File:Emberiza cirlus.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   880
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Emberiza_cirlus.jpg",
+  "image": "emberiza_cirlus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "emberiza_cirlus_jpg.jpg",
+  "original_sha1": "68da9665c88f3ccf5a16ff55aea3b54ec6d49950",
+  "plate": "plate not identified",
+  "sha256": "1b4ba79288d717e47ff27a117afe09ddc972cd483ad284f7f5e3b2b29fbe1f01",
+  "sha256_ha": "9f155375d79025ce8d3e9b80693d3cee20643935d8a7c32d55ae84bd3cf7f42e",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Emberiza_cirlus.jpg",
+  "species": "Emberiza cirlus",
+  "species_on_plate": [
+   "Emberiza cirlus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Reed Bunting",
+  "commons_title": "File:Rohrammer.jpg",
+  "crop_box": [
+   0,
+   0,
+   907,
+   1309
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Rohrammer.jpg",
+  "image": "emberiza_schoeniclus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "rohrammer_jpg.jpg",
+  "original_sha1": "a254906b69f0c6c284b3486d9e5ce579a5af80c4",
+  "plate": "plate not identified",
+  "sha256": "f257c0879fdad4f80bfc3a5ca31c219aa05c24260553499171b01cae2adbf674",
+  "sha256_ha": "0c1119175a8eb2552e18576c95d40e8a90ff674c9787daafc4d1b781b51e1641",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Rohrammer.jpg",
+  "species": "Emberiza schoeniclus",
+  "species_on_plate": [
+   "Emberiza schoeniclus"
+  ]
+ },
+ {
+  "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+  "common_name": "European Robin",
+  "commons_title": "File:A history of the birds of Europe (Pl. 644) (6989225270).jpg",
+  "crop_box": [
+   76,
+   215,
+   1226,
+   1542
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/A_history_of_the_birds_of_Europe_%28Pl._644%29_%286989225270%29.jpg",
+  "image": "erithacus_rubecula.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "a_history_of_the_birds_of_europe_pl_644_6989225270_jpg.jpg",
+  "original_sha1": "6d36495e6f8696ff1c7bcb90d735b588e331baf7",
+  "plate": "Tafel 644",
+  "sha256": "fd996dbdecaec9f41d651ced01ab044bdcbd1fc0a5e9532375233a27d0e8cd67",
+  "sha256_ha": "bb4e634e17586772f7f840066d34451748137568d75591d3a165fa9ca60ae73f",
+  "source_url": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._644)_(6989225270).jpg",
+  "species": "Erithacus rubecula",
+  "species_on_plate": [
+   "Erithacus rubecula"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Merlin",
+  "commons_title": "File:Smyrlar.jpg",
+  "crop_box": [
+   0,
+   0,
+   938,
+   1293
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Smyrlar.jpg",
+  "image": "falco_columbarius.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "smyrlar_jpg.jpg",
+  "original_sha1": "00757379ba482a013a6d947bb500bd42356edf17",
+  "plate": "plate not identified",
+  "sha256": "a01aa0760056140dc18a1da9befba5ede4f59bd0683cbbe960fb018cf54bf077",
+  "sha256_ha": "69a19dc480f3ea9d690afd2ad23fbce484371ff2e78efbe63d9878779a750195",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Smyrlar.jpg",
+  "species": "Falco columbarius",
+  "species_on_plate": [
+   "Falco columbarius"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Peregrine Falcon",
+  "commons_title": "File:Falco peregrinus naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1634
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Falco_peregrinus_naumann.jpg",
+  "image": "falco_peregrinus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "falco_peregrinus_naumann_jpg.jpg",
+  "original_sha1": "ccfb269e675e4668cc34f3579930188bc329e561",
+  "plate": "plate not identified",
+  "sha256": "e38dadcc3ebeac22c199a86bed4d77f397f6091c0b51758e2366701cb794093d",
+  "sha256_ha": "25bdf6ddaaea4ccf7191c89572963a5af6d2a2a1a15b48b161b2358e9426c16f",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Falco_peregrinus_naumann.jpg",
+  "species": "Falco peregrinus",
+  "species_on_plate": [
+   "Falco peregrinus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Hobby",
+  "commons_title": "File:Ostříž lesní.jpg",
+  "crop_box": [
+   0,
+   0,
+   939,
+   1387
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Ost%C5%99%C3%AD%C5%BE_lesn%C3%AD.jpg",
+  "image": "falco_subbuteo.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "ost_lesn_jpg.jpg",
+  "original_sha1": "e13f770696220012240c8e00ae9848594b3d6d54",
+  "plate": "plate not identified",
+  "sha256": "8f97499e9340354542f83277685f5b35d1430c779134f96f5f171ff999e05c89",
+  "sha256_ha": "6a83360ae04d01255c65840112f2278fa02c87da870f45eb968ff526c1836959",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Ost%C5%99%C3%AD%C5%BE_lesn%C3%AD.jpg",
+  "species": "Falco subbuteo",
+  "species_on_plate": [
+   "Falco subbuteo"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Kestrel",
+  "commons_title": "File:Turmfalke grosse version.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1448
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Turmfalke_grosse_version.jpg",
+  "image": "falco_tinnunculus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "turmfalke_grosse_version_jpg.jpg",
+  "original_sha1": "a59af35af4ae2ef307b595a8c708b1ec5e236932",
+  "plate": "plate not identified",
+  "sha256": "82b053cf93a94bcedc01c95257ac8db35cedfe0f823069f0cb9608421b6dff2f",
+  "sha256_ha": "a39285c9f6ab46ca94437c2c53f6096395451f7e12b1f30a99cda5ada66475fd",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Turmfalke_grosse_version.jpg",
+  "species": "Falco tinnunculus",
+  "species_on_plate": [
+   "Falco tinnunculus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "European Pied Flycatcher",
+  "commons_title": "File:Ficedula.jpg",
+  "crop_box": [
+   0,
+   0,
+   931,
+   1372
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Ficedula.jpg",
+  "image": "ficedula_hypoleuca.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "ficedula_jpg.jpg",
+  "original_sha1": "0ceee996683505dd21b69a68041aa17ae641caa8",
+  "plate": "plate not identified",
+  "sha256": "1e93ecd8b59c9698506e914908e577a8e2b572e2fb853a5e63adb720f827f98e",
+  "sha256_ha": "734cfd83fa4506db4f4cc1a9eceecccb69eeb85270737f344a69a163397115a7",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Ficedula.jpg",
+  "species": "Ficedula hypoleuca",
+  "species_on_plate": [
+   "Ficedula hypoleuca"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Chaffinch",
+  "commons_title": "File:Poster Fringilla coelebs.jpg",
+  "crop_box": [
+   0,
+   0,
+   938,
+   622
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Poster_Fringilla_coelebs.jpg",
+  "image": "fringilla_coelebs.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "poster_fringilla_coelebs_jpg.jpg",
+  "original_sha1": "4a12a2f85c37435d94abe0618923f88ebe4f0e1c",
+  "plate": "plate not identified",
+  "sha256": "a9201a9baa068736d31e57b0fa76f7b0391e0c1b25db51703b92140e6012e5d8",
+  "sha256_ha": "9811d5da77f49cd8b60c0d4ba99ebef5cddfbb2116ce684421929201b1fc0ec3",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Poster_Fringilla_coelebs.jpg",
+  "species": "Fringilla coelebs",
+  "species_on_plate": [
+   "Fringilla coelebs"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Brambling",
+  "commons_title": "File:Brambling95.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   196
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Brambling95.jpg",
+  "image": "fringilla_montifringilla.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "brambling95_jpg.jpg",
+  "original_sha1": "36f3577051d460bba8e33afce1c2f6e787ca8d30",
+  "plate": "plate not identified",
+  "sha256": "b3b927223bb191c4a8a7f6b8c50b2cc5e80a845763860189241123138a900de2",
+  "sha256_ha": "e47b375c83bae68207420ba7ebf0a36f475d9f3fe4475c9d87b7996d0e581962",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Brambling95.jpg",
+  "species": "Fringilla montifringilla",
+  "species_on_plate": [
+   "Fringilla montifringilla"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Coot",
+  "commons_title": "File:Fulica atra by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1053
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Fulica_atra_by_Naumann.jpg",
+  "image": "fulica_atra.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "fulica_atra_by_naumann_jpg.jpg",
+  "original_sha1": "46ef2147af66311ee1a7b051edff38800e5f61c7",
+  "plate": "plate not identified",
+  "sha256": "4e7e9e2162e25375200dbf916b71e967aa1464874e7a2bb9e1c115fdd3601ae2",
+  "sha256_ha": "37aaeb8e317938e37be0f0f304d85caf8a0c3a909e582dbede6abd2307d2c290",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Fulica_atra_by_Naumann.jpg",
+  "species": "Fulica atra",
+  "species_on_plate": [
+   "Fulica atra"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Snipe",
+  "commons_title": "File:Gallinago gallinago hamburg.jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   1833
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Gallinago_gallinago_hamburg.jpg",
+  "image": "gallinago_gallinago.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "gallinago_gallinago_hamburg_jpg.jpg",
+  "original_sha1": "b86b9626e441e2c9bea8cdb7c14ec428e4dfe3fa",
+  "plate": "plate not identified",
+  "sha256": "d775ed1c167751553c3243b25f29f5bd4ca8a980114dfe2a79d249990f214ffc",
+  "sha256_ha": "eefd92dd715f25128c9f0bdfa67400d1a5c7900aef3c4eff2f0be93962c09594",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Gallinago_gallinago_hamburg.jpg",
+  "species": "Gallinago gallinago",
+  "species_on_plate": [
+   "Gallinago gallinago"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Moorhen",
+  "commons_title": "File:Gallinula chloropus by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1117
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Gallinula_chloropus_by_Naumann.jpg",
+  "image": "gallinula_chloropus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "gallinula_chloropus_by_naumann_jpg.jpg",
+  "original_sha1": "1ea6ac35e3b66837a913681dd5dfa20ecb74cffc",
+  "plate": "plate not identified",
+  "sha256": "82cc68dda7ead97d01716c7bcfd9caaad93b14333dc8cb306132b963b1aeda6b",
+  "sha256_ha": "5e49530801ed85c71b8cce9e044815176996aa01d018a38cbb1b0ea928df6f3f",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Gallinula_chloropus_by_Naumann.jpg",
+  "species": "Gallinula chloropus",
+  "species_on_plate": [
+   "Gallinula chloropus"
+  ]
+ },
+ {
+  "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+  "common_name": "Eurasian Jay",
+  "commons_title": "File:A history of the birds of Europe (Pl. 686) (7135327803).jpg",
+  "crop_box": [
+   76,
+   358,
+   1201,
+   1614
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/A_history_of_the_birds_of_Europe_%28Pl._686%29_%287135327803%29.jpg",
+  "image": "garrulus_glandarius.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "a_history_of_the_birds_of_europe_pl_686_7135327803_jpg.jpg",
+  "original_sha1": "b6249a06c22a0dfbfdeed3850d5cfda5383da0e6",
+  "plate": "Tafel 686",
+  "sha256": "031bf919ec27e7b9a46f7bd10fafcc1a7e871f4e9032f6440bfa53d575147eb2",
+  "sha256_ha": "3a623aa9f987b2fecf620a9e46ea22283ebf7a3a75b3dd2ebacacfae055856d1",
+  "source_url": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._686)_(7135327803).jpg",
+  "species": "Garrulus glandarius",
+  "species_on_plate": [
+   "Garrulus glandarius"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Red-throated Loon",
+  "commons_title": "File:Four Gavia Species by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   544
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Four_Gavia_Species_by_Naumann.jpg",
+  "image": "gavia_stellata.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "four_gavia_species_by_naumann_jpg.jpg",
+  "original_sha1": "9145eb6ad2f2a39b49144c40cd9d24b01107772f",
+  "plate": "plate not identified",
+  "sha256": "7de0ca38d8850bc58ea7a15f64aa2be70746e0e692ec7c9a11751433a8cb2325",
+  "sha256_ha": "1831c06d725fcd67d3d01c6cc8d31d330f5bbccb1daf30965242a2ac343efbd6",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Four_Gavia_Species_by_Naumann.jpg",
+  "species": "Gavia stellata",
+  "species_on_plate": [
+   "Gavia stellata"
+  ]
+ },
+ {
+  "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+  "common_name": "Common Crane",
+  "commons_title": "File:A history of the birds of Europe (Pl. 707) (6989252104).jpg",
+  "crop_box": [
+   175,
+   257,
+   1202,
+   1763
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/A_history_of_the_birds_of_Europe_%28Pl._707%29_%286989252104%29.jpg",
+  "image": "grus_grus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "a_history_of_the_birds_of_europe_pl_707_6989252104_jpg.jpg",
+  "original_sha1": "30d19c8cce705953167f292dfdf2ba7dcab50171",
+  "plate": "Tafel 707",
+  "sha256": "420d4001df508f191891a8523d0df1ccf45abacebb8607076099eeeb78ebfac2",
+  "sha256_ha": "ea02518b65cf63c9401045cea4df079e372b33438ae2e425659d9a1678e195d1",
+  "source_url": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._707)_(6989252104).jpg",
+  "species": "Grus grus",
+  "species_on_plate": [
+   "Grus grus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Oystercatcher",
+  "commons_title": "File:Oystercatcher, drawing by naumann 1905.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   522
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Oystercatcher%2C_drawing_by_naumann_1905.jpg",
+  "image": "haematopus_ostralegus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "oystercatcher_drawing_by_naumann_1905_jpg.jpg",
+  "original_sha1": "1e9c42343191a19cf2e761cc262d55f3066692cf",
+  "plate": "plate not identified",
+  "sha256": "2783784fe26e67a940b97b6ac7c0314fd4edc305352f4872f90d3550f3ebc59e",
+  "sha256_ha": "faea494975c0c9e8c5d21b619678e6779e9accff5db08b6208a8fde84b739d25",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Oystercatcher,_drawing_by_naumann_1905.jpg",
+  "species": "Haematopus ostralegus",
+  "species_on_plate": [
+   "Haematopus ostralegus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Black-winged Stilt",
+  "commons_title": "File:Himantopus himantopus and Recurvirostra avosetta by Naumann.jpg",
+  "crop_box": [
+   0,
+   134,
+   512,
+   538
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Himantopus_himantopus_and_Recurvirostra_avosetta_by_Naumann.jpg",
+  "image": "himantopus_himantopus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "himantopus_himantopus_and_recurvirostra_avosetta_by_naumann_jpg.jpg",
+  "original_sha1": "293c215be9a777ddef147976079d7152321a5996",
+  "plate": "plate not identified",
+  "sha256": "b038a5df54e9c1e7a328515e4f104307cfb3248d6cd75ce80a65f49ce75b1320",
+  "sha256_ha": "eae8e2cd484a6217b9791448e110b290a68a073d332b93dfae79153f88f4ee8f",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Himantopus_himantopus_and_Recurvirostra_avosetta_by_Naumann.jpg",
+  "species": "Himantopus himantopus",
+  "species_on_plate": [
+   "Himantopus himantopus",
+   "Recurvirostra avosetta"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Icterine Warbler",
+  "commons_title": "File:Hippolais icterina, Phylloscopus borealis and Phylloscopus trochiloides by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1107
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Hippolais_icterina%2C_Phylloscopus_borealis_and_Phylloscopus_trochiloides_by_Naumann.jpg",
+  "image": "hippolais_icterina.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "hippolais_icterina_phylloscopus_borealis_and_phylloscopus_trochiloides_by_naumann_jpg.jpg",
+  "original_sha1": "01a0ea55df7d6be523dd25255a10ca79e0a1d40c",
+  "plate": "plate not identified",
+  "sha256": "9b5b45cf443a66fb96d64acbafcedf8a759942bd2913fe053e5bffc48c492967",
+  "sha256_ha": "acfa44e705b66fbd74e320e2a483c02bcbef1b327d9f07e9254ae47941a45fa8",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Hippolais_icterina,_Phylloscopus_borealis_and_Phylloscopus_trochiloides_by_Naumann.jpg",
+  "species": "Hippolais icterina",
+  "species_on_plate": [
+   "Hippolais icterina"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Melodious Warbler",
+  "commons_title": "File:Naumann2Naum 0109.jpg",
+  "crop_box": [
+   153,
+   820,
+   640,
+   1640
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Naumann2Naum_0109.jpg",
+  "image": "hippolais_polyglotta.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann2naum_0109_jpg.jpg",
+  "original_sha1": "de14d6fae3a4e558f1e5ebcbb63b49dc2e9320fc",
+  "plate": "plate not identified",
+  "sha256": "d3e15b64d580cc61ec562a139f233035657706692c9251b95c1c5b90db02caa0",
+  "sha256_ha": "8923e2eef4a2f48f3481da9465aedf7edcbb6c8a4bc11c9aeba19ed08ddb6e47",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann2Naum_0109.jpg",
+  "species": "Hippolais polyglotta",
+  "species_on_plate": [
+   "Hippolais icterina",
+   "Hippolais polyglotta"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Barn Swallow",
+  "commons_title": "File:Hirundo rustica naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   215
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Hirundo_rustica_naumann.jpg",
+  "image": "hirundo_rustica.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "hirundo_rustica_naumann_jpg.jpg",
+  "original_sha1": "c88d766126c485d00753319fa201a45b0491c639",
+  "plate": "plate not identified",
+  "sha256": "6a202f27f3fa77c50622476376cabfe8187061feb4f933ec7f2d59216f616e52",
+  "sha256_ha": "188d3de5199635d7179c947dc355e36e6ac9d73065b96758f21d0ff79317a30e",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Hirundo_rustica_naumann.jpg",
+  "species": "Hirundo rustica",
+  "species_on_plate": [
+   "Hirundo rustica"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Little Gull",
+  "commons_title": "File:Four Larus Species by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   544
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Four_Larus_Species_by_Naumann.jpg",
+  "image": "hydrocoloeus_minutus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "four_larus_species_by_naumann_jpg.jpg",
+  "original_sha1": "cc389e91bf7eba0f8f7ffa810c1ab7019daafce9",
+  "plate": "plate not identified",
+  "sha256": "2cb37c3a174b4a612f01cab14d96ddd7581af2a9ec14da3dea82f23cb4a9d21b",
+  "sha256_ha": "34bacc8188a4326e654305901eb753e68a0ee1355ac77c9f638346b5579ac164",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Four_Larus_Species_by_Naumann.jpg",
+  "species": "Hydrocoloeus minutus",
+  "species_on_plate": [
+   "Chroicocephalus ridibundus",
+   "Hydrocoloeus minutus",
+   "Ichthyaetus melanocephalus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Mediterranean Gull",
+  "commons_title": "File:Four Larus Species by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   544
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Four_Larus_Species_by_Naumann.jpg",
+  "image": "ichthyaetus_melanocephalus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "four_larus_species_by_naumann_jpg.jpg",
+  "original_sha1": "cc389e91bf7eba0f8f7ffa810c1ab7019daafce9",
+  "plate": "plate not identified",
+  "sha256": "2cb37c3a174b4a612f01cab14d96ddd7581af2a9ec14da3dea82f23cb4a9d21b",
+  "sha256_ha": "34bacc8188a4326e654305901eb753e68a0ee1355ac77c9f638346b5579ac164",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Four_Larus_Species_by_Naumann.jpg",
+  "species": "Ichthyaetus melanocephalus",
+  "species_on_plate": [
+   "Chroicocephalus ridibundus",
+   "Hydrocoloeus minutus",
+   "Ichthyaetus melanocephalus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Wryneck",
+  "commons_title": "File:Jynx torquilla.jpg",
+  "crop_box": [
+   0,
+   0,
+   930,
+   1372
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Jynx_torquilla.jpg",
+  "image": "jynx_torquilla.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "jynx_torquilla_jpg.jpg",
+  "original_sha1": "3495ac091c29aedbd82e58c6fda46ad930596b11",
+  "plate": "Band IV, Tafel 36",
+  "sha256": "84dbda071f66ac208d086e97b92cd7c07f45a11b20b8be57fad973e255a3ef5d",
+  "sha256_ha": "a521cca1b0b20fe839c1fca655993607f38a036cf3cc403cf96f5cbb6cf54b4a",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Jynx_torquilla.jpg",
+  "species": "Jynx torquilla",
+  "species_on_plate": [
+   "Jynx torquilla"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Red-backed Shrike",
+  "commons_title": "File:Neuntöter gr.jpg",
+  "crop_box": [
+   0,
+   0,
+   920,
+   969
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Neunt%C3%B6ter_gr.jpg",
+  "image": "lanius_collurio.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "neunt_ter_gr_jpg.jpg",
+  "original_sha1": "4a299ac3cfa68286606d7cd3d020477770f0064b",
+  "plate": "plate not identified",
+  "sha256": "91254a8472f93cdd06d60e358e4bf2e4e47d0018fa45486da6a54a7f02daeb54",
+  "sha256_ha": "cba4d2c8a36698b3e3b765fa0de9da3abc62017e50217bc6b1a6e6b14706ca80",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Neunt%C3%B6ter_gr.jpg",
+  "species": "Lanius collurio",
+  "species_on_plate": [
+   "Lanius collurio"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Lesser Black-backed Gull",
+  "commons_title": "File:Three Larus Species by Naumann 2.jpg",
+  "crop_box": [
+   240,
+   0,
+   768,
+   328
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Three_Larus_Species_by_Naumann_2.jpg",
+  "image": "larus_fuscus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "three_larus_species_by_naumann_2_jpg.jpg",
+  "original_sha1": "b51f19cc1e959db7ed3d866b248b920a2a91288a",
+  "plate": "plate not identified",
+  "sha256": "95cee0a40dc525bb704586f818107f879bf2621d05c212374f8e521d4ea40b1b",
+  "sha256_ha": "348a0e073b6bd2fb0e64db2373e5bd09ef090cb83db766078221b7cd88585435",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Three_Larus_Species_by_Naumann_2.jpg",
+  "species": "Larus fuscus",
+  "species_on_plate": [
+   "Larus fuscus",
+   "Larus marinus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Great Black-backed Gull",
+  "commons_title": "File:Three Larus Species by Naumann 2.jpg",
+  "crop_box": [
+   224,
+   207,
+   800,
+   547
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Three_Larus_Species_by_Naumann_2.jpg",
+  "image": "larus_marinus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "three_larus_species_by_naumann_2_jpg.jpg",
+  "original_sha1": "b51f19cc1e959db7ed3d866b248b920a2a91288a",
+  "plate": "plate not identified",
+  "sha256": "95cee0a40dc525bb704586f818107f879bf2621d05c212374f8e521d4ea40b1b",
+  "sha256_ha": "a98c97b9379dfc1666b4c49c4382e2417aa439d5ea232f19755a4cefe5a940f1",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Three_Larus_Species_by_Naumann_2.jpg",
+  "species": "Larus marinus",
+  "species_on_plate": [
+   "Larus fuscus",
+   "Larus marinus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Bar-tailed Godwit",
+  "commons_title": "File:Limosa limosa.jpg",
+  "crop_box": [
+   0,
+   0,
+   474,
+   681
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Limosa_limosa.jpg",
+  "image": "limosa_lapponica.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "limosa_limosa_jpg.jpg",
+  "original_sha1": "4ab11fdfe43ec045f1d01376f08940fa27e43dff",
+  "plate": "plate not identified",
+  "sha256": "c3cee3a8f8fbde55f5aff2d4b8d8db1f0d892033d8f748b14ce87d807d32eab2",
+  "sha256_ha": "bd7af0bf50ffefd75c33a23a38416349e4d42ee43c345f30200cbba3cc470071",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Limosa_limosa.jpg",
+  "species": "Limosa lapponica",
+  "species_on_plate": [
+   "Limosa lapponica",
+   "Limosa limosa"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Black-tailed Godwit",
+  "commons_title": "File:Limosa limosa.jpg",
+  "crop_box": [
+   0,
+   0,
+   474,
+   681
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Limosa_limosa.jpg",
+  "image": "limosa_limosa.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "limosa_limosa_jpg.jpg",
+  "original_sha1": "4ab11fdfe43ec045f1d01376f08940fa27e43dff",
+  "plate": "plate not identified",
+  "sha256": "c3cee3a8f8fbde55f5aff2d4b8d8db1f0d892033d8f748b14ce87d807d32eab2",
+  "sha256_ha": "bd7af0bf50ffefd75c33a23a38416349e4d42ee43c345f30200cbba3cc470071",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Limosa_limosa.jpg",
+  "species": "Limosa limosa",
+  "species_on_plate": [
+   "Limosa lapponica",
+   "Limosa limosa"
+  ]
+ },
+ {
+  "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+  "common_name": "Common Grasshopper-Warbler",
+  "commons_title": "File:A history of the birds of Europe (Pl. 652) (7135312833).jpg",
+  "crop_box": [
+   233,
+   433,
+   1087,
+   1655
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/A_history_of_the_birds_of_Europe_%28Pl._652%29_%287135312833%29.jpg",
+  "image": "locustella_naevia.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "a_history_of_the_birds_of_europe_pl_652_7135312833_jpg.jpg",
+  "original_sha1": "1125809c18fe19a11ebaf48f8d91ef20e942f14a",
+  "plate": "Tafel 652",
+  "sha256": "323e6a7e2d70604c590e74ab6f41a2cd50b9999f46c4cac2ba072349dfbf1aee",
+  "sha256_ha": "01b4ed441f5dc24e06b54785a0518023f66a4bfedd5de63b98c9b71f1ddb9fc5",
+  "source_url": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._652)_(7135312833).jpg",
+  "species": "Locustella naevia",
+  "species_on_plate": [
+   "Locustella naevia"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Crested Tit",
+  "commons_title": "File:Parus cristatus tofsmes2.JPG",
+  "crop_box": [
+   0,
+   0,
+   450,
+   343
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Parus_cristatus_tofsmes2.JPG",
+  "image": "lophophanes_cristatus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "parus_cristatus_tofsmes2_jpg.jpg",
+  "original_sha1": "982dd4a0e209c0f090d6fef21c6899cd1e65c6be",
+  "plate": "plate not identified",
+  "sha256": "d98affc9d0704890dd2f496964d78124b598d471c50d7599621a758525a5c7a5",
+  "sha256_ha": "a3259d1f01ba015ba71825008d7d1df792b2218374fcb7a707a38f8bce4bbae7",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Parus_cristatus_tofsmes2.JPG",
+  "species": "Lophophanes cristatus",
+  "species_on_plate": [
+   "Lophophanes cristatus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Red Crossbill",
+  "commons_title": "File:Loxia curvirostra NAUMANN.jpg",
+  "crop_box": [
+   0,
+   0,
+   907,
+   1356
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Loxia_curvirostra_NAUMANN.jpg",
+  "image": "loxia_curvirostra.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "loxia_curvirostra_naumann_jpg.jpg",
+  "original_sha1": "8dd6491028d3bd3f77dec407aeb018f403adf682",
+  "plate": "plate not identified",
+  "sha256": "97bc43ea31d8094b586b53477e0f200e4c1b50cf13ca93002225fbd93f13b0c7",
+  "sha256_ha": "19023051d9c0f9b8507d32e99349704db18d4defbb38dd50868ef39eacda8d41",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Loxia_curvirostra_NAUMANN.jpg",
+  "species": "Loxia curvirostra",
+  "species_on_plate": [
+   "Loxia curvirostra"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Wood Lark",
+  "commons_title": "File:Woodlark57.jpg",
+  "crop_box": [
+   0,
+   0,
+   260,
+   216
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Woodlark57.jpg",
+  "image": "lullula_arborea.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "woodlark57_jpg.jpg",
+  "original_sha1": "39c68ad030775ae57be5e27d67a111395c4b5866",
+  "plate": "plate not identified",
+  "sha256": "dcefd2bc2e42435a3fe7fd1918eccd7eb51067cd1fbfd1ac74dff31aaef402cb",
+  "sha256_ha": "bcd1bd4ad6263ddb63c11a16d8b4544bfbdc38f1944ba07c2a4626f5335117b9",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Woodlark57.jpg",
+  "species": "Lullula arborea",
+  "species_on_plate": [
+   "Lullula arborea"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Nightingale",
+  "commons_title": "File:Nachtigall1.jpg",
+  "crop_box": [
+   0,
+   0,
+   688,
+   930
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Nachtigall1.jpg",
+  "image": "luscinia_megarhynchos.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "nachtigall1_jpg.jpg",
+  "original_sha1": "f3d6b586af111e5e3b19f0d3587df462ef584b15",
+  "plate": "plate not identified",
+  "sha256": "ac27f11b5b72f476685c196e1b13aab3385f30a834f93ef5b3b56b40180e5bfe",
+  "sha256_ha": "0b847ff65f795c3fce73ef37ae50dd13f397f3eda3359f0d8ceb0ecfa6ee5d96",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Nachtigall1.jpg",
+  "species": "Luscinia megarhynchos",
+  "species_on_plate": [
+   "Luscinia megarhynchos"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Bluethroat",
+  "commons_title": "File:Naumann (I. 5) (6008179123).jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   1815
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Naumann_%28I._5%29_%286008179123%29.jpg",
+  "image": "luscinia_svecica.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_i_5_6008179123_jpg.jpg",
+  "original_sha1": "eeede454d0bdf4eb007fc5fe89b7d5abf1163836",
+  "plate": "Band I, Tafel 5",
+  "sha256": "d6ae73d71372be0bb21c7ecc46e7e6197f61f3d584c6ea16ebb0ceb87f986693",
+  "sha256_ha": "15beff0f6bad439dd2b225914bf4f0b5d3c634c0242cc3f4b5af6d31e89adcfe",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_(I._5)_(6008179123).jpg",
+  "species": "Luscinia svecica",
+  "species_on_plate": [
+   "Luscinia svecica"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Scoter",
+  "commons_title": "File:Melanitta nigra.jpg",
+  "crop_box": [
+   0,
+   0,
+   567,
+   652
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Melanitta_nigra.jpg",
+  "image": "melanitta_nigra.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "melanitta_nigra_jpg.jpg",
+  "original_sha1": "066ea1df4270aa7de8b00c746f0e08ea55ee4120",
+  "plate": "plate not identified",
+  "sha256": "dda67efb3515a2c6a5a69201e77dcc035f16ad487534c46d6ed9e1a90e3c5a72",
+  "sha256_ha": "0c8a92dd1930e4d9bcfff0d13f76953b7d46380a5dc0886bee752040c91c4f60",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Melanitta_nigra.jpg",
+  "species": "Melanitta nigra",
+  "species_on_plate": [
+   "Melanitta nigra"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Black Kite",
+  "commons_title": "File:Kania czarna Milvus migrans.jpg",
+  "crop_box": [
+   0,
+   0,
+   482,
+   675
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Kania_czarna_Milvus_migrans.jpg",
+  "image": "milvus_migrans.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "kania_czarna_milvus_migrans_jpg.jpg",
+  "original_sha1": "7f8fe9196ddbf28b071d7902d18661ec893e126a",
+  "plate": "plate not identified",
+  "sha256": "fe8a4ef37b66b9dd5807ab893bb0bba44c627fc12344afd7939781e7724b53aa",
+  "sha256_ha": "90e761667f6026ab880921270666a84a42078ae8057b0878e6cf46f0142f03e0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Kania_czarna_Milvus_migrans.jpg",
+  "species": "Milvus migrans",
+  "species_on_plate": [
+   "Milvus migrans"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Red Kite",
+  "commons_title": "File:Kania ruda Milvus milvus.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   480
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Kania_ruda_Milvus_milvus.jpg",
+  "image": "milvus_milvus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "kania_ruda_milvus_milvus_jpg.jpg",
+  "original_sha1": "e16aebde14b48d854e3caeb526c9c127eb6b186b",
+  "plate": "plate not identified",
+  "sha256": "ee7151661fac8d575933913bb76ca118c9285b0eab9ff24f38f6513752c89261",
+  "sha256_ha": "b4a847dbb2ddb38bdaabad4609c870093cb7d5b778cbeecc3ad3e4c3a8c0d565",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Kania_ruda_Milvus_milvus.jpg",
+  "species": "Milvus milvus",
+  "species_on_plate": [
+   "Milvus milvus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "White Wagtail",
+  "commons_title": "File:White wagtail.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   231
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/White_wagtail.jpg",
+  "image": "motacilla_alba.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "white_wagtail_jpg.jpg",
+  "original_sha1": "955c4e2239ee9bb29eda77d13afe80aa239a0b8a",
+  "plate": "plate not identified",
+  "sha256": "c5075fc880f23700e73cb8adb2e3a96a9707cf7ff0b75af118488e4830de0f10",
+  "sha256_ha": "c883de5e49e138d8b985c97c27992244b8fb1702aba41ad14c9e327fa452bce2",
+  "source_url": "https://commons.wikimedia.org/wiki/File:White_wagtail.jpg",
+  "species": "Motacilla alba",
+  "species_on_plate": [
+   "Motacilla alba"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Gray Wagtail",
+  "commons_title": "File:Greywagtail08.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   329
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Greywagtail08.jpg",
+  "image": "motacilla_cinerea.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "greywagtail08_jpg.jpg",
+  "original_sha1": "c56abcb91c1311dd386837081b5230c2c4e89f7f",
+  "plate": "plate not identified",
+  "sha256": "f0cd0099cb8384dd584874433f6b05196403fa7e6d1299a21db9b8fef1bd5f70",
+  "sha256_ha": "66a845f577981b640a6828f7d683609a3b6faa8ab0f37a5feddc6aeb3c757030",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Greywagtail08.jpg",
+  "species": "Motacilla cinerea",
+  "species_on_plate": [
+   "Motacilla cinerea"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Western Yellow Wagtail",
+  "commons_title": "File:Motacilla flava naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   907,
+   1309
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Motacilla_flava_naumann.jpg",
+  "image": "motacilla_flava.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "motacilla_flava_naumann_jpg.jpg",
+  "original_sha1": "f9510e5e20c9f0afa5513945deb9ecf1589595c2",
+  "plate": "plate not identified",
+  "sha256": "f2ddfada880826cd0d91c7947c01a669fcfbebf8615e81dd0de6578d9774dc8e",
+  "sha256_ha": "edec1d0b62d701c830e757a3ce677c3ebb82f6f2d2a2ee36fcce3da823b841fc",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Motacilla_flava_naumann.jpg",
+  "species": "Motacilla flava",
+  "species_on_plate": [
+   "Motacilla flava"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Curlew",
+  "commons_title": "File:Curlew06.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1481
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Curlew06.jpg",
+  "image": "numenius_arquata.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "curlew06_jpg.jpg",
+  "original_sha1": "b7b84637addfefbf072ac15150c7848bd9be5fe6",
+  "plate": "plate not identified",
+  "sha256": "816fecc1e3b0769743d8b58d8f4fbdab1b3c3664e96c55bf261c98b180ba47aa",
+  "sha256_ha": "dabf91ffa58088f44861729f3dd73e05d4eadbf31bd9ed2b38ad60aaffbbe6fc",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Curlew06.jpg",
+  "species": "Numenius arquata",
+  "species_on_plate": [
+   "Numenius arquata"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Whimbrel",
+  "commons_title": "File:Whimbrel07.jpg",
+  "crop_box": [
+   0,
+   0,
+   306,
+   260
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Whimbrel07.jpg",
+  "image": "numenius_phaeopus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "whimbrel07_jpg.jpg",
+  "original_sha1": "4ecb736cc11ef19b877aa6669908bd8e4019f190",
+  "plate": "plate not identified",
+  "sha256": "793b4b91e5665cf9438bab1cd8b1d93affa0d2276a967128924b12283d821558",
+  "sha256_ha": "36a05892334d4484269d54b9915feb78b32ef5635c1415aeb5e09e21eb4f4eed",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Whimbrel07.jpg",
+  "species": "Numenius phaeopus",
+  "species_on_plate": [
+   "Numenius phaeopus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Northern Wheatear",
+  "commons_title": "File:Naumann (I. 11) (6008727478).jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   1811
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Naumann_%28I._11%29_%286008727478%29.jpg",
+  "image": "oenanthe_oenanthe.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_i_11_6008727478_jpg.jpg",
+  "original_sha1": "22aedb3acb0f47ab357c97f3bbb953660aab14ad",
+  "plate": "Band I, Tafel 11",
+  "sha256": "415f4bd8810aa6bfe77ad0c7728c46c8831dca6db051a82f3783cf8e008f81f6",
+  "sha256_ha": "b2aa0d5230e40141e19b996b084df62b8a62c8fd42eeb5d692a1ad81aa588e47",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_(I._11)_(6008727478).jpg",
+  "species": "Oenanthe oenanthe",
+  "species_on_plate": [
+   "Oenanthe oenanthe"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Golden Oriole",
+  "commons_title": "File:Goldenoriole26.jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   1845
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Goldenoriole26.jpg",
+  "image": "oriolus_oriolus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "goldenoriole26_jpg.jpg",
+  "original_sha1": "6e9aefd2cce0fe0dd89ae0f1a8194943ccccdc2c",
+  "plate": "plate not identified",
+  "sha256": "bd41097e8510be00d61725d55cefedf792e68f2723d4c5dd766951767751e8bf",
+  "sha256_ha": "01d305274cdf9a18282dc2d45020227194fafbc91127884f5d15232a981c7b7f",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Goldenoriole26.jpg",
+  "species": "Oriolus oriolus",
+  "species_on_plate": [
+   "Oriolus oriolus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Osprey",
+  "commons_title": "File:Osprey.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1594
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Osprey.jpg",
+  "image": "pandion_haliaetus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "osprey_jpg.jpg",
+  "original_sha1": "fd641e18c7fa7cef08c0a28660566272f6d0a8bc",
+  "plate": "plate not identified",
+  "sha256": "a8f464cd1925c47176e682c61b8c6d98ee8864e4c9776f6e5fb033aad1a04fb8",
+  "sha256_ha": "04a7fb53d19f3c43cddac990e87ac0b4d7a6a21167f742aac2ba06079d0863e1",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Osprey.jpg",
+  "species": "Pandion haliaetus",
+  "species_on_plate": [
+   "Pandion haliaetus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Bearded Reedling",
+  "commons_title": "File:Beardedtit46.jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   1797
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Beardedtit46.jpg",
+  "image": "panurus_biarmicus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "beardedtit46_jpg.jpg",
+  "original_sha1": "ae2939fee3550684ec92e006573b3796b8c474f5",
+  "plate": "plate not identified",
+  "sha256": "390425f49e60486718febc650d527147026b3d4d81cbdab0ab5ec90711d69cfe",
+  "sha256_ha": "a6ab75f9667664198b72d6987bdb9c4c34139fce71e8bba10f3bea6a5822c002",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Beardedtit46.jpg",
+  "species": "Panurus biarmicus",
+  "species_on_plate": [
+   "Panurus biarmicus"
+  ]
+ },
+ {
+  "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+  "common_name": "Great Tit",
+  "commons_title": "File:A history of the birds of Europe (Pl. 656) (7135314451).jpg",
+  "crop_box": [
+   102,
+   143,
+   1214,
+   1542
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/77/A_history_of_the_birds_of_Europe_%28Pl._656%29_%287135314451%29.jpg",
+  "image": "parus_major.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "a_history_of_the_birds_of_europe_pl_656_7135314451_jpg.jpg",
+  "original_sha1": "67a7df9ea2358cd3de67e2e327fc2bccb7cb05b4",
+  "plate": "Tafel 656",
+  "sha256": "6c81f9991e518d0b4499bf0693e26b773c61e0d3c5b524edf148e5451695a47b",
+  "sha256_ha": "9b4ec3bc978752f48884494c7a9373fc84c2261cdb8e3351c370ee3bf806d0a6",
+  "source_url": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._656)_(7135314451).jpg",
+  "species": "Parus major",
+  "species_on_plate": [
+   "Parus major"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "House Sparrow",
+  "commons_title": "File:Sparrow (1).JPG",
+  "crop_box": [
+   0,
+   0,
+   374,
+   252
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Sparrow_%281%29.JPG",
+  "image": "passer_domesticus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "sparrow_1_jpg.jpg",
+  "original_sha1": "5f4a6ec1d9ae77b4f6e81b2dbafafabec0765b3c",
+  "plate": "plate not identified",
+  "sha256": "14b3f1388f8fb9fc5bfbd80c36a9444734842fc2e764fca2e18f1cef451a6d3d",
+  "sha256_ha": "4ad93e647e2ba4485188e75896287dec98dcda695500cd0f95b3a63074fdb454",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sparrow_(1).JPG",
+  "species": "Passer domesticus",
+  "species_on_plate": [
+   "Passer domesticus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Tree Sparrow",
+  "commons_title": "File:Passer (Naumann).jpg",
+  "crop_box": [
+   0,
+   726,
+   931,
+   1302
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Passer_%28Naumann%29.jpg",
+  "image": "passer_montanus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "passer_naumann_jpg.jpg",
+  "original_sha1": "d1480a930bd492256216dfe59985ba775cae15a0",
+  "plate": "plate not identified",
+  "sha256": "52f9168eb9a0c852ef4321531236e92ec76bf17520c6547e5145caeeab3e3703",
+  "sha256_ha": "d1842c7e289f6693706b38f0b54c93f157409c45193b367dce4abe1d55acf2ab",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Passer_(Naumann).jpg",
+  "species": "Passer montanus",
+  "species_on_plate": [
+   "Passer domesticus",
+   "Passer montanus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Coal Tit",
+  "commons_title": "File:Four Parus Species by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1098
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Four_Parus_Species_by_Naumann.jpg",
+  "image": "periparus_ater.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "four_parus_species_by_naumann_jpg.jpg",
+  "original_sha1": "b4b08fe597976c737f3c6ec80ea3614755909024",
+  "plate": "plate not identified",
+  "sha256": "d130d5f806a0f72354a6959c5c5c39d0a28cf103fda0807b68a23a21bacbb472",
+  "sha256_ha": "a338e85e95d346dd373d4772bf2a0ad145095a8e0fcaf29e76114dbe7bb29a6f",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Four_Parus_Species_by_Naumann.jpg",
+  "species": "Periparus ater",
+  "species_on_plate": [
+   "Periparus ater"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "European Honey-buzzard",
+  "commons_title": "File:Pernis apivorus by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1546
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Pernis_apivorus_by_Naumann.jpg",
+  "image": "pernis_apivorus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "pernis_apivorus_by_naumann_jpg.jpg",
+  "original_sha1": "1caa04ec16ff7dc162187d004dea17b00b6fdb74",
+  "plate": "plate not identified",
+  "sha256": "13bea8d7076688c6cd67728fc484f2819af39d960e3f8c49a953ade18c26d701",
+  "sha256_ha": "0250092ad606151ea98a7fcfa5de83a491a87ea3e91a303ab1896e6ad949c9b7",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Pernis_apivorus_by_Naumann.jpg",
+  "species": "Pernis apivorus",
+  "species_on_plate": [
+   "Pernis apivorus"
+  ]
+ },
+ {
+  "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+  "common_name": "Ring-necked Pheasant",
+  "commons_title": "File:A history of the birds of Europe (Pl. 702) (7135334519).jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   913
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/A_history_of_the_birds_of_Europe_%28Pl._702%29_%287135334519%29.jpg",
+  "image": "phasianus_colchicus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "a_history_of_the_birds_of_europe_pl_702_7135334519_jpg.jpg",
+  "original_sha1": "9913ac7029186aa0b3b54a33eba0719ed0be6d55",
+  "plate": "Tafel 702",
+  "sha256": "c1cdd9da6abab6360aa6436755da8bdd715bf35059455e4444bb2b075e9613b8",
+  "sha256_ha": "28bd4940f762d71d24c98a5d15ce153b9b23c1206f3fc83121295426d08957ff",
+  "source_url": "https://commons.wikimedia.org/wiki/File:A_history_of_the_birds_of_Europe_(Pl._702)_(7135334519).jpg",
+  "species": "Phasianus colchicus",
+  "species_on_plate": [
+   "Phasianus colchicus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Black Redstart",
+  "commons_title": "File:Phoenicurus ochruros NAUMANN.jpg",
+  "crop_box": [
+   0,
+   0,
+   1237,
+   817
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Phoenicurus_ochruros_NAUMANN.jpg",
+  "image": "phoenicurus_ochruros.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "phoenicurus_ochruros_naumann_jpg.jpg",
+  "original_sha1": "b12fdca145382e6c2673e18cc9effb398a27b086",
+  "plate": "plate not identified",
+  "sha256": "8e23033fa853bd3fd110dd67a42f996061efcf7ea25e2382e18734cd46b06298",
+  "sha256_ha": "a078b1dff643c2bfe8262f1449d132c1e65343ade0fab9e7df185a845f73ae97",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Phoenicurus_ochruros_NAUMANN.jpg",
+  "species": "Phoenicurus ochruros",
+  "species_on_plate": [
+   "Phoenicurus ochruros"
+  ]
+ },
+ {
+  "book": "Dresser, A History of the Birds of Europe (1871-1896)",
+  "common_name": "Common Redstart",
+  "commons_title": "File:Ehrenberg's Redstart by John Gerrard Keulemans for Henry Dresser - A History of the Birds of Europe.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   861
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Ehrenberg%27s_Redstart_by_John_Gerrard_Keulemans_for_Henry_Dresser_-_A_History_of_the_Birds_of_Europe.jpg",
+  "image": "phoenicurus_phoenicurus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "ehrenberg_s_redstart_by_john_gerrard_keulemans_for_henry_dresser_a_history_of_the_birds_of_europe_jpg.jpg",
+  "original_sha1": "cae8a662a9f21115511f9352639c30c10de40119",
+  "plate": "plate not identified",
+  "sha256": "cd7b35b8968e0fda2b0a884944a3fe48fc9ec23a8b83381264c2c3f1ac032801",
+  "sha256_ha": "123a800393f4a9234e5a06c7d2fc2059153a17389b787691af25cba137bc69db",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Ehrenberg%27s_Redstart_by_John_Gerrard_Keulemans_for_Henry_Dresser_-_A_History_of_the_Birds_of_Europe.jpg",
+  "species": "Phoenicurus phoenicurus",
+  "species_on_plate": [
+   "Phoenicurus phoenicurus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Chiffchaff",
+  "commons_title": "File:Four Phylloscopus Species by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1552
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Four_Phylloscopus_Species_by_Naumann.jpg",
+  "image": "phylloscopus_collybita.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "four_phylloscopus_species_by_naumann_jpg.jpg",
+  "original_sha1": "fec0fc87bfb3179934d5ca368bb90f4bb95b0935",
+  "plate": "plate not identified",
+  "sha256": "d3ccff8200b8b058d49b56fc2657dc53e668c016b2c395709ea459c2df2f515c",
+  "sha256_ha": "c98c219ba578d9cc42bf7a7df90785f55de94f7133a1c22d4fa8d3da7c3c18ba",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Four_Phylloscopus_Species_by_Naumann.jpg",
+  "species": "Phylloscopus collybita",
+  "species_on_plate": [
+   "Phylloscopus collybita"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Wood Warbler",
+  "commons_title": "File:Phylloscopus sibilatrix.jpg",
+  "crop_box": [
+   0,
+   0,
+   260,
+   117
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Phylloscopus_sibilatrix.jpg",
+  "image": "phylloscopus_sibilatrix.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "phylloscopus_sibilatrix_jpg.jpg",
+  "original_sha1": "d87540629fe1432561eccafee6b8a2b22e37e0c3",
+  "plate": "plate not identified",
+  "sha256": "a5661ab0319505fd7f1db2c59c4a989e95b168ef1b245cd2b2fb9540e76665f1",
+  "sha256_ha": "00be520be07af96f416c7ec6336c54f5c43bcd97504173211946fb7eb82c3eec",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Phylloscopus_sibilatrix.jpg",
+  "species": "Phylloscopus sibilatrix",
+  "species_on_plate": [
+   "Phylloscopus sibilatrix"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Willow Warbler",
+  "commons_title": "File:Phylloscopus trochilus.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   166
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Phylloscopus_trochilus.jpg",
+  "image": "phylloscopus_trochilus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "phylloscopus_trochilus_jpg.jpg",
+  "original_sha1": "e9c54278ffb1480775739ab1b78aa358f7222593",
+  "plate": "plate not identified",
+  "sha256": "9144fd8cad6870090982e0cdae2b427d1b2e6cf3a98b7cc9413fec2f0afb9a45",
+  "sha256_ha": "dd78fba378fac3c73404c03a7426ecbeb8785711d616b9fdd8b5275c51d58373",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Phylloscopus_trochilus.jpg",
+  "species": "Phylloscopus trochilus",
+  "species_on_plate": [
+   "Phylloscopus trochilus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Magpie",
+  "commons_title": "File:Euromagpie.JPG",
+  "crop_box": [
+   0,
+   0,
+   250,
+   209
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Euromagpie.JPG",
+  "image": "pica_pica.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "euromagpie_jpg.jpg",
+  "original_sha1": "878ac7fd06c8e00bde34832792b7133befe62d31",
+  "plate": "plate not identified",
+  "sha256": "0e3c0a971c238c3e35f5fc77d6ec0c5098c0c81e20cc821d3405f6f454f67c0c",
+  "sha256_ha": "11c36588fc4e19b24b981c630a6e3dc99db660b8026cba0d9f357d0969b2de44",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Euromagpie.JPG",
+  "species": "Pica pica",
+  "species_on_plate": [
+   "Pica pica"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Green Woodpecker",
+  "commons_title": "File:Naumann gruenspecht.jpg",
+  "crop_box": [
+   0,
+   0,
+   931,
+   1419
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Naumann_gruenspecht.jpg",
+  "image": "picus_viridis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_gruenspecht_jpg.jpg",
+  "original_sha1": "f5f7be45862d89d00efc48f3cdddf0bfa4ba9910",
+  "plate": "plate not identified",
+  "sha256": "8041af6b32c0a181328cec484d67cb40b21963c772ec3a43f366761773006a4a",
+  "sha256_ha": "c7fa2bdb3765675b454f42d89c7927336097f86838545aa7393f16a734c91a30",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_gruenspecht.jpg",
+  "species": "Picus viridis",
+  "species_on_plate": [
+   "Picus viridis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Spoonbill",
+  "commons_title": "File:Spoonbill50.jpg",
+  "crop_box": [
+   0,
+   0,
+   258,
+   254
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Spoonbill50.jpg",
+  "image": "platalea_leucorodia.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "spoonbill50_jpg.jpg",
+  "original_sha1": "f3dd07b42f8efef0031458d757f00b5cf672991d",
+  "plate": "plate not identified",
+  "sha256": "c1c5869c104a027a2f3c085d9faca55131850da85ab3ffcb1fd0ded1c2239604",
+  "sha256_ha": "e7aaf52db414f3a6290251f134b54f202644bd208a159335a623f7d0ec6e784d",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Spoonbill50.jpg",
+  "species": "Platalea leucorodia",
+  "species_on_plate": [
+   "Platalea leucorodia"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Snow Bunting",
+  "commons_title": "File:Plectrophenax nivalis.jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   1872
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Plectrophenax_nivalis.jpg",
+  "image": "plectrophenax_nivalis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "plectrophenax_nivalis_jpg.jpg",
+  "original_sha1": "e65885e4842733f14aa6125ed2a3193ab86c6753",
+  "plate": "plate not identified",
+  "sha256": "da8908f098a9d6ef383afe6b7bdb7f454981e304298c5ceef0ec30c8ea2a6264",
+  "sha256_ha": "0750e457fb0f48a7bf8a64c4e96dc1a7881f8ba2001a6c6c5753d0a0b959e19e",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Plectrophenax_nivalis.jpg",
+  "species": "Plectrophenax nivalis",
+  "species_on_plate": [
+   "Plectrophenax nivalis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "European Golden-Plover",
+  "commons_title": "File:Eurasiangoldie77.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   233
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Eurasiangoldie77.jpg",
+  "image": "pluvialis_apricaria.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "eurasiangoldie77_jpg.jpg",
+  "original_sha1": "01ca9dcdd6fb5a24a8d6499ed571093a4613d08b",
+  "plate": "plate not identified",
+  "sha256": "b2ba54098ee75ab2e8e810d4bddf86a263ee1fc0b054eb91e6426edfcf2bf33c",
+  "sha256_ha": "04a24cb1335372a357ae626925e91fa601ab8f44153aaca08a8f9804fa3be2fb",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Eurasiangoldie77.jpg",
+  "species": "Pluvialis apricaria",
+  "species_on_plate": [
+   "Pluvialis apricaria"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Black-bellied Plover",
+  "commons_title": "File:Pluvialis apricaria and Pluvialis squatarola by Naumann.jpg",
+  "crop_box": [
+   64,
+   445,
+   800,
+   1007
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Pluvialis_apricaria_and_Pluvialis_squatarola_by_Naumann.jpg",
+  "image": "pluvialis_squatarola.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "pluvialis_apricaria_and_pluvialis_squatarola_by_naumann_jpg.jpg",
+  "original_sha1": "1181d60c8086771cae5fab91c9d00af6455c8bb3",
+  "plate": "plate not identified",
+  "sha256": "38d47aad882ece7a9cdbfe82cbd7c72c56c6a4df9fa2ee9e2a51e887b2d19619",
+  "sha256_ha": "ba107703f94b906aad546308953bbf582912bd273a868e54940980dca97223ac",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Pluvialis_apricaria_and_Pluvialis_squatarola_by_Naumann.jpg",
+  "species": "Pluvialis squatarola",
+  "species_on_plate": [
+   "Pluvialis apricaria",
+   "Pluvialis squatarola"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Great Crested Grebe",
+  "commons_title": "File:Podiceps cristatus Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1280,
+   861
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Podiceps_cristatus_Naumann.jpg",
+  "image": "podiceps_cristatus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "podiceps_cristatus_naumann_jpg.jpg",
+  "original_sha1": "a0404b622f7c345cbb39261a6f65ef1266f107f9",
+  "plate": "plate not identified",
+  "sha256": "4f1adb3c52ab0984c9d2fd4cda5de508e32d608c78fd56c868015e65cff78e22",
+  "sha256_ha": "f7879fbfaedd11d57c9c28b17c0c3b3b05bdde0a1bbd1f773daca8fa236a1af1",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Podiceps_cristatus_Naumann.jpg",
+  "species": "Podiceps cristatus",
+  "species_on_plate": [
+   "Podiceps cristatus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eared Grebe",
+  "commons_title": "File:Podiceps nigricollis naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   351,
+   250
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Podiceps_nigricollis_naumann.jpg",
+  "image": "podiceps_nigricollis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "podiceps_nigricollis_naumann_jpg.jpg",
+  "original_sha1": "9a6444655321daed1778c4118187c72e2903c1a5",
+  "plate": "plate not identified",
+  "sha256": "f86e93e5870f45077cfaff289b769e3776a1dd4fda55a0068112b32c5d60a1d6",
+  "sha256_ha": "3a34bb99dd541e157d6a66673b6a4456cc0c10c0f1f86067165220ad3b7785a5",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Podiceps_nigricollis_naumann.jpg",
+  "species": "Podiceps nigricollis",
+  "species_on_plate": [
+   "Podiceps nigricollis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Willow Tit",
+  "commons_title": "File:Marshtit55.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   196
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Marshtit55.jpg",
+  "image": "poecile_montanus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "marshtit55_jpg.jpg",
+  "original_sha1": "aaadce9dcafc35a9bc26740a6e5c894ca1edd99c",
+  "plate": "plate not identified",
+  "sha256": "c97519649e7c16985d0473b775a8855a07f4f9fbe376fc6fb1ec77fc83f95ab4",
+  "sha256_ha": "c1364605beb3951cdf0efde5c0cebff5306262e204642ae85001833e474104d9",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Marshtit55.jpg",
+  "species": "Poecile montanus",
+  "species_on_plate": [
+   "Poecile montanus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Marsh Tit",
+  "commons_title": "File:Five Parus Species by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1087
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Five_Parus_Species_by_Naumann.jpg",
+  "image": "poecile_palustris.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "five_parus_species_by_naumann_jpg.jpg",
+  "original_sha1": "0e92e1105a7576c1518f606627bd27e93ae31190",
+  "plate": "plate not identified",
+  "sha256": "a096851aa2e1d673be31c88888d4eb59b88c90006f5cda5128c3eab83033976f",
+  "sha256_ha": "9e09f7e0fe21c72fa1f4407c193d2d890283723e1098cb357b01f78cb2373991",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Five_Parus_Species_by_Naumann.jpg",
+  "species": "Poecile palustris",
+  "species_on_plate": [
+   "Poecile montanus",
+   "Poecile palustris"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Dunnock",
+  "commons_title": "File:Prunella modularis montanella.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1695
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Prunella_modularis_montanella.jpg",
+  "image": "prunella_modularis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "prunella_modularis_montanella_jpg.jpg",
+  "original_sha1": "e1c3f9af66bd0b428ad5afeb163bf1d27016c0e5",
+  "plate": "plate not identified",
+  "sha256": "a8ebb6a86c109dc4045a628589700f4855f69db3fb872df17647e16033673d76",
+  "sha256_ha": "cac064ed38e0766a93234a46438fff595f2041f0eaa50b2d7cb5665a2f8334de",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Prunella_modularis_montanella.jpg",
+  "species": "Prunella modularis",
+  "species_on_plate": [
+   "Prunella modularis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Bullfinch",
+  "commons_title": "File:Bullfinch87.jpg",
+  "crop_box": [
+   0,
+   0,
+   260,
+   268
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Bullfinch87.jpg",
+  "image": "pyrrhula_pyrrhula.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "bullfinch87_jpg.jpg",
+  "original_sha1": "ed5074e91898e89a54a67b46f5ccb63cbc829a8d",
+  "plate": "Band III, Tafel 32",
+  "sha256": "080250acde59ea5874efa549c3660dabce9f6d3ad7887927b48e73591c9d0c93",
+  "sha256_ha": "5c616dec743ac47359a771f4971a189356c14f0b90f48f268a0300ded9a0acaa",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Bullfinch87.jpg",
+  "species": "Pyrrhula pyrrhula",
+  "species_on_plate": [
+   "Pyrrhula pyrrhula"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Water Rail",
+  "commons_title": "File:Rallus aquaticus.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1554
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Rallus_aquaticus.jpg",
+  "image": "rallus_aquaticus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "rallus_aquaticus_jpg.jpg",
+  "original_sha1": "0e154b21dae740987a12d0489a9ce3707e12ec05",
+  "plate": "plate not identified",
+  "sha256": "2aace853970cbf0f548059b92cd431c14d23c8df15454fed21640e915424f848",
+  "sha256_ha": "3931820bb98f7664d79b24ae3a6a7f2822ef1f79ac76b4c0b563a46bacbc8318",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Rallus_aquaticus.jpg",
+  "species": "Rallus aquaticus",
+  "species_on_plate": [
+   "Rallus aquaticus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Pied Avocet",
+  "commons_title": "File:Recurvirostra avosetta ryc.jpg",
+  "crop_box": [
+   0,
+   0,
+   260,
+   254
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Recurvirostra_avosetta_ryc.jpg",
+  "image": "recurvirostra_avosetta.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "recurvirostra_avosetta_ryc_jpg.jpg",
+  "original_sha1": "6d17c47e76948c014e8bdcd3ae343ba339479281",
+  "plate": "plate not identified",
+  "sha256": "9d0e3db6dce1cae17b8ceb4ee3e3c464d69b3fd54bca47ae5f993bbdf253e2e6",
+  "sha256_ha": "b583c98c7ab1a2d34fc67c9384584bb22076468bf20bd968bcf2b4726f31e056",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Recurvirostra_avosetta_ryc.jpg",
+  "species": "Recurvirostra avosetta",
+  "species_on_plate": [
+   "Recurvirostra avosetta"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Firecrest",
+  "commons_title": "File:Firecrest93.JPG",
+  "crop_box": [
+   0,
+   0,
+   250,
+   241
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Firecrest93.JPG",
+  "image": "regulus_ignicapilla.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "firecrest93_jpg.jpg",
+  "original_sha1": "9df9c5d845afaae355f0499d9b9cc9a07b0920ab",
+  "plate": "plate not identified",
+  "sha256": "374cc123249d2e473a8250c576e79d18e39d5159779b65bbf0ba45328ef30f67",
+  "sha256_ha": "76748347eacc5a69e40659e544a10baab26716e5a35ddb12763d06b678e1c118",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Firecrest93.JPG",
+  "species": "Regulus ignicapilla",
+  "species_on_plate": [
+   "Regulus ignicapilla"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Goldcrest",
+  "commons_title": "File:Wintergoldhaehnchen gr.jpg",
+  "crop_box": [
+   0,
+   0,
+   730,
+   648
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Wintergoldhaehnchen_gr.jpg",
+  "image": "regulus_regulus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "wintergoldhaehnchen_gr_jpg.jpg",
+  "original_sha1": "4f9f51daabe8de1cbb9a375893c9917a7d214dd7",
+  "plate": "plate not identified",
+  "sha256": "f7cc3da678174d28b120434e7c52f2af99aa94d6e9600981926c0151692b10a5",
+  "sha256_ha": "ce95147937b119a6cc5cddf5278d058159200ef2d19b6c3cf2650e70e62b9112",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Wintergoldhaehnchen_gr.jpg",
+  "species": "Regulus regulus",
+  "species_on_plate": [
+   "Regulus regulus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Bank Swallow",
+  "commons_title": "File:Uferschwalbe-Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   939,
+   1387
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Uferschwalbe-Naumann.jpg",
+  "image": "riparia_riparia.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "uferschwalbe_naumann_jpg.jpg",
+  "original_sha1": "75cc961bbb082726ac50a885c517cf3b772c9ffe",
+  "plate": "plate not identified",
+  "sha256": "e38397e47c8aa4654c946be782b9b5e45736f9d40940dd9d8c6ce69c09d6fb65",
+  "sha256_ha": "389a553559700115747b8b059186cd332c0df981a9a58a9491692f30d975e775",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Uferschwalbe-Naumann.jpg",
+  "species": "Riparia riparia",
+  "species_on_plate": [
+   "Riparia riparia"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Whinchat",
+  "commons_title": "File:Whinchats.JPG",
+  "crop_box": [
+   0,
+   0,
+   230,
+   178
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Whinchats.JPG",
+  "image": "saxicola_rubetra.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "whinchats_jpg.jpg",
+  "original_sha1": "3cd2b53a7fd02eda6b1fe18d91c8c0201696da9e",
+  "plate": "plate not identified",
+  "sha256": "0877696309af8089f53b311bf74c41d3f35eea5d9ea6da54c3c83ad97f3a98c9",
+  "sha256_ha": "90934fdc7c124e0f19e484563a2d0209d6a9f56775217b07ae85c873b51df7a0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Whinchats.JPG",
+  "species": "Saxicola rubetra",
+  "species_on_plate": [
+   "Saxicola rubetra"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "European Stonechat",
+  "commons_title": "File:Stonechats.jpg",
+  "crop_box": [
+   0,
+   0,
+   230,
+   156
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Stonechats.jpg",
+  "image": "saxicola_rubicola.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "stonechats_jpg.jpg",
+  "original_sha1": "acd8c8d3672df4e7ac8f554465945840ae175e07",
+  "plate": "plate not identified",
+  "sha256": "89c98970ef764ac892a8b3c49e0f6202d818a61bc9b9654ad11b7d4d0c87dd0c",
+  "sha256_ha": "1173cf035397f4dae80d0b396a54c1029c67e90bd56872adfd92a238ce4e9b8d",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Stonechats.jpg",
+  "species": "Saxicola rubicola",
+  "species_on_plate": [
+   "Saxicola rubicola"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Woodcock",
+  "commons_title": "File:Scolopax rusticola.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1164
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Scolopax_rusticola.jpg",
+  "image": "scolopax_rusticola.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "scolopax_rusticola_jpg.jpg",
+  "original_sha1": "c5a36817f163cc5164dc4855b382ee9585fd2f00",
+  "plate": "plate not identified",
+  "sha256": "4d55c3b522c522d0f41bbf14252ba317562b268141551bae091d86fb9f09cb13",
+  "sha256_ha": "b68a9d2eab5894613f4287bed81eca5c2b24a36b6eb7c02f8fafeb59974370af",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Scolopax_rusticola.jpg",
+  "species": "Scolopax rusticola",
+  "species_on_plate": [
+   "Scolopax rusticola"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Nuthatch",
+  "commons_title": "File:Nuthatchsm.JPG",
+  "crop_box": [
+   0,
+   0,
+   250,
+   292
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Nuthatchsm.JPG",
+  "image": "sitta_europaea.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "nuthatchsm_jpg.jpg",
+  "original_sha1": "b6ba7fb1e7de2c1e3bb3132e06d99b4027da833e",
+  "plate": "plate not identified",
+  "sha256": "23608f6f88124c787a5d1e35f7766c71783e50b873308506009802607151cbf9",
+  "sha256_ha": "dad9e8dd1f13da7871e4a26f68c6a72aaf30c0c1a5dd28d3f16b85ccd65485f3",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Nuthatchsm.JPG",
+  "species": "Sitta europaea",
+  "species_on_plate": [
+   "Sitta europaea"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Eider",
+  "commons_title": "File:Turkan i edredon.jpg",
+  "crop_box": [
+   0,
+   0,
+   1260,
+   859
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Turkan_i_edredon.jpg",
+  "image": "somateria_mollissima.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "turkan_i_edredon_jpg.jpg",
+  "original_sha1": "fea98e0974e8104d5fcc4a11208d1308066684e9",
+  "plate": "plate not identified",
+  "sha256": "edd90994239a8189995471a58286578651c4c28593cd55334e1dd6bb216e6715",
+  "sha256_ha": "c74833c8be8f0eda62a7b8af3ddea66cf0c93dbeaab9df728791aa9550f153e6",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Turkan_i_edredon.jpg",
+  "species": "Somateria mollissima",
+  "species_on_plate": [
+   "Somateria mollissima"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Northern Shoveler",
+  "commons_title": "File:Anas clypeata by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   537
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Anas_clypeata_by_Naumann.jpg",
+  "image": "spatula_clypeata.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "anas_clypeata_by_naumann_jpg.jpg",
+  "original_sha1": "d754dfbde8733467ee395030b50f0643ed5ee72f",
+  "plate": "plate not identified",
+  "sha256": "dda18e5a9e885afb8bf0b83b30636563b8630a6c665db75534e80c2bb3e966aa",
+  "sha256_ha": "68cac2b04b606aed1fd87de096913878f09e1df50041c897025204c451a2ee44",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Anas_clypeata_by_Naumann.jpg",
+  "species": "Spatula clypeata",
+  "species_on_plate": [
+   "Spatula clypeata"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Garganey",
+  "commons_title": "File:Naturgeschichte der Vögel Mitteleuropas - Garganey Teal.jpg",
+  "crop_box": [
+   0,
+   0,
+   386,
+   290
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Naturgeschichte_der_V%C3%B6gel_Mitteleuropas_-_Garganey_Teal.jpg",
+  "image": "spatula_querquedula.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naturgeschichte_der_v_gel_mitteleuropas_garganey_teal_jpg.jpg",
+  "original_sha1": "6bf5b9ae5d66ba6f6841c1e4e3ae3c22d3182895",
+  "plate": "plate not identified",
+  "sha256": "69979bf2849c667019b8dc8bdfc85b0c34a6255d0f5bf2e20628670dd2b03e55",
+  "sha256_ha": "d645e7f5adb331b15da692ae1c4dd73b6b2bfb6977b8038c1ce08aebce459410",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naturgeschichte_der_V%C3%B6gel_Mitteleuropas_-_Garganey_Teal.jpg",
+  "species": "Spatula querquedula",
+  "species_on_plate": [
+   "Spatula querquedula"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Siskin",
+  "commons_title": "File:Carduelis spinus naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   186
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Carduelis_spinus_naumann.jpg",
+  "image": "spinus_spinus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "carduelis_spinus_naumann_jpg.jpg",
+  "original_sha1": "1b61d5bc5ef06d9f012480c2e462d810a862a776",
+  "plate": "plate not identified",
+  "sha256": "74d6f83af2004cd328e53e8a1c8b045d47f4778bf11e1a014486ce9a83954021",
+  "sha256_ha": "542edc97d16bac7ce69d6697f72c7d199e6218869e7bbf0fb22225d505818702",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Carduelis_spinus_naumann.jpg",
+  "species": "Spinus spinus",
+  "species_on_plate": [
+   "Spinus spinus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "European Turtle-Dove",
+  "commons_title": "File:Streptopelia turtur by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1081
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Streptopelia_turtur_by_Naumann.jpg",
+  "image": "streptopelia_turtur.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "streptopelia_turtur_by_naumann_jpg.jpg",
+  "original_sha1": "d77d482214489e87ccd25341ea1dc20e828feb09",
+  "plate": "plate not identified",
+  "sha256": "9c5f5e0849671f1ee8ba9dec8aafdbf87efae409aacd91018e367ca2f3eddd2d",
+  "sha256_ha": "002e6331494df86f0e58d20ce01b7b8bdac982e154b7ab59ce48f02ec7788bb8",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Streptopelia_turtur_by_Naumann.jpg",
+  "species": "Streptopelia turtur",
+  "species_on_plate": [
+   "Streptopelia turtur"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Tawny Owl",
+  "commons_title": "File:Waldkauz strix aluco 750pix.jpg",
+  "crop_box": [
+   0,
+   0,
+   750,
+   1122
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/11/Waldkauz_strix_aluco_750pix.jpg",
+  "image": "strix_aluco.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "waldkauz_strix_aluco_750pix_jpg.jpg",
+  "original_sha1": "0fa10495554aab566af50c9b0d5e5a830f8eed73",
+  "plate": "plate not identified",
+  "sha256": "a2a36bc52e73e86973e0285bffe18797e1ec9a99103672c5505db7dc68a9bb80",
+  "sha256_ha": "b3c1aa095b736efeb085498a27d014c05949d4bc68036415afc8bf98a2f0a4e4",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Waldkauz_strix_aluco_750pix.jpg",
+  "species": "Strix aluco",
+  "species_on_plate": [
+   "Strix aluco"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "European Starling",
+  "commons_title": "File:Sturnus vulgaris by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1700
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Sturnus_vulgaris_by_Naumann.jpg",
+  "image": "sturnus_vulgaris.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "sturnus_vulgaris_by_naumann_jpg.jpg",
+  "original_sha1": "4ce3571f49bf8d5fa00ea05f869b2a3c58113139",
+  "plate": "plate not identified",
+  "sha256": "043516f7225c7f42d998e3d3ee5998cdddb908b5b279c3386513badcd5b3e823",
+  "sha256_ha": "a712e4fea25a548c6f64d16812ee807cdf0ebca198ef3d232c87730f14b9d917",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sturnus_vulgaris_by_Naumann.jpg",
+  "species": "Sturnus vulgaris",
+  "species_on_plate": [
+   "Sturnus vulgaris"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Blackcap",
+  "commons_title": "File:Sylvia atricapilla.jpg",
+  "crop_box": [
+   0,
+   0,
+   250,
+   386
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Sylvia_atricapilla.jpg",
+  "image": "sylvia_atricapilla.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "sylvia_atricapilla_jpg.jpg",
+  "original_sha1": "57ba86494412bfff9c009063af5b73e16d16a81d",
+  "plate": "plate not identified",
+  "sha256": "c27f35b57db43cfbd1c28724575d8d6e5aa0c0e8d6633ffbd548395fcd98e71a",
+  "sha256_ha": "2eae7326c0e84c638c66f166e4975d43780d546ce106bc094e2d2957e8e52f6a",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sylvia_atricapilla.jpg",
+  "species": "Sylvia atricapilla",
+  "species_on_plate": [
+   "Sylvia atricapilla"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Garden Warbler",
+  "commons_title": "File:Sylvia curruca communis borin.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1510
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Sylvia_curruca_communis_borin.jpg",
+  "image": "sylvia_borin.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "sylvia_curruca_communis_borin_jpg.jpg",
+  "original_sha1": "2dd6a6405301bfe88de3e6c453dbe0ceb9f609bf",
+  "plate": "plate not identified",
+  "sha256": "977457ab085326eafe82ca0ae1eb9bd9bdb6eed4229db631f56aa275b87826d7",
+  "sha256_ha": "e4402150fc57ec0f5197ae0b11c75c92ddc646d99228421ba05bf002a578c394",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sylvia_curruca_communis_borin.jpg",
+  "species": "Sylvia borin",
+  "species_on_plate": [
+   "Curruca communis",
+   "Curruca curruca",
+   "Sylvia borin"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Sandwich Tern",
+  "commons_title": "File:Sternidae naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   1260,
+   857
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Sternidae_naumann.jpg",
+  "image": "thalasseus_sandvicensis.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "sternidae_naumann_jpg.jpg",
+  "original_sha1": "07e82115a0aec1e32cee1de101463a60cdf95fb2",
+  "plate": "plate not identified",
+  "sha256": "9b16f7766c1a746c11fda28cfa78ce048fb1a06ceaaaa755d7b580ecb4217fc1",
+  "sha256_ha": "e5a049fc9c6a7adfb756651d2c7ccc3b1c1e9ac72d5ce987359a87f206a660ea",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sternidae_naumann.jpg",
+  "species": "Thalasseus sandvicensis",
+  "species_on_plate": [
+   "Thalasseus sandvicensis"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Spotted Redshank",
+  "commons_title": "File:Tringa erythropus svartsnaeppa.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1492
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Tringa_erythropus_svartsnaeppa.jpg",
+  "image": "tringa_erythropus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "tringa_erythropus_svartsnaeppa_jpg.jpg",
+  "original_sha1": "61042a83e902acc2609e5e59cf96d8b999db5e12",
+  "plate": "plate not identified",
+  "sha256": "016f33e5b5beb56d41bd4ae30cc1ba8fbd1a5830b244f91b4ec4e39ad6ad68e2",
+  "sha256_ha": "29ec70b4d1e4cdfaa9deb67699cae5e1a91d67b6c7620f799041745409076591",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Tringa_erythropus_svartsnaeppa.jpg",
+  "species": "Tringa erythropus",
+  "species_on_plate": [
+   "Tringa erythropus",
+   "Tringa nebularia"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Wood Sandpiper",
+  "commons_title": "File:Naumann (IX. 1) (5632199255).jpg",
+  "crop_box": [
+   0,
+   101,
+   1190,
+   1696
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Naumann_%28IX._1%29_%285632199255%29.jpg",
+  "image": "tringa_glareola.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_ix_1_5632199255_jpg.jpg",
+  "original_sha1": "cff56860ecc37a43ab34ce380cbeba603f0603ec",
+  "plate": "Band IX, Tafel 1",
+  "sha256": "331577a7c68d43c5808631d9d0eb4295f9e04b2953a19ee70b9265fbf1a860e4",
+  "sha256_ha": "55ddad9f170c5dfad6fb242e09534faa847c73a5e3659e9746506830cb68eccd",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_(IX._1)_(5632199255).jpg",
+  "species": "Tringa glareola",
+  "species_on_plate": [
+   "Actitis hypoleucos",
+   "Tringa glareola",
+   "Tringa ochropus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Greenshank",
+  "commons_title": "File:Tringa erythropus svartsnaeppa.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1492
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Tringa_erythropus_svartsnaeppa.jpg",
+  "image": "tringa_nebularia.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "tringa_erythropus_svartsnaeppa_jpg.jpg",
+  "original_sha1": "61042a83e902acc2609e5e59cf96d8b999db5e12",
+  "plate": "plate not identified",
+  "sha256": "016f33e5b5beb56d41bd4ae30cc1ba8fbd1a5830b244f91b4ec4e39ad6ad68e2",
+  "sha256_ha": "29ec70b4d1e4cdfaa9deb67699cae5e1a91d67b6c7620f799041745409076591",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Tringa_erythropus_svartsnaeppa.jpg",
+  "species": "Tringa nebularia",
+  "species_on_plate": [
+   "Tringa erythropus",
+   "Tringa nebularia"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Green Sandpiper",
+  "commons_title": "File:Naumann (IX. 1) (5632199255).jpg",
+  "crop_box": [
+   0,
+   101,
+   1190,
+   1696
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Naumann_%28IX._1%29_%285632199255%29.jpg",
+  "image": "tringa_ochropus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_ix_1_5632199255_jpg.jpg",
+  "original_sha1": "cff56860ecc37a43ab34ce380cbeba603f0603ec",
+  "plate": "Band IX, Tafel 1",
+  "sha256": "331577a7c68d43c5808631d9d0eb4295f9e04b2953a19ee70b9265fbf1a860e4",
+  "sha256_ha": "55ddad9f170c5dfad6fb242e09534faa847c73a5e3659e9746506830cb68eccd",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_(IX._1)_(5632199255).jpg",
+  "species": "Tringa ochropus",
+  "species_on_plate": [
+   "Actitis hypoleucos",
+   "Tringa glareola",
+   "Tringa ochropus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Common Redshank",
+  "commons_title": "File:Tringa stagnatilis and Tringa totanus by Naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   800,
+   1075
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Tringa_stagnatilis_and_Tringa_totanus_by_Naumann.jpg",
+  "image": "tringa_totanus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "tringa_stagnatilis_and_tringa_totanus_by_naumann_jpg.jpg",
+  "original_sha1": "b06a694e448b145d4b99dd0831ef9b0ca617b724",
+  "plate": "plate not identified",
+  "sha256": "fa7b10b7e873d746c34ae373b8368b62f0971a163fec85cccb6109d7da3411da",
+  "sha256_ha": "292f9c3f4518d0ed7adaf6f323241ff34846c38083f7d63ff06ad2ceaa099bd9",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Tringa_stagnatilis_and_Tringa_totanus_by_Naumann.jpg",
+  "species": "Tringa totanus",
+  "species_on_plate": [
+   "Tringa totanus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Wren",
+  "commons_title": "File:Zaunkoenig.jpg",
+  "crop_box": [
+   0,
+   0,
+   922,
+   1269
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Zaunkoenig.jpg",
+  "image": "troglodytes_troglodytes.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "zaunkoenig_jpg.jpg",
+  "original_sha1": "efbd32fa14267b72089c840acc6e2bd19b6206a3",
+  "plate": "plate not identified",
+  "sha256": "05f152ff07c0a1ddb4a18c83b2b663bbc5adb1bb67a439e5412fb20b5eef2abf",
+  "sha256_ha": "2147e14c396f72605762f213302d3a58e6f16104c3b78ef4f943b86e0f9ab892",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Zaunkoenig.jpg",
+  "species": "Troglodytes troglodytes",
+  "species_on_plate": [
+   "Troglodytes troglodytes"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Redwing",
+  "commons_title": "File:Turdus iliacus NAUMANN.jpg",
+  "crop_box": [
+   0,
+   0,
+   891,
+   1356
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Turdus_iliacus_NAUMANN.jpg",
+  "image": "turdus_iliacus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "turdus_iliacus_naumann_jpg.jpg",
+  "original_sha1": "a868388eb0a45d740b6276ce04f8e2dfeffcfcf4",
+  "plate": "plate not identified",
+  "sha256": "7562bafc9346271b22585fb7f39751396eea9bab8d99e48e2073de74f075f5fa",
+  "sha256_ha": "9f236a6919cb48a64db795fc5e3c7969d9da48834e0520fbb11d2870ac42167d",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Turdus_iliacus_NAUMANN.jpg",
+  "species": "Turdus iliacus",
+  "species_on_plate": [
+   "Turdus iliacus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Eurasian Blackbird",
+  "commons_title": "File:Turdus merula 20050321.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1578
+  ],
+  "crop_source": "crops.json (whole plate)",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Turdus_merula_20050321.jpg",
+  "image": "turdus_merula.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "turdus_merula_20050321_jpg.jpg",
+  "original_sha1": "19a05eb9378dd8f992b2ce92046cde503340648d",
+  "plate": "plate not identified",
+  "sha256": "444ec52b9b4d30b0accdad59f2cd2a88ec516c3baf4ae567405c4ea6fb766a5b",
+  "sha256_ha": "669dc8737c579cf3bf5aee18bbf3abbbe8237969315b12d4e21669acd2ac9eb5",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Turdus_merula_20050321.jpg",
+  "species": "Turdus merula",
+  "species_on_plate": [
+   "Turdus merula"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Song Thrush",
+  "commons_title": "File:Turdus philomelos.jpg",
+  "crop_box": [
+   0,
+   0,
+   1102,
+   1560
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Turdus_philomelos.jpg",
+  "image": "turdus_philomelos.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "turdus_philomelos_jpg.jpg",
+  "original_sha1": "000afde5ef85bac646d37d1420fe565c172c68f4",
+  "plate": "plate not identified",
+  "sha256": "2187de727b6c9bfd7d5cc1c2188e80c151412ed226a6b24fb3a016f450247bc6",
+  "sha256_ha": "b3bd59f93404dd42d4ec3dd21a9477f3cf79b511d68fe7fb4844f846de5bdaec",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Turdus_philomelos.jpg",
+  "species": "Turdus philomelos",
+  "species_on_plate": [
+   "Turdus philomelos"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Fieldfare",
+  "commons_title": "File:Naumann (I. 26) (6008183691).jpg",
+  "crop_box": [
+   102,
+   899,
+   1187,
+   1655
+  ],
+  "crop_source": "crops.json",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Naumann_%28I._26%29_%286008183691%29.jpg",
+  "image": "turdus_pilaris.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_i_26_6008183691_jpg.jpg",
+  "original_sha1": "edc26c853aa996e57b166ba85e882ccfe8321bbf",
+  "plate": "Band I, Tafel 26",
+  "sha256": "b34badaed92ea4e27ef0fdda13dc9d9e49dba14fa2f4e3d39fc0ade7eb01ebc9",
+  "sha256_ha": "4e625516405bacf8adc3d051e7aaaf53b8b90daf7fe7cf892532c3a47afdd752",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_(I._26)_(6008183691).jpg",
+  "species": "Turdus pilaris",
+  "species_on_plate": [
+   "Turdus philomelos",
+   "Turdus pilaris"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Ring Ouzel",
+  "commons_title": "File:Naumann (I. 19) (6008182007).jpg",
+  "crop_box": [
+   0,
+   0,
+   1275,
+   1808
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Naumann_%28I._19%29_%286008182007%29.jpg",
+  "image": "turdus_torquatus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_i_19_6008182007_jpg.jpg",
+  "original_sha1": "4b0eee680479875e041b413ceee1c6f3ec93dc14",
+  "plate": "Band I, Tafel 19",
+  "sha256": "9a3a3e16965506b8d3d802dc88d99b42c007be66ac79d9310a1570cf007d77bd",
+  "sha256_ha": "50cc0a50f57fac6add7af97af7373bd1397c1405873d2f40d3d6434bd8c08456",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_(I._19)_(6008182007).jpg",
+  "species": "Turdus torquatus",
+  "species_on_plate": [
+   "Turdus torquatus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Mistle Thrush",
+  "commons_title": "File:Naumann (I. 28) (6008731292).jpg",
+  "crop_box": [
+   0,
+   0,
+   1277,
+   1799
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Naumann_%28I._28%29_%286008731292%29.jpg",
+  "image": "turdus_viscivorus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "naumann_i_28_6008731292_jpg.jpg",
+  "original_sha1": "2ed057dd9f0d5ffae6462a22a9e89303bc808f82",
+  "plate": "Band I, Tafel 28",
+  "sha256": "f875cacacd6f24fda9311f59c486a9aa81b11d679883562558a5cecd002f6916",
+  "sha256_ha": "9f575513a9b94321344f4bd640b0794adb182bb79b3fc03d35f827b8076ededb",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Naumann_(I._28)_(6008731292).jpg",
+  "species": "Turdus viscivorus",
+  "species_on_plate": [
+   "Turdus viscivorus"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Barn Owl",
+  "commons_title": "File:Schleiereule.jpg",
+  "crop_box": [
+   0,
+   0,
+   954,
+   1293
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Schleiereule.jpg",
+  "image": "tyto_alba.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "schleiereule_jpg.jpg",
+  "original_sha1": "bebcc3419658448a34e657f6cfd740d4ce704189",
+  "plate": "plate not identified",
+  "sha256": "acefd09a81e8852ba94b3f0fa744c677a7bb2429d0226144cd46a54347555a3e",
+  "sha256_ha": "a59d8026425f55ef9b1284d466e3d7e963d454840b298f2cd902b9e573013319",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Schleiereule.jpg",
+  "species": "Tyto alba",
+  "species_on_plate": [
+   "Tyto alba"
+  ]
+ },
+ {
+  "book": "Naumann, Naturgeschichte der Vögel Mitteleuropas (3rd ed., 1896-1905)",
+  "common_name": "Northern Lapwing",
+  "commons_title": "File:Vanellus vanellus naumann.jpg",
+  "crop_box": [
+   0,
+   0,
+   693,
+   480
+  ],
+  "crop_source": "automatic",
+  "fetched": "2026-11-23",
+  "fetched_width": 1280,
+  "file_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Vanellus_vanellus_naumann.jpg",
+  "image": "vanellus_vanellus.jpg",
+  "licence": "Public domain",
+  "needs_crop": false,
+  "original_file": "vanellus_vanellus_naumann_jpg.jpg",
+  "original_sha1": "49e14f78527776ec4ae2d45ad201a34aafedc12a",
+  "plate": "plate not identified",
+  "sha256": "48cc71dd85cb2816ad6ffab15229c3781cbb6ddb920956d1f1ad0f76a7c74f03",
+  "sha256_ha": "389e62dc84bf0afa62c08e781e4c7bd951616caa96d56c08b63d8f9e62f8cea4",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Vanellus_vanellus_naumann.jpg",
+  "species": "Vanellus vanellus",
+  "species_on_plate": [
+   "Vanellus vanellus"
+  ]
+ }
+]

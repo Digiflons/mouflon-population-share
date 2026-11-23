@@ -1,0 +1,247 @@
+name: Bird illustrations
+
+# Pipeline for the illustrated bird library (epic MOUL-42). Runs on GitHub's servers
+# because the development sandbox cannot reach Wikimedia Commons. It only reads
+# public-domain and openly licensed sources and never publishes anything.
+# Results are kept as run artifacts and, for review by the team, saved on the
+# separate "library-build" branch by the "save-for-review" job (owner's decision,
+# 2026-11-22). Nothing reaches staging or main from here.
+on:
+  # A push that changes the pipeline runs the step named in tools/illustrations/STEP.
+  push:
+    branches: [staging]
+    paths:
+      - "tools/illustrations/**"
+      - ".github/workflows/illustrations.yml"
+  workflow_dispatch:
+    inputs:
+      step:
+        description: "all (full library, several hours) or demo-pack (demo species only)"
+        required: true
+        type: choice
+        options: [demo-pack, all]
+        default: demo-pack
+
+permissions:
+  contents: read
+
+jobs:
+  choose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      step: ${{ steps.step.outputs.step }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          sparse-checkout: tools/illustrations/STEP
+          sparse-checkout-cone-mode: false
+      - name: Choose the step
+        id: step
+        env:
+          INPUT_STEP: ${{ inputs.step }}
+        run: |
+          step="${INPUT_STEP:-$(cat tools/illustrations/STEP)}"
+          case "$step" in all|demo-pack) ;; *) echo "::error::unknown step $step"; exit 1;; esac
+          echo "step=$step" >> "$GITHUB_OUTPUT"
+
+  illustrations:
+    needs: choose
+    if: needs.choose.outputs.step == 'all'
+    runs-on: ubuntu-latest
+    # One full build at a time: parallel runs would only be throttled harder.
+    concurrency:
+      group: bird-illustrations
+      cancel-in-progress: false
+    # Wikimedia throttles image downloads; a full build can take several hours.
+    timeout-minutes: 330
+    env:
+      BIRDNET_APP_DATA: ${{ github.workspace }}/.birdnet-app-data
+      # Progress lines appear in the live log as they are printed.
+      PYTHONUNBUFFERED: "1"
+    steps:
+      # First step, so the clock starts with the job. The pipeline stops fetching
+      # 15 minutes before timeout-minutes (keep both numbers in step), then builds
+      # and saves what it has: a cut-off run never loses its work.
+      - name: Set the stop time
+        run: echo "LIBRARY_DEADLINE=$(( $(date +%s) + (330 - 15) * 60 ))" >> "$GITHUB_ENV"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.13"
+      # Plates downloaded by earlier full builds on this branch: a new run only
+      # fetches what is not there yet. Each entry is checked (checksum and Commons
+      # SHA-1) before it is reused. After checkout, whose clean step would delete it.
+      - name: Restore plates from earlier runs
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: work/originals
+          key: bird-plates-v1-${{ github.run_id }}
+          restore-keys: |
+            bird-plates-v1-
+      - name: Install tools
+        run: |
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+          pip install --require-hashes --no-deps -r app/requirements.lock
+          pip install --require-hashes --no-deps -r tools/screen_preview/requirements.lock
+      - name: Build the library (species, taxa, plates, images, songs)
+        working-directory: tools/illustrations
+        env:
+          PYTHONPATH: ${{ github.workspace }}/app/src
+          XENO_CANTO_API_KEY: ${{ secrets.XENO_CANTO_API_KEY }}
+          # A secret, not a variable: GitHub masks secrets in logs (variables are shown).
+          # Optional: each fork or copy sets its own (docs/install.md, section 6).
+          WIKIMEDIA_CONTACT: ${{ secrets.WIKIMEDIA_CONTACT }}
+        run: python pipeline.py species taxa catalogue songs report download build --work "$GITHUB_WORKSPACE/work"
+      - name: Keep the plates for the next run
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: work/originals
+          key: bird-plates-v1-${{ github.run_id }}
+      - name: Keep the library for review
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: bird-library
+          retention-days: 30
+          path: |
+            work/*.json
+            work/*.md
+            work/*.html
+            work/ha/
+            work/thumbs/
+            work/eink/
+            work/songs/
+      - name: Keep the original plates for review
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: original-plates
+          retention-days: 90
+          path: work/originals/
+
+  # The only job allowed to write, and only to the library-build branch. It runs no
+  # project code: it takes the reviewed artifact and commits it. Pushes made with
+  # the default GITHUB_TOKEN never trigger other workflows.
+  save-for-review:
+    needs: [choose, illustrations]
+    if: always() && needs.choose.outputs.step == 'all' && needs.illustrations.result != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - name: Get the built library
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: bird-library
+          path: library
+      - name: Commit it to the library-build branch
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BRANCH: library-build
+        run: |
+          set -eu
+          [ "$BRANCH" = "library-build" ] || { echo "::error::refusing to push to $BRANCH"; exit 1; }
+          remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git ls-remote --exit-code --heads "$remote" "$BRANCH" >/dev/null; then
+            git clone --quiet --depth 1 --branch "$BRANCH" "$remote" target
+          else
+            git init --quiet -b "$BRANCH" target
+          fi
+          find target -mindepth 1 -maxdepth 1 ! -name .git ! -name demo-pack -exec rm -rf {} +
+          mkdir -p target/build
+          cp -r library/. target/build/
+          printf "Bird library built from %s by the Bird illustrations workflow. For review only; install into the App with tools/illustrations/install.py after the owner approves the contact sheet.\n" "$GITHUB_SHA" > target/README.md
+          cd target
+          git add -A
+          if git diff --cached --quiet; then echo "Nothing new"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898270+github-actions[bot]@users.noreply.github.com" commit --quiet -m "Bird library build from ${GITHUB_SHA}"
+          git push --quiet "$remote" "HEAD:refs/heads/$BRANCH"
+
+  # Demo starter pack (owner's request, 2026-11-22): plates for the demo species
+  # only, so demo mode can show real drawings before the full library is ready.
+  # Its own concurrency group: it never waits for, nor cancels, a full build.
+  demo-pack:
+    needs: choose
+    if: needs.choose.outputs.step == 'demo-pack'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    concurrency:
+      group: bird-illustrations-demo-pack
+      cancel-in-progress: false
+    env:
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.13"
+      - name: Install tools
+        run: pip install --require-hashes --no-deps -r tools/illustrations/requirements-pack.lock
+      - name: Build the demo starter pack (demo species, plates, images)
+        working-directory: tools/illustrations
+        env:
+          WIKIMEDIA_CONTACT: ${{ secrets.WIKIMEDIA_CONTACT }}
+        run: python pipeline.py demo_species taxa catalogue download build --work "$GITHUB_WORKSPACE/work"
+      - name: Keep the demo pack for review
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: demo-pack
+          retention-days: 30
+          path: |
+            work/*.json
+            work/*.md
+            work/*.html
+            work/ha/
+            work/thumbs/
+            work/eink/
+            work/originals/
+
+  # Writes only the demo-pack/ folder of the library-build branch; the rest of the
+  # branch (the full build) is left as it is. Never force-pushes.
+  save-demo-pack:
+    needs: demo-pack
+    if: always() && needs.demo-pack.result != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: bird-illustrations-demo-pack-save
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - name: Get the demo pack
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: demo-pack
+          path: pack
+      - name: Commit it to library-build/demo-pack
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BRANCH: library-build
+        run: |
+          set -eu
+          [ "$BRANCH" = "library-build" ] || { echo "::error::refusing to push to $BRANCH"; exit 1; }
+          remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git ls-remote --exit-code --heads "$remote" "$BRANCH" >/dev/null; then
+            git clone --quiet --depth 1 --branch "$BRANCH" "$remote" target
+          else
+            git init --quiet -b "$BRANCH" target
+          fi
+          rm -rf target/demo-pack
+          mkdir -p target/demo-pack
+          cp -r pack/. target/demo-pack/
+          cd target
+          git add -A
+          if git diff --cached --quiet; then echo "Nothing new"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898270+github-actions[bot]@users.noreply.github.com" commit --quiet -m "Demo starter pack from ${GITHUB_SHA}"
+          git push --quiet "$remote" "HEAD:refs/heads/$BRANCH"

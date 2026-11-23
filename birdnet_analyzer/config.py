@@ -1,0 +1,77 @@
+import os
+from typing import Literal, get_args
+
+from birdnet.globals import (
+    ACOUSTIC_MODEL_VERSIONS,
+    GEO_MODEL_VERSIONS,
+    MODEL_LANGUAGE_EN_US,
+    MODEL_LANGUAGES,
+    VALID_MODEL_LANGUAGES_V2_4,
+    VALID_MODEL_LANGUAGES_V3_0,
+)
+
+
+def _newest_version(versions: tuple[str, ...]) -> str:
+    """Return the highest ``"<major>.<minor>"`` version from the given tuple."""
+    return max(versions, key=lambda v: tuple(int(part) for part in v.split(".")))
+
+
+SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
+RANDOM_SEED: int = 42
+
+# Default model versions, derived from what the installed birdnet ships so they track
+# the newest. The geo version is never the user's choice.
+DEFAULT_ACOUSTIC_MODEL_VERSION: str = _newest_version(get_args(ACOUSTIC_MODEL_VERSIONS))
+DEFAULT_GEO_MODEL_VERSION: str = _newest_version(get_args(GEO_MODEL_VERSIONS))
+
+# Languages each acoustic version can label predictions in. v2.4 and v3.0 differ, so
+# the CLI/GUI offer the union; birdnet validates the (version, language) pair on load.
+ACOUSTIC_MODEL_LANGUAGES: dict[str, list[str]] = {
+    "2.4": list(VALID_MODEL_LANGUAGES_V2_4),
+    "3.0": list(VALID_MODEL_LANGUAGES_V3_0),
+}
+ALL_MODEL_LANGUAGES: list[str] = sorted(
+    set(VALID_MODEL_LANGUAGES_V2_4) | set(VALID_MODEL_LANGUAGES_V3_0)
+)
+
+# Languages the newest geo model labels its species list in (v3.0 language set).
+GEO_MODEL_LANGUAGES: list[str] = list(VALID_MODEL_LANGUAGES_V3_0)
+
+SCORE_FUNCTIONS = Literal["cosine", "euclidean", "dot"]
+CROP_MODES = Literal["center", "first", "segments"]
+CODES_FILE: str = os.path.join(SCRIPT_DIR, "eBird_taxonomy_codes_2024E.json")
+ALLOWED_FILETYPES: list[str] = [
+    "wav",
+    "flac",
+    "mp3",
+    "ogg",
+    "aiff",
+    "aif",
+]
+RESULT_TYPES = Literal["table", "audacity", "kaleidoscope", "csv", "parquet"]
+ADDITIONAL_COLUMNS = Literal[
+    "lat", "lon", "week", "overlap", "sensitivity", "min_conf", "species_list", "model"
+]
+OUTPUT_RAVEN_FILENAME: str = "BirdNET_SelectionTable.txt"
+OUTPUT_KALEIDOSCOPE_FILENAME: str = "BirdNET_Kaleidoscope.csv"
+KALEIDOSCOPE_COLUMNS: list[str] = [
+    "INDIR",
+    "FOLDER",
+    "IN FILE",
+    "OFFSET",
+    "DURATION",
+    "TOP1MATCH",
+    "TOP1DIST",
+]
+OUTPUT_CSV_FILENAME: str = "BirdNET_CombinedTable.csv"
+OUTPUT_AUDACITY_FILENAME: str = "BirdNET_AudacityLabels.txt"
+OUTPUT_PARQUET_FILENAME: str = "BirdNET_CombinedTable.parquet"
+ANALYSIS_PARAMS_FILENAME: str = "birdnet.analyze-params.csv"
+TRAIN_PARAMS_SUFFIX: str = ".birdnet.train-params.csv"
+LABEL_LANGUAGE: MODEL_LANGUAGES = MODEL_LANGUAGE_EN_US
+SAMPLE_CROP_MODES = Literal["center", "first", "segments", "smart"]
+NON_EVENT_CLASSES: list[str] = ["noise", "other", "background", "silence"]
+UPSAMPLING_MODES = Literal["repeat", "linear", "mean", "smote"]
+TRAINED_MODEL_OUTPUT_FORMATS = Literal["tflite", "raven", "detached"]
+TRAINED_MODEL_SAVE_MODES = Literal["replace", "append"]
+AUTOTUNE_METRICS = Literal["val_AUPRC", "val_AUROC"]
