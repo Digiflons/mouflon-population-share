@@ -1,5 +1,5 @@
 # Match the Python version used to build the release (see publish.yml / CI matrix)
-FROM python:3.13-slim
+FROM python:3.15-slim
 
 # uv installs the (large scientific) dependency tree far faster than pip via
 # parallel downloads and a faster resolver. Pin the version for reproducibility.
