@@ -190,7 +190,8 @@ Which BirdNET model:
 |---|---|---|---|---|
 | **BirdNET 2.4, TFLite FP16 (chosen to start)** | tens of MB | LiteRT (small, no full TensorFlow) | CC BY-NC-SA 4.0, non-commercial: **OK, the owner confirmed personal non-commercial use** | Light, proven on Raspberry Pis |
 | BirdNET 3.0, ONNX FP32 (upstream default) | ~345 MB | ONNX Runtime (has arm64 builds) | Apache 2.0 + acceptable use policy | Fits on a Raspberry Pi with enough memory; newer and likely more accurate but ~3× heavier — candidate after the benchmark |
-| Perch v2 | ~380 MB | TensorFlow | — | Not considered |
+| Perch v2 (`birdnet` library) | ~380 MB | TensorFlow ≥ 2.20 | Apache 2.0 | Not usable: the image must not contain TensorFlow |
+| **Perch v2, ONNX FP32 no-DFT (second opinion since 0.7.0, §11)** | 413 MB | ONNX Runtime (already in the image) | Apache 2.0 | +0.56–0.59 GB memory once loaded; run only for birds in confirmation |
 
 **Decision:** start with **BirdNET 2.4 TFLite FP16** through LiteRT. The benchmark on the Pi (MOUL-12) then decides whether 3.0 becomes the default; with enough memory, it is not the limit, so the decision is about speed and accuracy. The geo model ("which species live here this week") filters the species list using **Home Assistant's home location**, which **The owner approved**. The location is read on the Pi and never leaves it.
 
@@ -246,10 +247,15 @@ flowchart TB
     preview["preview.py<br/>plain HTML page from the log"]
     analytics[("analytics.py<br/>permanent table, CSV export")]
     screenr["screen.py<br/>e-ink demo screen"]
+    rarity["rarity.py<br/>rarity + confirmation (4 checks)"]
+    perch["second_opinion.py<br/>Perch v2 on ONNX Runtime"]
+    local["local_check.py<br/>bundled GBIF weekly statistics"]
   end
   config --> service
   ha --> guards
-  service --> sources --> detector --> birdlog
+  service --> sources --> detector --> rarity --> birdlog
+  rarity --> perch
+  rarity --> local
   guards --> service
   detector --> mqtt
   birdlog --> preview
@@ -451,11 +457,11 @@ The owner plans to dedicate a second Raspberry Pi (model not yet known) to drivi
 ```mermaid
 flowchart TB
   win["3-second window<br/>(in memory only)"] --> bn["BirdNET 2.4<br/>+ filters"]
-  bn --> q{"Rare or first-time<br/>for the garden?"}
-  q -- "no" --> conf["Confirmed at once<br/>bird log + analytics"]
-  q -- "yes" --> prov["Shown right away: status 'provisional'<br/>pill 'Confirmation in progress', loading bar<br/>no rarity pills, no notification"]
-  prov --> steps["Confirmation steps<br/>1. confident detection (≥ 0.75)<br/>2. heard again within 15 min<br/>planned: 3. second-model opinion (MOUL-54)<br/>planned: 4. local observation statistics (MOUL-55)"]
-  steps -- "all steps done" --> ok["Status 'confirmed'<br/>rarity pills + rare_bird event<br/>bird log + analytics (confirmed)"]
+  bn --> q{"0.50 or more, sure (≥ 0.75) and common:<br/>not new or rare for the garden,<br/>not seldom seen in Belgium now?"}
+  q -- "yes" --> conf["Confirmed when heard again (0.7.0)<br/>bird log + analytics"]
+  q -- "no" --> prov["Shown right away: status 'provisional'<br/>pill 'Confirmation in progress', loading bar<br/>no rarity pills, no notification"]
+  prov --> steps["Confirmation checks (0.7.0, §11)<br/>1. confident detection (≥ 0.75)<br/>2. heard again within 15 min<br/>3. Perch agrees on the same window<br/>4. observed in Belgium this week (GBIF)"]
+  steps -- "two checks done" --> ok["Status 'confirmed'<br/>rarity pills + rare_bird event<br/>bird log + analytics (confirmed)"]
   steps -- "window ends" --> wd["Status 'withdrawn'<br/>pill 'Not confirmed', removed from today's list<br/>analytics row 'withdrawn' (never counted)"]
   conf --> ha["Home Assistant<br/>last bird, today's list, delay sensor"]
   ok --> ha
@@ -465,11 +471,11 @@ flowchart TB
 - The last-bird sensor and each provisional item in the `species` list carry:
   - `status` (provisional / confirmed / withdrawn);
   - `confirmation_progress` (0–100);
-  - `confirmation_steps` (a list of `{name, done}`);
+  - `confirmation_steps` (a list of `{key, name, state, done, note}`, see §11);
   - `minutes_left`.
 
   Two helper sensors, `sensor.mouflon_population_last_bird_status` and `…_confirmation_progress`, let standard cards show or hide the loading bar.
-- The steps are generic, so the second-model opinion (MOUL-54) and the local observation statistics (MOUL-55) can be added as extra steps. Neither is built yet.
+- The steps are generic. Since 0.7.0 there are four (MOUL-54, MOUL-55): see §11.
 - There is no manual confirm or reject button: the bird confirms itself or is withdrawn.
 
 **Detection delay (MOUL-52).** For every detection the App measures:
@@ -480,3 +486,107 @@ flowchart TB
 The delay of the camera stream itself cannot be seen from inside the App. It will be measured in the benchmark on the real hardware (MOUL-12), for example by clapping in front of a camera and comparing timestamps.
 
 `sensor.mouflon_population_detection_delay` holds the last value, with the rolling median, the 95th percentile and the breakdown as attributes. The estimate given to the owner, about 3–6 s for a common bird (the 3-second window plus processing), is to be confirmed by that benchmark.
+
+## 11. Confirmation cross-checks: Perch second opinion and Belgian observation statistics (MOUL-54, MOUL-55; version 0.7.0)
+
+Epic MOUL-59. Approved by the owner on 2026-11-22, built in 0.7.0. The design notes and the options compared are kept in the team's internal work file (see `docs/work/README.md`); the lasting decisions are recorded here.
+
+**Score bands (owner's decision, 2026-11-23, 19:00).** All four limits are App options with French labels.
+
+| BirdNET score | Band | What happens |
+|---|---|---|
+| < 0.20 (`silent_check_min`) | ignored | dropped by the detector |
+| 0.20–0.50 (`min_confidence`) | **silent check** | nothing published; local check first, then Perch (silent priority); published only if "observed locally" **and** Perch's score ≥ 0.70 (`perch_agreement`); then provisional with **3** checks needed (Perch and local already done). Otherwise dropped. Counted in `sensor.mouflon_population_silent_check` (state: rescued today; attributes: rejected, skipped) |
+| 0.50–0.75 (`second_opinion_threshold`) | **unsure** | provisional, four checks, two needed |
+| ≥ 0.75, common locally this week, not new or rare | **sure and common** | provisional, confirmed when heard again; no Perch call (`common_confirm_twice`, on by default; off = confirmed at once) |
+| any, new or rare for the garden, unusual, threatened, or rarely observed locally | **always cross-checked** | provisional, four checks, two needed |
+
+A low (silent-band) repeat never confirms a published bird: only published detections count as "heard again". Test mode logs sure birds at once and its silent checks are counted as skipped (the Belgian statistics do not apply to the foreign test recording).
+
+**Architect's note on the "sure and common" band.** It is now stricter than the unsure band: a 0.60 bird can be confirmed at once by Perch and the local check, while a 0.90 common bird waits for a repeat. This is the owner's choice (it spares the Pi: no Perch call). The `common_confirm_twice` option switches it to "confirmed at once" if the analytics show that single calls of common birds are lost.
+
+**Perch agreement and its score.** Perch's raw outputs (logits) are not probabilities. On the test recording and on noise (measured in CI, workflow "Cross-check data"):
+- thousands of classes are above 0 even on pure noise, where the top logit is about 7 (a tawny owl, on white noise);
+- birds really present in the recording reach logits of 9 to 13;
+- two doubtful BirdNET detections (a cuckoo from Asia and a merlin in a North American recording) get 8.3 and 6.2.
+
+So the App turns a logit into a **Perch score** with `sigmoid(logit − 8)`. Perch agrees at a score of 0.70 or more (`perch_agreement`, in every band), which is a logit of about 8.85.
+
+Earlier rules failed in CI's real-model test and were dropped:
+- "score ≥ 0.25 or in Perch's top 3": it agreed on silence;
+- a plain sigmoid of the logit: it gave 0.88 for a chickadee on quiet noise;
+- zero padding to 5 s: Perch scored 0.82 on an all-zero window.
+
+Now the window is repeated to fill 5 s, digital silence is never sent to Perch, and the real test checks that quiet noise gives "disagree".
+
+On the test recording, this rule makes the silent check right every time: all eight 0.20–0.50 detections of birds really present would be rescued (logits 9.2–12.9), and the two doubtful ones would be dropped. This calibration rests on one recording: redo it with real garden data (analytics table, silent-check counter).
+
+**Perch rate limit.** At most 6 runs in any 60 s; one run at a time. Silent checks run only while fewer than 3 runs happened in the last minute and the 1-minute load is at most 1.0 per core (1.5 for confirmations), so they are skipped first when the Pi is busy.
+
+```mermaid
+flowchart TB
+  win["3-second window<br/>(local variable, memory only)"] --> bn["BirdNET 2.4"]
+  bn -- "< 0.20" --> ign["Ignored"]
+  bn -- "0.20-0.50" --> silent["Silent check<br/>local check, then Perch (low priority)"]
+  silent -- "observed locally and Perch ≥ 0.70" --> track
+  silent -- "otherwise" --> count["Dropped; counter sensor only"]
+  bn -- "≥ 0.50" --> route{"Sure (≥ 0.75) and common?"}
+  route -- "yes" --> twice["Provisional,<br/>confirmed when heard again"]
+  route -- "no" --> track["Confirmation tracker<br/>(4 checks, 2 needed)"]
+  gbif[("Bundled GBIF weekly statistics<br/>Belgium, country level")] --> local["Check 4: observed locally<br/>this BirdNET week?"]
+  local --> track
+  track -- "not yet confirmed" --> perch["Check 3: Perch 2.0 (ONNX)<br/>same window, resampled to 32 kHz,<br/>repeated to fill 5 s"]
+  win -. "same object, never copied<br/>or stored" .-> perch
+  perch -- "agree / disagree / skipped" --> track
+  track -- "two checks done" --> ok["Confirmed"]
+  track -- "window ends" --> wd["Withdrawn"]
+  win --> drop["Window dropped<br/>after the analysis"]
+```
+
+**The rule: two of four checks.**
+
+| Check | Done when | Failed / skipped |
+|---|---|---|
+| 1. Confident detection | a detection ≥ 0.75 (`rare_min_confidence`) | pending until then |
+| 2. Heard again | two detections within the window (15 min) | pending until then |
+| 3. Perch agrees | Perch score (`sigmoid(logit − 8)`) ≥ 0.70 (`perch_agreement`; same in the silent check) | failed: Perch hears something else; skipped: off, loading, not enough memory, Pi busy, species unknown to Perch, error |
+| 4. Observed locally | ≥ 30 records and ≥ 0.01 % of bird records over the week and its two neighbours, last 10 full years | failed: rarely observed; skipped: no statistics, test mode |
+
+A species seldom observed locally thus needs Perch to agree or to be heard twice. A skipped check never blocks. The progress bar shows `min(done, needed) / needed` (needed is 2, or 3 for a bird rescued by the silent check; 50 % for a sure common bird waiting for its repeat).
+
+**Perch, the model and why.**
+- Perch v2 from Google DeepMind, as an ONNX conversion (no-DFT variant, FP32, all 14,795 classes).
+- Downloaded from a pinned revision of its Hugging Face repository when the image is built. The model file and its labels are pinned by SHA-256 in `app/models.lock.json`. The Pi never downloads it at runtime.
+- Run by ONNX Runtime, already in the image as a BirdNET dependency: no new Python package. The `birdnet` library's Perch needs TensorFlow, which the image must not contain.
+- Loads in the background at start-up; 2 threads; one run at a time; at most 6 runs a minute (silent checks last). Skipped when the 1-minute load is above 1.5 per core (1.0 for silent checks), or when free memory is below about 2 × the model file plus 300 MB (retried daily).
+- BirdNET and Perch labels are matched by scientific name. `app/crosscheck/perch-aliases.json` maps the few names the two taxonomies spell differently, resolved through GBIF's taxonomy.
+
+**Measured cost** (GitHub runners, workflow "Cross-check data"; Pi figures are estimates until the benchmark on the Pi, MOUL-12):
+
+| Machine | Time per check (2 threads) | Extra memory once loaded |
+|---|---|---|
+| x86 runner | 0.09 s | +585 MB |
+| arm64 runner (Neoverse class) | 0.21 s | +559 MB |
+| Newer Raspberry Pi (Cortex-A76 class), estimate | about 0.3–0.5 s | about +0.56 GB |
+| Older Raspberry Pi (Cortex-A72 class), estimate | about 0.8–1.2 s | about +0.56 GB |
+
+Perch runs only for birds in confirmation, so the average processor cost stays small. The App's memory with BirdNET 2.4 plus Perch stays within the 1 GB budget of §3.6. On a Pi with little memory, Perch skips itself or can be turned off (`second_opinion: false`).
+
+**Local observation statistics.**
+- The workflow "Cross-check data" (`.github/workflows/crosscheck-data.yml`, `tools/crosscheck/crosscheck_data.py`) runs yearly on 15 January (schedules run only from the default branch), on demand, and when its code changes.
+- It queries GBIF's public occurrence search API, with no account and no secret. Records kept:
+  - Belgium, birds, present, human observations, no geospatial issue;
+  - records licensed CC0 1.0 or CC BY 4.0 only;
+  - the last ten full years.
+- It counts records per species and per BirdNET week, at **country level**: no grid, no coordinates.
+- It uploads `belgium-weekly.json`, `perch-aliases.json` and `manifest.json` (filters, every dataset with licence, DOI and citation) for review, and also prints them compressed in the log. A person commits them into `app/crosscheck/`, which the image bundles.
+- GBIF's search API cannot filter on validation status. Records come from curated sources: portal records with automatic and manual validation, monitoring schemes, eBird with regional reviewers.
+
+**Home Assistant.** One new entity, `sensor.mouflon_population_silent_check` (see the bands above). Each item of `confirmation_steps` now has:
+- `key` (`confident`, `again`, `perch`, `local`);
+- `name` (French by default);
+- `state` (`done`, `pending`, `failed`, `skipped`);
+- `done` (kept for existing cards);
+- `note` (why a check failed or was skipped).
+
+The reference dashboard lists the four checks under the loading bar. Demo mode shows them with the real tracker: Perch busy, then agreeing (confirmed) or disagreeing (withdrawn).

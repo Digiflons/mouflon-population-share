@@ -52,7 +52,8 @@ jobs:
               echo "::error::$module must not be in the App image"; exit 1
             fi
           done
-          docker run --rm --entrypoint python "$img" -c "import ai_edge_litert, birdnet, paho.mqtt"
+          docker run --rm --entrypoint python "$img" -c "import ai_edge_litert, birdnet, onnxruntime, paho.mqtt"
+          docker run --rm --entrypoint test "$img" -s /opt/mouflon/crosscheck/belgium-weekly.json
           test "$(docker run --rm --entrypoint stat "$img" -c %U /opt/birdnet)" = root
           echo "Image contents OK"
           # Size of the App image and of its bird library, shown as a notice on the run.
@@ -84,6 +85,11 @@ jobs:
           fi
           echo "--- Test mode must switch the species filter off (MOUL-40)"
           docker compose -f tests/e2e/compose.yaml logs app | grep -q "Test mode: species filter off"
+          echo "--- Perch must load in the image and give its opinion on the same window (MOUL-54)"
+          docker compose -f tests/e2e/compose.yaml logs app | grep -q "Second opinion ready"
+          docker compose -f tests/e2e/compose.yaml logs app | grep "Second opinion on" | head -5
+          echo "--- Local observation statistics must be bundled (MOUL-55)"
+          docker compose -f tests/e2e/compose.yaml logs app | grep -q "Local observation statistics:"
           docker compose -f tests/e2e/compose.yaml logs app | tail -40
           docker compose -f tests/e2e/compose.yaml down -v
 

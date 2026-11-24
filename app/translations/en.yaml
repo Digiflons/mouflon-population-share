@@ -41,8 +41,10 @@ configuration:
     name: Maximum battery drop per day (%)
     description: If the battery falls faster than this over 24 hours, the App pauses.
   min_confidence:
-    name: Minimum confidence
-    description: Detections below this BirdNET confidence (0.1 to 0.99) are ignored.
+    name: Publication threshold
+    description: >-
+      From this BirdNET score (0.50) a bird is shown. Below it, it goes through
+      the silent check.
   language:
     name: Language
     description: >-
@@ -71,11 +73,45 @@ configuration:
     name: Unusual in the region (threshold)
     description: Below this regional probability for the week, a species is "unusual".
   rare_min_confidence:
-    name: Confidence needed to confirm
-    description: A new or rare bird is confirmed after two detections at or above this confidence.
+    name: Confidence for a sure detection
+    description: >-
+      A detection at or above this score counts as the "confident detection"
+      check (0.75).
   rare_confirm_minutes:
     name: Confirmation window (minutes)
-    description: The second detection must come within this many minutes.
+    description: >-
+      An uncertain, new or rare bird is confirmed when two checks agree within
+      this many minutes; otherwise it is withdrawn.
+  second_opinion:
+    name: Second opinion (Perch)
+    description: >-
+      Lets Google DeepMind's Perch model listen to the same moment when a bird needs
+      confirmation. Uses about 0.6 GB of memory; skipped automatically when the Pi
+      is busy.
+  second_opinion_threshold:
+    name: Second-opinion threshold
+    description: >-
+      Below this BirdNET score (and above the detection threshold) a bird is
+      uncertain: it shows "Confirmation in progress" and goes through the checks.
+      0.75 by default; to be tuned once there is real garden data (BirdNET's score
+      is not a true probability).
+  silent_check_min:
+    name: Silent-check threshold
+    description: >-
+      Between this score and the confidence threshold a bird is not shown: Perch
+      and the Belgian statistics check it silently, and it is published only if
+      both agree. Below it, it is ignored. 0.20 by default; set it equal to the
+      confidence threshold to turn the silent check off.
+  perch_agreement:
+    name: Perch agreement
+    description: >-
+      Minimum Perch score that counts as agreeing (0.70), for the second opinion
+      and for the silent check.
+  common_confirm_twice:
+    name: Sure common bird confirmed after two detections
+    description: >-
+      A common bird above the second-opinion threshold is confirmed when it is
+      heard a second time. When off, it is confirmed at once.
   screen_enabled:
     name: E-ink screen images
     description: Renders the screen pages as Home Assistant images (Screen entities).

@@ -19,13 +19,18 @@ import logging
 import math
 import random
 from dataclasses import dataclass, field
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from typing import TYPE_CHECKING
 
 from mouflon_population import i18n
 from mouflon_population.config import slugify
 from mouflon_population.gallery import Gallery
-from mouflon_population.rarity import assess
+from mouflon_population.rarity import (
+    ConfirmationTracker,
+    Observation,
+    Pending,
+    assess,
+)
 
 if TYPE_CHECKING:
     import threading
@@ -180,6 +185,8 @@ class DemoRunner:
         self.sources = demo_source_names(settings)
         self.stats = DemoStats()
         self.pending: dict[str, dict] = {}
+        # Real tracker, so the demo shows the same four checks and wording.
+        self.tracker = ConfirmationTracker(0.75, timedelta(minutes=15))
         self.library = library
         self.gallery = Gallery(
             publisher,
@@ -194,6 +201,9 @@ class DemoRunner:
     def announce(self) -> None:
         self.publisher.announce([(slugify(n), n) for n in self.sources])
         self.publisher.demo_mode(True)
+        self.publisher.silent_check(
+            {"rescued": 0, "rejected": 0, "skipped": 0, "demo": True}
+        )
         self.publisher.stats(0, 0)
         self.gallery.show_last(None)
         self.gallery.show_species([], {})
@@ -257,11 +267,22 @@ class DemoRunner:
 
     # --- provisional flow, shown occasionally in demo mode (MOUL-53) ----------------
 
-    def _steps(self, done: int) -> list[dict]:
-        return [
-            {"name": "Confident detection (≥ 0.75)", "done": done >= 1},
-            {"name": "Heard again within 15 min", "done": done >= 2},
-        ]
+    def _checks(self, item: dict) -> tuple[list[dict], int]:
+        """The four confirmation checks for a demo bird, at its current stage.
+
+        Start: confident detection, rarely observed locally, Perch busy (50 %).
+        Confirmed: Perch then agrees. Withdrawn: Perch hears something else.
+        """
+        entry = Pending(
+            item["scientific_name"],
+            item["common_name"],
+            assess("regular", "usual", None),
+            item["started"],
+            [Observation(item["started"], item["source"], 0.8)],
+            perch=item["perch"],
+            local="rare",
+        )
+        return self.tracker.steps(entry), self.tracker.progress(entry)
 
     def _start_provisional(
         self, scientific, common, garden, regional, iucn, source, now
@@ -276,10 +297,12 @@ class DemoRunner:
             "ticks": 0,
             "outcome": "confirm" if self.rng.random() < 0.75 else "withdraw",
             "started": now,
+            "perch": "skipped:busy",
         }
-        self._publish_pending(self.pending[scientific], now, "provisional", 1)
+        self._publish_pending(self.pending[scientific], now, "provisional")
 
-    def _publish_pending(self, item, now, status, done) -> None:
+    def _publish_pending(self, item, now, status) -> None:
+        steps, progress = self._checks(item)
         detection = {
             "detected_at": now.isoformat(timespec="seconds"),
             "source": item["source"],
@@ -295,8 +318,8 @@ class DemoRunner:
                 "labels": [],
             },
             "status": status,
-            "confirmation_progress": 100 * done // 2,
-            "confirmation_steps": self._steps(done),
+            "confirmation_progress": progress,
+            "confirmation_steps": steps,
             "minutes_left": max(0, 15 - 5 * item["ticks"])
             if status == "provisional"
             else 0,
@@ -315,6 +338,8 @@ class DemoRunner:
             changed = True
             if item["outcome"] == "confirm" and item["ticks"] >= 2:
                 del self.pending[scientific]
+                item["perch"] = "agree"
+                steps, _ = self._checks(item)
                 garden, regional, iucn = item["rarity"]
                 rarity = assess(garden, regional, iucn)
                 rarity.status = "confirmed"
@@ -327,7 +352,7 @@ class DemoRunner:
                     "rarity": rarity.as_dict(),
                     "status": "confirmed",
                     "confirmation_progress": 100,
-                    "confirmation_steps": self._steps(2),
+                    "confirmation_steps": steps,
                     "minutes_left": 0,
                 }
                 self.stats.add(now, scientific, item["common_name"], rarity.as_dict())
@@ -337,9 +362,11 @@ class DemoRunner:
                 self.publisher.rare_bird(enriched, demo=True)
             elif item["outcome"] == "withdraw" and item["ticks"] >= 3:
                 del self.pending[scientific]
-                self._publish_pending(item, now, "withdrawn", 1)
+                self._publish_pending(item, now, "withdrawn")
             else:
-                self._publish_pending(item, now, "provisional", 1)
+                if item["outcome"] == "withdraw":
+                    item["perch"] = "disagree"
+                self._publish_pending(item, now, "provisional")
         return changed
 
     def _species_list(self) -> list[dict]:
@@ -354,8 +381,8 @@ class DemoRunner:
                 "count": 1,
                 "last_heard": item["started"].isoformat(timespec="seconds"),
                 "status": "provisional",
-                "confirmation_progress": 50,
-                "confirmation_steps": self._steps(1),
+                "confirmation_progress": self._checks(item)[1],
+                "confirmation_steps": self._checks(item)[0],
                 "minutes_left": max(0, 15 - 5 * item["ticks"]),
             }
             for item in self.pending.values()

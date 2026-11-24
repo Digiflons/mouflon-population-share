@@ -43,8 +43,10 @@ configuration:
     name: Baisse maximale de batterie par jour (%)
     description: Si la batterie baisse plus vite que cela sur 24 heures, l'App se met en pause.
   min_confidence:
-    name: Confiance minimale
-    description: Les détections sous cette confiance BirdNET (0,1 à 0,99) sont ignorées.
+    name: Seuil de publication
+    description: >-
+      À partir de ce score BirdNET (0,50), un oiseau est affiché. En dessous, il
+      passe par la vérification silencieuse.
   language:
     name: Langue
     description: >-
@@ -73,11 +75,46 @@ configuration:
     name: Inhabituel dans la région (seuil)
     description: Sous cette probabilité régionale pour la semaine, une espèce est « inhabituelle ».
   rare_min_confidence:
-    name: Confiance pour confirmer
-    description: Un oiseau nouveau ou rare est confirmé après deux détections à cette confiance ou plus.
+    name: Confiance pour une détection sûre
+    description: >-
+      Une détection à ce score ou plus compte comme la vérification « Détection
+      sûre » (0,75).
   rare_confirm_minutes:
     name: Délai de confirmation (minutes)
-    description: La deuxième détection doit arriver dans ce délai.
+    description: >-
+      Un oiseau incertain, nouveau ou rare est confirmé quand deux vérifications
+      concordent dans ce délai ; sinon il est retiré.
+  second_opinion:
+    name: Deuxième avis (Perch)
+    description: >-
+      Le modèle Perch de Google DeepMind écoute le même instant quand un oiseau doit
+      être confirmé. Utilise environ 0,6 Go de mémoire ; passé automatiquement quand
+      le Pi est occupé.
+  second_opinion_threshold:
+    name: Seuil de deuxième avis
+    description: >-
+      Sous ce score BirdNET (et au-dessus du seuil de détection), un oiseau est
+      incertain : il affiche « Confirmation en cours » et passe par les
+      vérifications. 0,75 par défaut ; à ajuster quand il y aura de vraies données
+      du jardin (le score de BirdNET n'est pas une vraie probabilité).
+  silent_check_min:
+    name: Seuil de vérification silencieuse
+    description: >-
+      Entre ce score et le seuil de confiance, un oiseau n'est pas affiché : Perch
+      et les statistiques belges le vérifient en silence, et il n'est publié que
+      s'ils sont d'accord. En dessous, il est ignoré. 0,20 par défaut ; mettre la
+      même valeur que le seuil de confiance pour couper la vérification silencieuse.
+  perch_agreement:
+    name: Accord de Perch
+    description: >-
+      Score minimal de Perch pour compter comme « d'accord » (0,70), pour le
+      deuxième avis comme pour la vérification silencieuse.
+  common_confirm_twice:
+    name: Oiseau courant sûr confirmé après deux détections
+    description: >-
+      Un oiseau courant, sûr (au-dessus du seuil de deuxième avis), est confirmé
+      quand il est entendu une deuxième fois. Désactivé, il est confirmé tout de
+      suite.
   screen_enabled:
     name: Images de l'écran e-ink
     description: Dessine les pages de l'écran comme images Home Assistant (entités Écran).

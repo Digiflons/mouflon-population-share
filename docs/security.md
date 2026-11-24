@@ -119,6 +119,35 @@ Reviewed: every new file under `app/` and `tests/mouflon/`, `tests/e2e/`, and th
 
 **No Critical or High finding is open.** H1, M1, M2 (for the App) and M5 are closed. P1 to P4 are accepted Lows. P5 is closed as decided (private repository, read-only token).
 
+**Review of 0.7.0 (confirmation cross-checks: Perch second opinion MOUL-54, Belgian GBIF statistics MOUL-55), 2026-11-23:**
+- **Audio rule unchanged.** Perch receives the same 3-second window as an argument of one function call. There is no copy, file, log line, queue, message or database row for it. The window is dropped at the end of the analysis, as before. Enforced by:
+  - a unit test: after a window is analysed, no array of its size is left in memory, and no published message mentions audio;
+  - the existing tests and the e2e test: the App writes only its database files.
+- **New build-time download (supply chain, Medium, mitigated).** The image build fetches Perch v2 (ONNX, 413 MB) and its labels from `huggingface.co`.
+  - The URL holds a fixed repository revision.
+  - Both files are pinned by SHA-256 in `app/models.lock.json`, and the existing verify step fails the build on any difference.
+  - The same model file (identical SHA-256) is published by its original converter, which cross-checks its provenance.
+  - Each file is checked against its fingerprint as soon as it is downloaded; a truncated or different file is deleted and fetched again (4 attempts), then the build stops. A CI build caught exactly this once (a download cut short), and the pin stopped it.
+  - Never downloaded at runtime. No token or secret is involved.
+- **No new Python dependency.** Perch runs on ONNX Runtime and SciPy, both already in the hash-checked lock and audited by `pip-audit` in CI. TensorFlow stays out of the image (CI check unchanged; the `birdnet` library's own Perch was rejected because it needs TensorFlow).
+- **Model parsing (Low, accepted).** A crafted ONNX file could target ONNX Runtime's parser. The fingerprint pin makes a swapped file fail the build. ONNX Runtime is kept current through the lock.
+- **Resource exhaustion (Low, mitigated).** Perch needs about 0.56–0.59 GB once loaded. Safeguards:
+  - it checks free memory before loading;
+  - it skips a run when the Pi is busy or another run is in progress;
+  - it uses 2 threads;
+  - it can be turned off (`second_opinion: false`).
+  
+  A skipped check never blocks confirmation.
+- **GBIF statistics (Low).** Built in GitHub Actions from GBIF's public search API: no account, no secret, a generic User-Agent, read-only repository access. The data is public and aggregated at country level, with no coordinates and nothing about the home. A tampered file could only change which second check a bird needs; a person reviews the workflow output before committing it. The Pi never contacts GBIF.
+- **Licences checked.**
+  - **Perch v2:** Google DeepMind, Apache 2.0. The ONNX conversion and its hosting repository are also Apache 2.0. Redistribution in a self-built image is allowed with the licence notice, which the README gives. No non-commercial restriction.
+  - **Perch labels:** scientific names (iNaturalist 2024 taxonomy) and FSD50K sound-class names. Names are facts; no restriction.
+  - **GBIF data:** only records licensed CC0 1.0 or CC BY 4.0 are kept. GBIF filters on each record's own licence, and a unit test checks the filter in the manifest. Two datasets whose overall licence is CC BY-NC (iNaturalist research-grade, Birda) contribute only records their observers licensed CC0 or CC BY: about 0.3 % of the 7.45 million records. The bundle therefore carries no non-commercial clause. CC BY requires attribution: every dataset is listed in `app/crosscheck/manifest.json` with its title, licence, DOI and citation, and the README credits GBIF and the main publishers.
+  - **No single GBIF download DOI.** A download DOI needs a GBIF account. Each dataset is cited with its own DOI instead. Getting a download DOI later is optional and up to the owner.
+- **"Validated" observations.** GBIF's search API ignores the validation-status filter (tested). Records come from curated sources (portal records with automatic and manual validation, monitoring schemes, eBird with regional reviewers, tracking studies). Accepted: the check only decides which second check a bird needs.
+- **Aikido.** No new dependency and no new secret. The new workflow is read-only (`contents: read`) and its actions are pinned by commit SHA. Any Aikido finding raised on this push is triaged in the next sprint and recorded here.
+- **No Critical or High finding.**
+
 **Pre-sharing inspection (0.6.1, MOUL-49, 2026-11-23), before the code is shared with one more reader:**
 - **Secrets, whole history** (all commits of `staging`, `main` and `library-build`): no token, password, API key, private key, Home Assistant token, or stream address with a real login. Only test fakes and documentation addresses. No personal email address in any file or commit message; commit identities are generic bot addresses.
 - **Wikimedia contact:** never written in a file. While it was briefly a repository variable, the run logs show it was empty; since then it is a masked secret. It is optional; a fork sets its own (see `docs/install.md` §6).

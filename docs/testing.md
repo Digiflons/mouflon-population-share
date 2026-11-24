@@ -15,6 +15,59 @@ pip-audit
 
 The same checks run automatically on GitHub for every push to `staging` and `main`: "Tests", "Lint", and "App image", which builds the Home Assistant App for x86 and for the Raspberry Pi (arm64) and runs the end-to-end test with a real Home Assistant and Mosquitto (`tests/e2e/`).
 
+## Confirmation cross-checks — MOUL-54, MOUL-55 (2026-11-23, version 0.7.0)
+
+New tests (`tests/mouflon/test_crosschecks.py`):
+- **The rule:**
+  - confident and observed locally confirms at once;
+  - rarely observed locally needs Perch or a repeat;
+  - uncertain and observed locally waits for one more check;
+  - Perch alone is not enough for an uncertain, rarely observed bird;
+  - skipped checks never block, and an unconfirmed bird is withdrawn when the window ends;
+  - a later "skipped" keeps an earlier Perch disagreement;
+  - the four steps are in French, with their states and notes.
+- **Perch with a fake ONNX session:**
+  - the 3 s window is resampled and repeated to fill Perch's 5 s, and digital silence is never sent to Perch;
+  - agreement only on a Perch score of 0.70 or more (logit about 8.85); a top rank with a noise-level logit is not agreement;
+  - taxonomy aliases work;
+  - skipped for an unknown species, a busy Pi, a run already in progress, not enough memory, missing files, wrong labels, or still loading;
+  - the rate limit puts silent checks last, and silent checks are skipped first when the Pi is loaded.
+- **The service:**
+  - Perch hears the very same window object;
+  - a sure common bird is confirmed when heard twice, without Perch (or at once when `common_confirm_twice` is off);
+  - a sure bird rarely observed locally is cross-checked;
+  - a new bird common in Belgium needs no Perch, and a rarely observed one is confirmed by Perch;
+  - Perch disagreeing keeps the bird provisional;
+  - Perch can be turned off;
+  - the top of the unsure zone is a setting, and invalid limits are refused.
+- **Silent check (0.20–0.50):**
+  - a plausible bird that Perch agrees with is rescued, shown as provisional at 67 % (2 of 3 checks), and confirmed by one more published detection; a low repeat is not enough;
+  - Perch below 0.70 drops it quietly, and only the counter changes;
+  - a locally rare bird is dropped without asking Perch;
+  - the counter resets daily.
+- **No window survives the analysis:** no array of the window's size is left in memory, no message mentions audio, and only the database files are written.
+- **Local statistics:** the week and its neighbours are used; aliases work; broken files make the check unavailable, not the App; test mode skips the check.
+- **Bundled data and pins:**
+  - Perch is pinned by a 40-character revision and by SHA-256 fingerprints;
+  - the bundled statistics cover 10 years at country level with no coordinates, and common garden birds are "observed" all year;
+  - the manifest keeps only CC0 / CC BY records and cites every dataset with a DOI;
+  - at most 5 % of the library species are unknown to Perch (3 of 216).
+- **Perch download:** a truncated file is fetched again until it matches its pinned fingerprint; a wrong file is refused and deleted.
+- **Real Perch** (runs in CI, where the model is downloaded): it agrees with BirdNET on the test recording's chickadee and disagrees on silence. Its first CI run caught a flaw: with the earlier "top 3 classes" rule, Perch "agreed" on pure silence. The rank rule was removed; agreement is now a score of 0.70 or more. The next run showed Perch scoring 0.82 on an all-zero window: the window is now repeated to fill 5 s instead of zero-padded, and digital silence is skipped. The run after that showed a chickadee at 0.88 on quiet noise: Perch's logits are not probabilities, so the score is now `sigmoid(logit − 8)`, calibrated on the test recording (true birds 9–13, noise about 7). The real test checks that quiet noise gives "disagree".
+
+Updated: `test_confirmation_delay.py` (four steps), demo test (the demo shows the four checks with the real tracker).
+
+Measurements (workflow "Cross-check data", 2026-11-23):
+
+| Runner | 1 thread | 2 threads | 4 threads | Extra memory | Agreement with BirdNET (test recording) |
+|---|---|---|---|---|---|
+| x86 | 0.09 s | 0.09 s | 0.12 s | +585 MB | 4 of 4 |
+| arm64 | 0.40 s | 0.21 s | 0.39 s | +559 MB | 4 of 4 |
+
+Perch logits on the test recording (x86): birds really present 9.2–12.9; two doubtful BirdNET detections 8.3 and 6.2; quiet and loud white noise top out at 7.2 and 6.5. With the calibrated score, every 0.20–0.50 detection of a bird really present would be rescued by the silent check, and both doubtful ones dropped.
+
+CI result: Lint, Tests and App image (with the end-to-end test) pass.
+
 ## Pre-sharing inspection — 0.6.1 (2026-11-23)
 
 - Internal clean-up only, behaviour identical. The Home Assistant discovery messages were compared byte for byte before and after the refactor, in French and in English (28 messages, identical).

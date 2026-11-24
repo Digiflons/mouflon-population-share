@@ -1,10 +1,13 @@
-"""Download the BirdNET models into the image and check their fingerprints (MOUL-16).
+"""Download the models into the image and check their fingerprints (MOUL-16, MOUL-54).
 
-The ``birdnet`` library does not verify the 2.4 model downloads, so the image build
-does: every model file must match the SHA-256 recorded in ``models.lock.json``,
-otherwise the build fails.
+BirdNET 2.4 (acoustic and geo) comes through the ``birdnet`` library; Perch v2 (ONNX)
+comes from a pinned revision of its Hugging Face repository. Neither download is
+trusted on its own: every model file must match the SHA-256 recorded in
+``models.lock.json``, otherwise the image build fails. The Pi never downloads a
+model at runtime.
 
     python -m mouflon_population.models download
+    python -m mouflon_population.models download --only perch
     python -m mouflon_population.models verify --lock models.lock.json
     python -m mouflon_population.models verify --lock models.lock.json --print
 """
@@ -18,8 +21,16 @@ import os
 import sys
 from pathlib import Path
 
-MODEL_DIRS = ("acoustic-models/v2.4/tf", "geo-models/v2.4/tf")
+from mouflon_population.second_opinion import LABELS_FILE, MODEL_FILE, PERCH_DIR
+
+MODEL_DIRS = ("acoustic-models/v2.4/tf", "geo-models/v2.4/tf", PERCH_DIR)
 SKIP_NAMES = {".download.lock"}
+# Perch v2 converted to ONNX (Apache-2.0), at a fixed revision of the repository.
+PERCH_REVISION = "5097dffb20f9d4157ee165f4c0b54c4e74d6daba"
+PERCH_BASE_URL = (
+    f"https://huggingface.co/tphakala/Perch-v2-Models/resolve/{PERCH_REVISION}/full/"
+)
+PERCH_FILES = (MODEL_FILE, LABELS_FILE)
 
 
 def app_data() -> Path:
@@ -28,7 +39,79 @@ def app_data() -> Path:
     return Path(get_birdnet_app_data_folder())
 
 
-def download(language: str = "en_us") -> None:
+LOCK_FILE = Path(__file__).resolve().parents[2] / "models.lock.json"
+DOWNLOAD_ATTEMPTS = 4
+
+
+def _lock_entries(lock: Path) -> dict[str, str]:
+    for candidate in (lock, Path("/opt/mouflon/models.lock.json")):
+        if candidate.is_file():
+            return json.loads(candidate.read_text(encoding="utf-8"))["files"]
+    return {}
+
+
+def _fetch(url: str, partial: Path) -> None:
+    import shutil
+    import urllib.request
+
+    request = urllib.request.Request(
+        url, headers={"User-Agent": "mouflon-population-build"}
+    )
+    with (
+        urllib.request.urlopen(request, timeout=120) as response,
+        partial.open("wb") as out,
+    ):
+        shutil.copyfileobj(response, out, length=1 << 20)
+        expected = response.headers.get("Content-Length")
+    if expected is not None and partial.stat().st_size != int(expected):
+        raise OSError(f"incomplete download ({partial.stat().st_size} of {expected})")
+
+
+def download_perch(root: Path, lock: Path = LOCK_FILE) -> None:
+    """Fetch the Perch files, retrying until each matches its pinned fingerprint.
+
+    A connection cut short can end "cleanly" with a truncated file; every file
+    is therefore checked against ``models.lock.json`` before it is kept.
+    """
+    expected = _lock_entries(lock)
+    target = root / PERCH_DIR
+    target.mkdir(parents=True, exist_ok=True)
+    for name in PERCH_FILES:
+        path = target / name
+        digest = expected.get(f"{PERCH_DIR}/{name}")
+        if path.is_file() and (digest is None or _sha256(path) == digest):
+            continue
+        partial = path.with_suffix(path.suffix + ".part")
+        for attempt in range(1, DOWNLOAD_ATTEMPTS + 1):
+            try:
+                _fetch(PERCH_BASE_URL + name, partial)
+                if digest is None or _sha256(partial) == digest:
+                    partial.replace(path)
+                    break
+                problem = "fingerprint mismatch"
+            except OSError as error:
+                problem = str(error)
+            partial.unlink(missing_ok=True)
+            print(
+                f"Perch download {name}, attempt {attempt}: {problem}", file=sys.stderr
+            )
+        else:
+            raise RuntimeError(f"could not download {name} with the pinned fingerprint")
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def download(language: str = "en_us", only: str = "all") -> None:
+    if only in ("all", "perch"):
+        download_perch(app_data())
+    if only == "perch":
+        return
     import birdnet
 
     from mouflon_population.detector import MODEL_PRECISION, MODEL_VERSION
@@ -76,7 +159,8 @@ def verify(root: Path, expected: dict[str, str]) -> list[str]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
-    sub.add_parser("download")
+    fetch = sub.add_parser("download")
+    fetch.add_argument("--only", choices=("all", "birdnet", "perch"), default="all")
     check = sub.add_parser("verify")
     check.add_argument("--lock", type=Path, required=True)
     check.add_argument(
@@ -85,7 +169,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.command == "download":
-        download()
+        download(only=args.only)
         return 0
 
     root = app_data()

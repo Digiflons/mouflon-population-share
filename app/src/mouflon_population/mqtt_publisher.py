@@ -29,6 +29,7 @@ SPECIES_TODAY_TOPIC = f"{BASE}/species_today"
 EXPORT_COMMAND_TOPIC = f"{BASE}/command/export_analytics"
 EXPORT_TOPIC = f"{BASE}/analytics_export"
 DELAY_TOPIC = f"{BASE}/detection_delay"
+SILENT_TOPIC = f"{BASE}/silent_check"
 IMAGE_TOPIC = f"{BASE}/image"
 TODAY_SLOTS = 6
 LAST_BIRD_IMAGE = "last_bird_drawing"
@@ -199,6 +200,20 @@ def discovery_messages(sources: list[tuple[str, str]]) -> list[Message]:
                 "icon": "mdi:timer-sand",
             },
         ),
+        # Silent check (0.20-0.50, owner's decision 2026-11-23): birds rescued today,
+        # with the rejected and skipped counts as attributes. Never any audio.
+        (
+            "sensor",
+            "silent_check",
+            {
+                **_common("silent_check", name("silent_check")),
+                "state_topic": SILENT_TOPIC,
+                "value_template": "{{ value_json.rescued }}",
+                "json_attributes_topic": SILENT_TOPIC,
+                "state_class": "total",
+                "icon": "mdi:ear-hearing",
+            },
+        ),
         (
             "button",
             "export_analytics",
@@ -307,6 +322,9 @@ class Publisher:
         subscribe = getattr(self._transport, "subscribe", None)
         if subscribe is not None:
             subscribe(topic, callback)
+
+    def silent_check(self, counts: dict) -> None:
+        self._send(Message(SILENT_TOPIC, json.dumps(counts), True))
 
     def delay(self, summary: dict) -> None:
         self._send(Message(DELAY_TOPIC, json.dumps(summary), True))

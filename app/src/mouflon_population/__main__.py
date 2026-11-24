@@ -71,10 +71,24 @@ def main() -> int:
         FilteringDetector,
         species_for_location,
     )
+    from mouflon_population.local_check import CROSSCHECK_DIR, LocalObservations
+    from mouflon_population.models import app_data
+    from mouflon_population.second_opinion import PERCH_DIR, SecondOpinion, load_aliases
     from mouflon_population.service import Service
 
     predictor = BirdnetPredictor(settings.language)
-    detector = FilteringDetector(predictor, settings.min_confidence)
+    second_opinion = None
+    if settings.second_opinion:
+        second_opinion = SecondOpinion(
+            app_data() / PERCH_DIR,
+            load_aliases(CROSSCHECK_DIR),
+            agree_score=settings.perch_agreement,
+        )
+        second_opinion.start()
+    else:
+        log.info("Second opinion (Perch) turned off in the settings")
+    # Down to the silent-check threshold; the service splits the bands.
+    detector = FilteringDetector(predictor, settings.silent_check_min)
     transport = PahoTransport(
         broker.host, broker.port, broker.username, broker.password, broker.ssl
     )
@@ -94,6 +108,8 @@ def main() -> int:
         if settings.test_mode
         else AnalyticsStore(settings.data_dir / "analytics.sqlite"),
         export_dir=MEDIA_DIR / "exports",
+        second_opinion=second_opinion,
+        local_observations=LocalObservations.load(CROSSCHECK_DIR),
     )
     transport.on_connect(service.announce)
 

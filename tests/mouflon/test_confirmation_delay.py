@@ -81,7 +81,12 @@ def test_a_first_time_bird_shows_at_once_as_provisional_then_confirms(tmp_path):
     assert last["common_name"] == "Eurasian Hoopoe"
     assert last["status"] == "provisional"
     assert last["confirmation_progress"] == 50
-    assert [s["done"] for s in last["confirmation_steps"]] == [True, False]
+    steps = last["confirmation_steps"]
+    assert [s["key"] for s in steps] == ["confident", "again", "perch", "local"]
+    assert [s["state"] for s in steps] == ["done", "pending", "skipped", "skipped"]
+    assert steps[2]["name"] == "Deuxième avis (Perch) concordant"
+    assert steps[2]["note"] == "Perch indisponible"
+    assert steps[3]["name"] == "Observé localement à cette période"
     assert last["minutes_left"] == 15
     assert last["rarity"]["tags"] == []  # rarity pills wait for confirmation
     assert transport.json("mouflon/rare_bird") == []

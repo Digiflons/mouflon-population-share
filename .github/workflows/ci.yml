@@ -63,6 +63,13 @@ jobs:
           key: birdnet-models-${{ runner.os }}-${{ steps.models.outputs.key }}
           restore-keys: |
             birdnet-models-${{ runner.os }}-
+      # Perch v2 (MOUL-54), downloaded from its pinned revision and checked against
+      # app/models.lock.json; cached on the lock file's content.
+      - name: Cache Perch model
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.BIRDNET_APP_DATA }}/acoustic-models/perch-v2-onnx
+          key: perch-v2-onnx-${{ hashFiles('app/models.lock.json') }}
       - name: Install ffmpeg
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
       - name: Install dependencies
@@ -77,5 +84,7 @@ jobs:
       - name: Pre-download birdnet models
         shell: bash
         run: python -c "$PREDOWNLOAD"
+      - name: Pre-download Perch
+        run: PYTHONPATH=app/src python -m mouflon_population.models download --only perch
       - name: Run tests
         run: python -m pytest

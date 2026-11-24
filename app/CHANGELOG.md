@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.7.0 — vérifications croisées : deuxième avis de Perch et observations belges (2026-11-23, MOUL-54, MOUL-55)
+
+- **Deuxième avis (Perch).** Quand un oiseau doit être confirmé, le modèle Perch 2.0 de Google DeepMind réécoute les mêmes 3 secondes, encore en mémoire, et dit s'il entend la même espèce. Rien n'est jamais enregistré.
+- **Observé localement à cette période.** Des statistiques d'observation des oiseaux en Belgique (GBIF, dix dernières années, semaine par semaine, à l'échelle du pays) sont incluses dans l'App ; rien n'est cherché en ligne.
+- **La confirmation a maintenant quatre vérifications** (détection sûre, entendu à nouveau, Perch concordant, observé localement) ; un oiseau est confirmé dès que **deux** concordent. La barre de progression et le tableau de bord montrent les quatre, avec une courte explication quand l'une est passée ou négative.
+- **Zones de score** (toutes réglables, libellés en français) :
+  - sous 0,20 : ignoré ;
+  - de 0,20 à 0,50, **vérification silencieuse** : rien n'est affiché, sauf si les statistiques belges et Perch (0,70 ou plus) sont d'accord. Le nouveau capteur « Oiseaux rattrapés par la vérification silencieuse » les compte (et ceux écartés) ;
+  - de 0,50 à 0,75 : « Confirmation en cours » avec les vérifications ;
+  - à partir de 0,75, oiseau courant : confirmé quand il est entendu une deuxième fois, sans Perch ;
+  - oiseau nouveau, rare, ou rarement observé en Belgique à cette période : toujours vérifié.
+- **Le Pi est ménagé** : Perch tourne au plus 6 fois par minute, jamais deux fois à la fois, et passe son tour quand le Pi est occupé ou manque de mémoire (les vérifications silencieuses d'abord). Une vérification passée ne bloque jamais la confirmation. Nouveau réglage pour couper Perch.
+- Le mode démo montre les nouvelles vérifications.
+- Perch occupe environ 0,6 Go de mémoire une fois chargé ; l'installation télécharge son modèle (413 Mo), vérifié par son empreinte.
+
 ## 0.6.1 — nettoyage interne (2026-11-23, MOUL-42, MOUL-49)
 
 - Rien ne change pour la maison : même comportement, mêmes entités, mêmes textes.

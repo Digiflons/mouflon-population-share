@@ -3,7 +3,7 @@
 Firm rule: no audio is ever kept. Sound exists only in memory, one window at a time.
 """
 
-__version__ = "0.6.1"
+__version__ = "0.7.0"
 
 SAMPLE_RATE = 48_000
 WINDOW_SECONDS = 3.0

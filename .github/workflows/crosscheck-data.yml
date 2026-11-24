@@ -1,0 +1,83 @@
+name: Cross-check data
+
+# MOUL-54 / MOUL-55. Builds the bundled cross-check data and measures Perch:
+# - gbif: weekly Belgian bird observation statistics from GBIF (country level, no
+#   coordinates), the Perch alias table and the data manifest, uploaded as the
+#   "crosscheck-data" artifact. A person (or agent) reviews it and commits it into
+#   app/crosscheck/. It changes nothing in the repository by itself.
+# - perch: downloads the pinned Perch files, prints their fingerprints for
+#   app/models.lock.json, and measures speed, memory and agreement on x86 and arm64.
+# Runs once a year (statistics refresh), on demand, and when its own code changes.
+# No secret is used: the GBIF occurrence search API is public.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 15 1 *"
+  push:
+    paths:
+      - tools/crosscheck/**
+      - .github/workflows/crosscheck-data.yml
+
+permissions:
+  contents: read
+
+jobs:
+  gbif:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.13"
+      - name: Perch labels (for the alias table)
+        run: |
+          base=$(PYTHONPATH=app/src python -c "from mouflon_population.models import PERCH_BASE_URL; print(PERCH_BASE_URL)")
+          curl -sfL "${base}perch_v2_labels.txt" -o "$RUNNER_TEMP/perch_v2_labels.txt"
+      - name: Build statistics, aliases and manifest
+        run: |
+          python tools/crosscheck/crosscheck_data.py --catalogue app/library/catalogue.json \
+            --perch-labels "$RUNNER_TEMP/perch_v2_labels.txt" --out "$RUNNER_TEMP/crosscheck"
+          ls -l "$RUNNER_TEMP/crosscheck"
+          python -c "import json,sys; print(json.dumps(json.load(open(sys.argv[1])), indent=1)[:4000])" "$RUNNER_TEMP/crosscheck/perch-aliases.json"
+      # Also in the log, compressed, for reviewers who cannot download artifacts.
+      - name: Copy of the data in the log
+        run: |
+          echo "----- BEGIN CROSSCHECK DATA -----"
+          tar -C "$RUNNER_TEMP/crosscheck" -czf - . | base64 -w 0
+          echo
+          echo "----- END CROSSCHECK DATA -----"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: crosscheck-data
+          path: ${{ runner.temp }}/crosscheck
+          retention-days: 30
+
+  perch:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
+    env:
+      BIRDNET_APP_DATA: ${{ github.workspace }}/.birdnet-app-data
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.13"
+      - name: Install the App's locked dependencies
+        run: pip install --require-hashes --no-deps -r app/requirements.lock
+      - name: Download models and print fingerprints
+        run: |
+          export PYTHONPATH=app/src
+          python -m mouflon_population.models download
+          python -m mouflon_population.models verify --lock app/models.lock.json --print || true
+          sha256sum "$BIRDNET_APP_DATA"/acoustic-models/perch-v2-onnx/*
+      - name: Measure Perch
+        run: PYTHONPATH=app/src python tools/crosscheck/benchmark_perch.py app/example/soundscape-60s.flac

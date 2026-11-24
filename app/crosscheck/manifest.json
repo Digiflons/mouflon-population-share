@@ -1,0 +1,506 @@
+{
+ "source": "GBIF.org occurrence search API (public, no account)",
+ "retrieved": "2026-11-23",
+ "years": [
+  2016,
+  2025
+ ],
+ "filters": {
+  "country": "BE",
+  "classKey": "212",
+  "occurrenceStatus": "PRESENT",
+  "basisOfRecord": "HUMAN_OBSERVATION",
+  "hasGeospatialIssue": "false",
+  "license": [
+   "CC0_1_0",
+   "CC_BY_4_0"
+  ]
+ },
+ "level": "country (Belgium); no coordinates",
+ "records": 7454410,
+ "species": 577,
+ "query": "https://www.gbif.org/occurrence/search?country=BE&classKey=212&occurrenceStatus=PRESENT&basisOfRecord=HUMAN_OBSERVATION&hasGeospatialIssue=false&license=CC0_1_0&license=CC_BY_4_0&year=2016%2C2025",
+ "gbif_citation": "GBIF.org (2026-11-23) GBIF Occurrence Search, filtered as listed in this manifest: https://www.gbif.org/occurrence/search?country=BE&classKey=212&occurrenceStatus=PRESENT&basisOfRecord=HUMAN_OBSERVATION&hasGeospatialIssue=false&license=CC0_1_0&license=CC_BY_4_0&year=2016%2C2025",
+ "licence_note": "Records are selected by their own licence (CC0 1.0 or CC BY 4.0). A few datasets whose overall licence is non-commercial contribute only the records their observers licensed CC0 or CC BY.",
+ "download_doi": null,
+ "download_doi_note": "A single download DOI needs a GBIF account (occurrence download API). Until the owner decides to create one, each dataset is cited below with its own DOI, as GBIF's citation guidelines allow.",
+ "datasets": [
+  {
+   "key": "e7cbb0ed-04c6-44ce-ac86-ebe49f4efb28",
+   "title": "Waarnemingen.be - Bird occurrences in Flanders and the Brussels Capital Region, Belgium",
+   "publisher_key": "4d3ceea8-5699-439d-a899-decac9cbbdac",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/0mbhvd",
+   "records": 4719814,
+   "citation": "Van Asten K, Bouillard N, Driessens G, Dujardin R, Van Dorsselaer P, Vanderydt C, Ghyselen J, Maes K, Vermylen R, Teugels L, Pintens J, Adriaens P, Desmet E, Van De Ginste C, Leirens V, Allein S, Symens P, Faveyts W, Appels D, De Broyer A, Moysons P, Meganck G, De Keersmaecker K, Verbelen D, Hamelinck W, Moreau K, Beckers G, de Vries H, Baeten S, Gielen K, Vanreusel W, Herremans M, Desmet P, Swinnen K (2021). Waarnemingen.be - Bird occurrences in Flanders and the Brussels Capital Region, Belgium. Version 1.4. Natuurpunt. Occurrence dataset https://doi.org/10.15468/0mbhvd accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "4fa7b334-ce0d-4e88-aaae-2e0c138d049e",
+   "title": "EOD – eBird Observation Dataset",
+   "publisher_key": "e2e717bf-551a-4917-bdc9-4fa0f342c530",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/aomfnb",
+   "records": 1257825,
+   "citation": "Imani J, Audette C, Auer T, Barker S, Barry J, Charnoky M, Crowley C, Curtis J, Davies I, Davis C, Diaz R, Feinberg S, Fink D, Ganger J, Garrett J, Hanks C, Hayes M, Hochachka W, Iliff M, Jordan A, Ligocki S, Long T, Morris W, Morrow S, Oldham L, Padilla Obregon F, Robinson O, Rodewald A, Schloss M, Sims B, Smith A, Smith J, Smith M, Stillman A, Stokowski M, Strimas-Mackey M, Sullivan B, Tedeschi A, Weber D, Wolf H, Wood C (2026). EOD – eBird Observation Dataset. Cornell Lab of Ornithology. Sampling event dataset https://doi.org/10.15468/aomfnb accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "7f9eb622-c036-44c6-8be9-5793eaa1fa1e",
+   "title": "Watervogels - Wintering waterbirds in Flanders, Belgium",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/lj0udq",
+   "records": 377947,
+   "citation": "Devos K, T'Jollyn F, Brosens D, Desmet P (2026). Watervogels - Wintering waterbirds in Flanders, Belgium. Version 3.15. Research Institute for Nature and Forest (INBO). Sampling event dataset https://doi.org/10.15468/lj0udq accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "99047b1e-ee53-4053-ba69-2e28eaaa45d9",
+   "title": "ABV - Common breeding birds in Flanders, Belgium (post 2016)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/pj2v6h",
+   "records": 279335,
+   "citation": "Piesschaert F, Vermeersch G, Brosens D, Westra T, Desmet P, Feys S, Van de Poel S, Pollet M, Cooleman S (2026). ABV - Common breeding birds in Flanders, Belgium (post 2016). Version 1.23. Research Institute for Nature and Forest (INBO). Sampling event dataset https://doi.org/10.15468/pj2v6h accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "ab6a6c25-1562-426d-9fdd-c4d9529f076c",
+   "title": "Meetnet Agrarische Soorten - Monitoring of birds and mammals in agricultural areas in Flanders, Belgium",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/vzs4wf",
+   "records": 257665,
+   "citation": "Langeraert W, Van Calster H, Cooleman S, Eves Down M, Jansen J (2026). Meetnet Agrarische Soorten - Monitoring of birds and mammals in agricultural areas in Flanders, Belgium. Version 1.2. Research Institute for Nature and Forest (INBO). Sampling event dataset https://doi.org/10.15468/vzs4wf accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "280674cb-42f8-4959-b6aa-eee663157965",
+   "title": "INBO collaborator Occurrences of vertebrates recorded in waarnemingen.be in Flanders, Belgium",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/xa5sqf",
+   "records": 226198,
+   "citation": "Brosens D, Piesschaert F, De Bruyn A D B, Jacobs I, Kumpen M, Erens R, Dhaluin P, Guelinckx R, Van Oost F, Paredis R, Van Hecke B, De Saeger S, Vercruysse W, Boumon T, Cool R, Van Gompel W, Provoost S, Jansen J, Bosteels Y, Demolder H, Hennebel D, Vandendriessche J, Spanhove T, Dekeukeleire D, Van Kerckvoorde A, Van Uytvanck J, Van Landuyt W, T'jollyn F, Desmet S, Wackenier M, van Doorn L, De Maesschalck Y, Vangansbeke P, Vanderhaeghe F, Adriaens T, Vanden Borre J, Mergeay J, Cooleman S (2026). INBO collaborator Occurrences of vertebrates recorded in waarnemingen.be in Flanders, Belgium. Version 1.8. Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.15468/xa5sqf accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "629befd5-fb45-4365-95c4-d07e72479b37",
+   "title": "Observations.be - Non-native species occurrences in Wallonia, Belgium",
+   "publisher_key": "147d711e-8a02-4b67-b4ce-918abd7dbb76",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/p58ip1",
+   "records": 132603,
+   "citation": "Paquet J, Bronne L, Reyserhove L, Desmet P (2026). Observations.be - Non-native species occurrences in Wallonia, Belgium. Version 1.62. Natagora. Occurrence dataset https://doi.org/10.15468/p58ip1 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "cfc4cc99-1c4f-42df-89c5-41b632d3fb63",
+   "title": "CR-Birding - large gulls, blue ring with 4 letters (third=A E or O)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/6zdvsv",
+   "records": 71908,
+   "citation": "Stienen E W, Van De Walle M, Janssens K, Desmet P, Govaert S (2026). CR-Birding - large gulls, blue ring with 4 letters (third=A E or O). Version 1.2. Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.15468/6zdvsv accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "3470d506-e667-4e3f-b178-819669684c05",
+   "title": "European Seabirds At Sea (ESAS)",
+   "publisher_key": "2089ce96-4fb5-4a20-999c-3ccf45a27a4d",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.14284/601",
+   "records": 44654,
+   "citation": "Flanders Marine Institute: European Seabirds At Sea (ESAS) https://doi.org/10.14284/601 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "8ae09016-b819-450e-b8f6-c1f249110502",
+   "title": "ABV - Common breeding birds in Flanders, Belgium",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/xj0ikb",
+   "records": 27739,
+   "citation": "Vermeersch G, Anselin A, Herremans M, Brosens D (2025). ABV - Common breeding birds in Flanders, Belgium. Version 1.13. Research Institute for Nature and Forest (INBO). Sampling event dataset https://doi.org/10.15468/xj0ikb accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "dde71542-ad2d-4ec7-a93c-eb18bc0f432b",
+   "title": "Bird census counts at the Zwin Nature Park",
+   "publisher_key": "37e82b90-1e21-11de-ab90-f72009d2669b",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/saesvn",
+   "records": 15033,
+   "citation": "Faveyts W, Cooleman S (2026). Bird census counts at the Zwin Nature Park. Version 1.11. Belgian Biodiversity Platform. Sampling event dataset https://doi.org/10.15468/saesvn accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "6ff8b3b0-ef0f-4f79-a310-5a5615c6aa0b",
+   "title": "Birda - Global Observation Dataset",
+   "publisher_key": "0c6d40e3-5d96-4a2d-9342-b02833aaa766",
+   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+   "doi": "10.15468/6kud7x",
+   "records": 12977,
+   "citation": "Birda (2026). Birda - Global Observation Dataset. Version 1.19. Birda. Occurrence dataset https://doi.org/10.15468/6kud7x accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "50c9509d-22c7-4a22-a47d-8c48425ef4a7",
+   "title": "iNaturalist Research-grade Observations",
+   "publisher_key": "28eb1a3f-1c15-4a95-931a-4af90ecb574d",
+   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+   "doi": "10.15468/ab3s5x",
+   "records": 12365,
+   "citation": "iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations. iNaturalist.org. Occurrence dataset https://doi.org/10.15468/ab3s5x accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "8db58232-363c-4396-9c99-6fb70c1adbc3",
+   "title": "Bird census counts at the Zwin Nature Reserve",
+   "publisher_key": "37e82b90-1e21-11de-ab90-f72009d2669b",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/n8g4z8",
+   "records": 7294,
+   "citation": "Faveyts W, Cooleman S (2026). Bird census counts at the Zwin Nature Reserve. Version 1.6. Belgian Biodiversity Platform. Samplingevent dataset. https://ipt.biodiversity.be/resource?r=zwin-plains-birds-events&v=1.6 https://doi.org/10.15468/n8g4z8 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "1711ea40-a09b-43e9-8a3d-8dbbf9bb6387",
+   "title": "Number of sick and dead birds of Anseriformes and Charadriiformes by day submitted to Observation.org in The Netherlands and Belgium between 2016 and 2021",
+   "publisher_key": "6b8da9ca-0648-4df3-9f0a-d43ab20a9412",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15470/zsuvgh",
+   "records": 2256,
+   "citation": "Saavedra I, Rabadán González J (2024). Number of sick and dead birds of Anseriformes and Charadriiformes by day submitted to Observation.org in The Netherlands and Belgium between 2016 and 2021. Estación Biológica de Doñana (CSIC). Occurrence dataset https://doi.org/10.15470/zsuvgh accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "c0cc29de-f49f-4b66-b4ec-c83afbb7101d",
+   "title": "Waterbirds of the Botanic Garden Meise",
+   "publisher_key": "a344ee9f-f1b7-4761-be2c-58ee6d741395",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/cgffyq",
+   "records": 2100,
+   "citation": "Groom Q (2026). Waterbirds of the Botanic Garden Meise. Version 3.9. Meise Botanic Garden. Occurrence dataset https://doi.org/10.15468/cgffyq accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "532d4c0b-9f4b-4828-be17-a402ce9d69b0",
+   "title": "Bird Monitoring 2017, Meise Botanic Garden",
+   "publisher_key": "a344ee9f-f1b7-4761-be2c-58ee6d741395",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/xecp6u",
+   "records": 1376,
+   "citation": "Girotto A, Groom Q (2023). Bird Monitoring 2017, Meise Botanic Garden. Version 1.7. Meise Botanic Garden. Sampling event dataset https://doi.org/10.15468/xecp6u accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "6ac3f774-d9fb-4796-b3e9-92bf6c81c084",
+   "title": "NABU|naturgucker",
+   "publisher_key": "bb646dff-a905-4403-a49b-6d378c2cf0d9",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/uc1apo",
+   "records": 1208,
+   "citation": "naturgucker.de. NABU|naturgucker. Occurrence dataset https://doi.org/10.15468/uc1apo accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "2b2bf993-fc91-4d29-ae0b-9940b97e3232",
+   "title": "Zomerganzen - Summering geese management and population counts in Flanders, Belgium",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/a5ubtp",
+   "records": 1076,
+   "citation": "Devisscher S, Adriaens T, Brosens D, Huysentruyt F, Driessens G, Desmet P (2025). Zomerganzen - Summering geese management and population counts in Flanders, Belgium. Version 1.8. Research Institute for Nature and Forest (INBO). Sampling event dataset https://doi.org/10.15468/a5ubtp accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "cdc76698-d92d-4a0b-b8d5-04ba3b22defd",
+   "title": "DEMNA-DNE : Exotic animal occurrences in Wallonia, Belgium",
+   "publisher_key": "a6f344b0-1944-4354-8376-272495c9135e",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/bcuhep",
+   "records": 946,
+   "citation": "DEMNA & collaborators S, Barbier Y, Coupremanne M (2024). DEMNA-DNE : Exotic animal occurrences in Wallonia, Belgium. Version 1.10. Service Public de Wallonie – Département d’Etude du Milieu Naturel et Agricole (SPW – DEMNA). Occurrence dataset https://doi.org/10.15468/bcuhep accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "69351197-880d-4100-8e69-e80babf3fdd7",
+   "title": "Management actions by RATO in East Flanders, Belgium",
+   "publisher_key": "d3769dd1-1fc5-42b7-86d6-f3393067666e",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/fw2rbx",
+   "records": 362,
+   "citation": "Stefens A, Van Moer K, Reyserhove L, Oldoni D, Huybrechts P, Desmet P (2026). Management actions by RATO in East Flanders, Belgium. Version 1.202. RATO vzw. Occurrence dataset https://doi.org/10.15468/fw2rbx accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "cd1c5bf1-0d7a-447a-875a-919f22e325bb",
+   "title": "Life MICA Biodiversity Surveys",
+   "publisher_key": "1f55bd0a-6ebe-49a1-8a9c-9258702b6f46",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/qnynjz",
+   "records": 271,
+   "citation": "Black C (2025). Life MICA Biodiversity Surveys. Version 1.3. University of Amsterdam / IBED. Occurrence dataset https://doi.org/10.15468/qnynjz accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "ddd51fa5-97ce-48ff-9a58-a09d7e76b103",
+   "title": "VMM - Rat control occurrences in Flanders, Belgium",
+   "publisher_key": "ec5f9a9c-09b0-4da3-ae8e-22627620fff6",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/wquzva",
+   "records": 264,
+   "citation": "Slootmaekers D, Gevens F, Reyserhove L, Oldoni D, Desmet P (2026). VMM - Rat control occurrences in Flanders, Belgium. Version 1.252. Flanders Environment Agency (VMM). Occurrence dataset https://doi.org/10.15468/wquzva accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "0b499d5e-c359-4cce-b817-d6f588988441",
+   "title": "HG_JUVENILE - Juvenile herring gulls (Larus argentatus, Laridae) hatched at the southern North Sea coast (Belgium)",
+   "publisher_key": "05c249d0-dfa0-11d8-b22e-b8a03c50a862",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.21279427",
+   "records": 204,
+   "citation": "Allaert R A, Stienen E W, Lens L, Govaert S, Desmet P, Verbruggen F (2026). HG_JUVENILE - Juvenile herring gulls (Larus argentatus, Laridae) hatched at the southern North Sea coast (Belgium). Version 1.3. Ghent University. Occurrence dataset. https://ipt.inbo.be/resource?r=hg_juvenile&v=1.3 https://doi.org/10.5281/zenodo.21279427 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "292a71df-588b-48fa-9ab5-29ae868ba88c",
+   "title": "Bird ringing and recovery database (TIPU)",
+   "publisher_key": "39adeab9-6ec9-4c56-801e-7144d0eb630c",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/kht1r3",
+   "records": 142,
+   "citation": "Finnish Museum of Natural History - Zoology Unit (2026). Bird ringing and recovery database (TIPU). Version 20261108. Occurrence dataset https://doi.org/10.15468/kht1r3 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "f861b96e-76f8-4a4d-b301-ebb82eed6011",
+   "title": "Species observations during citizen science expeditions",
+   "publisher_key": "d3978a37-635a-4ae3-bb85-7b4d41bc0b88",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/pzo4mb",
+   "records": 132,
+   "citation": "Valland N (2024). Species observations during citizen science expeditions. Version 1.34. Norwegian Biodiversity Information Centre. Occurrence dataset https://doi.org/10.15468/pzo4mb accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "ea410929-015a-4093-9c7e-7be2482668c9",
+   "title": "Natagriwal ; Observations made from operations within Natura 2000 habitats and other semi-natural areas",
+   "publisher_key": "1102ee7c-bf91-4a5a-9313-eff7e7681e0d",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/dq4kmj",
+   "records": 124,
+   "citation": "Dopagne C (2026). Natagriwal ; Observations made from operations within Natura 2000 habitats and other semi-natural areas. Version 1.42. Natagriwal asbl. Occurrence dataset https://doi.org/10.15468/dq4kmj accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "c9198eaf-f909-4502-9bcd-4e83452fb245",
+   "title": "Species monitoring and inventories SICONA, Recorder-Lux database",
+   "publisher_key": "75642970-f855-11dd-8235-b8a03c50a862",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/3sj48v",
+   "records": 79,
+   "citation": "National Museum of Natural History Luxembourg (2026). Species monitoring and inventories SICONA, Recorder-Lux database. Version 1.80. Occurrence dataset https://doi.org/10.15468/3sj48v accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "52f2051b-c47e-403a-8e32-04b2f2273c20",
+   "title": "Aranzadi Ringing Scheme (bird ring-recovery data)",
+   "publisher_key": "823818f6-0696-4e29-bc4c-b6f3817535a7",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15470/gprffz",
+   "records": 76,
+   "citation": "Arizaga Martínez J (2026). Aranzadi Ringing Scheme (bird ring-recovery data). Version 2.33. Aranzadi Science Society. Occurrence dataset https://doi.org/10.15470/gprffz accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "7522721f-4d97-4984-8231-c9e061ef46df",
+   "title": "Invasive species - Ruddy duck (Oxyura jamaicensis) in Flanders, Belgium",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/ufhbyv",
+   "records": 59,
+   "citation": "Adriaens T, Devisscher S, Brosens D, Desmet P, Reyserhove L (2026). Invasive species - Ruddy duck (Oxyura jamaicensis) in Flanders, Belgium. Version 1.40. Research Institute for Nature and Forest (INBO). Sampling event dataset https://doi.org/10.15468/ufhbyv accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "e2fb42ca-e408-4aa2-a7bd-a9bb4ddcc83a",
+   "title": "BOP_RODENT - Rodent specialized birds of prey (Circus, Asio, Buteo) in Flanders (Belgium)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.23340023",
+   "records": 59,
+   "citation": "Spanoghe G, Janssens K, Klaassen R, Schaub T, Govaert S, Milotic T, Desmet P (2026). BOP_RODENT - Rodent specialized birds of prey (Circus, Asio, Buteo) in Flanders (Belgium). Version 1.6. Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.5281/zenodo.23340023 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "3634aee3-41d5-4aa2-8cb5-875859f62a3a",
+   "title": "MICA - Muskrat occurrences collected by VMM in Flanders, Belgium",
+   "publisher_key": "ec5f9a9c-09b0-4da3-ae8e-22627620fff6",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/gwzwk4",
+   "records": 58,
+   "citation": "Slootmaekers D, Brosens D, Cartuyvels E, Desmet P (2022). MICA - Muskrat occurrences collected by VMM in Flanders, Belgium. Version 1.3. Flanders Environment Agency (VMM). Occurrence dataset https://doi.org/10.15468/gwzwk4 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "5b8bcba7-cecb-4d95-9865-2830cd4e35aa",
+   "title": "Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium  (post 2018)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/daf62d",
+   "records": 44,
+   "citation": "Devisscher S, Brosens D, Brosens D (2026). Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium  (post 2018). Version 1.163. Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.15468/daf62d accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "860ebeef-240a-455c-997c-bd0e79806f26",
+   "title": "CardObs : Observations naturalistes issues de l'outil CardObs-Données naturalistes de Nicolas LOEUILLE",
+   "publisher_key": "1928bdf0-f5d2-11dc-8c12-b8a03c50a862",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/8frwda",
+   "records": 40,
+   "citation": "Inventaire National du Patrimoine Naturel (2016). CardObs : Observations naturalistes issues de l'outil CardObs-Données naturalistes de Nicolas LOEUILLE. UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris. Occurrence dataset https://doi.org/10.15468/8frwda accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "355b8ff9-7bd9-49c3-92af-f6741b8bd0cb",
+   "title": "LBBG_ZEEBRUGGE - Lesser black-backed gulls (Larus fuscus, Laridae) breeding at the southern North Sea coast (Belgium and the Netherlands)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.12336021",
+   "records": 36,
+   "citation": "Stienen E W, Desmet P, Milotic T, Hernandez F, Deneudt K, Bouten W, Müller W, Matheve H, Lens L (2026). LBBG_ZEEBRUGGE - Lesser black-backed gulls (Larus fuscus, Laridae) breeding at the southern North Sea coast (Belgium and the Netherlands). Version 1.5. Research Institute for Nature and Forest (INBO). Occurrence dataset. https://ipt.inbo.be/resource?r=lbbg_zeebrugge&v=1.5 https://doi.org/10.5281/zenodo.12336021 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "6c860eb3-83ba-48c3-9328-a7b3c7a3c7b4",
+   "title": "HG_OOSTENDE - Herring gulls (Larus argentatus, Laridae) breeding at the southern North Sea coast (Belgium)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.10054230",
+   "records": 31,
+   "citation": "Stienen E W, Desmet P, Milotic T, Hernandez F, Deneudt K, Matheve H, Bouten W (2026). HG_OOSTENDE - Herring gulls (Larus argentatus, Laridae) breeding at the southern North Sea coast (Belgium). Version 1.4. Research Institute for Nature and Forest (INBO). Occurrence dataset. https://ipt.inbo.be/resource?r=hg_oostende&v=1.4 https://doi.org/10.5281/zenodo.10054230 accessed via GBIF.org on 2026-03-12. accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "df12ca07-f133-4550-ab3b-fde13f0e76ba",
+   "title": "Notebook, general observations",
+   "publisher_key": "04fd2e13-6881-4e5c-9dd1-8fdd9ab993c1",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/4g56tp",
+   "records": 15,
+   "citation": "Finnish Biodiversity Information Facility (2026). Notebook, general observations. Version 20261113. Occurrence dataset https://doi.org/10.15468/4g56tp accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "20bbd36e-d1a1-4169-8663-59feaa2641c0",
+   "title": "O_WESTERSCHELDE - Eurasian oystercatchers (Haematopus ostralegus, Haematopodidae) breeding in East Flanders (Belgium)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.10053702",
+   "records": 13,
+   "citation": "Spanoghe G, Desmet P, Milotic T, Van Ryckegem G, Vanoverbeke J, Ens B J, Bouten W (2026). O_WESTERSCHELDE - Eurasian oystercatchers (Haematopus ostralegus, Haematopodidae) breeding in East Flanders (Belgium). Version 1.3. Research Institute for Nature and Forest (INBO). Occurrence dataset. https://ipt.inbo.be/resource?r=o_westerschelde&v=1.3 https://doi.org/10.5281/zenodo.10053702 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "962f59bc-f762-11e1-a439-00145eb45e9a",
+   "title": "Collections and observation data National Museum of Natural History Luxembourg",
+   "publisher_key": "75642970-f855-11dd-8235-b8a03c50a862",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/s2iu7d",
+   "records": 12,
+   "citation": "National Museum of Natural History Luxembourg (2026). Collections and observation data National Museum of Natural History Luxembourg. Occurrence dataset https://doi.org/10.15468/s2iu7d accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "aa6c5ee6-d4d7-4a65-a04f-379cffbf4842",
+   "title": "ArtenFinder",
+   "publisher_key": "2754e9c0-0e43-4f65-968a-6f16b9c378ce",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/jnnald",
+   "records": 10,
+   "citation": "ArtenFinder bei der Stiftung Natur und Umwelt RLP und der Stiftung Naturschutz Berlin. ArtenFinder. Occurrence dataset https://doi.org/10.15468/jnnald accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "62e99340-528c-4baf-bbd7-bf0df2f186b9",
+   "title": "data.mnhn.lu observation data",
+   "publisher_key": "75642970-f855-11dd-8235-b8a03c50a862",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/n4k9j5",
+   "records": 9,
+   "citation": "National Museum of Natural History Luxembourg (2026). data.mnhn.lu observation data. Version 1.87. Occurrence dataset https://doi.org/10.15468/n4k9j5 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "88216808-1942-44ed-b059-b576bf79a28e",
+   "title": "CURLEW_VLAANDEREN - Eurasian curlews (Numenius arquata, Scolopacidae) breeding in Flanders (Belgium)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.24005684",
+   "records": 9,
+   "citation": "Spanoghe G, Janssens K, Nijs G, Govaert S, Milotic T, Desmet P (2026). CURLEW_VLAANDEREN - Eurasian curlews (Numenius arquata, Scolopacidae) breeding in Flanders (Belgium). Version 1.5. Research Institute for Nature and Forest (INBO). Occurrence dataset. https://ipt.inbo.be/resource?r=curlew_vlaanderen&v=1.5 https://doi.org/10.5281/zenodo.24005684 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "25e3e8f1-86ee-440c-adfc-8e63759a6505",
+   "title": "Programme BioObs: observations naturalistes en milieux aquatiques-Observations de BioObs.",
+   "publisher_key": "1928bdf0-f5d2-11dc-8c12-b8a03c50a862",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/ldch7a",
+   "records": 8,
+   "citation": "Inventaire National du Patrimoine Naturel (2023). Programme BioObs: observations naturalistes en milieux aquatiques-Observations de BioObs.. UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris. Occurrence dataset https://doi.org/10.15468/ldch7a accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "256134b5-93d9-4928-8a4f-aea0cb5b4182",
+   "title": "TURTUR_VLAANDEREN - European turtle doves (Streptopelia turtur, Columbidae) breeding in Flanders (Belgium)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.23097871",
+   "records": 7,
+   "citation": "Spanoghe G, Janssens K, Verstraete H, Milotic T, Govaert S, Desmet P (2026). TURTUR_VLAANDEREN - European turtle doves (Streptopelia turtur, Columbidae) breeding in Flanders (Belgium). Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.5281/zenodo.23097871 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "299e7998-73f0-42ff-9fb7-d8a5a0cc44d1",
+   "title": "CREX_VLAANDEREN - Corn crakes (Crex crex, Rallidae) in Flanders (Belgium)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.23097283",
+   "records": 6,
+   "citation": "Spanoghe G, Janssens K, Verstraete H, Milotic T, Govaert S, Desmet P (2026). CREX_VLAANDEREN - Corn crakes (Crex crex, Rallidae) in Flanders (Belgium). Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.5281/zenodo.23097283 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "0eb4ad83-f80d-4d86-83d8-f3a55ddd216f",
+   "title": "CardObs : Observations naturalistes issues de l'outil CardObs-Données naturalistes de Xavier JAPIOT",
+   "publisher_key": "1928bdf0-f5d2-11dc-8c12-b8a03c50a862",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/hswza8",
+   "records": 5,
+   "citation": "Inventaire National du Patrimoine Naturel (2024). CardObs : Observations naturalistes issues de l'outil CardObs-Données naturalistes de Xavier JAPIOT. UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris. Occurrence dataset https://doi.org/10.15468/hswza8 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "8e9974a4-12e2-475f-9aec-5abdf24a1f50",
+   "title": "Programme CROMIS: carnet de plongée en ligne de la FFESSM-Observations d'espèces subaquatiques collectées par les utilisateurs de CROMIS",
+   "publisher_key": "1928bdf0-f5d2-11dc-8c12-b8a03c50a862",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/63ju7z",
+   "records": 4,
+   "citation": "Inventaire National du Patrimoine Naturel (2022). Programme CROMIS: carnet de plongée en ligne de la FFESSM-Observations d'espèces subaquatiques collectées par les utilisateurs de CROMIS. UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris. Occurrence dataset https://doi.org/10.15468/63ju7z accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "e347ea47-db3f-4c47-8771-ea562330382c",
+   "title": "MH_ANTWERPEN - Western marsh harriers (Circus aeruginosus, Accipitridae) breeding near Antwerp (Belgium)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.10054153",
+   "records": 4,
+   "citation": "Spanoghe G, Desmet P, Milotic T, Janssens K, De Regge N, Vanoverbeke J, Bouten W (2026). MH_ANTWERPEN - Western marsh harriers (Circus aeruginosus, Accipitridae) breeding near Antwerp (Belgium). Version 1.3. Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.5281/zenodo.10054153 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "66e0553e-75f6-49de-b614-22efd9fbf6e9",
+   "title": "MH_WATERLAND - Western marsh harriers (Circus aeruginosus, Accipitridae) breeding near the Belgium-Netherlands border",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.10053583",
+   "records": 3,
+   "citation": "Anselin A, Desmet P, Milotic T, Janssens K, T'Jollyn F, De Bruyn L, Bouten W (2026). MH_WATERLAND - Western marsh harriers (Circus aeruginosus, Accipitridae) breeding near the Belgium-Netherlands border. Version 1.4. Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.5281/zenodo.10053583 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "d70c169f-fd9e-4355-8431-8d1fba91370f",
+   "title": "MNHNL various project records, Recorder-Lux database",
+   "publisher_key": "75642970-f855-11dd-8235-b8a03c50a862",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/vmbgz9",
+   "records": 2,
+   "citation": "National Museum of Natural History Luxembourg (2026). MNHNL various project records, Recorder-Lux database. Version 1.80. Occurrence dataset https://doi.org/10.15468/vmbgz9 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "22d1882b-1395-43c0-86de-1c7a5dcca216",
+   "title": "RRP_VLAANDEREN - Rose-ringed parakeets (Psittacula krameri) breeding in Ghent (Belgium)",
+   "publisher_key": "1cd669d0-80ea-11de-a9d0-f1765f95f18b",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5281/zenodo.23564124",
+   "records": 1,
+   "citation": "De Witte F, Verbruggen F, Lens L, Adriaens T, Govaert S, Desmet P, Strubbe D (2026). RRP_VLAANDEREN - Rose-ringed parakeets (Psittacula krameri) breeding in Ghent (Belgium). Research Institute for Nature and Forest (INBO). Occurrence dataset https://doi.org/10.5281/zenodo.23564124 accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "956bc674-6022-4c52-833e-c5fb39dc837a",
+   "title": "Löydös Open Finnish Observation Database",
+   "publisher_key": "04fd2e13-6881-4e5c-9dd1-8fdd9ab993c1",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/8fzv2j",
+   "records": 1,
+   "citation": "Finnish Biodiversity Information Facility (2026). Löydös Open Finnish Observation Database. Version 20261113. Occurrence dataset https://doi.org/10.15468/8fzv2j accessed via GBIF.org on 2026-11-23."
+  },
+  {
+   "key": "a3683bf4-e662-40fb-be92-25fe6a9076aa",
+   "title": "Bird Ringing Records from Luxembourg",
+   "publisher_key": "75642970-f855-11dd-8235-b8a03c50a862",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/gbux2a",
+   "records": 1,
+   "citation": "National Museum of Natural History Luxembourg (2026). Bird Ringing Records from Luxembourg. Version 1.53. Occurrence dataset https://doi.org/10.15468/gbux2a accessed via GBIF.org on 2026-11-23."
+  }
+ ]
+}

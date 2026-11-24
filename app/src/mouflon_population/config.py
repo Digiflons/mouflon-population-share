@@ -83,6 +83,11 @@ class Settings:
     regional_threshold: float = 0.10
     rare_min_confidence: float = 0.75
     rare_confirm_minutes: int = 15
+    second_opinion: bool = True
+    second_opinion_threshold: float = 0.75
+    silent_check_min: float = 0.20
+    perch_agreement: float = 0.70
+    common_confirm_twice: bool = True
     screen_enabled: bool = True
     screen_size: tuple[int, int] = (480, 800)
     screen_refresh_minutes: int = 10
@@ -159,6 +164,11 @@ def from_dict(raw: dict, data_dir: Path | None = None) -> Settings:
         regional_threshold=float(raw.get("regional_threshold", 0.10)),
         rare_min_confidence=float(raw.get("rare_min_confidence", 0.75)),
         rare_confirm_minutes=int(raw.get("rare_confirm_minutes", 15)),
+        second_opinion=bool(raw.get("second_opinion", True)),
+        second_opinion_threshold=float(raw.get("second_opinion_threshold", 0.75)),
+        silent_check_min=float(raw.get("silent_check_min", 0.20)),
+        perch_agreement=float(raw.get("perch_agreement", 0.70)),
+        common_confirm_twice=bool(raw.get("common_confirm_twice", True)),
         screen_enabled=bool(raw.get("screen_enabled", True)),
         screen_size=parse_size(str(raw.get("screen_size", "480x800"))),
         screen_refresh_minutes=int(raw.get("screen_refresh_minutes", 10)),
@@ -182,6 +192,12 @@ def from_dict(raw: dict, data_dir: Path | None = None) -> Settings:
         raise ConfigError("battery_resume_above must be higher than battery_stop_below")
     if settings.rare_min_confidence < settings.min_confidence:
         raise ConfigError("rare_min_confidence must be at least min_confidence")
+    if settings.second_opinion_threshold < settings.min_confidence:
+        raise ConfigError("second_opinion_threshold must be at least min_confidence")
+    if settings.silent_check_min > settings.min_confidence:
+        raise ConfigError("silent_check_min must not be above min_confidence")
+    if not 0 < settings.perch_agreement < 1:
+        raise ConfigError("perch_agreement must be between 0 and 1")
     if settings.log_retention_days < 1:
         raise ConfigError("log_retention_days must be at least 1")
     return settings

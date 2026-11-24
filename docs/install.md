@@ -16,7 +16,7 @@ The repository is private, so Home Assistant needs a **read-only GitHub token th
    `https://x-access-token:<TOKEN>@github.com/<OWNER>/<REPOSITORY>#staging`
 
    Keep the `x-access-token:` part: the shorter form without it fails with "could not read Username". `#staging` keeps Home Assistant on the staging branch during the proof of concept. `<OWNER>/<REPOSITORY>` is the repository's address on GitHub; `<TOKEN>` is a placeholder; never write a real token anywhere.
-3. Install **Mouflon Population** from the App store. Home Assistant builds it on the machine itself (several minutes); nothing comes from an image registry.
+3. Install **Mouflon Population** from the App store. Home Assistant builds it on the machine itself (several minutes; the build downloads about 0.6 GB of model files, including the 413 MB Perch model, each checked against its fingerprint); nothing comes from an image registry.
 
 If the token ever leaks, delete it on GitHub and create a new one. It only allows reading this repository's code, which contains no secrets.
 

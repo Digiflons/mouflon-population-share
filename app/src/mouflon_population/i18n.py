@@ -26,6 +26,21 @@ TEXTS: dict[str, dict[str, str]] = {
         "iucn_CR": "En danger critique",
         "step_confident": "Détection sûre (≥ {threshold:.2f})",
         "step_again": "Entendu à nouveau en moins de {minutes} min",
+        "step_perch": "Deuxième avis (Perch) concordant",
+        "step_local": "Observé localement à cette période",
+        "note_perch_disagree": "Perch entend autre chose",
+        "note_perch_not_needed": "pas nécessaire",
+        "note_perch_unavailable": "Perch indisponible",
+        "note_perch_off": "désactivé dans les réglages",
+        "note_perch_loading": "Perch en cours de chargement",
+        "note_perch_busy": "Pi occupé, vérification passée",
+        "note_perch_memory": "mémoire insuffisante pour Perch",
+        "note_perch_unknown_species": "espèce inconnue de Perch",
+        "note_perch_error": "Perch indisponible",
+        "note_perch_silence": "son muet, vérification passée",
+        "note_local_rare": "rarement observé en Belgique à cette période",
+        "note_local_unavailable": "statistiques locales indisponibles",
+        "note_local_test": "pas en mode test",
         "no_bird": "Pas encore d'oiseau",
         "drawing_to_come": "Gravure à venir",
         "status_connecting": "connexion",
@@ -55,6 +70,21 @@ TEXTS: dict[str, dict[str, str]] = {
         "iucn_CR": "Critically endangered",
         "step_confident": "Confident detection (≥ {threshold:.2f})",
         "step_again": "Heard again within {minutes} min",
+        "step_perch": "Second opinion (Perch) agrees",
+        "step_local": "Observed locally at this time of year",
+        "note_perch_disagree": "Perch hears something else",
+        "note_perch_not_needed": "not needed",
+        "note_perch_unavailable": "Perch unavailable",
+        "note_perch_off": "turned off in the settings",
+        "note_perch_loading": "Perch still loading",
+        "note_perch_busy": "Pi busy, check skipped",
+        "note_perch_memory": "not enough memory for Perch",
+        "note_perch_unknown_species": "species unknown to Perch",
+        "note_perch_error": "Perch unavailable",
+        "note_perch_silence": "muted sound, check skipped",
+        "note_local_rare": "rarely observed in Belgium at this time of year",
+        "note_local_unavailable": "local statistics unavailable",
+        "note_local_test": "not in test mode",
         "no_bird": "No bird yet",
         "drawing_to_come": "Drawing to come",
         "status_connecting": "connecting",
@@ -86,6 +116,7 @@ ENTITY_NAMES: dict[str, dict[str, str]] = {
         "species_today": "Espèces aujourd'hui",
         "detections_today": "Détections aujourd'hui",
         "detection_delay": "Délai de détection",
+        "silent_check": "Oiseaux rattrapés par la vérification silencieuse",
         "export_analytics": "Exporter les statistiques (CSV)",
         "last_analytics_export": "Dernier export des statistiques",
         "screen": "Écran",
@@ -109,6 +140,7 @@ ENTITY_NAMES: dict[str, dict[str, str]] = {
         "species_today": "Species today",
         "detections_today": "Detections today",
         "detection_delay": "Detection delay",
+        "silent_check": "Birds rescued by the silent check",
         "export_analytics": "Export bird analytics (CSV)",
         "last_analytics_export": "Last analytics export",
         "screen": "Screen",
@@ -174,6 +206,10 @@ def current() -> str:
 
 def t(key: str, **values: object) -> str:
     return TEXTS[_language][key].format(**values)
+
+
+def has_text(key: str) -> bool:
+    return key in TEXTS[_language]
 
 
 def entity_name(key: str, **values: object) -> str:

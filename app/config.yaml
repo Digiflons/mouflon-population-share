@@ -2,7 +2,7 @@
 # no image is published anywhere. Passwords are typed by the owner in the App's
 # Configuration tab and stored by Home Assistant, never in this repository.
 name: Mouflon Population
-version: "0.6.1"
+version: "0.7.0"
 slug: mouflon_population
 description: Recognises bird songs with BirdNET. Local only, no audio kept.
 arch:
@@ -61,6 +61,11 @@ options:
   regional_threshold: 0.1
   rare_min_confidence: 0.75
   rare_confirm_minutes: 15
+  second_opinion: true
+  second_opinion_threshold: 0.75
+  silent_check_min: 0.2
+  perch_agreement: 0.7
+  common_confirm_twice: true
   screen_enabled: true
   screen_size: 480x800
   screen_refresh_minutes: 10
@@ -93,6 +98,11 @@ schema:
   regional_threshold: float(0.01,0.9)
   rare_min_confidence: float(0.1,0.99)
   rare_confirm_minutes: int(1,240)
+  second_opinion: bool
+  second_opinion_threshold: float(0.1,0.99)
+  silent_check_min: float(0.05,0.99)
+  perch_agreement: float(0.1,0.99)
+  common_confirm_twice: bool
   screen_enabled: bool
   screen_size: match(^\d{3,4}x\d{3,4}$)
   screen_refresh_minutes: int(1,1440)

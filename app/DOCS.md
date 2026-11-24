@@ -19,13 +19,17 @@ Mouflon Population écoute des caméras ou des micros extérieurs, reconnaît le
 | Quand écouter | **daylight** (par défaut) : du lever au coucher du soleil. **windows** : seulement pendant les plages d'écoute. **always** : jour et nuit. |
 | Plages d'écoute | Seulement avec **windows**, par exemple 05:30–08:30 et 18:00–20:00. |
 | Seuil d'arrêt / niveau de reprise / baisse maximale par jour | Pour les caméras sur batterie : ne réveille plus une caméra sous 40 %, reprend au-dessus de 60 %, et se met en pause si la batterie perd plus de 15 points en 24 heures. Si le niveau ne peut pas être lu, l'App n'écoute pas. |
-| Confiance minimale | 0,5 par défaut. Augmentez-la si vous voyez de mauvais oiseaux. |
+| Seuil de publication | 0,5 par défaut : à partir de ce score, un oiseau est affiché. Augmentez-le si vous voyez de mauvais oiseaux. |
 | Filtre des espèces locales | Ne garde que les oiseaux attendus chez vous à cette période de l'année. Le journal liste chaque détection écartée. |
 | Capteur de vent / de pluie (facultatif) | L'écoute s'arrête par vent fort ou sous la pluie. |
 | Conservation du journal | Durée de conservation du journal des oiseaux (365 jours par défaut). La rareté au jardin regarde 12 mois en arrière : gardez au moins 365. La table de statistiques permanente n'est jamais effacée par ce réglage. |
 | Langue | Français par défaut pour tous les textes ; les autres langues changent les noms d'oiseaux. |
 | Écran | Activé ou non, taille (480x800 par défaut, en portrait), rafraîchissement (10 minutes par défaut) et vue : **collage** (une seule page) ou **alternate** (dernier oiseau puis oiseaux du jour, à tour de rôle). |
-| Rareté : jours au jardin / seuil régional / confirmation | « Rare au jardin » sous ce nombre de jours distincts en 12 mois (3) ; « inhabituel » sous cette probabilité régionale (0,10) ; un oiseau rare demande deux détections à cette confiance (0,75) dans ce délai en minutes (15). |
+| Rareté : jours au jardin / seuil régional / confirmation | « Rare au jardin » sous ce nombre de jours distincts en 12 mois (3) ; « inhabituel » sous cette probabilité régionale (0,10) ; une détection « sûre » à partir de cette confiance (0,75) ; délai de confirmation en minutes (15). |
+| Deuxième avis (Perch) | Le modèle Perch de Google DeepMind réécoute le même instant quand un oiseau doit être confirmé (activé). Environ 0,6 Go de mémoire ; passé automatiquement si le Pi est occupé. |
+| Seuil de vérification silencieuse / seuil de publication / seuil de deuxième avis | Les trois bornes des zones de score : 0,20, 0,50 et 0,75 (voir « la confirmation » ci-dessous). Valeurs de départ, à ajuster quand il y aura de vraies données du jardin. |
+| Accord de Perch | Score minimal de Perch pour compter comme « d'accord » (0,70), pour le deuxième avis comme pour la vérification silencieuse. |
+| Oiseau courant sûr confirmé après deux détections | Activé : un oiseau courant et sûr attend d'être entendu une deuxième fois. Désactivé : il est confirmé tout de suite. |
 
 ## Lire les états
 
@@ -66,14 +70,31 @@ Un appareil, **Mouflon Population**, avec :
   - « Inhabituel en Belgique » : la saison et le lieu le rendent inattendu ;
   - le statut de conservation mondial (par exemple « Quasi menacé »).
 
-  Un oiseau rare ne compte qu'après deux détections sûres en moins de 15 minutes ; d'ici là il est marqué « Confirmation en cours ». Les oiseaux rares confirmés déclenchent l'événement `event.mouflon_population_rare_bird`, utilisable pour une notification sur téléphone.
+  Un oiseau rare ne compte qu'une fois confirmé (voir ci-dessous) ; d'ici là il est marqué « Confirmation en cours ». Les oiseaux rares confirmés déclenchent l'événement `event.mouflon_population_rare_bird`, utilisable pour une notification sur téléphone.
 - **Chants :** un bouton ou une automatisation peut faire écouter un **enregistrement de référence de l'espèce** (xeno-canto, crédité) ; toucher une gravure ouvre sa fiche. Ce n'est jamais un son enregistré dans votre jardin.
 
-## Oiseaux nouveaux et rares : la confirmation
+## Oiseaux incertains, nouveaux et rares : la confirmation
 
-Un oiseau entendu pour la première fois, ou rare, s'affiche **tout de suite** avec une pastille « Confirmation en cours » et une barre de progression (« Confirmation… 1/2 vérifications · encore 9 min »). Il devient **confirmé** s'il est de nouveau entendu avec assurance dans les 15 minutes ; alors seulement apparaissent ses pastilles de rareté et la notification d'oiseau rare. S'il n'est pas confirmé à temps, il affiche « Non confirmé » et quitte la liste du jour. Il n'y a rien à appuyer.
+Selon le score de BirdNET :
 
-**Délai de détection :** `sensor.mouflon_population_detection_delay` indique le temps mis par la dernière détection pour arriver dans Home Assistant (avec la médiane et le 95e centile).
+| Score | Ce qui se passe |
+|---|---|
+| Sous 0,20 | Ignoré. |
+| 0,20 à 0,50 : **vérification silencieuse** | Rien n'est affiché. L'App vérifie en arrière-plan que l'espèce est couramment observée en Belgique cette semaine et demande l'avis de Perch. L'oiseau n'est affiché que si les deux sont d'accord (Perch à 0,70 ou plus) ; il passe alors en « Confirmation en cours ». Sinon il est écarté. Le capteur « Oiseaux rattrapés par la vérification silencieuse » compte les oiseaux rattrapés (et, en attribut, ceux écartés). |
+| 0,50 à 0,75 : **incertain** | Affiché tout de suite en « Confirmation en cours », avec les vérifications. |
+| 0,75 et plus, oiseau courant en Belgique cette semaine, ni nouveau ni rare au jardin | Affiché tout de suite, confirmé quand il est entendu une deuxième fois (sans Perch, pour ménager le Pi). |
+| Oiseau nouveau ou rare au jardin, inhabituel, menacé, ou rarement observé en Belgique cette semaine | Toujours vérifié, quel que soit le score. |
+
+Pendant la « Confirmation en cours », une barre de progression et quatre vérifications sont affichées :
+
+1. **Détection sûre** : BirdNET donne au moins 0,75.
+2. **Entendu à nouveau** dans les 15 minutes.
+3. **Deuxième avis (Perch) concordant** : le modèle Perch de Google DeepMind réécoute les mêmes 3 secondes, encore en mémoire, et reconnaît le même oiseau.
+4. **Observé localement à cette période** : selon les statistiques d'observation belges de GBIF, incluses dans l'App (rien n'est cherché en ligne).
+
+L'oiseau est **confirmé dès que deux vérifications concordent** (trois pour un oiseau rattrapé par la vérification silencieuse). Alors seulement apparaissent ses pastilles de rareté et la notification d'oiseau rare. Une vérification qui ne peut pas se faire (Pi occupé, par exemple) est marquée « passée » et ne bloque jamais. S'il n'est pas confirmé à temps, il affiche « Non confirmé » et quitte la liste du jour. Il n'y a rien à appuyer.
+
+Tous ces seuils sont réglables. Le score de BirdNET n'est pas une vraie probabilité : ce sont des valeurs de départ, à ajuster après quelques semaines de vraies données du jardin.
 
 ## Écran e-ink et export des données
 

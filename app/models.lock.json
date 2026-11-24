@@ -1,5 +1,7 @@
 {
   "files": {
+    "acoustic-models/perch-v2-onnx/perch_v2_labels.txt": "e4d5c0397d8fb08bf90c6b13a34810af53504faad927e472fcc567793c9de057",
+    "acoustic-models/perch-v2-onnx/perch_v2_no_dft_fp32.onnx": "4dcf71c18a147198545944bb5149697e89e3ad2e16637fa8f0edf6d13035a017",
     "acoustic-models/v2.4/tf/labels/af.txt": "b3d3925ae04acc514b00661f981b5f714ac8e750f83f07389797ccbbcf19f7e6",
     "acoustic-models/v2.4/tf/labels/ar.txt": "1955be7d310855df8d0d705f03d203ca12150c52e7e14c96130c9d223ce7cf45",
     "acoustic-models/v2.4/tf/labels/cs.txt": "540631ac313494941998469c717e1abd07dc7e0be7852abfb56d24d993df9b6d",

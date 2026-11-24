@@ -8,10 +8,9 @@ Three independent levels:
   below a probability threshold, otherwise "usual".
 - global: the IUCN Red List category, bundled offline from Wikidata (CC0).
 
-Rare birds are also the likeliest false positives, so a rare candidate must be
-**confirmed** before it counts: confidence at or above a higher threshold, and
-either two such detections within a few minutes or detections by two different
-sources. Until then it is "to_confirm" and nothing is written to the bird log.
+Rare birds are also the likeliest false positives, so a rare or uncertain candidate
+must be **confirmed** before it counts (see :class:`ConfirmationTracker`: two of
+four checks). Until then it is "provisional" and nothing is written to the bird log.
 
 Each tag carries a short label so a future e-ink frame (MOUL-46) can draw it.
 """
@@ -22,10 +21,11 @@ from collections import defaultdict
 from dataclasses import asdict, dataclass, field
 from typing import TYPE_CHECKING
 
-from mouflon_population.i18n import t
+from mouflon_population.i18n import has_text, t
 from mouflon_population.library import THREATENED
 
 if TYPE_CHECKING:
+    from collections.abc import Callable
     from datetime import datetime, timedelta
 
 
@@ -173,33 +173,94 @@ class Pending:
     rarity: Rarity
     first_seen: datetime
     observations: list[Observation] = field(default_factory=list)
+    # Cross-checks (MOUL-54, MOUL-55): "agree" / "disagree" / "skipped:<reason>" for
+    # Perch, "observed" / "rare" / "skipped:<reason>" for the local statistics.
+    perch: str = "skipped:not_needed"
+    local: str = "skipped:unavailable"
+    # How many checks confirm it: 2 normally, 3 for a bird rescued by the silent
+    # check (Perch and the local check got it in; one more check confirms it).
+    required: int = 2
+    # A sure, common bird: confirmed only once heard again (owner's decision).
+    needs_repeat: bool = False
+
+
+STEP_KEYS = ("confident", "again", "perch", "local")
+REQUIRED_STEPS = 2
 
 
 class ConfirmationTracker:
-    """Provisional birds and their confirmation progress.
+    """Provisional birds and their confirmation progress (MOUL-53, MOUL-54, MOUL-55).
 
-    Steps are generic so later checks (a second model's opinion, local observation
-    statistics) can be appended; today there are two: a confident detection and a
-    repeat within the window. A bird is confirmed when two detections at or above
-    the threshold arrive within the window that starts at its first detection;
-    otherwise it is withdrawn when the window ends.
+    Up to four checks, each "done", "pending", "failed" or "skipped":
+
+    1. confident: a detection at or above the confident threshold;
+    2. again: heard at least twice within the window;
+    3. perch: Perch 2.0 agrees on the same window (second opinion);
+    4. local: the species is regularly observed in Belgium at this time of year.
+
+    A bird is confirmed as soon as **two** checks are done (three for a bird
+    rescued by the silent check; a sure, common bird only once heard again). A
+    species rarely observed locally therefore needs two acoustic checks
+    (confident + heard again, or a check plus Perch agreeing). A skipped check
+    never blocks: the bird can always be confirmed by being heard again, or is
+    withdrawn when the window ends.
     """
 
-    def __init__(self, min_confidence: float, window: timedelta):
+    def __init__(
+        self,
+        min_confidence: float,
+        window: timedelta,
+        local_lookup: Callable[[str, datetime], str] | None = None,
+    ):
         self.min_confidence = min_confidence
         self.window = window
+        self.local_lookup = local_lookup
         self.pending: dict[str, Pending] = {}
 
     def observe(
-        self, scientific: str, common: str, rarity: Rarity, observation: Observation
+        self,
+        scientific: str,
+        common: str,
+        rarity: Rarity,
+        observation: Observation,
+        **mode: object,
     ) -> tuple[str, Pending]:
+        """Adds a detection; ``mode`` (required, needs_repeat, perch) sets up a
+        new entry only."""
         entry = self.pending.get(scientific)
         if entry is None or observation.when - entry.first_seen > self.window:
-            entry = Pending(scientific, common, rarity, observation.when)
+            entry = Pending(scientific, common, rarity, observation.when, **mode)
+            if self.local_lookup is not None:
+                entry.local = self.local_lookup(scientific, observation.when)
             self.pending[scientific] = entry
         entry.observations.append(observation)
-        if len(self._confident(entry)) >= 2:
-            del self.pending[scientific]
+        return self._settle(entry)
+
+    def record_perch(self, entry: Pending, verdict: str) -> str:
+        """Store Perch's verdict; returns "confirmed" or "provisional"."""
+        keep = entry.perch == "agree" or (
+            entry.perch == "disagree" and verdict.startswith("skipped")
+        )
+        if not keep:
+            entry.perch = verdict
+        state, _ = self._settle(entry)
+        return state
+
+    def needs_perch(self, entry: Pending) -> bool:
+        return (
+            entry.scientific in self.pending
+            and entry.perch != "agree"
+            and not entry.needs_repeat
+        )
+
+    def is_confirmed(self, entry: Pending) -> bool:
+        if entry.needs_repeat:
+            return len(entry.observations) >= 2
+        return self.done_count(entry) >= entry.required
+
+    def _settle(self, entry: Pending) -> tuple[str, Pending]:
+        if self.is_confirmed(entry):
+            self.pending.pop(entry.scientific, None)
             return "confirmed", entry
         return "provisional", entry
 
@@ -210,22 +271,57 @@ class ConfirmationTracker:
     def _confident(self, entry: Pending) -> list[Observation]:
         return [o for o in entry.observations if o.confidence >= self.min_confidence]
 
+    def states(self, entry: Pending) -> dict[str, str]:
+        perch = entry.perch
+        local = entry.local
+        return {
+            "confident": "done" if self._confident(entry) else "pending",
+            "again": "done" if len(entry.observations) >= 2 else "pending",
+            "perch": "done"
+            if perch == "agree"
+            else "failed"
+            if perch == "disagree"
+            else "skipped",
+            "local": "done"
+            if local == "observed"
+            else "failed"
+            if local == "rare"
+            else "skipped",
+        }
+
+    def done_count(self, entry: Pending) -> int:
+        return sum(state == "done" for state in self.states(entry).values())
+
     def steps(self, entry: Pending, confirmed: bool = False) -> list[dict]:
-        confident = len(self._confident(entry))
+        states = self.states(entry)
+        names = {
+            "confident": t("step_confident", threshold=self.min_confidence),
+            "again": t("step_again", minutes=self.window_minutes),
+            "perch": t("step_perch"),
+            "local": t("step_local"),
+        }
+        notes = {
+            "perch": _reason_note("perch", entry.perch),
+            "local": _reason_note("local", entry.local),
+        }
         return [
             {
-                "name": t("step_confident", threshold=self.min_confidence),
-                "done": confirmed or confident >= 1,
-            },
-            {
-                "name": t("step_again", minutes=self.window_minutes),
-                "done": confirmed or confident >= 2,
-            },
+                "key": key,
+                "name": names[key],
+                "state": states[key],
+                "done": states[key] == "done",
+                "note": notes.get(key, ""),
+            }
+            for key in STEP_KEYS
         ]
 
     def progress(self, entry: Pending, confirmed: bool = False) -> int:
-        steps = self.steps(entry, confirmed)
-        return round(100 * sum(s["done"] for s in steps) / len(steps))
+        if confirmed:
+            return 100
+        if entry.needs_repeat:
+            return 50
+        done = min(self.done_count(entry), entry.required)
+        return round(100 * done / entry.required)
 
     def minutes_left(self, entry: Pending, now: datetime) -> int:
         left = entry.first_seen + self.window - now
@@ -236,3 +332,16 @@ class ConfirmationTracker:
         for entry in expired:
             del self.pending[entry.scientific]
         return expired
+
+
+def _reason_note(check: str, value: str) -> str:
+    """Household text explaining a check's outcome (empty when it is done)."""
+    if value in ("agree", "observed"):
+        return ""
+    if value == "disagree":
+        return t("note_perch_disagree")
+    if value == "rare":
+        return t("note_local_rare")
+    reason = value.partition(":")[2] or "unavailable"
+    key = f"note_{check}_{reason}"
+    return t(key) if has_text(key) else t(f"note_{check}_unavailable")

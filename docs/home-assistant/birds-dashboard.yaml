@@ -46,8 +46,9 @@ views:
                 content: >-
                   {% set b = 'sensor.mouflon_population_last_bird' %}
                   <center><b>{{ state_attr(b, 'common_name') or "Pas encore d'oiseau" }}</b><br><small>{% if state_attr(b, 'demo') %}DÉMO — inventé · {% endif %}{{ state_attr(b, 'scientific_name') or '' }} · vu à {{ (state_attr(b, 'detected_at') or '')[11:16] }}</small></center>
-          # Confirmation in progress (MOUL-53): a loading bar on the provisional bird,
-          # shown only while it is being confirmed. No button: it confirms itself.
+          # Confirmation in progress (MOUL-53, MOUL-54, MOUL-55): a loading bar on the
+          # provisional bird and its four checks; two done confirm it. Shown only while
+          # it is being confirmed. No button: it confirms itself.
           - type: markdown
             visibility:
               - condition: state
@@ -58,10 +59,13 @@ views:
               {% set steps = state_attr(b, 'confirmation_steps') or [] %}
               {% set done = steps | selectattr('done') | list | length %}
               {% set p = (state_attr(b, 'confirmation_progress') or 0) | int %}
-              **Confirmation…** {{ done }}/{{ steps | length }} vérifications ·
+              {% set mark = {'done': '✔', 'failed': '✘', 'skipped': '↷', 'pending': '…'} %}
+              **Confirmation…** {{ [done, 2] | min }}/2 vérifications ·
               encore {{ state_attr(b, 'minutes_left') }} min
 
               {{ '▰' * (p // 10) }}{{ '▱' * (10 - p // 10) }} {{ p }} %
+
+              {% for s in steps %}{{ mark.get(s.state, '…') }} {{ s.name }}{% if s.note %} ({{ s.note }}){% endif %}<br>{% endfor %}
             grid_options:
               columns: full
           # Rarity pills show only when the bird has that rarity (0.5.2): no empty dots.
@@ -260,6 +264,15 @@ views:
             entity: sensor.mouflon_population_species_today
           - type: tile
             entity: sensor.mouflon_population_detections_today
+          # Silent check (0.7.0): birds rescued today; rejected count in the details.
+          - type: tile
+            entity: sensor.mouflon_population_silent_check
+            name: Rattrapés en silence
+            state_content:
+              - state
+              - rejected
+            grid_options:
+              columns: full
           - type: history-graph
             hours_to_show: 24
             entities:

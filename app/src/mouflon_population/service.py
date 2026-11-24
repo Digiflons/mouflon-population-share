@@ -1,7 +1,8 @@
-"""Runs the chain: source -> guards -> BirdNET -> filters -> bird log + MQTT.
+"""Runs the chain: source -> guards -> BirdNET -> confirmation -> bird log + MQTT.
 
-One thread per source. Each window of sound is analysed and then dropped; only the
-filtered detections go further.
+One thread per source. Each window of sound is analysed (by BirdNET, and by Perch for
+a second opinion when a bird needs confirmation) and then dropped; only the filtered
+detections go further.
 """
 
 from __future__ import annotations
@@ -52,7 +53,9 @@ if TYPE_CHECKING:
     from mouflon_population.detector import FilteringDetector
     from mouflon_population.ha import HomeAssistant
     from mouflon_population.library import Library
+    from mouflon_population.local_check import LocalObservations
     from mouflon_population.mqtt_publisher import Publisher
+    from mouflon_population.second_opinion import SecondOpinion
 
 log = logging.getLogger(__name__)
 
@@ -91,6 +94,8 @@ class Service:
         library: Library | None = None,
         analytics: AnalyticsStore | None = None,
         export_dir: Path | None = None,
+        second_opinion: SecondOpinion | None = None,
+        local_observations: LocalObservations | None = None,
     ):
         self.settings = settings
         self.detector = detector
@@ -120,9 +125,12 @@ class Service:
         )
         self.library = library
         self.geo_probabilities: dict[str, float] | None = None
+        self.second_opinion = second_opinion if settings.second_opinion else None
+        self.local_observations = local_observations
         self.tracker = ConfirmationTracker(
             settings.rare_min_confidence,
             timedelta(minutes=settings.rare_confirm_minutes),
+            local_lookup=self.local_level,
         )
         self.latency = LatencyTracker()
         self._last_published: dict | None = None
@@ -131,6 +139,7 @@ class Service:
         self.analytics = None if settings.test_mode else analytics
         self.export_dir = export_dir
         self._rare_announced: set[str] = set()
+        self.silent_counts = {"rescued": 0, "rejected": 0, "skipped": 0}
 
     @property
     def active_sources(self) -> list[SourceConfig]:
@@ -153,6 +162,7 @@ class Service:
             self.gallery.enrich(latest[0].as_dict()) if latest else None
         )
         self.gallery.show_last(latest[0].scientific_name if latest else None)
+        self.publisher.silent_check(dict(self.silent_counts))
         self.publish_stats()
 
     def refresh_species_filter(self) -> None:
@@ -218,7 +228,6 @@ class Service:
     def handle_window(self, source: SourceConfig, window) -> int:
         started = time.monotonic()
         detections = self.detector.detect(window)
-        del window
         inference_s = time.monotonic() - started
         dropped = getattr(self.detector, "last_dropped", [])
         if dropped:
@@ -232,16 +241,31 @@ class Service:
         logged = 0
         for detection in detections:
             observation = Observation(now, source.name, detection.confidence)
+            if detection.confidence < self.settings.min_confidence:
+                # Silent check (0.20-0.50): nothing is shown unless Perch and the
+                # local statistics both vouch for the bird.
+                self._silent_check(window, detection, observation, now)
+                continue
             rarity = self.rarity_of(detection.scientific, now)
             already = self.rarity_today.get(detection.scientific)
             publish_started = time.monotonic()
-            if already is not None or not rarity.is_rare:
+            band = self._band(detection, rarity, now)
+            if already is not None or band == "at_once":
                 display = Rarity.from_dict(already) if already else rarity
                 logged += self._confirm(detection, [observation], display, now)
             else:
+                # Unsure, new, rare, or rarely observed in Belgium now: up to four
+                # checks. A sure, common bird only waits to be heard again.
                 state, entry = self.tracker.observe(
-                    detection.scientific, detection.common, rarity, observation
+                    detection.scientific,
+                    detection.common,
+                    rarity,
+                    observation,
+                    needs_repeat=band == "repeat",
                 )
+                if state == "provisional" and self.tracker.needs_perch(entry):
+                    verdict = self._ask_perch(window, detection)
+                    state = self.tracker.record_perch(entry, verdict)
                 if state == "confirmed":
                     rarity.status = "confirmed"
                     logged += self._confirm(
@@ -250,9 +274,98 @@ class Service:
                 else:
                     self._show_provisional(entry, now)
             self._measure(inference_s, time.monotonic() - publish_started, now)
+        del window
         if logged:
             self.publish_stats()
         return logged
+
+    def _band(self, detection, rarity: Rarity, now: datetime) -> str:
+        """How a published detection is confirmed (owner's decision, 2026-11-23).
+
+        - "checks": unsure (below the second-opinion threshold), new, rare,
+          threatened, or rarely observed in Belgium now: the four checks.
+        - "repeat": sure and common: confirmed once heard again, no Perch call.
+        - "at_once": the same, when ``common_confirm_twice`` is off.
+        """
+        if detection.confidence < self.settings.second_opinion_threshold:
+            return "checks"
+        if rarity.is_rare:
+            return "checks"
+        if self.local_level(detection.scientific, now) == "rare":
+            return "checks"
+        if self.settings.test_mode or not self.settings.common_confirm_twice:
+            # Test mode replays one foreign recording: log sure birds at once.
+            return "at_once"
+        return "repeat"
+
+    def _silent_check(self, window, detection, observation, now) -> bool:
+        """0.20-0.50: published only if plausible locally AND Perch agrees >= 0.70.
+
+        Returns True when the bird is rescued (it then shows "Confirmation en
+        cours" and needs one more check). Never stores or sends the window.
+        """
+        scientific = detection.scientific
+        if scientific in self.rarity_today or scientific in self.tracker.pending:
+            return False
+        local = self.local_level(scientific, now)
+        if local != "observed":
+            self._count_silent("rejected" if local == "rare" else "skipped")
+            return False
+        if self.second_opinion is None:
+            self._count_silent("skipped")
+            return False
+        opinion = self.second_opinion.ask(window, scientific, silent=True)
+        if opinion.verdict.startswith("skipped"):
+            self._count_silent("skipped")
+            return False
+        if (opinion.score or 0.0) < self.settings.perch_agreement:
+            self._count_silent("rejected")
+            return False
+        log.info(
+            "Silent check: %s rescued (BirdNET %.2f, Perch %.2f)",
+            detection.common,
+            detection.confidence,
+            opinion.score,
+        )
+        self._count_silent("rescued")
+        rarity = self.rarity_of(scientific, now)
+        _, entry = self.tracker.observe(
+            scientific, detection.common, rarity, observation, required=3, perch="agree"
+        )
+        self._show_provisional(entry, now)
+        return True
+
+    def _count_silent(self, outcome: str) -> None:
+        self.silent_counts[outcome] += 1
+        self.publisher.silent_check(dict(self.silent_counts))
+
+    def _ask_perch(self, window, detection) -> str:
+        """Perch's verdict on the same in-memory window (MOUL-54)."""
+        if self.second_opinion is None:
+            return (
+                "skipped:off"
+                if not self.settings.second_opinion
+                else ("skipped:unavailable")
+            )
+        opinion = self.second_opinion.ask(window, detection.scientific)
+        log.info(
+            "Second opinion on %s: %s%s",
+            detection.common,
+            opinion.verdict,
+            ""
+            if opinion.score is None
+            else f" (score {opinion.score:.2f}, {opinion.seconds:.2f} s)",
+        )
+        return opinion.verdict
+
+    def local_level(self, scientific: str, when: datetime) -> str:
+        """Local observation check (MOUL-55): "observed", "rare" or skipped."""
+        if self.settings.test_mode:
+            # The test recording is foreign: Belgian statistics do not apply.
+            return "skipped:test"
+        if self.local_observations is None:
+            return "skipped:unavailable"
+        return self.local_observations.level(scientific, birdnet_week(when))
 
     def _progress_fields(
         self, entry: Pending | None, now: datetime, status: str
@@ -518,8 +631,13 @@ class Service:
                     session_stop.set()
 
     def daily_maintenance(self) -> None:
+        opinion = self.second_opinion
+        if opinion is not None and opinion.status == "memory":
+            opinion.start()  # memory may have freed up since the last attempt
         self.rarity_today = {}
         self._rare_announced = set()
+        self.silent_counts = dict.fromkeys(self.silent_counts, 0)
+        self.publisher.silent_check(dict(self.silent_counts))
         removed = self.birdlog.purge(self.clock())
         if removed:
             log.info("Bird log: removed %d entries older than the retention", removed)

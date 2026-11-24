@@ -2,6 +2,20 @@
 
 A short path through the project. About an hour of reading before your first change.
 
+## 0. Your own secrets and keys (set these first)
+
+This repository contains **no secrets**: no tokens, passwords, API keys or personal contacts, in its files or in its GitHub settings. Each person who runs it sets **their own** values, pasted directly into GitHub or Home Assistant, never into a file, an issue or a chat.
+
+| What | Where to set it | Needed for | Without it |
+|---|---|---|---|
+| **GitHub read-only token** (fine-grained, read access to this repository only, with an expiry date) | Home Assistant → Settings → Apps → App store → ⋮ → Repositories, inside the address `https://x-access-token:<TOKEN>@github.com/<OWNER>/<REPOSITORY>#staging` | Letting Home Assistant install the App from a **private** copy | Not needed if your copy is public |
+| **`WIKIMEDIA_CONTACT`**: an email address or URL where you can be reached | GitHub → your repository → Settings → Secrets and variables → Actions → **New repository secret** (a *secret*, not a *variable*: GitHub hides secrets in logs) | The "Bird illustrations" workflow; Wikimedia asks automated downloaders to identify themselves | The workflow still runs, but Wikimedia throttles it heavily |
+| **`XENO_CANTO_API_KEY`**: your personal key from a free xeno-canto account | Same place, as a repository secret | Downloading the reference bird songs ("tap to listen") | The library is built without songs |
+
+Nothing else is needed: the GBIF statistics and the Perch model need no account or key, and the App itself never uses a cloud service.
+
+If a value ever leaks, revoke it at its source (GitHub token settings, your xeno-canto account) and set a new one. More detail: [docs/install.md](docs/install.md) (sections 1 and 6) and [docs/security.md](docs/security.md).
+
 ## 1. Read, in this order
 
 1. [README.md](README.md): what the App does, its status, credits and licences.

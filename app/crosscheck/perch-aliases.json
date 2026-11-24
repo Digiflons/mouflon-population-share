@@ -1,0 +1,11 @@
+{
+ "aliases": {
+  "Bubulcus ibis": "Ardea ibis",
+  "Corvus monedula": "Coloeus monedula"
+ },
+ "not_in_perch": [
+  "Acanthis cabaret",
+  "Accipiter gentilis",
+  "Charadrius dubius"
+ ]
+}
