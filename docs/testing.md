@@ -103,7 +103,7 @@ New tests (`tests/mouflon/test_analytics_screen.py`):
 
 New unit tests (`tests/mouflon/test_library.py`, plus updates in the demo and service tests):
 - the library reads drawings, credits, IUCN status and song ids. Installing the songs writes only the library's clips into the media folder, and only once;
-- the gallery sends the last bird's drawing and the six "today" slots, each drawing printed on the taupe paper, and the French "Gravure à venir" card when a drawing is missing; the species list has counts, rarity, credit and song;
+- the gallery sends the last bird's drawing and the six "today" slots, each drawing printed on the taupe paper, and the "Drawing to come" card (French default: "Gravure à venir") when a drawing is missing; the species list has counts, rarity, credit and song;
 - rarity levels and tags: each tag has a label, a short label (12 characters or fewer), an icon and a colour;
 - the confirmation rule: a rare candidate is confirmed only by two detections at ≥ 0.75 within 15 minutes; weak or too-distant detections do not count;
 - the bird log's 12-month history and today's list (at most 30, most recent first);

@@ -1,113 +1,115 @@
 # Mouflon Population
 
-Mouflon Population écoute des caméras ou des micros extérieurs, reconnaît les chants d'oiseaux avec BirdNET et montre chaque oiseau dans Home Assistant. Tout fonctionne sur cette machine Home Assistant.
+Mouflon Population listens to outdoor cameras or microphones, recognises bird songs with BirdNET and shows each bird in Home Assistant. Everything runs on this Home Assistant machine.
 
-## Promesse de confidentialité
+The App's screens and entity names are French by default; set **Language** to English to see them in English. This page gives the English wording and, where useful, the French text in brackets.
 
-- **Aucun son n'est jamais conservé.** L'App traite le son 3 secondes à la fois, en mémoire, puis l'efface. Rien n'est enregistré ni envoyé nulle part.
-- La seule chose conservée est le **journal des oiseaux** : espèce, confiance, source qui l'a entendu, et heure.
-- Les voix humaines et les autres sons qui ne sont pas des oiseaux sont écartés dans l'App.
-- L'App n'ouvre aucun port et ne fait que *lire* Home Assistant (niveaux de batterie, météo, position du domicile, soleil). Elle ne commande jamais vos appareils.
+## Privacy promise
 
-## Réglages (onglet Configuration)
+- **No sound is ever kept.** The App processes sound 3 seconds at a time, in memory, then deletes it. Nothing is recorded or sent anywhere.
+- The only thing kept is the **bird log**: species, confidence, the source that heard it, and the time.
+- Human voices and other sounds that are not birds are discarded inside the App.
+- The App opens no port and only *reads* from Home Assistant (battery levels, weather, home location, sun). It never controls your devices.
 
-| Réglage | Ce qu'il fait |
+## Settings (Configuration tab)
+
+| Setting | What it does |
 |---|---|
-| Mode test | Rejoue un court enregistrement fourni au lieu d'écouter, pour vérifier que tout marche. Ses oiseaux sont nord-américains : le filtre des espèces locales est donc coupé en mode test (le journal le signale). Désactivez-le pour utiliser vos sources. |
-| Mode démo | Montre des oiseaux **inventés** pour découvrir Home Assistant tant qu'aucun micro n'est branché (voir plus bas). Demande le mode test désactivé et toutes les sources désactivées. |
-| Sources audio | Une entrée par caméra ou micro : nom, adresse du flux, identifiant (le mot de passe est masqué et reste sur cette machine), capteur de batterie de la caméra si elle est sur batterie, et *enabled*. |
-| Quand écouter | **daylight** (par défaut) : du lever au coucher du soleil. **windows** : seulement pendant les plages d'écoute. **always** : jour et nuit. |
-| Plages d'écoute | Seulement avec **windows**, par exemple 05:30–08:30 et 18:00–20:00. |
-| Seuil d'arrêt / niveau de reprise / baisse maximale par jour | Pour les caméras sur batterie : ne réveille plus une caméra sous 40 %, reprend au-dessus de 60 %, et se met en pause si la batterie perd plus de 15 points en 24 heures. Si le niveau ne peut pas être lu, l'App n'écoute pas. |
-| Seuil de publication | 0,5 par défaut : à partir de ce score, un oiseau est affiché. Augmentez-le si vous voyez de mauvais oiseaux. |
-| Filtre des espèces locales | Ne garde que les oiseaux attendus chez vous à cette période de l'année. Le journal liste chaque détection écartée. |
-| Capteur de vent / de pluie (facultatif) | L'écoute s'arrête par vent fort ou sous la pluie. |
-| Conservation du journal | Durée de conservation du journal des oiseaux (365 jours par défaut). La rareté au jardin regarde 12 mois en arrière : gardez au moins 365. La table de statistiques permanente n'est jamais effacée par ce réglage. |
-| Langue | Français par défaut pour tous les textes ; les autres langues changent les noms d'oiseaux. |
-| Écran | Activé ou non, taille (480x800 par défaut, en portrait), rafraîchissement (10 minutes par défaut) et vue : **collage** (une seule page) ou **alternate** (dernier oiseau puis oiseaux du jour, à tour de rôle). |
-| Rareté : jours au jardin / seuil régional / confirmation | « Rare au jardin » sous ce nombre de jours distincts en 12 mois (3) ; « inhabituel » sous cette probabilité régionale (0,10) ; une détection « sûre » à partir de cette confiance (0,75) ; délai de confirmation en minutes (15). |
-| Deuxième avis (Perch) | Le modèle Perch de Google DeepMind réécoute le même instant quand un oiseau doit être confirmé (activé). Environ 0,6 Go de mémoire ; passé automatiquement si le Pi est occupé. |
-| Seuil de vérification silencieuse / seuil de publication / seuil de deuxième avis | Les trois bornes des zones de score : 0,20, 0,50 et 0,75 (voir « la confirmation » ci-dessous). Valeurs de départ, à ajuster quand il y aura de vraies données du jardin. |
-| Accord de Perch | Score minimal de Perch pour compter comme « d'accord » (0,70), pour le deuxième avis comme pour la vérification silencieuse. |
-| Oiseau courant sûr confirmé après deux détections | Activé : un oiseau courant et sûr attend d'être entendu une deuxième fois. Désactivé : il est confirmé tout de suite. |
+| Test mode | Replays a short bundled recording instead of listening, to check that everything works. Its birds are North American, so the local species filter is switched off in test mode (the log says so). Turn it off to use your sources. |
+| Demo mode | Shows **invented** birds so you can explore Home Assistant while no microphone is connected (see below). Needs test mode off and all sources disabled. |
+| Audio sources | One entry per camera or microphone: name, stream address, user name (the password is hidden and stays on this machine), the camera's battery sensor if it runs on a battery, and *enabled*. |
+| When to listen | **daylight** (default): from sunrise to sunset. **windows**: only during the listening windows. **always**: day and night. |
+| Listening windows | Only with **windows**, for example 05:30-08:30 and 18:00-20:00. |
+| Stop threshold / resume level / maximum drop per day | For battery cameras: a camera below 40 % is no longer woken up, listening resumes above 60 %, and it pauses if the battery loses more than 15 points in 24 hours. If the level cannot be read, the App does not listen. |
+| Publication threshold | 0.5 by default: from this score, a bird is shown. Raise it if you see wrong birds. |
+| Local species filter | Keeps only the birds expected at your place at this time of year. The log lists every detection it drops. |
+| Wind / rain sensor (optional) | Listening stops in strong wind or rain. |
+| Log retention | How long the bird log is kept (365 days by default). Garden rarity looks back 12 months, so keep at least 365. The permanent statistics table is never deleted by this setting. |
+| Language | French by default for all texts; English shows the texts in English; other languages change the bird names. |
+| Screen | On or off, size (480x800 by default, portrait), refresh (every 10 minutes by default) and view: **collage** (a single page) or **alternate** (last bird, then the day's birds, in turn). |
+| Rarity: days in the garden / regional threshold / confirmation | "Rare in the garden" below this number of distinct days in 12 months (3); "unusual" below this regional probability (0.10); a detection is "confident" from this score (0.75); confirmation delay in minutes (15). |
+| Second opinion (Perch) | Google DeepMind's Perch model listens again to the same moment when a bird has to be confirmed (on). About 0.6 GB of memory; skipped automatically when the Pi is busy. |
+| Silent-check threshold / publication threshold / second-opinion threshold | The three limits of the score zones: 0.20, 0.50 and 0.75 (see "Confirmation" below). Starting values, to adjust once there is real garden data. |
+| Perch agreement | Minimum Perch score to count as "agrees" (0.70), for the second opinion and for the silent check. |
+| Common confident bird confirmed after two detections | On: a common, confident bird waits to be heard a second time. Off: it is confirmed straight away. |
 
-## Lire les états
+## Reading the statuses
 
-Chaque source a un capteur d'état, `sensor.mouflon_population_<source>_status` :
+Each source has a status sensor, `sensor.mouflon_population_<source>_status`. With the French default the status text is French; the English equivalent is given here.
 
-| État | Signification |
+| Status (French) | Meaning |
 |---|---|
-| à l'écoute | Le son est analysé en ce moment |
-| en pause : batterie faible (38 %) | Sous le seuil d'arrêt ; reprend après recharge au-dessus du niveau de reprise |
-| en pause : batterie qui baisse vite | La batterie a baissé trop vite sur les dernières 24 heures |
-| en pause : batterie inconnue | Le niveau de batterie n'a pas pu être lu : l'App ne réveille pas la caméra |
-| en pause : vent / en pause : pluie | Pause météo |
-| en dehors de la journée / en dehors des heures d'écoute | Ce n'est pas le moment d'écouter |
-| hors ligne | Le flux est injoignable ; l'App réessaie toute seule |
-| démo | La source est une source de démonstration (oiseaux inventés) |
+| listening (`à l'écoute`) | Sound is being analysed right now |
+| paused: battery low (`en pause : batterie faible`, for example 38 %) | Below the stop threshold; resumes after recharging above the resume level |
+| paused: battery dropping fast (`en pause : batterie qui baisse vite`) | The battery dropped too fast over the last 24 hours |
+| paused: battery unknown (`en pause : batterie inconnue`) | The battery level could not be read: the App does not wake the camera |
+| paused: wind / paused: rain (`en pause : vent` / `en pause : pluie`) | Weather pause |
+| outside daylight / outside listening hours (`en dehors de la journée` / `en dehors des heures d'écoute`) | Not the time to listen |
+| offline (`hors ligne`) | The stream cannot be reached; the App retries by itself |
+| demo (`démo`) | The source is a demonstration source (invented birds) |
 
-Astuce : créez une automatisation qui vous prévient quand un état commence par « en pause : batterie », pour penser à recharger la caméra.
+Tip: create an automation that notifies you when a status starts with "paused: battery" (`en pause : batterie`), as a reminder to recharge the camera.
 
-## Ce qui apparaît dans Home Assistant
+## What appears in Home Assistant
 
-Un appareil, **Mouflon Population**, avec :
+One device, **Mouflon Population**, with:
 
-| Entité | Signification |
+| Entity | Meaning |
 |---|---|
-| `event.mouflon_population_bird_detected` | Se déclenche pour chaque oiseau entendu : espèce, nom scientifique, confiance, source, heure. |
-| `sensor.mouflon_population_last_bird` | Le dernier oiseau entendu, avec ses détails en attributs. |
-| `sensor.mouflon_population_species_today` / `..._detections_today` | Les compteurs du jour. |
-| `binary_sensor.mouflon_population_<source>_listening` | Allumé quand la source est écoutée. |
-| `binary_sensor.mouflon_population_demo_mode` | **Allumé pendant le mode démo : les oiseaux montrés sont inventés.** |
-| `image.mouflon_population_screen` | La page actuelle de l'écran e-ink. |
+| `event.mouflon_population_bird_detected` | Fires for every bird heard: species, scientific name, confidence, source, time. |
+| `sensor.mouflon_population_last_bird` | The last bird heard, with its details as attributes. |
+| `sensor.mouflon_population_species_today` / `..._detections_today` | The day's counters. |
+| `binary_sensor.mouflon_population_<source>_listening` | On while the source is being listened to. |
+| `binary_sensor.mouflon_population_demo_mode` | **On during demo mode: the birds shown are invented.** |
+| `image.mouflon_population_screen` | The current page of the e-ink screen. |
 
-## Gravures, rareté et chants
+## Engravings, rarity and songs
 
-- **Gravures :** chaque oiseau est montré avec une planche coloriée à la main du XIXe siècle (domaine public), avec sa mention de crédit. Les gravures sont présentées sur un papier ancien couleur taupe, avec un bord irrégulier qui se fond dans le papier. Les oiseaux sans gravure affichent « Gravure à venir ».
-- **Pastilles de rareté :**
-  - « Nouveau pour le jardin » : jamais entendu ici ;
-  - « Rare au jardin » : entendu moins de 3 jours sur les 12 derniers mois ;
-  - « Inhabituel en Belgique » : la saison et le lieu le rendent inattendu ;
-  - le statut de conservation mondial (par exemple « Quasi menacé »).
+- **Engravings:** each bird is shown with a hand-coloured 19th-century plate (public domain), with its credit line. Plates sit on aged taupe paper, with an irregular edge that blends into the paper. Birds without a plate show "Drawing to come" (`Gravure à venir`).
+- **Rarity labels:**
+  - "New for the garden" (`Nouveau pour le jardin`): never heard here;
+  - "Rare in the garden" (`Rare au jardin`): heard on fewer than 3 days in the last 12 months;
+  - "Unusual for Belgium now" (`Inhabituel en Belgique`): the season and place make it unexpected;
+  - the world conservation status (for example "Near threatened", `Quasi menacé`).
 
-  Un oiseau rare ne compte qu'une fois confirmé (voir ci-dessous) ; d'ici là il est marqué « Confirmation en cours ». Les oiseaux rares confirmés déclenchent l'événement `event.mouflon_population_rare_bird`, utilisable pour une notification sur téléphone.
-- **Chants :** un bouton ou une automatisation peut faire écouter un **enregistrement de référence de l'espèce** (xeno-canto, crédité) ; toucher une gravure ouvre sa fiche. Ce n'est jamais un son enregistré dans votre jardin.
+  A rare bird only counts once confirmed (see below); until then it is marked "Confirmation in progress" (`Confirmation en cours`). Confirmed rare birds fire the `event.mouflon_population_rare_bird` event, which you can use for a phone notification.
+- **Songs:** a button or an automation can play a **reference recording of the species** (xeno-canto, credited); touching a plate opens its page. This is never sound recorded in your garden.
 
-## Oiseaux incertains, nouveaux et rares : la confirmation
+## Uncertain, new and rare birds: confirmation
 
-Selon le score de BirdNET :
+Depending on BirdNET's score:
 
-| Score | Ce qui se passe |
+| Score | What happens |
 |---|---|
-| Sous 0,20 | Ignoré. |
-| 0,20 à 0,50 : **vérification silencieuse** | Rien n'est affiché. L'App vérifie en arrière-plan que l'espèce est couramment observée en Belgique cette semaine et demande l'avis de Perch. L'oiseau n'est affiché que si les deux sont d'accord (Perch à 0,70 ou plus) ; il passe alors en « Confirmation en cours ». Sinon il est écarté. Le capteur « Oiseaux rattrapés par la vérification silencieuse » compte les oiseaux rattrapés (et, en attribut, ceux écartés). |
-| 0,50 à 0,75 : **incertain** | Affiché tout de suite en « Confirmation en cours », avec les vérifications. |
-| 0,75 et plus, oiseau courant en Belgique cette semaine, ni nouveau ni rare au jardin | Affiché tout de suite, confirmé quand il est entendu une deuxième fois (sans Perch, pour ménager le Pi). |
-| Oiseau nouveau ou rare au jardin, inhabituel, menacé, ou rarement observé en Belgique cette semaine | Toujours vérifié, quel que soit le score. |
+| Below 0.20 | Ignored. |
+| 0.20 to 0.50: **silent check** | Nothing is shown. In the background the App checks that the species is commonly seen in Belgium this week and asks Perch for its opinion. The bird is shown only if both agree (Perch at 0.70 or more); it then goes to "Confirmation in progress". Otherwise it is dropped. The sensor "Birds rescued by the silent check" (`Oiseaux rattrapés par la vérification silencieuse`) counts the rescued birds (and, as an attribute, the dropped ones). |
+| 0.50 to 0.75: **uncertain** | Shown straight away as "Confirmation in progress", with the checks. |
+| 0.75 and above, a bird common in Belgium this week, neither new nor rare in the garden | Shown straight away, confirmed when heard a second time (without Perch, to spare the Pi). |
+| A bird new or rare in the garden, unusual, threatened, or rarely seen in Belgium this week | Always checked, whatever the score. |
 
-Pendant la « Confirmation en cours », une barre de progression et quatre vérifications sont affichées :
+During "Confirmation in progress", a progress bar and four checks are shown:
 
-1. **Détection sûre** : BirdNET donne au moins 0,75.
-2. **Entendu à nouveau** dans les 15 minutes.
-3. **Deuxième avis (Perch) concordant** : le modèle Perch de Google DeepMind réécoute les mêmes 3 secondes, encore en mémoire, et reconnaît le même oiseau.
-4. **Observé localement à cette période** : selon les statistiques d'observation belges de GBIF, incluses dans l'App (rien n'est cherché en ligne).
+1. **Confident detection:** BirdNET gives at least 0.75.
+2. **Heard again** within 15 minutes.
+3. **Second opinion (Perch) agrees:** Google DeepMind's Perch model listens again to the same 3 seconds, still in memory, and recognises the same bird.
+4. **Observed locally at this time of year:** based on Belgian GBIF observation statistics bundled with the App (nothing is looked up online).
 
-L'oiseau est **confirmé dès que deux vérifications concordent** (trois pour un oiseau rattrapé par la vérification silencieuse). Alors seulement apparaissent ses pastilles de rareté et la notification d'oiseau rare. Une vérification qui ne peut pas se faire (Pi occupé, par exemple) est marquée « passée » et ne bloque jamais. S'il n'est pas confirmé à temps, il affiche « Non confirmé » et quitte la liste du jour. Il n'y a rien à appuyer.
+The bird is **confirmed as soon as two checks agree** (three for a bird rescued by the silent check). Only then do its rarity labels and the rare-bird notification appear. A check that cannot be done (Pi busy, for example) is marked "skipped" and never blocks. If the bird is not confirmed in time, it shows "Not confirmed" (`Non confirmé`) and leaves the day's list. There is nothing to press.
 
-Tous ces seuils sont réglables. Le score de BirdNET n'est pas une vraie probabilité : ce sont des valeurs de départ, à ajuster après quelques semaines de vraies données du jardin.
+All these thresholds can be changed. BirdNET's score is not a true probability: these are starting values, to adjust after a few weeks of real garden data.
 
-## Écran e-ink et export des données
+## E-ink screen and data export
 
-- **Écran :** une composition libre façon planche d'histoire naturelle ancienne, le dernier oiseau en grand au centre et les oiseaux du jour autour, avec très peu de texte (nom, nom scientifique, heure). Le nom de la caméra n'y figure jamais. L'écran change lentement (toutes les 10 minutes au plus). Il est prévu pour un futur cadre e-ink couleur ; en attendant, il s'affiche dans Home Assistant (entités « Écran »).
-- **Statistiques :** chaque oiseau confirmé est aussi gardé, définitivement, dans une table séparée pour les statistiques de saison (jamais les oiseaux de démo ou de test). Appuyez sur **Exporter les statistiques (CSV)** pour écrire un fichier tableur dans le dossier média (`mouflon_population/exports`).
+- **Screen:** a free-form layout in the style of an old natural-history plate, the last bird large in the centre and the day's birds around it, with very little text (name, scientific name, time). The camera name never appears on it. The screen changes slowly (every 10 minutes at most). It is meant for a future colour e-ink frame; until then it is shown in Home Assistant ("Screen" entities, `Écran`).
+- **Statistics:** each confirmed bird is also kept, permanently, in a separate table for season statistics (never demo or test birds). Press **Export statistics (CSV)** (`Exporter les statistiques (CSV)`) to write a spreadsheet file in the media folder (`mouflon_population/exports`).
 
-## Mode démo (oiseaux inventés)
+## Demo mode (invented birds)
 
-- Invente des détections d'oiseaux de jardin courants. Il ne fait jamais nuit en mode démo : les oiseaux arrivent à toute heure, par vagues plus ou moins actives. Aucun son n'est utilisé et aucun modèle BirdNET ne tourne.
-- **Clairement faux partout :** les sources s'appellent « Démo … », chaque détection porte `demo: true`, le capteur Mode démo est allumé et le journal indique « DEMO MODE ON ».
-- **Jamais mélangé aux vraies données :** les oiseaux de démo ne sont jamais écrits dans le journal des oiseaux.
-- **Pour l'arrêter** (puis redémarrer) : le dernier oiseau et les compteurs reviennent au vrai journal, et les sources « Démo » disparaissent. Les anciennes valeurs de démo dans l'historique de Home Assistant restent reconnaissables à `demo: true`.
+- Invents detections of common garden birds. It is never night in demo mode: birds arrive at any hour, in busier and quieter waves. No sound is used and no BirdNET model runs.
+- **Clearly fake everywhere:** sources are named "Démo ..." (`Démo` is French for "demo"), every detection carries `demo: true`, the Demo mode sensor is on and the log says "DEMO MODE ON".
+- **Never mixed with real data:** demo birds are never written to the bird log.
+- **To stop it** (then restart): the last bird and the counters go back to the real log, and the "Démo" sources disappear. Old demo values in Home Assistant's history remain recognisable by `demo: true`.
 
-## Mode test
+## Test mode
 
-Rejoue un enregistrement fourni d'une minute pour vérifier toute la chaîne sans réveiller de caméra. Les oiseaux doivent apparaître en moins d'une minute.
+Replays a bundled one-minute recording to check the whole chain without waking a camera. Birds should appear in under a minute.

@@ -95,17 +95,17 @@ Goal: the e-ink screen shows in a panel next to the code and updates by itself e
 
 **Every time you want the preview:**
 
-1. Menu **Terminal → Run Task…** and choose **Aperçu écran e-ink**.
-2. The first time only, a terminal panel prints "Première fois : création de l'environnement Python…" and "Installation de Pillow…". This takes about a minute.
-3. When the terminal prints **"Aperçu prêt."**, the preview opens in a side panel. If it does not, open `docs/screen-preview/preview.html` in the file list, then click the preview icon at the top right of the editor (or right-click the file → "Show Preview").
-4. Use the buttons at the top of the page: **Vue** (dernier oiseau, oiseaux du jour, collage unique), **Taille** (7,3 or 13,3 inches) and **Rendu** (écran or e-ink). Your choice is remembered after each refresh.
-5. Change the layout yourself, or ask Claude Code to. After each saved change the terminal prints "Rendu en cours…" then "Aperçu prêt.", and the panel reloads by itself (a few seconds; both sizes are drawn).
+1. Menu **Terminal → Run Task…** and choose **Aperçu écran e-ink** (French for "e-ink screen preview"; the task names are French UI text).
+2. The first time only, a terminal panel prints "Première fois : création de l'environnement Python…" (first time: creating the Python environment) and "Installation de Pillow…" (installing Pillow). This takes about a minute.
+3. When the terminal prints **"Aperçu prêt."** (preview ready), the preview opens in a side panel. If it does not, open `docs/screen-preview/preview.html` in the file list, then click the preview icon at the top right of the editor (or right-click the file → "Show Preview").
+4. Use the buttons at the top of the page: **Vue** (View: last bird, day's birds, single collage), **Taille** (Size: 7.3 or 13.3 inches) and **Rendu** (Rendering: screen or e-ink). Your choice is remembered after each refresh.
+5. Change the layout yourself, or ask Claude Code to. After each saved change the terminal prints "Rendu en cours…" (rendering) then "Aperçu prêt." (preview ready), and the panel reloads by itself (a few seconds; both sizes are drawn).
 6. To stop: click in the terminal panel and press **Ctrl+C**, or close that terminal.
 
 **If something goes wrong:**
 
-- "Python 3.11 ou plus récent est introuvable": do step 1 of the one-time setup, then close and reopen VS Code.
-- "Erreur de rendu.": the last change broke the drawing; the terminal shows why above that line. The previous preview stays in place until the next good change.
+- "Python 3.11 ou plus récent est introuvable" (Python 3.11 or newer not found): do step 1 of the one-time setup, then close and reopen VS Code.
+- "Erreur de rendu." (rendering error): the last change broke the drawing; the terminal shows why above that line. The previous preview stays in place until the next good change.
 - To start again from scratch, delete the `.venv-screen` folder in the project and run the task again.
 
 **Safety:** the task works only on this computer. On first run it downloads one library, Pillow, at the exact version and checksum written in `tools/screen_preview/requirements.lock`; after that it makes no network connection. Live Preview shows the page from a local server reachable only from this Mac (address 127.0.0.1). Nothing is sent anywhere and nothing is installed on the Raspberry Pi.

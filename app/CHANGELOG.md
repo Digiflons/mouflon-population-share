@@ -1,84 +1,60 @@
 # Changelog
 
-## 0.7.0 — vérifications croisées : deuxième avis de Perch et observations belges (2026-11-23, MOUL-54, MOUL-55)
+## 0.7.0 — cross-checks: Perch second opinion and Belgian observations (2026-11-23, MOUL-54, MOUL-55)
 
-- **Deuxième avis (Perch).** Quand un oiseau doit être confirmé, le modèle Perch 2.0 de Google DeepMind réécoute les mêmes 3 secondes, encore en mémoire, et dit s'il entend la même espèce. Rien n'est jamais enregistré.
-- **Observé localement à cette période.** Des statistiques d'observation des oiseaux en Belgique (GBIF, dix dernières années, semaine par semaine, à l'échelle du pays) sont incluses dans l'App ; rien n'est cherché en ligne.
-- **La confirmation a maintenant quatre vérifications** (détection sûre, entendu à nouveau, Perch concordant, observé localement) ; un oiseau est confirmé dès que **deux** concordent. La barre de progression et le tableau de bord montrent les quatre, avec une courte explication quand l'une est passée ou négative.
-- **Zones de score** (toutes réglables, libellés en français) :
-  - sous 0,20 : ignoré ;
-  - de 0,20 à 0,50, **vérification silencieuse** : rien n'est affiché, sauf si les statistiques belges et Perch (0,70 ou plus) sont d'accord. Le nouveau capteur « Oiseaux rattrapés par la vérification silencieuse » les compte (et ceux écartés) ;
-  - de 0,50 à 0,75 : « Confirmation en cours » avec les vérifications ;
-  - à partir de 0,75, oiseau courant : confirmé quand il est entendu une deuxième fois, sans Perch ;
-  - oiseau nouveau, rare, ou rarement observé en Belgique à cette période : toujours vérifié.
-- **Le Pi est ménagé** : Perch tourne au plus 6 fois par minute, jamais deux fois à la fois, et passe son tour quand le Pi est occupé ou manque de mémoire (les vérifications silencieuses d'abord). Une vérification passée ne bloque jamais la confirmation. Nouveau réglage pour couper Perch.
-- Le mode démo montre les nouvelles vérifications.
-- Perch occupe environ 0,6 Go de mémoire une fois chargé ; l'installation télécharge son modèle (413 Mo), vérifié par son empreinte.
+- **Second opinion (Perch).** When a bird has to be confirmed, Google DeepMind's Perch 2.0 model listens again to the same 3 seconds, still in memory, and says whether it hears the same species. Nothing is ever recorded.
+- **Observed locally at this time of year.** Bird observation statistics for Belgium (GBIF, last ten years, week by week, country-wide) are bundled with the App; nothing is looked up online.
+- **Confirmation now has four checks** (confident detection, heard again, Perch agrees, observed locally); a bird is confirmed as soon as **two** agree. The progress bar and the dashboard show all four, with a short explanation when one is skipped or negative.
+- **Score zones** (all adjustable, labels in French by default):
+  - below 0.20: ignored;
+  - 0.20 to 0.50, **silent check**: nothing is shown unless the Belgian statistics and Perch (0.70 or more) agree. The new sensor "Birds rescued by the silent check" counts them (and the dropped ones);
+  - 0.50 to 0.75: "Confirmation in progress" with the checks;
+  - from 0.75, common bird: confirmed when heard a second time, without Perch;
+  - new or rare bird, or rarely observed in Belgium at this time of year: always checked.
+- **The Pi is spared:** Perch runs at most 6 times a minute, never twice at once, and skips its turn when the Pi is busy or short of memory (silent checks first). A skipped check never blocks confirmation. New setting to turn Perch off.
+- Demo mode shows the new checks.
+- Perch takes about 0.6 GB of memory once loaded; installation downloads its model (413 MB), verified by its fingerprint.
 
-## 0.6.1 — nettoyage interne (2026-11-23, MOUL-42, MOUL-49)
+## 0.6.1 — internal clean-up (2026-11-23, MOUL-42, MOUL-49)
 
-- Rien ne change pour la maison : même comportement, mêmes entités, mêmes textes.
-- Code interne simplifié et code inutilisé retiré avant le partage du dépôt.
+- Nothing changes for the household: same behaviour, same entities, same texts.
+- Internal code simplified and unused code removed before the repository was shared.
 
-## 0.6.0 — la bibliothèque complète des gravures (2026-11-23, MOUL-42, MOUL-44)
+## 0.6.0 — the full engraving library (2026-11-23, MOUL-42, MOUL-44)
 
-- Toutes les gravures disponibles sont dans l'App : 163 des 215 oiseaux que l'on
-  peut entendre en Belgique au fil de l'année ont maintenant leur planche ancienne
-  (Naumann, Dresser, domaine public), avec sa mention de crédit. Les autres
-  affichent toujours « Gravure à venir ».
-- Les 33 planches qui montrent plusieurs espèces sont recadrées sur le bon oiseau,
-  avec des marges généreuses ; quand les oiseaux se chevauchent ou se ressemblent
-  trop, la planche entière est gardée.
-- Le pack de démarrage du mode démo est remplacé par la bibliothèque complète ; la
-  huppe fasciée, absente de la liste régionale, garde sa gravure pour le mode démo.
-- Même papier ancien taupe et mêmes bords doux qu'en 0.5.3.
-- Les chants de référence ne sont pas encore inclus.
+- All available engravings are in the App: 163 of the 215 birds that can be heard in Belgium over the year now have their antique plate (Naumann, Dresser, public domain), with its credit line. The others still show "Drawing to come" (French: "Gravure à venir").
+- The 33 plates that show several species are cropped to the right bird, with generous margins; when the birds overlap or look too alike, the whole plate is kept.
+- The demo mode starter pack is replaced by the full library; the hoopoe, missing from the regional list, keeps its engraving for demo mode.
+- Same aged taupe paper and soft edges as in 0.5.3.
+- Reference songs are not included yet.
 
-## 0.5.3 — papier ancien, gravures entières, bords irréguliers (2026-11-22, MOUL-56, MOUL-42)
+## 0.5.3 — aged paper, whole engravings, irregular edges (2026-11-22, MOUL-56, MOUL-42)
 
-- Papier couleur taupe, comme un papier ancien, sur l'écran, ses aperçus et les
-  gravures de Home Assistant. Sur l'e-ink, un fin moucheté de couleurs du panneau
-  donne ce ton sans gêner la lecture des petits noms.
-- Chaque gravure se fond dans le papier par un bord doux et irrégulier : plus de
-  rectangle ni d'ovale visible.
-- Recadrages revus pour les 18 gravures du pack de démo : marges généreuses,
-  planche entière dans le doute ; plus de queue, bec ou pattes coupés. La mésange
-  bleue montre maintenant la bonne espèce.
-- Sur le grand écran (1200 × 1600), la gravure du dernier oiseau occupe toute la
-  place ; sur une page chargée, un oiseau est réduit plutôt qu'omis.
-- « Gravure à venir » est en français et sur le même papier.
-- Un oiseau sans gravure est dessiné d'un trait sépia léger, sans aplat, au lieu
-  d'une silhouette grise. Les petites gravures autour de la grande sont plus
-  grandes et occupent mieux le cadre.
-- Nouvelle vue « Écran » dans le tableau de bord, avec l'écran seul.
-- Tableau de bord : une pile par oiseau (gravure jamais rognée, légende centrée).
+- Taupe paper, like aged paper, on the screen, its previews and the Home Assistant engravings. On e-ink, a fine speckle of the panel's colours gives this tone without hurting the legibility of small names.
+- Each engraving blends into the paper through a soft, irregular edge: no visible rectangle or oval any more.
+- Crops reviewed for the 18 engravings of the demo pack: generous margins, whole plate when in doubt; no more cut-off tails, beaks or legs. The blue tit now shows the right species.
+- On the large screen (1200 x 1600), the last bird's engraving fills all the space; on a busy page, a bird is shrunk rather than left out.
+- "Drawing to come" is shown in French by default and on the same paper.
+- A bird without an engraving is drawn with a light sepia line, without a filled shape, instead of a grey silhouette. The small engravings around the large one are bigger and fill the frame better.
+- New "Screen" view in the dashboard, showing the screen alone.
+- Dashboard: one stack per bird (engraving never cropped, centred caption).
 
-## 0.5.2 — premières gravures en mode démo (2026-11-22, MOUL-42, MOUL-45)
+## 0.5.2 — first engravings in demo mode (2026-11-22, MOUL-42, MOUL-45)
 
-- Pack de démarrage : de vraies gravures anciennes (Naumann, Dresser, domaine
-  public) pour 18 des 19 oiseaux du mode démo, avec leur mention de crédit, dans
-  Home Assistant et sur l'écran. Les autres oiseaux suivront avec la bibliothèque
-  complète.
-- Sur l'écran, chaque gravure se fond doucement dans le papier.
-- Les pastilles de rareté vides ne s'affichent plus (nouveau tableau de bord).
+- Starter pack: real antique engravings (Naumann, Dresser, public domain) for 18 of the 19 demo-mode birds, with their credit line, in Home Assistant and on the screen. The other birds will follow with the full library.
+- On the screen, each engraving blends softly into the paper.
+- Empty rarity labels are no longer shown (new dashboard).
 
-## 0.5.1 — « Confirmation en cours » (2026-11-22, MOUL-53)
+## 0.5.1 — "Confirmation in progress" (2026-11-22, MOUL-53)
 
-- Un oiseau en cours de confirmation affiche désormais « Confirmation en cours »
-  (au lieu de « À confirmer »), avec la barre de progression, dans Home
-  Assistant et sur l'écran.
+- A bird being confirmed now shows "Confirmation in progress" (French: "Confirmation en cours"; it used to be "To confirm"), with the progress bar, in Home Assistant and on the screen.
 
-## 0.5.0 — écran en collage, tout en français (2026-11-22, MOUL-56, MOUL-57)
+## 0.5.0 — collage screen, everything in French by default (2026-11-22, MOUL-56, MOUL-57)
 
-- Tous les textes de l'App sont en français par défaut : noms des entités, états
-  des sources, pastilles de rareté, étapes de confirmation, écran. Le réglage
-  « Langue » reste disponible. Les identifiants des entités ne changent pas.
-- Écran e-ink repensé : une planche libre, sans cadres ni grille, le dernier
-  oiseau en grand au centre, très peu de texte. Le nom de la caméra n'apparaît
-  plus sur l'écran.
-- Nouveau réglage « Vue de l'écran » : collage (une page) ou alternate (dernier
-  oiseau puis oiseaux du jour). Nouvelle entité « Écran » avec la page actuelle.
-- Demande Home Assistant 2025.10 ou plus récent.
+- All App texts are French by default: entity names, source statuses, rarity labels, confirmation steps, the screen. The "Language" setting is still available. Entity ids do not change.
+- E-ink screen redesigned: a free-form plate, without frames or grid, the last bird large in the centre, very little text. The camera name no longer appears on the screen.
+- New "Screen view" setting: collage (one page) or alternate (last bird, then the day's birds). New "Screen" entity with the current page.
+- Requires Home Assistant 2025.10 or newer.
 
 ## 0.4.0 — birds shown right away, detection delay (2026-11-22, MOUL-53, MOUL-52)
 

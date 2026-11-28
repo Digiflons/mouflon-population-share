@@ -57,7 +57,7 @@ flowchart LR
 | BirdNET score | What happens |
 |---|---|
 | Below 0.20 | Ignored. |
-| 0.20 to 0.50: **silent check** | Nothing is shown. In the background, the App checks whether the species is regularly observed in Belgium this week (GBIF) and asks Perch. The bird is published only if both agree (Perch at 0.70 or more); it then shows "Confirmation en cours" and needs one more check. Otherwise it is dropped. Only a counter is shown: "Oiseaux rattrapés par la vérification silencieuse", with the number rejected. |
+| 0.20 to 0.50: **silent check** | Nothing is shown. In the background, the App checks whether the species is regularly observed in Belgium this week (GBIF) and asks Perch. The bird is published only if both agree (Perch at 0.70 or more); it then shows "Confirmation en cours" (Confirmation in progress) and needs one more check. Otherwise it is dropped. Only a counter is shown: "Oiseaux rattrapés par la vérification silencieuse" (birds rescued by the silent check), with the number rejected. |
 | 0.50 to 0.75: **unsure** | Shown at once as **"Confirmation en cours"** and cross-checked (below). |
 | 0.75 and more, for a bird common in Belgium this week and not new or rare for the garden | Shown at once, confirmed when heard a second time. Perch is not asked, to spare the Pi. |
 | Any score, for a bird **new or rare** for the garden, unusual, threatened, or **seldom observed in Belgium** this week | Always cross-checked. |
